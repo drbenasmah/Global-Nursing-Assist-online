@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Nursing Assistant | Nurse Assist PL</title>
+    <link rel="stylesheet" href="../styles.css" />
+    <link rel="stylesheet" href="ai-assistant.css" />
+    <script src="https://unpkg.com/feather-icons"></script>
+  </head>
+  <body>
+    <!-- === NAVIGATION BAR === -->
+    <nav class="navbar" aria-label="Main navigation">
+      <div class="nav-container">
+        <div class="nav-logo">
+          <a href="../index.html">
+            <img
+              src="../src/assets/img/logo.png"
+              alt="Nurse Assist PL Logo"
+              class="logo-img"
+            />
+            <span class="logo-text">Nursing School Assist PL</span>
+          </a>
+        </div>
+        <div class="nav-menu" id="nav-menu">
+          <a href="../index.html#home" class="nav-link">Home</a>
+          <a href="../index.html#about" class="nav-link">About</a>
+          <a href="../index.html#services" class="nav-link">Services</a>
+          <a href="../index.html#testimonials" class="nav-link">Testimonials</a>
+          <a href="../index.html#articles" class="nav-link">Articles</a>
+          <a href="../index.html#resources" class="nav-link">Resources</a>
+          <a href="../index.html#contact" class="nav-link">Contact</a>
+          <a href="../blog.html" class="nav-link">Blog</a>
+          <a href="ai-assistant.html" class="nav-link active">AI Assistant</a>
+        </div>
+        <button
+          class="nav-toggle"
+          id="nav-toggle"
+          aria-label="Toggle navigation menu"
+        >
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+      </div>
+    </nav>
+
+    <main class="ai-assistant-page">
+      <div class="ai-hero">
+        <div class="container">
+          <h1>AI Nursing Assistant</h1>
+          <p>Get instant answers to your nursing education questions</p>
+        </div>
+      </div>
+
+      <div class="chat-container">
+        <div class="chat-window" id="chat-window">
+          <div class="chat-message assistant">
+            <div class="chat-avatar">
+              <i data-feather="user-check"></i>
+            </div>
+            <div class="message-content">
+              <p>Hello! I'm your AI Nursing Assistant from Nurse Assist PL.</p>
+              <p>
+                I can help you with IELTS preparation, thesis writing, Malta
+                nursing interviews, clinical questions, and more. Ask me
+                anything!
+              </p>
+            </div>
+          </div>
+
+          <div class="starter-prompts">
+            <h3>Try asking me:</h3>
+            <div class="prompts-grid">
+              <button
+                class="prompt-button"
+                data-prompt="What are the most common Malta nursing interview questions?"
+              >
+                <i data-feather="clipboard"></i>
+                Malta Interview Questions
+              </button>
+              <button
+                class="prompt-button"
+                data-prompt="How can I improve my IELTS speaking score for nursing?"
+              >
+                <i data-feather="mic"></i>
+                IELTS Speaking Tips
+              </button>
+              <button
+                class="prompt-button"
+                data-prompt="What should I include in my nursing thesis introduction?"
+              >
+                <i data-feather="book-open"></i>
+                Thesis Writing Help
+              </button>
+              <button
+                class="prompt-button"
+                data-prompt="What documents do I need for nursing registration in Malta?"
+              >
+                <i data-feather="file-text"></i>
+                Malta Registration
+              </button>
+              <button
+                class="prompt-button"
+                data-prompt="How do I prepare for clinical nursing exams?"
+              >
+                <i data-feather="heart"></i>
+                Clinical Exam Prep
+              </button>
+              <button
+                class="prompt-button"
+                data-prompt="What are the salary expectations for nurses in Malta?"
+              >
+                <i data-feather="dollar-sign"></i>
+                Malta Nursing Salary
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="chat-input-container">
+          <div class="chat-input-form" id="chat-input-form">
+            <input
+              type="text"
+              id="chat-input"
+              placeholder="Ask me anything about nursing education..."
+              class="chat-input"
+            />
+            <button
+              id="send-button"
+              class="send-button"
+              aria-label="Send message"
+            >
+              <i data-feather="send"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- === FOOTER === -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3>Nurse Assist PL</h3>
+            <p>
+              Empowering nursing students and professionals across Poland, UK,
+              and Malta with expert guidance and proven strategies.
+            </p>
+          </div>
+          <div class="footer-section">
+            <h4>Services</h4>
+            <ul class="footer-links">
+              <li><a href="../index.html#services">IELTS Coaching</a></li>
+              <li><a href="../index.html#services">Thesis Help</a></li>
+              <li><a href="../index.html#services">Clinical Coaching</a></li>
+              <li><a href="../index.html#services">Job Preparation</a></li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h4>Resources</h4>
+            <ul class="footer-links">
+              <li><a href="../index.html#resources">Free Downloads</a></li>
+              <li><a href="../index.html#testimonials">Success Stories</a></li>
+              <li><a href="../index.html#contact">Contact Us</a></li>
+              <li><a href="../blog.html">Blog</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>
+            &copy; <span id="current-year"></span> Nurse Assist PL. All rights
+            reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="../script.js"></script>
+    <script src="ai-assistant.js"></script>
+    <script>
+      feather.replace();
+    </script>
+  </body>
+</html>
