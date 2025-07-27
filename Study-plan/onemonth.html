@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Malta Nursing Interview Study Plan</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="onem-study-plan.css" />
+    <script src="https://unpkg.com/feather-icons"></script>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="nav-logo">
+          <a href="index.html">
+            <span class="logo-text">Nursing Assist PL</span>
+          </a>
+        </div>
+        <div class="nav-menu">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="study-plan.html" class="nav-link active">Study Plan</a>
+          <a href="blog.html" class="nav-link">Blog</a>
+          <a href="#contact" class="nav-link">Contact</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="container">
+        <div class="hero-content">
+          <div class="hero-badge">
+            <i data-feather="target"></i>
+            <span>Malta Nursing Interview</span>
+          </div>
+          <h1 class="hero-title">Study Plan</h1>
+          <p class="hero-description">
+            Your comprehensive 4-week guide to acing the Malta nursing interview
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Overall Progress -->
+    <section class="progress-section">
+      <div class="container">
+        <div class="progress-card">
+          <div class="progress-header">
+            <div class="progress-title">
+              <i data-feather="trophy"></i>
+              <h2>Overall Progress</h2>
+            </div>
+            <div class="progress-stats">
+              <i data-feather="clock"></i>
+              <span id="progress-text">0 of 0 tasks completed</span>
+            </div>
+          </div>
+          <div class="progress-bar-container">
+            <div class="progress-bar">
+              <div id="overall-progress-fill" class="progress-fill"></div>
+            </div>
+            <span id="progress-percentage">0%</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Study Plan Content -->
+    <main class="main-content">
+      <div class="container">
+        <!-- Week Navigation -->
+        <div class="week-navigation">
+          <button class="week-tab active" data-week="1">
+            <span class="week-label">Week 1</span>
+            <span class="week-progress" id="week-1-progress">0%</span>
+            <i class="week-check" data-feather="check-circle"></i>
+          </button>
+          <button class="week-tab" data-week="2">
+            <span class="week-label">Week 2</span>
+            <span class="week-progress" id="week-2-progress">0%</span>
+            <i class="week-check" data-feather="check-circle"></i>
+          </button>
+          <button class="week-tab" data-week="3">
+            <span class="week-label">Week 3</span>
+            <span class="week-progress" id="week-3-progress">0%</span>
+            <i class="week-check" data-feather="check-circle"></i>
+          </button>
+          <button class="week-tab" data-week="4">
+            <span class="week-label">Week 4</span>
+            <span class="week-progress" id="week-4-progress">0%</span>
+            <i class="week-check" data-feather="check-circle"></i>
+          </button>
+        </div>
+
+        <!-- Week Content -->
+        <div id="week-content">
+          <!-- Week 1 -->
+          <div class="week-content active" id="week-1">
+            <div class="week-header">
+              <div class="week-info">
+                <h3 class="week-title">Week 1: Foundation Skills</h3>
+                <p class="week-description">
+                  Core nursing fundamentals and essential protocols
+                </p>
+              </div>
+              <div class="week-progress-bar">
+                <div class="week-progress-fill" id="week-1-fill"></div>
+              </div>
+            </div>
+
+            <div class="days-grid">
+              <div class="day-card">
+                <div class="day-header">
+                  <i data-feather="circle" class="day-icon"></i>
+                  <h4>Day 1: Professional Foundations</h4>
+                </div>
+                <div class="task-list" data-week="1" data-day="1">
+                  <label class="task-item">
+                    <input type="checkbox" class="task-checkbox" />
+                    <span class="checkbox-custom"></span>
+                    <span class="task-text">Importance of Teamwork</span>
+                  </label>
+                  <label class="task-item">
+                    <input type="checkbox" class="task-checkbox" />
+                    <span class="checkbox-custom"></span>
+                    <span class="task-text">Maltese Code of Ethics</span>
+                  </label>
+                  <label class="task-item">
+                    <input type="checkbox" class="task-checkbox" />
+                    <span class="checkbox-custom"></span>
+                    <span class="task-text">Importance of Documentation</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="day-card">
+                <div class="day-header">
+                  <i data-feather="circle" class="day-icon"></i>
+                  <h4>Day 2: Infection Control Mastery</h4>
+                </div>
+                <div class="task-list" data-week="1" data-day="2">
+                  <label class="task-item">
+                    <input type="checkbox" class="task-checkbox" />
+                    <span class="checkbox-custom"></span>
+                    <span class="task-text">5 Moments of Hand Hygiene</span>
+                  </label>
+                  <label class="task-item">
+                    <input type="checkbox" class="task-checkbox" />
+                    <span class="checkbox-custom"></span>
+                    <span class="task-text"
+                      >Standard Precautions (PPE, Sharps)</span
+                    >
+                  </label>
+                  <label class="task-item">
+                    <input type="checkbox" class="task-checkbox" />
+                    <span class="checkbox-custom"></span>
+                    <span class="task-text">Precautions for MRSA & CRE</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="day-card">
+                <div class="day-header">
+                  <i data-feather="circle" class="day-icon"></i>
+                  <h4>Day 3: Core Patient Assessment</h4>
+                </div>
+                <div class="task-list" data-week="1" data-day="3">
+                  <label class="task-item">
+                    <input type="checkbox" class="task-checkbox" />
+                    <span class="checkbox-custom"></span>
+                    <span class="task-text">Assessing Vital Signs</span>
+                  </label>
+                  <label class="task-item">
+                    <input type="checkbox" class="task-checkbox" />
+                    <span class="checkbox-custom"></span>
+                    <span class="task-text">Neurological Assessment & GCS</span>
+                  </label>
+                  <label class="task-item">
+                    <input type="checkbox" class="task-checkbox" />
+                    <span class="checkbox-custom"></span>
+                    <span class="task-text">Pain Assessment Scales</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="day-card">
+                <div class="day-header">
+                  <i data-feather="circle" class="day-icon"></i>
+                  <h4>Day 4: Medication Admin Fundamentals</h4>
+                </div>
+                <div class="task-list" data-week="1" data-day="4">
+                  <label class="task-item">
+                    <input type="checkbox" class="task-checkbox" />
+                    <span class="checkbox-custom"></span>
+                    <span class="task-text">5 Rights of Medication Admin</span>
+                  </label>
+                  <label class="task-item">
+                    <input type="checkbox" class="task-checkbox" />
+                    <span class="checkbox-custom"></span>
+                    <span class="task-text">Oral Medication Procedure</span>
+                  </label>
+                  <label class="task-item">
+                    <input type="checkbox" class="task-checkbox" />
+                    <span class="checkbox-custom"></span>
+                    <span class="task-text">Pre/Post Admin Checks</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="day-card">
+                <div class="day-header">
+                  <i data-feather="circle" class="day-icon"></i>
+                  <h4>Day 5: Wound Care & Skin Integrity</h4>
+                </div>
+                <div class="task-list" data-week="1" data-day="5">
+                  <label class="task-item">
+                    <input type="checkbox" class="task-checkbox" />
+                    <span class="checkbox-custom"></span>
+                    <span class="task-text">Aseptic Technique</span>
+                  </label>
+                  <label class="task-item">
+                    <input type="checkbox" class="task-checkbox" />
+                    <span class="checkbox-custom"></span>
+                    <span class="task-text">Sterile Dressing Change</span>
+                  </label>
+                  <label class="task-item">
+                    <input type="checkbox" class="task-checkbox" />
+                    <span class="checkbox-custom"></span>
+                    <span class="task-text">Pressure Ulcer Prevention</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="day-card">
+                <div class="day-header">
+                  <i data-feather="circle" class="day-icon"></i>
+                  <h4>Day 6: GI & GU Basics</h4>
+                </div>
+                <div class="task-list" data-week="1" data-day="6">
+                  <label class="task-item">
+                    <input type="checkbox" class="task-checkbox" />
+                    <span class="checkbox-custom"></span>
+                    <span class="task-text"
+                      >NG Tube Placement Confirmation</span
+                    >
+                  </label>
+                  <label class="task-item">
+                    <input type="checkbox" class="task-checkbox" />
+                    <span class="checkbox-custom"></span>
+                    <span class="task-text">Urinary Catheter Insertion</span>
+                  </label>
+                  <label class="task-item">
+                    <input type="checkbox" class="task-checkbox" />
+                    <span class="checkbox-custom"></span>
+                    <span class="task-text"
+                      >Catheter Care (UTI Prevention)</span
+                    >
+                  </label>
+                </div>
+              </div>
+
+              <div class="day-card review-card">
+                <div class="day-header">
+                  <i data-feather="target" class="day-icon review-icon"></i>
+                  <h4>Day 7: Weekly Review</h4>
+                </div>
+                <p class="review-description">
+                  Review all flashcards from the week. Pick 10 topics and
+                  explain each one out loud for 60 seconds.
+                </p>
+                <div class="task-list" data-week="1" data-day="7">
+                  <label class="task-item">
+                    <input type="checkbox" class="task-checkbox" />
+                    <span class="checkbox-custom"></span>
+                    <span class="task-text"
+                      >Complete weekly review session</span
+                    >
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Week 2 -->
+          <div class="week-content" id="week-2">
+            <div class="week-header">
+              <div class="week-info">
+                <h3 class="week-title">Week 2: Advanced Procedures</h3>
+                <p class="week-description">
+                  Complex nursing skills and emergency procedures
+                </p>
+              </div>
+              <div class="week-progress-bar">
+                <div class="week-progress-fill" id="week-2-fill"></div>
+              </div>
+            </div>
+
+            <div class="days-grid">
+              <div class="day-card">
+                <div class="day-header">
+                  <i data-feather="circle" class="day-icon"></i>
+                  <h4>Day 8: Controlled Drugs (CDs)</h4>
+                </div>
+                <div class="task-list" data-week="2" data-day="8">
+                  <label class="task-item">
+                    <input type="checkbox" class="task-checkbox" />
+                    <span class="checkbox-custom"></span>
+                    <span class="task-text"
+                      >Ward Procedure & Requisitioning</span
+                    >
+                  </label>
+                  <label class="task-item">
+                    <input type="checkbox" class="task-checkbox" />
+                    <span class="checkbox-custom"></span>
+                    <span class="task-text">Two-Nurse Receipt Check</span>
+                  </label>
+                  <label class="task-item">
+                    <input type="checkbox" class="task-checkbox" />
+                    <span class="checkbox-custom"></span>
+                    <span class="task-text">Storage & Documentation</span>
+                  </label>
+                </div>
+              </div>
+
+              <!-- Continue with other days for Week 2... -->
+              <div class="day-card">
+                <div class="day-header">
+                  <i data-feather="circle" class="day-icon"></i>
+                  <h4>Day 9: IV & Blood Transfusions</h4>
+                </div>
+                <div class="task-list" data-week="2" data-day="9">
+                  <label class="task-item">
+                    <input type="checkbox" class="task-checkbox" />
+                    <span class="checkbox-custom"></span>
+                    <span class="task-text"
+                      >IV Cannulation & Phlebitis Grading</span
+                    >
+                  </label>
+                  <label class="task-item">
+                    <input type="checkbox" class="task-checkbox" />
+                    <span class="checkbox-custom"></span>
+                    <span class="task-text">Blood Transfusion Process</span>
+                  </label>
+                  <label class="task-item">
+                    <input type="checkbox" class="task-checkbox" />
+                    <span class="checkbox-custom"></span>
+                    <span class="task-text">Identifying Acute Reactions</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="day-card">
+                <div class="day-header">
+                  <i data-feather="circle" class="day-icon"></i>
+                  <h4>Day 10: Post-Op & Musculoskeletal</h4>
+                </div>
+                <div class="task-list" data-week="2" data-day="10">
+                  <label class="task-item">
+                    <input type="checkbox" class="task-checkbox" />
+                    <span class="checkbox-custom"></span>
+                    <span class="task-text">Post-Op Patient Checks</span>
+                  </label>
+                  <label class="task-item">
+                    <input type="checkbox" class="task-checkbox" />
+                    <span class="checkbox-custom"></span>
+                    <span class="task-text"
+                      >Importance of Early Ambulation</span
+                    >
+                  </label>
+                  <label class="task-item">
+                    <input type="checkbox" class="task-checkbox" />
+                    <span class="checkbox-custom"></span>
+                    <span class="task-text">Fractured Limb Care</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="day-card">
+                <div class="day-header">
+                  <i data-feather="circle" class="day-icon"></i>
+                  <h4>Day 11: Medical Emergencies (Pt 1)</h4>
+                </div>
+                <div class="task-list" data-week="2" data-day="11">
+                  <label class="task-item">
+                    <input type="checkbox" class="task-checkbox" />
+                    <span class="checkbox-custom"></span>
+                    <span class="task-text"
+                      >Recognizing & Responding to Sepsis</span
+                    >
+                  </label>
+                  <label class="task-item">
+                    <input type="checkbox" class="task-checkbox" />
+                    <span class="checkbox-custom"></span>
+                    <span class="task-text">Managing Anaphylaxis</span>
+                  </label>
+                  <label class="task-item">
+                    <input type="checkbox" class="task-checkbox" />
+                    <span class="checkbox-custom"></span>
+                    <span class="task-text">Role in a "Code Blue"</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="day-card">
+                <div class="day-header">
+                  <i data-feather="circle" class="day-icon"></i>
+                  <h4>Day 12: Medical Emergencies (Pt 2)</h4>
+                </div>
+                <div class="task-list" data-week="2" data-day="12">
+                  <label class="task-item">
+                    <input type="checkbox" class="task-checkbox" />
+                    <span class="checkbox-custom"></span>
+                    <span class="task-text"
+                      >Unconscious Patient (ABC, GCS)</span
+                    >
+                  </label>
+                  <label class="task-item">
+                    <input type="checkbox" class="task-checkbox" />
+                    <span class="checkbox-custom"></span>
+                    <span class="task-text">Unconscious Diabetic Patient</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="day-card">
+                <div class="day-header">
+                  <i data-feather="circle" class="day-icon"></i>
+                  <h4>Day 13: Cardio & Neuro Emergencies</h4>
+                </div>
+                <div class="task-list" data-week="2" data-day="13">
+                  <label class="task-item">
+                    <input type="checkbox" class="task-checkbox" />
+                    <span class="checkbox-custom"></span>
+                    <span class="task-text">Stroke Recognition (F.A.S.T.)</span>
+                  </label>
+                  <label class="task-item">
+                    <input type="checkbox" class="task-checkbox" />
+                    <span class="checkbox-custom"></span>
+                    <span class="task-text"
+                      >Myocardial Infarction Response</span
+                    >
+                  </label>
+                  <label class="task-item">
+                    <input type="checkbox" class="task-checkbox" />
+                    <span class="checkbox-custom"></span>
+                    <span class="task-text">Recognizing DVT</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="day-card review-card">
+                <div class="day-header">
+                  <i data-feather="target" class="day-icon review-icon"></i>
+                  <h4>Day 14: Weekly Review</h4>
+                </div>
+                <p class="review-description">
+                  Focus on scenario questions. Talk through your response to a
+                  patient fall, an aggressive patient, and a patient with sudden
+                  shortness of breath.
+                </p>
+                <div class="task-list" data-week="2" data-day="14">
+                  <label class="task-item">
+                    <input type="checkbox" class="task-checkbox" />
+                    <span class="checkbox-custom"></span>
+                    <span class="task-text">Complete scenario practice</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Week 3 -->
+          <div class="week-content" id="week-3">
+            <div class="week-header">
+              <div class="week-info">
+                <h3 class="week-title">Week 3: Practice & Application</h3>
+                <p class="week-description">
+                  Mock interviews and structured practice sessions
+                </p>
+              </div>
+              <div class="week-progress-bar">
+                <div class="week-progress-fill" id="week-3-fill"></div>
+              </div>
+            </div>
+
+            <div class="days-grid">
+              <div class="day-card practice-card">
+                <div class="day-header">
+                  <i
+                    data-feather="book-open"
+                    class="day-icon practice-icon"
+                  ></i>
+                  <h4>Days 15-17: SAFE/SBAR Practice</h4>
+                </div>
+                <p class="practice-description">
+                  Each day, take 3-4 real recall questions. Verbally answer each
+                  one using a clear structure (Safety, Assessment, First
+                  Actions, Explain Rationale).
+                </p>
+                <div class="task-list" data-week="3" data-day="15">
+                  <label class="task-item">
+                    <input type="checkbox" class="task-checkbox" />
+                    <span class="checkbox-custom"></span>
+                    <span class="task-text">Day 15 Practice Complete</span>
+                  </label>
+                  <label class="task-item">
+                    <input type="checkbox" class="task-checkbox" />
+                    <span class="checkbox-custom"></span>
+                    <span class="task-text">Day 16 Practice Complete</span>
+                  </label>
+                  <label class="task-item">
+                    <input type="checkbox" class="task-checkbox" />
+                    <span class="checkbox-custom"></span>
+                    <span class="task-text">Day 17 Practice Complete</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="day-card">
+                <div class="day-header">
+                  <i data-feather="circle" class="day-icon"></i>
+                  <h4>Day 18: Ethics & Communication</h4>
+                </div>
+                <div class="task-list" data-week="3" data-day="18">
+                  <label class="task-item">
+                    <input type="checkbox" class="task-checkbox" />
+                    <span class="checkbox-custom"></span>
+                    <span class="task-text">Ensuring Informed Consent</span>
+                  </label>
+                  <label class="task-item">
+                    <input type="checkbox" class="task-checkbox" />
+                    <span class="checkbox-custom"></span>
+                    <span class="task-text">Handling Ethical Dilemmas</span>
+                  </label>
+                  <label class="task-item">
+                    <input type="checkbox" class="task-checkbox" />
+                    <span class="checkbox-custom"></span>
+                    <span class="task-text"
+                      >Communicating with Confused Patients</span
+                    >
+                  </label>
+                </div>
+              </div>
+
+              <div class="day-card mock-card">
+                <div class="day-header">
+                  <i data-feather="mic" class="day-icon mock-icon"></i>
+                  <h4>Day 19: Mock Interview #1</h4>
+                </div>
+                <div class="task-list" data-week="3" data-day="19">
+                  <label class="task-item">
+                    <input type="checkbox" class="task-checkbox" />
+                    <span class="checkbox-custom"></span>
+                    <span class="task-text">Select 10 questions</span>
+                  </label>
+                  <label class="task-item">
+                    <input type="checkbox" class="task-checkbox" />
+                    <span class="checkbox-custom"></span>
+                    <span class="task-text">Record yourself answering</span>
+                  </label>
+                  <label class="task-item">
+                    <input type="checkbox" class="task-checkbox" />
+                    <span class="checkbox-custom"></span>
+                    <span class="task-text">Critique your performance</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="day-card review-card">
+                <div class="day-header">
+                  <i data-feather="target" class="day-icon review-icon"></i>
+                  <h4>Day 20: Refine & Review</h4>
+                </div>
+                <p class="review-description">
+                  Based on your mock interview, identify your weak spots and
+                  review those topics. Do a light review of flashcards over the
+                  weekend.
+                </p>
+                <div class="task-list" data-week="3" data-day="20">
+                  <label class="task-item">
+                    <input type="checkbox" class="task-checkbox" />
+                    <span class="checkbox-custom"></span>
+                    <span class="task-text">Identify weak areas</span>
+                  </label>
+                  <label class="task-item">
+                    <input type="checkbox" class="task-checkbox" />
+                    <span class="checkbox-custom"></span>
+                    <span class="task-text">Complete targeted review</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Week 4 -->
+          <div class="week-content" id="week-4">
+            <div class="week-header">
+              <div class="week-info">
+                <h3 class="week-title">Week 4: Final Preparation</h3>
+                <p class="week-description">
+                  Final polish and interview readiness
+                </p>
+              </div>
+              <div class="week-progress-bar">
+                <div class="week-progress-fill" id="week-4-fill"></div>
+              </div>
+            </div>
+
+            <div class="days-grid">
+              <div class="day-card mock-card">
+                <div class="day-header">
+                  <i data-feather="users" class="day-icon mock-icon"></i>
+                  <h4>Day 21: Mock Interview #2</h4>
+                </div>
+                <p class="practice-description">
+                  Ask a friend or colleague to quiz you. The pressure of a live
+                  audience is invaluable practice.
+                </p>
+                <div class="task-list" data-week="4" data-day="21">
+                  <label class="task-item">
+                    <input type="checkbox" class="task-checkbox" />
+                    <span class="checkbox-custom"></span>
+                    <span class="task-text">Peer Mock Interview Complete</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="day-card">
+                <div class="day-header">
+                  <i data-feather="circle" class="day-icon"></i>
+                  <h4>Day 22: Final Content Polish</h4>
+                </div>
+                <p class="practice-description">
+                  Go back one last time to any topic you feel hesitant about.
+                  Focus on high-stakes procedures (CDs, Blood Transfusions).
+                </p>
+                <div class="task-list" data-week="4" data-day="22">
+                  <label class="task-item">
+                    <input type="checkbox" class="task-checkbox" />
+                    <span class="checkbox-custom"></span>
+                    <span class="task-text">Weak Spot Review Complete</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="day-card">
+                <div class="day-header">
+                  <i data-feather="circle" class="day-icon"></i>
+                  <h4>Day 23: Prepare Your "Bookends"</h4>
+                </div>
+                <p class="practice-description">
+                  Prepare a concise answer to "Tell me about yourself" and 2-3
+                  thoughtful questions to ask the interviewers.
+                </p>
+                <div class="task-list" data-week="4" data-day="23">
+                  <label class="task-item">
+                    <input type="checkbox" class="task-checkbox" />
+                    <span class="checkbox-custom"></span>
+                    <span class="task-text">"Bookends" Prepared</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="day-card">
+                <div class="day-header">
+                  <i data-feather="circle" class="day-icon"></i>
+                  <h4>Day 24: Full Dress Rehearsal</h4>
+                </div>
+                <p class="practice-description">
+                  Set up your interview space exactly as it will be. Wear your
+                  interview clothes. Do a final, short mock interview.
+                </p>
+                <div class="task-list" data-week="4" data-day="24">
+                  <label class="task-item">
+                    <input type="checkbox" class="task-checkbox" />
+                    <span class="checkbox-custom"></span>
+                    <span class="task-text">Dress Rehearsal Complete</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="day-card final-card">
+                <div class="day-header">
+                  <i data-feather="heart" class="day-icon final-icon"></i>
+                  <h4>Days 25-27: Final Review & REST</h4>
+                </div>
+                <p class="final-description">
+                  Do a light review of notes on Day 25. Then REST. Your
+                  preparation is complete. Get good sleep, eat well, and relax.
+                  A rested mind performs best.
+                </p>
+                <div class="task-list" data-week="4" data-day="25">
+                  <label class="task-item">
+                    <input type="checkbox" class="task-checkbox" />
+                    <span class="checkbox-custom"></span>
+                    <span class="task-text">Final review complete</span>
+                  </label>
+                  <label class="task-item">
+                    <input type="checkbox" class="task-checkbox" />
+                    <span class="checkbox-custom"></span>
+                    <span class="task-text">Rest and prepare mentally</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3>Nursing Assist PL</h3>
+            <p>
+              Empowering nursing students and professionals across Poland, UK,
+              and Malta with expert guidance and proven strategies.
+            </p>
+          </div>
+          <div class="footer-section">
+            <h4>Services</h4>
+            <ul class="footer-links">
+              <li><a href="index.html#services">IELTS Coaching</a></li>
+              <li><a href="index.html#services">Thesis Help</a></li>
+              <li><a href="index.html#services">Clinical Coaching</a></li>
+              <li><a href="index.html#services">Job Preparation</a></li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h4>Resources</h4>
+            <ul class="footer-links">
+              <li><a href="index.html#resources">Free Downloads</a></li>
+              <li><a href="index.html#testimonials">Success Stories</a></li>
+              <li><a href="index.html#contact">Contact Us</a></li>
+              <li><a href="blog.html">Blog</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>
+            &copy; <span id="current-year">2025</span> Nursing Assist PL. All
+            rights reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="onem-study-plan.js"></script>
+    <script>
+      feather.replace();
+    </script>
+  </body>
+</html>

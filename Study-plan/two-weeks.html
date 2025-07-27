@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Malta Nursing Interview Study Plan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Chosen Palette: Warm Neutrals (Stone, Sage Green) -->
+    <!-- Application Structure Plan: A tabbed interface for a condensed 2-week schedule. Week 1 focuses on core content, Week 2 on application and performance. Interactivity is provided through checkboxes to mark tasks as complete, which dynamically updates progress bars. This structure creates an intensive, motivational tool. -->
+    <!-- Visualization & Content Choices: Report Info: 2-week study plan. Goal: Organize content and track progress. Presentation: Tabbed layout (HTML/JS), daily cards (Tailwind Grid), progress indicators (HTML/JS progress bars). Interaction: Tab clicks toggle content visibility; checkbox clicks update progress state and visuals. Justification: This interactive dashboard approach is more usable and motivating than a static text document for a condensed plan. Library/Method: Vanilla JS, Tailwind CSS. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: #f5f5f4; /* stone-100 */
+      }
+      .tab-active {
+        background-color: #10b981; /* emerald-500 */
+        color: white;
+        border-color: #10b981;
+      }
+      .progress-bar-bg {
+        background-color: #e5e7eb; /* gray-200 */
+      }
+      .progress-bar-fill {
+        background-color: #10b981; /* emerald-500 */
+        transition: width 0.5s ease-in-out;
+      }
+      .task-list input:checked + span {
+        text-decoration: line-through;
+        color: #6b7280; /* gray-500 */
+      }
+    </style>
+  </head>
+  <body class="text-stone-800">
+    <div class="container mx-auto max-w-7xl p-4 sm:p-6 lg:p-8">
+      <header class="text-center mb-8">
+        <h1 class="text-3xl sm:text-4xl font-bold text-stone-900">
+          Malta Nursing Interview Study Plan
+        </h1>
+        <p class="mt-2 text-lg text-stone-600">
+          Your intensive two-week guide to acing the interview.
+        </p>
+      </header>
+
+      <div class="mb-8 p-6 bg-white rounded-xl shadow-lg">
+        <h2 class="text-xl font-bold mb-3 text-stone-800">Overall Progress</h2>
+        <div class="progress-bar-bg w-full h-6 rounded-full overflow-hidden">
+          <div
+            id="overall-progress"
+            class="progress-bar-fill h-full rounded-full text-white text-sm flex items-center justify-center font-medium"
+            style="width: 0%"
+          >
+            0%
+          </div>
+        </div>
+      </div>
+
+      <nav class="flex flex-wrap justify-center gap-2 sm:gap-4 mb-8">
+        <button
+          data-week="1"
+          class="week-tab tab-active text-base font-medium py-2 px-4 rounded-lg border-2 border-transparent transition"
+        >
+          Week 1: Core Knowledge & Procedures
+        </button>
+        <button
+          data-week="2"
+          class="week-tab text-base font-medium py-2 px-4 rounded-lg border-2 border-gray-300 text-gray-600 hover:bg-gray-100 transition"
+        >
+          Week 2: Scenarios & Performance
+        </button>
+      </nav>
+
+      <main id="plan-content">
+        <!-- Week 1 Content -->
+        <div id="week-1" class="week-content">
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Day 1 -->
+            <div class="bg-white p-6 rounded-xl shadow-md">
+              <h3 class="font-bold text-lg mb-3">
+                Day 1: Foundations & Infection Control
+              </h3>
+              <ul class="space-y-2 task-list" data-day="1">
+                <li>
+                  <label class="flex items-center"
+                    ><input
+                      type="checkbox"
+                      class="mr-2 h-4 w-4 rounded border-gray-300 text-emerald-500 focus:ring-emerald-500"
+                    /><span>Teamwork, Ethics, Documentation</span></label
+                  >
+                </li>
+                <li>
+                  <label class="flex items-center"
+                    ><input
+                      type="checkbox"
+                      class="mr-2 h-4 w-4 rounded border-gray-300 text-emerald-500 focus:ring-emerald-500"
+                    /><span>Standard Precautions & Hand Hygiene</span></label
+                  >
+                </li>
+                <li>
+                  <label class="flex items-center"
+                    ><input
+                      type="checkbox"
+                      class="mr-2 h-4 w-4 rounded border-gray-300 text-emerald-500 focus:ring-emerald-500"
+                    /><span>MRSA & CRE Precautions</span></label
+                  >
+                </li>
+              </ul>
+            </div>
+            <!-- Day 2 -->
+            <div class="bg-white p-6 rounded-xl shadow-md">
+              <h3 class="font-bold text-lg mb-3">
+                Day 2: Assessment & Med Admin
+              </h3>
+              <ul class="space-y-2 task-list" data-day="2">
+                <li>
+                  <label class="flex items-center"
+                    ><input
+                      type="checkbox"
+                      class="mr-2 h-4 w-4 rounded border-gray-300 text-emerald-500 focus:ring-emerald-500"
+                    /><span>Vital Signs & GCS Assessment</span></label
+                  >
+                </li>
+                <li>
+                  <label class="flex items-center"
+                    ><input
+                      type="checkbox"
+                      class="mr-2 h-4 w-4 rounded border-gray-300 text-emerald-500 focus:ring-emerald-500"
+                    /><span>Pain Assessment</span></label
+                  >
+                </li>
+                <li>
+                  <label class="flex items-center"
+                    ><input
+                      type="checkbox"
+                      class="mr-2 h-4 w-4 rounded border-gray-300 text-emerald-500 focus:ring-emerald-500"
+                    /><span>5 Rights of Medication Admin</span></label
+                  >
+                </li>
+              </ul>
+            </div>
+            <!-- Day 3 -->
+            <div class="bg-white p-6 rounded-xl shadow-md">
+              <h3 class="font-bold text-lg mb-3">
+                Day 3: High-Stakes Procedures
+              </h3>
+              <ul class="space-y-2 task-list" data-day="3">
+                <li>
+                  <label class="flex items-center"
+                    ><input
+                      type="checkbox"
+                      class="mr-2 h-4 w-4 rounded border-gray-300 text-emerald-500 focus:ring-emerald-500"
+                    /><span>Controlled Drugs: Full Procedure</span></label
+                  >
+                </li>
+                <li>
+                  <label class="flex items-center"
+                    ><input
+                      type="checkbox"
+                      class="mr-2 h-4 w-4 rounded border-gray-300 text-emerald-500 focus:ring-emerald-500"
+                    /><span>Blood Transfusions: Full Procedure</span></label
+                  >
+                </li>
+                <li>
+                  <label class="flex items-center"
+                    ><input
+                      type="checkbox"
+                      class="mr-2 h-4 w-4 rounded border-gray-300 text-emerald-500 focus:ring-emerald-500"
+                    /><span>IV Cannulation & Phlebitis</span></label
+                  >
+                </li>
+              </ul>
+            </div>
+            <!-- Day 4 -->
+            <div class="bg-white p-6 rounded-xl shadow-md">
+              <h3 class="font-bold text-lg mb-3">Day 4: GI/GU & Wound Care</h3>
+              <ul class="space-y-2 task-list" data-day="4">
+                <li>
+                  <label class="flex items-center"
+                    ><input
+                      type="checkbox"
+                      class="mr-2 h-4 w-4 rounded border-gray-300 text-emerald-500 focus:ring-emerald-500"
+                    /><span>NG Tube Placement Confirmation</span></label
+                  >
+                </li>
+                <li>
+                  <label class="flex items-center"
+                    ><input
+                      type="checkbox"
+                      class="mr-2 h-4 w-4 rounded border-gray-300 text-emerald-500 focus:ring-emerald-500"
+                    /><span>Urinary Catheter Insertion & Care</span></label
+                  >
+                </li>
+                <li>
+                  <label class="flex items-center"
+                    ><input
+                      type="checkbox"
+                      class="mr-2 h-4 w-4 rounded border-gray-300 text-emerald-500 focus:ring-emerald-500"
+                    /><span>Aseptic Dressing Change</span></label
+                  >
+                </li>
+              </ul>
+            </div>
+            <!-- Day 5 -->
+            <div class="bg-white p-6 rounded-xl shadow-md">
+              <h3 class="font-bold text-lg mb-3">
+                Day 5: Post-Op & Common Emergencies
+              </h3>
+              <ul class="space-y-2 task-list" data-day="5">
+                <li>
+                  <label class="flex items-center"
+                    ><input
+                      type="checkbox"
+                      class="mr-2 h-4 w-4 rounded border-gray-300 text-emerald-500 focus:ring-emerald-500"
+                    /><span>Post-Op Patient Checks</span></label
+                  >
+                </li>
+                <li>
+                  <label class="flex items-center"
+                    ><input
+                      type="checkbox"
+                      class="mr-2 h-4 w-4 rounded border-gray-300 text-emerald-500 focus:ring-emerald-500"
+                    /><span>Stroke (F.A.S.T) & MI Response</span></label
+                  >
+                </li>
+                <li>
+                  <label class="flex items-center"
+                    ><input
+                      type="checkbox"
+                      class="mr-2 h-4 w-4 rounded border-gray-300 text-emerald-500 focus:ring-emerald-500"
+                    /><span>DVT Recognition & Prevention</span></label
+                  >
+                </li>
+              </ul>
+            </div>
+            <!-- Day 6 -->
+            <div class="bg-white p-6 rounded-xl shadow-md">
+              <h3 class="font-bold text-lg mb-3">
+                Day 6: Critical Emergencies
+              </h3>
+              <ul class="space-y-2 task-list" data-day="6">
+                <li>
+                  <label class="flex items-center"
+                    ><input
+                      type="checkbox"
+                      class="mr-2 h-4 w-4 rounded border-gray-300 text-emerald-500 focus:ring-emerald-500"
+                    /><span>Sepsis Recognition & Response</span></label
+                  >
+                </li>
+                <li>
+                  <label class="flex items-center"
+                    ><input
+                      type="checkbox"
+                      class="mr-2 h-4 w-4 rounded border-gray-300 text-emerald-500 focus:ring-emerald-500"
+                    /><span>Unconscious Patient (Diabetic/General)</span></label
+                  >
+                </li>
+                <li>
+                  <label class="flex items-center"
+                    ><input
+                      type="checkbox"
+                      class="mr-2 h-4 w-4 rounded border-gray-300 text-emerald-500 focus:ring-emerald-500"
+                    /><span>Role in "Code Blue" / Anaphylaxis</span></label
+                  >
+                </li>
+              </ul>
+            </div>
+            <!-- Day 7 -->
+            <div
+              class="bg-white p-6 rounded-xl shadow-md col-span-1 md:col-span-2 lg:col-span-3"
+            >
+              <h3 class="font-bold text-lg mb-3">Day 7: Week 1 Review</h3>
+              <p class="text-stone-600">
+                Review all flashcards from the week. Pick 10 topics and explain
+                each one out loud using the SAFE/SBAR framework.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Week 2 Content -->
+        <div id="week-2" class="week-content hidden">
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="bg-white p-6 rounded-xl shadow-md">
+              <h3 class="font-bold text-lg mb-3">Day 8-9: Scenario Practice</h3>
+              <p class="text-stone-600">
+                Practice verbalizing answers to recall questions (Fall, Confused
+                Patient, Post-Op checks, etc.) using the SAFE/SBAR framework.
+              </p>
+              <ul class="space-y-2 task-list" data-day="8">
+                <li>
+                  <label class="flex items-center"
+                    ><input
+                      type="checkbox"
+                      class="mr-2 h-4 w-4 rounded border-gray-300 text-emerald-500 focus:ring-emerald-500"
+                    /><span>Day 8 Practice Complete</span></label
+                  >
+                </li>
+                <li>
+                  <label class="flex items-center"
+                    ><input
+                      type="checkbox"
+                      class="mr-2 h-4 w-4 rounded border-gray-300 text-emerald-500 focus:ring-emerald-500"
+                    /><span>Day 9 Practice Complete</span></label
+                  >
+                </li>
+              </ul>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-md">
+              <h3 class="font-bold text-lg mb-3">
+                Day 10: Ethics & Communication
+              </h3>
+              <p class="text-stone-600">
+                Practice scenarios involving informed consent, ethical dilemmas,
+                and communicating with anxious family members.
+              </p>
+              <ul class="space-y-2 task-list" data-day="10">
+                <li>
+                  <label class="flex items-center"
+                    ><input
+                      type="checkbox"
+                      class="mr-2 h-4 w-4 rounded border-gray-300 text-emerald-500 focus:ring-emerald-500"
+                    /><span>Ethics Scenarios Practiced</span></label
+                  >
+                </li>
+              </ul>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-md">
+              <h3 class="font-bold text-lg mb-3">
+                Day 11: Mock Interview #1 (Self)
+              </h3>
+              <p class="text-stone-600">
+                Record yourself answering 10-15 questions. Critique your
+                performance on clarity, structure, and timing.
+              </p>
+              <ul class="space-y-2 task-list" data-day="11">
+                <li>
+                  <label class="flex items-center"
+                    ><input
+                      type="checkbox"
+                      class="mr-2 h-4 w-4 rounded border-gray-300 text-emerald-500 focus:ring-emerald-500"
+                    /><span>Self-Mock Interview Complete</span></label
+                  >
+                </li>
+              </ul>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-md">
+              <h3 class="font-bold text-lg mb-3">Day 12: Refine Weak Spots</h3>
+              <p class="text-stone-600">
+                Based on your mock interview, re-study the topics you were
+                hesitant on. Focus on fluency.
+              </p>
+              <ul class="space-y-2 task-list" data-day="12">
+                <li>
+                  <label class="flex items-center"
+                    ><input
+                      type="checkbox"
+                      class="mr-2 h-4 w-4 rounded border-gray-300 text-emerald-500 focus:ring-emerald-500"
+                    /><span>Weak Spot Review Complete</span></label
+                  >
+                </li>
+              </ul>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-md">
+              <h3 class="font-bold text-lg mb-3">
+                Day 13: Dress Rehearsal & "Bookends"
+              </h3>
+              <p class="text-stone-600">
+                Prepare your intro & questions. Do a final mock interview in
+                your interview clothes and setting.
+              </p>
+              <ul class="space-y-2 task-list" data-day="13">
+                <li>
+                  <label class="flex items-center"
+                    ><input
+                      type="checkbox"
+                      class="mr-2 h-4 w-4 rounded border-gray-300 text-emerald-500 focus:ring-emerald-500"
+                    /><span>Dress Rehearsal Complete</span></label
+                  >
+                </li>
+              </ul>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-md">
+              <h3 class="font-bold text-lg mb-3">
+                Day 14: Final Review & REST
+              </h3>
+              <p class="text-stone-600">
+                Do a final, light read-through of your notes. Then stop. Relax,
+                get good sleep, and trust your preparation.
+              </p>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const tabs = document.querySelectorAll(".week-tab");
+        const weekContents = document.querySelectorAll(".week-content");
+        const checkboxes = document.querySelectorAll(
+          '.task-list input[type="checkbox"]'
+        );
+        const overallProgressBar = document.getElementById("overall-progress");
+
+        const totalTasks = checkboxes.length;
+        let completedTasks = 0;
+
+        const state = JSON.parse(localStorage.getItem("studyPlanState")) || {};
+
+        function updateProgress() {
+          completedTasks = document.querySelectorAll(
+            '.task-list input[type="checkbox"]:checked'
+          ).length;
+          const overallPercentage =
+            totalTasks > 0
+              ? Math.round((completedTasks / totalTasks) * 100)
+              : 0;
+
+          overallProgressBar.style.width = `${overallPercentage}%`;
+          overallProgressBar.textContent = `${overallPercentage}%`;
+        }
+
+        function saveState() {
+          const currentState = {};
+          checkboxes.forEach((checkbox, index) => {
+            currentState[index] = checkbox.checked;
+          });
+          localStorage.setItem("studyPlanState", JSON.stringify(currentState));
+        }
+
+        function loadState() {
+          const savedState =
+            JSON.parse(localStorage.getItem("studyPlanState")) || {};
+          checkboxes.forEach((checkbox, index) => {
+            if (savedState[index]) {
+              checkbox.checked = true;
+            } else {
+              checkbox.checked = false;
+            }
+          });
+          updateProgress();
+        }
+
+        tabs.forEach((tab) => {
+          tab.addEventListener("click", () => {
+            const week = tab.dataset.week;
+
+            tabs.forEach((t) => {
+              t.classList.remove("tab-active");
+              t.classList.add(
+                "border-gray-300",
+                "text-gray-600",
+                "hover:bg-gray-100"
+              );
+            });
+            tab.classList.add("tab-active");
+            tab.classList.remove(
+              "border-gray-300",
+              "text-gray-600",
+              "hover:bg-gray-100"
+            );
+
+            weekContents.forEach((content) => {
+              if (content.id === `week-${week}`) {
+                content.classList.remove("hidden");
+              } else {
+                content.classList.add("hidden");
+              }
+            });
+          });
+        });
+
+        checkboxes.forEach((checkbox) => {
+          checkbox.addEventListener("change", () => {
+            updateProgress();
+            saveState();
+          });
+        });
+
+        loadState();
+      });
+    </script>
+  </body>
+</html>
