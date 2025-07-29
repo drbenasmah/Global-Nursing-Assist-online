@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Malta Interview Flashcards</title>
+    <link rel="stylesheet" href="../styles.css" />
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(120deg, #e6f2ff, #f2f9ff);
+        text-align: center;
+        padding: 30px;
+        margin: 0;
+      }
+
+      h1 {
+        margin-bottom: 30px;
+        color: #003366;
+        font-size: 2rem;
+      }
+
+      .flashcard-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 25px;
+        padding: 0 20px;
+      }
+
+      .card {
+        perspective: 1000px;
+      }
+
+      .card-inner {
+        width: 100%;
+        height: 220px;
+        transition: transform 0.8s ease-in-out;
+        transform-style: preserve-3d;
+        position: relative;
+        cursor: pointer;
+      }
+
+      .card:hover .card-inner {
+        transform: rotateY(180deg);
+      }
+
+      .card-front,
+      .card-back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        padding: 20px;
+        box-sizing: border-box;
+        border-radius: 15px;
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1rem;
+        backface-visibility: hidden;
+      }
+
+      .card-front {
+        background: #ffffff;
+        color: #003366;
+      }
+
+      .card-back {
+        background: #d0e8ff;
+        transform: rotateY(180deg);
+        color: #003366;
+      }
+
+      footer {
+        background-color: #002244;
+        color: #ffffff;
+        padding: 40px 0 20px;
+        margin-top: 60px;
+        text-align: center;
+      }
+
+      .footer-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 40px;
+        max-width: 1200px;
+        margin: 0 auto 30px;
+      }
+
+      .footer-section {
+        flex: 1 1 250px;
+        min-width: 200px;
+      }
+
+      .footer-section h3,
+      .footer-section h4 {
+        color: #ffffff;
+        margin-bottom: 10px;
+      }
+
+      .footer-section p,
+      .footer-section ul {
+        color: #dddddd;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .footer-links li {
+        margin-bottom: 8px;
+      }
+
+      .footer-links a {
+        color: #dddddd;
+        text-decoration: none;
+      }
+
+      .footer-links a:hover {
+        text-decoration: underline;
+      }
+
+      .footer-bottom {
+        font-size: 0.9rem;
+        color: #cccccc;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- === NAVIGATION BAR === -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="nav-logo">
+          <a href="#home">
+            <img
+              src="../src/assets/img/logo1.png"
+              alt="Nurse Assist PL Logo"
+              class="logo-img"
+              onerror="this.onerror=null;this.src='https://placehold.co/200x50/1e40af/ffffff?text=Logo';"
+            />
+            <span class="logo-text">Nursing School Assist PL</span>
+          </a>
+        </div>
+        <div class="nav-menu" id="nav-menu">
+          <a href="../index.html" class="nav-link">Home</a>
+          <a href="../index.html#about" class="nav-link">About</a>
+          <a href="../index.html#services" class="nav-link">Services</a>
+          <a href="../index.html#testimonials" class="nav-link">Testimonials</a>
+          <a href="../index.html#articles" class="nav-link">Articles</a>
+
+          <!-- Dropdown Menu for Resources -->
+          <div class="dropdown">
+            <a href="#resources" class="nav-link" id="resources-link">
+              Resources
+              <i
+                data-feather="chevron-down"
+                style="width: 16px; height: 16px"
+              ></i>
+            </a>
+            <div class="dropdown-menu">
+              <a href="../ai-page/ai-assistant.html" class="dropdown-link"
+                >AI Interview Assistant</a
+              >
+              <a href="../Malta-study-plan/onemonth.html" class="dropdown-link"
+                >Study Plan</a
+              >
+              <a
+                href="../Malta-study-plan/study-guide1.html"
+                class="dropdown-link"
+                >Study Guide</a
+              >
+              <a
+                href="../Malta-study-plan/flashcard-m.html"
+                class="dropdown-link"
+                >Flashcards</a
+              >
+              <a href="../index.html#resources" class="dropdown-link"
+                >Free Downloads</a
+              >
+            </div>
+          </div>
+
+          <a href="../index.html#contact" class="nav-link">Contact</a>
+          <a href="../blog.html" class="nav-link">Blog</a>
+        </div>
+        <button
+          class="nav-toggle"
+          id="nav-toggle"
+          aria-label="Toggle navigation menu"
+        >
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- === FLASHCARDS   === -->
+    <h1>Day 1 & 2 – Flashcards</h1>
+    <div class="flashcard-container">
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-front">Why is teamwork important in healthcare?</div>
+          <div class="card-back">
+            Teamwork promotes safety, improves patient outcomes, and enables
+            coordinated care. It ensures that patient needs are met through
+            shared responsibility and clear communication.
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-front">
+            What is the Maltese Code of Ethics for nurses?
+          </div>
+          <div class="card-back">
+            It outlines the ethical responsibilities of nurses in Malta —
+            including patient advocacy, respect for dignity, accountability,
+            professional conduct, and collaboration with colleagues.
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-front">Name the 5 Moments of Hand Hygiene.</div>
+          <div class="card-back">
+            1. Before touching a patient<br />
+            2. Before a clean/aseptic procedure<br />
+            3. After body fluid exposure risk<br />
+            4. After touching a patient<br />
+            5. After touching patient surroundings
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="footer-container">
+        <div class="footer-section">
+          <h3>Nurse Assist PL</h3>
+          <p>
+            Empowering nursing students and professionals across Poland, UK, and
+            Malta with expert guidance and proven strategies.
+          </p>
+        </div>
+        <div class="footer-section">
+          <h4>Services</h4>
+          <ul class="footer-links">
+            <li><a href="#services">IELTS Coaching</a></li>
+            <li><a href="#services">Thesis Help</a></li>
+            <li><a href="#services">Clinical Coaching</a></li>
+            <li><a href="#services">Job Preparation</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Resources</h4>
+          <ul class="footer-links">
+            <li><a href="ai-assistant.html">AI Interview Assistant</a></li>
+            <li><a href="daily-guide.html">Study Plan</a></li>
+            <li><a href="#">Study Guide</a></li>
+            <li><a href="#">Flashcards</a></li>
+            <li><a href="#resources">Free Downloads</a></li>
+            <li><a href="#testimonials">Success Stories</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+            <li><a href="blog.html">Blog</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        &copy; <span id="current-year"></span> Nurse Assist PL – All rights
+        reserved.
+      </div>
+    </footer>
+
+    <script>
+      document.getElementById("current-year").textContent =
+        new Date().getFullYear();
+    </script>
+  </body>
+</html>

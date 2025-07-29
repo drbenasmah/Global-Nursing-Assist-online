@@ -1,0 +1,1405 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      1-Month Malta Nursing Interview Study Plan | Nursing Assist PL
+    </title>
+    <link rel="stylesheet" href="../styles.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0;400;0;600;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://unpkg.com/feather-icons"></script>
+    <style>
+      :root {
+        --color-primary: #1e40af;
+        --color-secondary: #059669;
+        --color-accent: #d97706;
+        --color-background: #f1f5f9;
+        --font-primary: "Inter", sans-serif;
+        --font-headings: "Lora", serif;
+      }
+      body {
+        font-family: var(--font-primary);
+        background-color: var(--color-background);
+        color: #1f2937;
+      }
+      .font-heading {
+        font-family: var(--font-headings);
+      }
+      /* Light Mode styles are default */
+
+      /* Dark Mode Styles */
+      html.dark body {
+        background-color: #111827;
+        color: #f9fafb;
+      }
+      html.dark .bg-white {
+        background-color: #1f2937;
+      }
+      html.dark .bg-white\/80 {
+        background-color: rgba(31, 41, 55, 0.8);
+      }
+      html.dark .border-b,
+      html.dark .border {
+        border-color: #374151;
+      }
+      html.dark .shadow-sm {
+        box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+      }
+      html.dark .text-gray-900 {
+        color: #f9fafb;
+      }
+      html.dark .text-gray-600 {
+        color: #d1d5db;
+      }
+      html.dark .text-gray-700 {
+        color: #e5e7eb;
+      }
+      html.dark .text-blue-800 {
+        color: #93c5fd;
+      }
+      html.dark .bg-blue-100 {
+        background-color: rgba(59, 130, 246, 0.2);
+      }
+      html.dark .sidebar-link {
+        color: #d1d5db;
+      }
+      html.dark .sidebar-link:hover {
+        background-color: #374151;
+      }
+      html.dark .sidebar-link.active {
+        background-color: rgba(59, 130, 246, 0.2);
+        border-left-color: #3b82f6;
+      }
+      html.dark .topic-card,
+      html.dark .checklist-item {
+        background-color: #374151;
+        border-color: #4b5563;
+      }
+      html.dark .checklist-item:hover {
+        background-color: #4b5563;
+      }
+      html.dark .checklist-item.completed {
+        background-color: #064e3b;
+        border-color: #059669;
+      }
+      html.dark .sample-answer {
+        background-color: #064e3b;
+        border-color: #10b981;
+      }
+      html.dark .bg-amber-50 {
+        background-color: #422006;
+      }
+      html.dark .text-amber-800 {
+        color: #fef3c7;
+      }
+      html.dark .text-amber-700 {
+        color: #fde68a;
+      }
+      html.dark .bg-blue-50 {
+        background-color: rgba(59, 130, 246, 0.1);
+      }
+      html.dark .text-blue-800 {
+        color: #93c5fd;
+      }
+      html.dark .text-blue-700 {
+        color: #bfdbfe;
+      }
+      html.dark select {
+        background-color: #374151;
+        border-color: #4b5563;
+      }
+
+      .sidebar-link {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 0.6rem 1rem;
+        border-radius: 0.5rem;
+        color: #475569;
+        font-weight: 500;
+        transition: all 0.2s ease;
+        border-left: 4px solid transparent;
+      }
+      .sidebar-link:hover {
+        background-color: #eef2ff;
+        color: var(--color-primary);
+      }
+      .sidebar-link.active {
+        background-color: #e0e7ff;
+        color: var(--color-primary);
+        font-weight: 600;
+        border-left-color: var(--color-primary);
+      }
+      .sidebar-link .day-status {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        border: 2px solid #9ca3af;
+        transition: all 0.2s ease;
+        flex-shrink: 0;
+      }
+      .sidebar-link.active .day-status {
+        border-color: var(--color-primary);
+      }
+      .sidebar-link.completed .day-status {
+        background-color: var(--color-secondary);
+        border-color: var(--color-secondary);
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .checklist-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.75rem;
+        padding: 1rem;
+        background-color: #f8fafc;
+        border: 1px solid #e2e8f0;
+        border-radius: 0.5rem;
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+      }
+      .checklist-item:hover {
+        background-color: #f1f5f9;
+      }
+      .checklist-item.completed {
+        background-color: #f0fdf4;
+        border-color: #bbf7d0;
+      }
+      .checklist-item.completed label {
+        text-decoration: line-through;
+        color: #6b7280;
+      }
+      .checklist-item input[type="checkbox"] {
+        width: 1.25rem;
+        height: 1.25rem;
+        margin-top: 0.125rem;
+        accent-color: var(--color-secondary);
+        flex-shrink: 0;
+      }
+      .progress-bar-bg {
+        background-color: #e5e7eb;
+        border-radius: 9999px;
+        overflow: hidden;
+      }
+      .progress-bar-fg {
+        background-color: var(--color-secondary);
+        transition: width 0.5s ease-in-out;
+      }
+      .topic-card {
+        background-color: #f8fafc;
+        border: 1px solid #e2e8f0;
+        border-radius: 0.75rem;
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+      }
+      .sample-answer {
+        background-color: #f0fdf4;
+        border-left: 4px solid #16a34a;
+        padding: 1rem;
+        border-radius: 0.25rem;
+        font-style: italic;
+      }
+      .post-content-image {
+        width: 100%;
+        border-radius: 0.5rem;
+        margin-top: 1rem;
+        border: 1px solid #e2e8f0;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- === NAVIGATION BAR === -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="nav-logo">
+          <a href="#home">
+            <img
+              src="../src/assets/img/logo1.png"
+              alt="Nurse Assist PL Logo"
+              class="logo-img"
+              onerror="this.onerror=null;this.src='https://placehold.co/200x50/1e40af/ffffff?text=Logo';"
+            />
+            <span class="logo-text">Nursing School Assist PL</span>
+          </a>
+        </div>
+        <div class="nav-menu" id="nav-menu">
+          <a href="../index.html" class="nav-link">Home</a>
+          <a href="../index.html#about" class="nav-link">About</a>
+          <a href="../index.html#services" class="nav-link">Services</a>
+          <a href="../index.html#testimonials" class="nav-link">Testimonials</a>
+          <a href="../index.html#articles" class="nav-link">Articles</a>
+
+          <!-- Dropdown Menu for Resources -->
+          <div class="dropdown">
+            <a href="#resources" class="nav-link" id="resources-link">
+              Resources
+              <i
+                data-feather="chevron-down"
+                style="width: 16px; height: 16px"
+              ></i>
+            </a>
+            <div class="dropdown-menu">
+              <a href="../ai-page/ai-assistant.html" class="dropdown-link"
+                >AI Interview Assistant</a
+              >
+              <a href="../Malta-study-plan/onemonth.html" class="dropdown-link"
+                >Study Plan</a
+              >
+              <a
+                href="../Malta-study-plan/study-guide1.html"
+                class="dropdown-link"
+                >Study Guide</a
+              >
+              <a
+                href="../Malta-study-plan/flashcard-m.html"
+                class="dropdown-link"
+                >Flashcards</a
+              >
+              <a href="../index.html#resources" class="dropdown-link"
+                >Free Downloads</a
+              >
+            </div>
+          </div>
+
+          <a href="../index.html#contact" class="nav-link">Contact</a>
+          <a href="../blog.html" class="nav-link">Blog</a>
+        </div>
+        <button
+          class="nav-toggle"
+          id="nav-toggle"
+          aria-label="Toggle navigation menu"
+        >
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+        <button
+          id="dark-mode-toggle"
+          class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700"
+        >
+          <i data-feather="moon" class="dark-icon"></i>
+          <i data-feather="sun" class="light-icon hidden"></i>
+        </button>
+      </div>
+    </nav>
+
+    <!-- === MAIN GUIDE CONTENT === -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <!-- Guide Header -->
+      <header class="bg-white p-6 rounded-lg shadow-sm mb-8">
+        <h1 class="font-heading text-2xl font-bold text-gray-900">
+          Malta Nursing Interview: 1-Month Study Plan
+        </h1>
+        <p class="text-gray-600 mt-1">
+          A comprehensive guide for new graduate nurses based on real interview
+          recalls.
+        </p>
+        <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
+          <!-- Progress Bar -->
+          <div>
+            <div class="flex justify-between items-center mb-1">
+              <label for="progress" class="text-sm font-medium text-gray-700"
+                >Days Completed</label
+              >
+              <span id="progress-text" class="text-sm font-bold text-green-700"
+                >0%</span
+              >
+            </div>
+            <div class="progress-bar-bg h-2.5 w-full">
+              <div
+                id="progress-bar"
+                class="progress-bar-fg h-2.5"
+                style="width: 0%"
+              ></div>
+            </div>
+          </div>
+          <!-- Bookmarks -->
+          <div class="relative">
+            <label
+              for="bookmarks"
+              class="block text-sm font-medium text-gray-700 mb-1"
+              >Bookmarked Days</label
+            >
+            <select
+              id="bookmarks-dropdown"
+              class="w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+            >
+              <option>View bookmarks...</option>
+            </select>
+          </div>
+        </div>
+      </header>
+
+      <div class="lg:grid lg:grid-cols-12 lg:gap-8">
+        <!-- Sidebar -->
+        <aside class="lg:col-span-3 xl:col-span-2">
+          <div class="sticky top-24">
+            <nav
+              id="guide-navigation"
+              class="space-y-2"
+              aria-label="Guide navigation"
+            >
+              <!-- Navigation links will be dynamically inserted here -->
+            </nav>
+          </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="lg:col-span-9 xl:col-span-10 mt-8 lg:mt-0">
+          <div
+            id="guide-content"
+            class="bg-white p-6 sm:p-8 rounded-lg shadow-sm min-h-[60vh]"
+          >
+            <!-- Content for the selected day will be dynamically inserted here -->
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        // --- DATA: Store all guide content in a structured array ---
+        const guideData = [
+          // WEEK 1
+          {
+            week: 1,
+            day: 1,
+            title: "Professional Foundations",
+            objective:
+              "To build an unshakable understanding of the professional, ethical, and legal principles that guide safe nursing practice in Malta.",
+            detailedContent: [
+              {
+                title: "The Importance of Teamwork in Healthcare",
+                source: "exam GOVT.pdf, Page 1",
+                coreConcept:
+                  "In healthcare, teamwork is not just a desirable skill; it is a critical component of patient safety and quality of care. It involves various professionals with different skills coming together to achieve the best possible health outcomes for patients.",
+                keyAreas: [
+                  "<strong>Enhancing Patient Care:</strong> No single person can meet all of a patient's needs. Effective teamwork allows for a combination of skills and expertise to be applied to a patient's treatment plan.",
+                  "<strong>Improving Responsiveness to Change:</strong> A team provides more 'eyes and ears' to monitor a patient, allowing for quicker detection of changes in their condition.",
+                  "<strong>Reducing Medical Errors:</strong> The most important function of teamwork is creating a system of checks and balances. Clear communication ensures everyone understands their role and the patient's overall plan.",
+                  "<strong>Fostering a Positive Work Environment:</strong> Working in a team helps nurses understand and appreciate the roles of other healthcare professionals, which mitigates misunderstandings and builds trust.",
+                ],
+                takeaway:
+                  "Teamwork directly contributes to patient safety by reducing errors and improving the quality and speed of care.",
+                questions: [
+                  {
+                    q: "Can you explain why teamwork is considered essential in a hospital setting?",
+                    a: "Effective teamwork is essential for patient safety. When nurses, doctors, and other professionals collaborate, they create a safety net. For example, by sharing information during handovers and ward rounds, we can cross-check medication plans and patient assessments. This communication reduces the risk of errors and ensures that any change in a patient's condition is noticed and acted upon quickly, leading to better outcomes.",
+                  },
+                  {
+                    q: "How does effective teamwork contribute to reducing medical errors?",
+                    a: null,
+                  },
+                ],
+              },
+              {
+                title: "The Maltese Code of Ethics",
+                source: "exam GOVT.pdf, Page 2",
+                coreConcept:
+                  "The Code of Ethics is the formal framework that governs a nurse's professional conduct. It outlines your duties and the fundamental principles you must uphold to ensure you are practicing safely, legally, and in the best interest of your patients.",
+                keyAreas: [
+                  "<strong>Main Areas of Responsibility:</strong> Towards Patients/Clients, Professional Responsibilities, and Towards Co-workers.",
+                  "<strong>The 7 Core Ethical Principles:</strong> You should be familiar with Non-maleficence (do no harm), Beneficence (do good), Respect for Autonomy (patient's right to choose), Justice (fair treatment), and Confidentiality.",
+                ],
+                takeaway:
+                  "Your practice must always be guided by ethical principles, with patient autonomy and safety at the forefront.",
+                questions: [
+                  {
+                    q: "How would you ensure you are practicing ethically as a newly registered nurse in Malta?",
+                    a: "As a new nurse, I would ensure my practice is ethical by always prioritizing the patient's well-being and respecting their autonomy. This means I would always explain procedures clearly to obtain informed consent before providing any care. I would also strictly maintain patient confidentiality and advocate for their needs within the healthcare team. I would familiarize myself with the Maltese Code of Ethics and use it as my guide for professional conduct.",
+                  },
+                  {
+                    q: "A patient who is competent to make decisions refuses a life-saving treatment. What is the main ethical principle you must respect in this situation?",
+                    a: null,
+                  },
+                ],
+              },
+              {
+                title: "The Importance of Documentation in Nursing",
+                source: "exam GOVT.pdf, Page 3",
+                coreConcept:
+                  "Nursing documentation is not just 'paperwork'; it is a critical professional responsibility that serves as a legal record of care and a vital communication tool for the entire healthcare team.",
+                keyAreas: [
+                  "<strong>A Tool for Clinical Communication:</strong> It is the primary way you communicate vital information to the next nurse on shift, to doctors, and to other members of the multidisciplinary team.",
+                  "<strong>A Legal Record:</strong> A patient's medical record is a legal document. The rule is: 'If it wasn't documented, it wasn't done.'",
+                  "<strong>Promoting Patient Safety:</strong> Clear and complete notes ensure continuity of care and prevent errors. For example, documenting an allergy prevents another professional from administering a harmful drug.",
+                ],
+                takeaway:
+                  "Accurate and timely documentation is essential for safe, continuous, and legally sound patient care.",
+                questions: [
+                  {
+                    q: "In your own words, why is documentation so important in nursing?",
+                    a: "Accurate and timely documentation is critical for patient safety. It serves as the primary communication tool for the entire healthcare team, ensuring everyone has a clear picture of the patient's status and the care they've received. It's also a legal record of our actions. For example, failing to document a patient's new allergy could lead to a serious medication error on the next shift. Therefore, I understand that clear documentation is a core professional responsibility, not just an administrative task.",
+                  },
+                  {
+                    q: "A colleague is very busy and asks you to document a medication that they administered to a patient. How would you respond?",
+                    a: "This is a critical situation that tests a nurse's understanding of professional accountability and patient safety. I would politely but firmly decline my colleague's request. I would explain to them privately that my signature is a legal and professional declaration that I am accountable for the action, and I can only document care that I have personally performed. Documenting an action I didn't witness would be a falsification of the medical record and would compromise the chain of accountability, which is a risk to patient safety. However, I would also recognize that my colleague is under pressure. Instead of just refusing, I would offer a supportive, team-based solution. I would say something like, 'I cannot document that for you, but I can see you're very busy. How can I help you manage your other tasks right now so that you can get a moment to complete your own documentation accurately?' This approach upholds my professional and ethical obligations, protects the patient, and supports my colleague in a safe and collaborative way.",
+                  },
+                ],
+              },
+            ],
+            checklist: [],
+          },
+          {
+            week: 1,
+            day: 2,
+            title: "Infection Control Mastery",
+            objective:
+              "To master the principles and practices of infection prevention and control, demonstrating you are a safe practitioner who protects patients, colleagues, and yourself.",
+            detailedContent: [
+              {
+                title: "The Core Principles of Infection Control",
+                source: "exam GOVT.pdf, Pages 3-4",
+                coreConcept:
+                  "Infection Prevention and Control is not just a single action, but a comprehensive program designed to minimize the risk of healthcare-acquired infections (HAIs). These are one of the most common complications of healthcare, and a nurse's role in preventing them is paramount.",
+                keyAreas: [
+                  "<strong>The Goal of Infection Control:</strong> To limit infections by educating staff, creating and following policies, and ensuring the hospital environment is safe.",
+                  "<strong>The Single Most Effective Method:</strong> You must know this by heart: The most effective way of preventing cross-infection is proper hand hygiene.",
+                ],
+                takeaway:
+                  "Your primary role in infection control is to break the chain of infection, and hand hygiene is your most powerful tool.",
+                questions: [
+                  {
+                    q: "In your own words, why is infection control so important in a hospital?",
+                    a: "Infection control is fundamental to patient safety. Hospitals care for vulnerable patients, and healthcare-acquired infections can lead to serious complications, longer hospital stays, and even death. As a nurse, my role is to protect my patients by strictly following infection control policies. The single most important action is meticulous hand hygiene, as this breaks the chain of transmission between patients, surfaces, and myself.",
+                  },
+                  {
+                    q: "What is the single most effective action a nurse can take to prevent the spread of infection?",
+                    a: null,
+                  },
+                ],
+              },
+              {
+                title: "Standard Precautions",
+                source:
+                  "exam GOVT.pdf, Page 4 & Malta interview question.docx, Question 61",
+                coreConcept:
+                  "Standard Precautions are the minimum infection prevention practices that apply to all patient care, regardless of their suspected or confirmed infection status. You must treat every patient as potentially infectious.",
+                keyAreas: [
+                  "<strong>Hand Hygiene:</strong> Based on the WHO's 5 Moments (Before touching a patient; Before a clean/aseptic procedure; After body fluid exposure risk; After touching a patient; After touching patient surroundings).",
+                  "<strong>Personal Protective Equipment (PPE):</strong> Using gloves, gowns, masks, and eye protection based on the anticipated exposure.",
+                  "<strong>Needlestick and Sharps Injury Prevention:</strong> Never recapping used needles and disposing of all sharps immediately in a designated sharps container.",
+                  "<strong>Cleaning and Disinfection:</strong> Ensuring patient equipment and the environment are properly cleaned.",
+                  "<strong>Respiratory Hygiene (Cough Etiquette):</strong> Instructing patients and visitors to cover their mouth and nose when coughing or sneezing.",
+                  "<strong>Safe Waste Disposal & Safe Injection Practices.</strong>",
+                ],
+                takeaway:
+                  "Standard Precautions are universal. They are your default way of working with every single patient to ensure safety.",
+                questions: [
+                  {
+                    q: "Can you explain what 'Standard Precautions' are?",
+                    a: "Standard Precautions are the essential, universal measures we must take with every patient to prevent the transmission of infection. They are based on the principle that all patients are potentially infectious. Three key examples I would use every day are performing hand hygiene according to the 5 moments, such as before and after touching a patient; using gloves when anticipating contact with bodily fluids; and immediately disposing of any used needles or sharps into a sharps container without recapping them.",
+                  },
+                  {
+                    q: "Can you give me three examples of Standard Precautions you would use during your daily work?",
+                    a: null,
+                  },
+                ],
+              },
+              {
+                title: "Specific Precautions for MRSA & CRE",
+                source: "exam GOVT.pdf, Pages 24-25",
+                coreConcept:
+                  "In addition to Standard Precautions, some infections caused by drug-resistant organisms require extra, transmission-based precautions. MRSA and CRE are two important examples.",
+                keyAreas: [
+                  "<strong>Methicillin-resistant Staphylococcus aureus (MRSA):</strong> A type of staph bacteria resistant to several antibiotics. Requires <strong>Contact Precautions</strong> (single room, gloves, gown).",
+                  "<strong>Carbapenem-resistant Enterobacteriaceae (CRE):</strong> A family of bacteria resistant to last-line carbapenem antibiotics. Requires <strong>Contact Precautions</strong> and minimizing invasive devices.",
+                ],
+                takeaway:
+                  "When dealing with known drug-resistant organisms like MRSA or CRE, you must escalate from Standard Precautions to include specific Transmission-Based Precautions, like Contact Precautions.",
+                questions: [
+                  {
+                    q: "What is MRSA, and what specific precautions would you take when caring for a patient with an MRSA infection?",
+                    a: "MRSA is a bacterium that is resistant to many standard antibiotics, making it difficult to treat. When caring for a patient with MRSA, in addition to my Standard Precautions, I would implement Contact Precautions. This means I would wear gloves and a gown for all contact with the patient and their environment. I would also ensure the patient is in an appropriate room and that all equipment is dedicated to them or thoroughly disinfected, to prevent cross-transmission to other vulnerable patients.",
+                  },
+                  {
+                    q: "Besides hand hygiene, what is another important way to help prevent CRE infections in a hospital?",
+                    a: null,
+                  },
+                ],
+              },
+            ],
+            checklist: [],
+          },
+          {
+            week: 1,
+            day: 3,
+            title: "Core Patient Assessment",
+            objective:
+              "To master the fundamental skills of patient assessment, including vital signs, neurological status, and pain, to accurately monitor, detect, and respond to changes in a patient's condition.",
+            detailedContent: [
+              {
+                title: "Accurately Assessing Vital Signs",
+                source: "Malta interview question.docx, Questions 1, 2, 3, 5",
+                coreConcept:
+                  "Vital signs are the quickest and most effective way to assess a patient's basic bodily functions. Accurate measurement and interpretation are critical for detecting deterioration and making safe clinical decisions.",
+                keyAreas: [
+                  "<strong>Respiratory Rate (RR):</strong> Count for 30s (x2) if regular, 60s if irregular, without the patient knowing. Normal: 12–20 breaths/min.",
+                  "<strong>Blood Pressure (BP):</strong> Use correct cuff size on a rested patient with arm at heart level. Normal: ~120/80 mmHg.",
+                  "<strong>Temperature:</strong> Be aware of different routes (Oral, Axillary, Tympanic). Normal: 36.5°C – 37.5°C.",
+                  "<strong>Oxygen Saturation (SpO₂):</strong> Crucial for detecting hypoxia. Normal: 95–100%.",
+                  "<strong>Pulse:</strong> Assess rate, rhythm, and strength. Normal: 60–100 bpm.",
+                ],
+                takeaway:
+                  "Every step in measuring vital signs is a deliberate action to ensure accuracy. Inaccurate vital signs can lead to incorrect clinical decisions and patient harm.",
+                questions: [
+                  {
+                    q: "What factors must you consider to ensure you get an accurate blood pressure reading?",
+                    a: "To get an accurate blood pressure reading, I must first ensure the patient is rested and calm. I would then select the correct cuff size, as a cuff that is too small will give a falsely high reading, and one that is too large will be falsely low. I would support their arm at heart level to prevent gravity from affecting the measurement. Each of these steps is crucial because an inaccurate reading could lead to a missed diagnosis of hypertension or hypotension, directly impacting patient safety.",
+                  },
+                  {
+                    q: "Why is it important to count a patient's respiratory rate without them knowing?",
+                    a: "It's important to count a patient's respiratory rate without their knowledge because breathing can be voluntarily controlled. If a patient knows you are watching them breathe, they may unconsciously alter their normal breathing pattern, either by breathing faster or slower. This would give an inaccurate reading of their true, resting respiratory rate. To get an accurate measurement, I would typically pretend to be taking their radial pulse while actually observing their chest rise and fall.",
+                  },
+                ],
+              },
+              {
+                title: "Neurological Assessment & The Glasgow Coma Scale (GCS)",
+                source:
+                  "exam GOVT.pdf, Pages 22-24 & Malta interview question.docx, Question 36",
+                coreConcept:
+                  "A neurological assessment, particularly using the Glasgow Coma Scale (GCS), is a standardized method for assessing a patient's level of consciousness, typically after a head injury. It provides an objective score that can be tracked over time to detect improvement or deterioration.",
+                keyAreas: [
+                  "<strong>Initial Assessment (Primary Survey):</strong> First priority is Airway, Breathing, and Circulation (ABC).",
+                  "<strong>Glasgow Coma Scale (GCS):</strong> Composed of three sections: Eye Opening (1-4), Verbal Response (1-5), and Motor Response (1-6).",
+                  "<strong>Interpreting the Score:</strong> Total score ranges from 3 (deep coma) to 15 (fully awake). A score of 8 or less indicates a severe head injury.",
+                ],
+                takeaway:
+                  "The GCS is a vital communication tool. A score like 'GCS 9 (E2, V3, M4)' gives a very clear and objective picture of a patient's neurological status to the entire team.",
+                questions: [
+                  {
+                    q: "How would you assess the level of consciousness of a patient who has had a fall?",
+                    a: "If a patient has had a fall, my first priority is safety, so I would assess them for any immediate danger before moving them. To assess their level of consciousness, I would use the Glasgow Coma Scale. I would start by checking their eye-opening response—are their eyes open spontaneously, or do they open to my voice or to a pain stimulus? Then I would assess their verbal response by asking them questions like 'What is your name?' and 'Where are you?' to see if they are oriented or confused. Finally, I would assess their motor response by asking them to follow a simple command, like 'Squeeze my fingers.' This systematic GCS assessment gives me an objective score to document and use as a baseline for ongoing monitoring.",
+                  },
+                  {
+                    q: "A patient's GCS was 14 an hour ago and is now 11. What does this signify and what should you do?",
+                    a: "A drop in GCS from 14 to 11 is a significant sign of neurological deterioration. It indicates a change from a mild to a moderate head injury. My immediate action would be to perform a full reassessment of the patient's ABCs, followed by a detailed GCS check to confirm the score. I would then escalate immediately by informing the senior nurse and the medical team, as this patient may require an urgent CT scan and neurosurgical consultation. I would increase the frequency of their neurological observations and document my findings clearly.",
+                  },
+                ],
+              },
+              {
+                title: "Pain Assessment",
+                source: "Malta interview question.docx, Question 66",
+                coreConcept:
+                  "Pain is what the patient says it is. It is a subjective experience and the fifth vital sign. A thorough pain assessment is the first step in providing effective pain management.",
+                keyAreas: [
+                  "<strong>The Subjective Nature of Pain:</strong> The most reliable indicator of pain is the patient's self-report. For non-verbal patients, observe behavioral signs.",
+                  "<strong>Using a Structured Assessment Tool:</strong> A common mnemonic is PQRSTU (Provokes, Quality, Radiates, Severity, Time, Understanding).",
+                  "<strong>Pain Scales:</strong> Be prepared to mention common scales like the Numeric Rating Scale (0-10) and the Wong-Baker FACES Scale.",
+                ],
+                image: "nrs-img.png",
+                takeaway:
+                  "A systematic pain assessment is crucial for providing the right intervention, evaluating its effectiveness, and advocating for the patient's comfort.",
+                questions: [
+                  {
+                    q: "How do you assess pain in a patient who is able to speak?",
+                    a: "When assessing a patient's pain, I would use a structured approach like PQRSTU. I would ask them what makes the pain better or worse, to describe its quality, and where it's located. Crucially, I would ask them to rate the severity using a numeric scale of 0 to 10. Using a pain scale is important because it gives us an objective baseline. This allows me to evaluate the effectiveness of any pain relief I provide and to communicate the patient's level of pain clearly to the doctor.",
+                  },
+                  { q: "Why is it important to use a pain scale?", a: null },
+                ],
+              },
+            ],
+            checklist: [],
+          },
+          {
+            week: 1,
+            day: 4,
+            title: "Medication Administration Fundamentals",
+            objective:
+              "To master the principles of safe medication administration, including the rights of administration, the full procedure, and strategies to prevent errors.",
+            detailedContent: [
+              {
+                title: "The Rights of Medication Administration",
+                coreConcept:
+                  "The 'Rights' of medication administration are a fundamental safety checklist used by nurses to prevent medication errors. While traditionally there are five, modern practice often includes several more to create a comprehensive safety net.",
+                keyAreas: [
+                  "<strong>The 5 Core Rights:</strong> Right Patient, Right Drug, Right Dose, Right Route, Right Time.",
+                  "<strong>Additional Important Rights:</strong> Right Documentation, Right Reason, Right to Refuse.",
+                ],
+                takeaway:
+                  "The 'Rights' are not just a list to memorize; they are a systematic process you must follow for every single medication you administer to ensure patient safety.",
+                questions: [
+                  {
+                    q: "Can you list the five rights of medication administration?",
+                    a: null,
+                  },
+                  {
+                    q: "What steps do you take to prevent medication errors?",
+                    a: "To prevent medication errors, I strictly follow the rights of medication administration. This starts with confirming I have the Right Patient using two identifiers. I check that I have the Right Drug and Right Dose against the prescription at least three times. I ensure it's the Right Route and the Right Time. Crucially, I also consider the Right Reason for the medication and always perform the Right Documentation immediately after administration. For high-risk drugs, I would always perform an independent double-check with a second registered nurse. This systematic process is essential for patient safety.",
+                  },
+                ],
+              },
+              {
+                title: "The Medication Administration Procedure",
+                coreConcept:
+                  "The process of administering medication is a formal procedure that runs from the moment you read the prescription to the final documentation. It requires focus and adherence to a strict workflow.",
+                keyAreas: [
+                  "<strong>Preparation Phase:</strong> Check prescription, perform first and second medication checks, and get a double-check for high-risk drugs.",
+                  "<strong>Administration Phase (At the Bedside):</strong> Perform the third check, identify the patient with two identifiers, inform the patient, and administer the medication.",
+                  "<strong>Post-Administration Phase:</strong> Document immediately after giving the medication, and monitor the patient for effects.",
+                ],
+                takeaway:
+                  "The medication round is a safety-critical process that requires your full, uninterrupted attention. The 'three checks' are a cornerstone of this process.",
+                questions: [
+                  {
+                    q: "Walk me through the process of administering an oral medication to a patient.",
+                    a: null,
+                  },
+                  {
+                    q: "You are preparing a controlled drug for a patient. What is a critical safety step you must take?",
+                    a: "When preparing a controlled drug, a critical safety step is the independent double-check. After I have prepared the dose, I would ask a second registered nurse to check it with me. They would independently verify the patient's details, the prescription, the drug name and strength, the dose calculation, and the expiry date. We would both then go to the bedside to administer the medication, and we would both sign the controlled drug register and the patient's chart. This two-person check is vital to prevent errors with these high-risk medications.",
+                  },
+                ],
+              },
+              {
+                title: "Patient Education and Medication Reconciliation",
+                coreConcept:
+                  "Safe medication practice extends beyond the administration itself. It includes ensuring continuity of care through medication reconciliation and empowering patients through education.",
+                keyAreas: [
+                  "<strong>Patient Education:</strong> Explaining the medication's name, purpose, and common side effects to improve adherence and early reporting of issues.",
+                  "<strong>Medication Reconciliation:</strong> Creating an accurate list of all medications a patient is taking upon admission and discharge to prevent errors like omissions, duplications, or incorrect doses.",
+                ],
+                takeaway:
+                  "A nurse's responsibility includes the context surrounding the medication, not just the act of giving it.",
+                questions: [
+                  {
+                    q: "Describe your approach to educating a patient about a new medication.",
+                    a: null,
+                  },
+                  {
+                    q: "Why is medication reconciliation important when a patient is admitted to the hospital?",
+                    a: "Medication reconciliation on admission is a vital safety process. It involves getting a complete and accurate list of all the medications the patient was taking at home and comparing it to what has been prescribed in the hospital. This process is essential to prevent errors like accidentally omitting a crucial medication, duplicating a dose, or prescribing an incorrect dose based on incomplete information. It ensures a safe transition of care from the community to the hospital environment.",
+                  },
+                ],
+              },
+            ],
+            checklist: [],
+          },
+          {
+            week: 1,
+            day: 5,
+            title: "Wound Care & Skin Integrity",
+            objective:
+              "To master the principles of wound care, including aseptic technique, pressure ulcer prevention, and postoperative wound management, to ensure patient safety and promote healing.",
+            detailedContent: [
+              {
+                title: "Aseptic Technique & Sterile Dressing Changes",
+                source: "Malta interview question.docx, Question 16",
+                coreConcept:
+                  "Aseptic technique is a set of practices used to prevent contamination from microorganisms. It is a fundamental principle that is critical when performing procedures like a sterile dressing change to prevent healthcare-acquired infections (HAIs).",
+                keyAreas: [
+                  "<strong>Preparation:</strong> Hand Hygiene, clean environment, gather all equipment, and explain the procedure to the patient.",
+                  "<strong>Procedure:</strong> Perform hand hygiene again, open sterile field, add sterile items, remove old dressing with non-sterile gloves, perform hand hygiene again, put on sterile gloves, clean the wound from center outwards, assess the wound, and apply the new sterile dressing.",
+                  "<strong>Post-Procedure:</strong> Secure the dressing and document the procedure, including your assessment.",
+                ],
+                takeaway:
+                  "Every step in a sterile procedure is deliberate. A break in aseptic technique at any point can introduce infection and cause significant harm to the patient.",
+                questions: [
+                  {
+                    q: "Walk me through the steps of performing a sterile dressing change.",
+                    a: "When performing a sterile dressing change, my first steps are to ensure the environment is clean, perform hand hygiene, and gather all my equipment. After explaining the procedure to the patient, I would create a sterile field. A critical step is cleaning the wound correctly: using a new sterile swab for each wipe, I would clean from the center of the wound outwards. This is vital to prevent dragging microorganisms from the surrounding skin into the clean wound bed, which would increase the risk of a surgical site infection. After assessing the wound and applying the new sterile dressing, I would document my findings and the care provided.",
+                  },
+                  {
+                    q: "Why is it important to clean a wound from the center outwards?",
+                    a: null,
+                  },
+                ],
+              },
+              {
+                title: "Pressure Ulcer (Bedsore) Prevention & Management",
+                coreConcept:
+                  "Pressure ulcers are injuries to the skin and underlying tissue resulting from prolonged pressure. Prevention is the most important strategy and a key nursing responsibility, especially for immobile patients.",
+                keyAreas: [
+                  "<strong>Risk Assessment:</strong> Identify at-risk patients using a tool like the Braden Scale or Waterlow Score.",
+                  "<strong>Stages of Pressure Ulcers:</strong> Be able to describe Stages I (redness), II (partial-thickness), III (full-thickness), and IV (exposed bone/muscle).",
+                  "<strong>Prevention:</strong> Reposition every 2 hours, use pressure-relieving mattresses, keep skin dry, ensure good nutrition, and perform daily skin assessments.",
+                  "<strong>Basic Management:</strong> Remove pressure, keep the wound clean, and apply appropriate dressings.",
+                ],
+                takeaway:
+                  "Pressure ulcer prevention is a proactive nursing role. It is far better to prevent an ulcer from forming than to treat one.",
+                questions: [
+                  {
+                    q: "Discuss your approach to preventing pressure ulcers in a bedridden patient.",
+                    a: "My approach to preventing pressure ulcers is proactive and begins with a risk assessment using a tool like the Braden Scale. For an at-risk bedridden patient, I would implement several key strategies. First, I would ensure they are on a pressure-relieving mattress. Second, I would establish and follow a strict repositioning schedule, turning the patient at least every two hours. Third, I would conduct regular skin inspections, especially over their heels and sacrum, looking for non-blanching redness, which is the first sign of pressure damage. Finally, I would ensure their skin is kept clean and dry and that their nutritional needs are met, as these are all vital for maintaining skin integrity.",
+                  },
+                  {
+                    q: "What is the first sign you might see that a patient is developing a pressure ulcer?",
+                    a: null,
+                  },
+                ],
+              },
+              {
+                title: "Postoperative Wound Care & Infection Management",
+                coreConcept:
+                  "Caring for a postoperative wound involves monitoring for signs of healing and watching closely for signs of complications, particularly infection.",
+                keyAreas: [
+                  "<strong>Postoperative Wound Assessment:</strong> Check wound edges and use the REEDA acronym (Redness, Edema, Ecchymosis, Discharge, Approximation) for the surrounding skin.",
+                  "<strong>Managing Wound Infections:</strong> Perform vital signs, clean the wound, take a swab if ordered, and immediately escalate concerns to the senior nurse and surgical team.",
+                  "<strong>Care of a Surgical Drain:</strong> Monitor drainage amount and type, ensure patency, maintain suction, and use aseptic technique when handling.",
+                ],
+                takeaway:
+                  "Meticulous assessment and timely escalation are crucial in postoperative wound care to catch and manage infections early.",
+                questions: [
+                  {
+                    q: "What signs would make you suspect a postoperative wound is becoming infected?",
+                    a: null,
+                  },
+                  {
+                    q: "What are your nursing responsibilities when caring for a patient with a surgical drain?",
+                    a: "When caring for a patient with a surgical drain, my key responsibilities are assessment and safety. I would regularly monitor and accurately document the amount and type of drainage, reporting any sudden changes, like a large increase in volume or a change to purulent fluid. I would ensure the drain tubing is free of kinks and that suction is maintained as prescribed. Finally, I would use a strict aseptic technique for any dressing changes around the drain site to prevent introducing infection.",
+                  },
+                ],
+              },
+            ],
+            checklist: [],
+          },
+          {
+            week: 1,
+            day: 6,
+            title: "GI & GU Basics",
+            objective:
+              "To master the essential safety procedures for nasogastric (NG) tube management and urinary catheterization, focusing on correct placement, patient safety, and infection prevention.",
+            detailedContent: [
+              {
+                title: "Nasogastric (NG) Tube Placement & Care",
+                coreConcept:
+                  "The most critical aspect of managing an NG tube is ensuring its correct placement in the stomach before any use (feeding or medication). Incorrect placement, such as in the lungs, can be fatal if not detected.",
+                keyAreas: [
+                  "<strong>Measurement & Insertion:</strong> Measure from nose to earlobe to xiphoid process. Lubricate and insert to the mark.",
+                  "<strong>CRITICAL STEP: Confirming Placement:</strong> First, aspirate gastric contents and test pH (should be < 5.5). If inconclusive, the gold standard is a Chest X-ray (CXR).",
+                  "<strong>Unreliable Methods:</strong> The 'whoosh test' is considered unreliable and should not be used for primary confirmation.",
+                  "<strong>Care & Maintenance:</strong> Secure the tube, maintain patient at 30–45° during and after feeds, and flush regularly.",
+                ],
+                takeaway:
+                  "Never use an NG tube until you have definitively confirmed its placement in the stomach using the correct procedure (Aspirate + pH test, and CXR if required).",
+                questions: [
+                  {
+                    q: "How do you confirm that a newly inserted nasogastric tube is correctly placed before starting a feed?",
+                    a: "To confirm NG tube placement, my first step is to try and aspirate gastric contents and test the pH. An acidic pH of 5.5 or less is a good indicator of correct placement. However, if I am unable to aspirate any fluid or if the pH is high, I cannot proceed. The tube would be considered unsafe to use. My immediate next step would be to stop, document my findings, and escalate to the medical team to request a chest X-ray, which is the gold standard for confirming placement. I would never start a feed until I have that definitive confirmation.",
+                  },
+                  {
+                    q: "You are unable to aspirate any fluid from a patient's NG tube. What is your next step?",
+                    a: null,
+                  },
+                ],
+              },
+              {
+                title: "Urinary Catheterization & Infection Prevention",
+                coreConcept:
+                  "Urinary catheterization is a common procedure, but it carries a high risk of causing a Catheter-Associated Urinary Tract Infection (CAUTI). Therefore, the procedure must be performed using a strict aseptic technique, and ongoing care must focus on infection prevention.",
+                keyAreas: [
+                  "<strong>Indications:</strong> Know when it's appropriate (e.g., urinary retention, surgery) and when it's not (e.g., for incontinence management).",
+                  "<strong>Aseptic Technique During Insertion:</strong> This is non-negotiable. It involves hand hygiene, a sterile field, sterile equipment, and antiseptic cleaning.",
+                  "<strong>Ongoing Catheter Care to Prevent CAUTI:</strong> Maintain a closed system, keep the bag below the bladder, avoid contact with the floor, and provide daily perineal hygiene.",
+                ],
+                takeaway:
+                  "The key to safe urinary catheterization is twofold: a perfect aseptic technique during insertion and meticulous ongoing care to prevent infection.",
+                questions: [
+                  {
+                    q: "Can you explain the process of inserting a urinary catheter?",
+                    a: "Certainly. The entire process is centered on patient safety, communication, and preventing infection. First, I would begin by explaining the procedure to the patient and obtaining their informed consent, while ensuring their privacy. Next, I would perform hand hygiene and set up my sterile field with all the necessary equipment from the catheterization pack. After putting on my sterile gloves, I would clean the patient's urethral area using the provided antiseptic solution, following the principles of aseptic technique. I would then lubricate the catheter tip and gently insert it into the urethra until I see a flow of urine, which confirms it has reached the bladder. I would then advance it a little further as per guidelines, and then inflate the balloon with the correct amount of sterile water to secure it in place. Finally, I would connect the catheter to the drainage bag, ensure it is secured to the patient's leg to prevent pulling, and position the bag below the level of the bladder. I would then document the procedure, including the catheter size and the amount of water in the balloon.",
+                  },
+                  {
+                    q: "What are the three most important nursing actions to prevent a Catheter-Associated Urinary Tract Infection (CAUTI)?",
+                    a: "Three of the most critical nursing actions to prevent a CAUTI are, first, maintaining a closed drainage system at all times to act as a barrier to bacteria. Second, ensuring the drainage bag is always kept below the level of the bladder to prevent urine backflow, which could introduce bacteria into the bladder. And third, providing daily, meticulous perineal hygiene with soap and water. These steps, combined with a strict aseptic insertion technique, are essential for protecting the patient from infection.",
+                  },
+                ],
+              },
+            ],
+            checklist: [],
+          },
+          {
+            week: 1,
+            day: 7,
+            title: "Weekly Review",
+            objective: "...",
+            detailedContent: [],
+            checklist: [
+              {
+                id: "day7-task1",
+                text: "Review all flashcards from the week.",
+              },
+              {
+                id: "day7-task2",
+                text: "Pick 10 topics and explain each one out loud for 60 seconds.",
+              },
+            ],
+          },
+          // WEEK 2
+          {
+            week: 2,
+            day: 8,
+            title: "Controlled Drugs (CDs)",
+            objective: "...",
+            detailedContent: [],
+            checklist: [],
+          },
+          {
+            week: 2,
+            day: 9,
+            title: "IV Therapy & Blood Transfusions",
+            objective: "...",
+            detailedContent: [],
+            checklist: [],
+          },
+          {
+            week: 2,
+            day: 10,
+            title: "Post-Operative & Musculoskeletal Care",
+            objective: "...",
+            detailedContent: [],
+            checklist: [],
+          },
+          {
+            week: 2,
+            day: 11,
+            title: "Medical Emergencies (Part 1)",
+            objective: "...",
+            detailedContent: [],
+            checklist: [],
+          },
+          {
+            week: 2,
+            day: 12,
+            title: "Medical Emergencies (Part 2)",
+            objective: "...",
+            detailedContent: [],
+            checklist: [],
+          },
+          {
+            week: 2,
+            day: 13,
+            title: "Cardiovascular & Neurological Emergencies",
+            objective: "...",
+            detailedContent: [],
+            checklist: [],
+          },
+          {
+            week: 2,
+            day: 14,
+            title: "Weekly Review",
+            objective: "...",
+            detailedContent: [],
+            checklist: [
+              {
+                id: "day14-task1",
+                text: "Focus on scenario questions. Talk through your response to a patient fall, an aggressive patient, and a patient with sudden shortness of breath.",
+              },
+            ],
+          },
+          // WEEK 3
+          {
+            week: 3,
+            day: 15,
+            title: "Practice with SAFE/SBAR Framework (Day 1)",
+            objective: "...",
+            detailedContent: [],
+            checklist: [
+              {
+                id: "day15-task1",
+                text: "Take 3-4 real recall questions from your list. Verbally answer each one using a clear structure (Safety, Assessment, First Actions, Rationale).",
+              },
+            ],
+          },
+          {
+            week: 3,
+            day: 16,
+            title: "Practice with SAFE/SBAR Framework (Day 2)",
+            objective: "...",
+            detailedContent: [],
+            checklist: [
+              {
+                id: "day16-task1",
+                text: "Take another 3-4 real recall questions. Focus on timing and clarity.",
+              },
+            ],
+          },
+          {
+            week: 3,
+            day: 17,
+            title: "Practice with SAFE/SBAR Framework (Day 3)",
+            objective: "...",
+            detailedContent: [],
+            checklist: [
+              {
+                id: "day17-task1",
+                text: "Take a final 3-4 real recall questions. Explain your rationale in detail for each step.",
+              },
+            ],
+          },
+          {
+            week: 3,
+            day: 18,
+            title: "Ethics & Communication in Practice",
+            objective: "...",
+            detailedContent: [],
+            checklist: [],
+          },
+          {
+            week: 3,
+            day: 19,
+            title: "Mock Interview #1 (Self-Led)",
+            objective: "...",
+            detailedContent: [],
+            checklist: [
+              {
+                id: "day19-task1",
+                text: "Select 10 questions from your full list. Record yourself answering them on your phone.",
+              },
+              {
+                id: "day19-task2",
+                text: "Review the recording and critique your clarity and structure.",
+              },
+            ],
+          },
+          {
+            week: 3,
+            day: 20,
+            title: "Refine & Review",
+            objective: "...",
+            detailedContent: [],
+            checklist: [
+              {
+                id: "day20-task1",
+                text: "Based on your mock interview, identify your weak spots and review those topics.",
+              },
+              {
+                id: "day20-task2",
+                text: "Do a light review of flashcards over the weekend.",
+              },
+            ],
+          },
+          // WEEK 4
+          {
+            week: 4,
+            day: 21,
+            title: "Mock Interview #2 (With a Peer)",
+            objective: "...",
+            detailedContent: [],
+            checklist: [
+              {
+                id: "day21-task1",
+                text: "Ask a friend or colleague to quiz you. The pressure of a live audience is invaluable practice.",
+              },
+            ],
+          },
+          {
+            week: 4,
+            day: 22,
+            title: "Final Content Polish",
+            objective: "...",
+            detailedContent: [],
+            checklist: [
+              {
+                id: "day22-task1",
+                text: "Go back one last time to any topic you feel hesitant about. Focus on high-stakes procedures (CDs, Blood Transfusions).",
+              },
+            ],
+          },
+          {
+            week: 4,
+            day: 23,
+            title: "Prepare Your 'Bookends'",
+            objective: "...",
+            detailedContent: [],
+            checklist: [
+              {
+                id: "day23-task1",
+                text: "Prepare and practice a confident, concise answer to 'Tell me about yourself.'",
+              },
+              {
+                id: "day23-task2",
+                text: "Prepare 2-3 thoughtful questions to ask the interviewers.",
+              },
+            ],
+          },
+          {
+            week: 4,
+            day: 24,
+            title: "Full Dress Rehearsal",
+            objective: "...",
+            detailedContent: [],
+            checklist: [
+              {
+                id: "day24-task1",
+                text: "Set up your interview space exactly as it will be. Wear your interview clothes.",
+              },
+              {
+                id: "day24-task2",
+                text: "Do a final, short mock interview to get comfortable with the setup.",
+              },
+            ],
+          },
+          {
+            week: 4,
+            day: 25,
+            title: "Light Review ONLY",
+            objective: "...",
+            detailedContent: [],
+            checklist: [
+              {
+                id: "day25-task1",
+                text: "Read through your notes. Trust your preparation. Do not cram.",
+              },
+            ],
+          },
+          {
+            week: 4,
+            day: 26,
+            title: "REST",
+            objective: "...",
+            detailedContent: [],
+            checklist: [
+              {
+                id: "day26-task1",
+                text: "Your preparation is complete. Get good sleep, eat well, and relax.",
+              },
+            ],
+          },
+          {
+            week: 4,
+            day: 27,
+            title: "REST",
+            objective: "...",
+            detailedContent: [],
+            checklist: [
+              {
+                id: "day27-task1",
+                text: "A rested mind performs best. Good luck!",
+              },
+            ],
+          },
+        ];
+
+        const navigationContainer = document.getElementById("guide-navigation");
+        const contentContainer = document.getElementById("guide-content");
+        const progressBar = document.getElementById("progress-bar");
+        const progressText = document.getElementById("progress-text");
+        const bookmarksDropdown = document.getElementById("bookmarks-dropdown");
+        const darkModeToggle = document.getElementById("dark-mode-toggle");
+        const htmlEl = document.documentElement;
+
+        let progress =
+          JSON.parse(localStorage.getItem("maltaGuideProgress")) || {};
+        let bookmarks =
+          JSON.parse(localStorage.getItem("maltaGuideBookmarks")) || [];
+
+        // --- FUNCTIONS ---
+
+        const saveProgress = () =>
+          localStorage.setItem("maltaGuideProgress", JSON.stringify(progress));
+        const saveBookmarks = () =>
+          localStorage.setItem(
+            "maltaGuideBookmarks",
+            JSON.stringify(bookmarks)
+          );
+
+        const updateProgressDisplay = () => {
+          const completedDays = guideData.filter((day) => {
+            const dayTasks = day.checklist.map((task) => task.id);
+            if (dayTasks.length === 0)
+              return progress[`day${day.day}-completed`] || false;
+            return dayTasks.every((id) => progress[id]);
+          }).length;
+
+          const totalDays = guideData.length;
+          const percentage =
+            totalDays > 0 ? Math.round((completedDays / totalDays) * 100) : 0;
+
+          progressBar.style.width = `${percentage}%`;
+          progressText.textContent = `${percentage}% (${completedDays}/${totalDays} days)`;
+        };
+
+        const updateBookmarksDropdown = () => {
+          bookmarksDropdown.innerHTML =
+            '<option value="">View bookmarks...</option>';
+          bookmarks.forEach((dayNum) => {
+            const dayData = guideData.find((d) => d.day === dayNum);
+            if (dayData) {
+              const option = document.createElement("option");
+              option.value = dayNum;
+              option.textContent = `Day ${dayNum}: ${dayData.title}`;
+              bookmarksDropdown.appendChild(option);
+            }
+          });
+        };
+
+        const renderNavigation = () => {
+          navigationContainer.innerHTML = "";
+          let currentWeek = 0;
+          guideData.forEach((day) => {
+            if (day.week !== currentWeek) {
+              currentWeek = day.week;
+              const weekHeader = document.createElement("h3");
+              weekHeader.className =
+                "font-heading text-sm font-semibold text-gray-500 mt-4 mb-2 px-1";
+              weekHeader.textContent = `Week ${currentWeek}`;
+              navigationContainer.appendChild(weekHeader);
+            }
+
+            const dayTasks = day.checklist.map((task) => task.id);
+            const isCompleted =
+              dayTasks.length > 0
+                ? dayTasks.every((id) => progress[id])
+                : progress[`day${day.day}-completed`] || false;
+
+            const link = document.createElement("a");
+            link.href = "#";
+            link.className = "sidebar-link";
+            if (isCompleted) link.classList.add("completed");
+            link.dataset.day = day.day;
+            link.innerHTML = `
+                        <div class="day-status">${
+                          isCompleted
+                            ? '<i data-feather="check" class="w-4 h-4"></i>'
+                            : ""
+                        }</div>
+                        <span class="truncate">Day ${day.day}: ${
+              day.title
+            }</span>
+                    `;
+            navigationContainer.appendChild(link);
+          });
+          feather.replace();
+        };
+
+        const renderContent = (dayNumber) => {
+          const dayData = guideData.find((d) => d.day === dayNumber);
+          if (!dayData) return;
+
+          document.querySelectorAll(".sidebar-link").forEach((link) => {
+            link.classList.toggle(
+              "active",
+              parseInt(link.dataset.day) === dayNumber
+            );
+          });
+
+          const detailedContentHtml = (dayData.detailedContent || [])
+            .map((topic) => {
+              const keyAreasHtml = topic.keyAreas
+                .map(
+                  (area) =>
+                    `<li class="flex items-start"><i data-feather="check-circle" class="w-5 h-5 text-blue-600 mr-3 mt-1 flex-shrink-0"></i><span>${area}</span></li>`
+                )
+                .join("");
+              const questionsHtml = topic.questions
+                .map(
+                  (q) => `
+                        <div class="mt-4">
+                            <p class="font-semibold text-gray-800">Potential Question: "${
+                              q.q
+                            }"</p>
+                            ${
+                              q.a
+                                ? `<div class="sample-answer mt-2 text-gray-700"><p>${q.a}</p></div>`
+                                : ""
+                            }
+                        </div>
+                    `
+                )
+                .join("");
+
+              const imageHtml = topic.image
+                ? `<img src="${topic.image}" alt="Numeric Pain Rating Scale" class="post-content-image">`
+                : "";
+
+              return `
+                        <div class="topic-card">
+                            <h3 class="font-heading text-xl font-semibold text-gray-900">${topic.title}</h3>
+                            <p class="text-sm text-gray-500 mb-4"><em>Source: ${topic.source}</em></p>
+                            <p class="text-gray-700 mb-4">${topic.coreConcept}</p>
+                            <h4 class="font-semibold text-gray-800 mb-2">Key Areas to Master</h4>
+                            <ul class="space-y-2 text-gray-700 mb-4">${keyAreasHtml}</ul>
+                            ${imageHtml}
+                            <div class="bg-blue-50 border-l-4 border-blue-500 p-4 rounded">
+                                <p class="font-semibold text-blue-800">Key Takeaway</p>
+                                <p class="text-blue-700">${topic.takeaway}</p>
+                            </div>
+                            ${questionsHtml}
+                        </div>
+                    `;
+            })
+            .join("");
+
+          const isDayWithNoTasksCompleted =
+            dayData.checklist.length === 0 &&
+            (progress[`day${dayData.day}-completed`] || false);
+          const checklistHtml = dayData.checklist
+            .map(
+              (task) => `
+                    <div class="checklist-item ${
+                      progress[task.id] ? "completed" : ""
+                    }" data-task-id="${task.id}">
+                        <input type="checkbox" id="${task.id}" ${
+                progress[task.id] ? "checked" : ""
+              }>
+                        <label for="${task.id}" class="flex-grow">${
+                task.text
+              }</label>
+                    </div>
+                `
+            )
+            .join("");
+
+          const isBookmarked = bookmarks.includes(dayData.day);
+
+          contentContainer.innerHTML = `
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <p class="text-sm font-semibold text-blue-600">Day ${
+                              dayData.day
+                            } Study Guide</p>
+                            <h1 class="font-heading mt-2 text-3xl font-bold tracking-tight text-gray-900">${
+                              dayData.title
+                            }</h1>
+                        </div>
+                        <button id="bookmark-btn" class="p-2 rounded-full hover:bg-gray-100 transition-colors" title="${
+                          isBookmarked ? "Remove bookmark" : "Add bookmark"
+                        }">
+                            <i data-feather="bookmark" class="w-6 h-6 ${
+                              isBookmarked
+                                ? "text-yellow-500 fill-current"
+                                : "text-gray-500"
+                            }"></i>
+                        </button>
+                    </div>
+                    <div class="mt-6 border-t border-gray-200 pt-6">
+                        <div class="bg-amber-50 border-l-4 border-amber-400 p-4 rounded-md mb-8">
+                            <h2 class="font-semibold text-amber-800">Today's Objective</h2>
+                            <p class="text-amber-700">${dayData.objective}</p>
+                        </div>
+                        
+                        ${detailedContentHtml}
+
+                        ${
+                          dayData.checklist.length > 0
+                            ? `
+                        <div>
+                            <h2 class="font-heading text-xl font-semibold text-gray-900 mb-4">Action Items</h2>
+                            <div class="space-y-3">${checklistHtml}</div>
+                        </div>`
+                            : `
+                        <div>
+                             <div class="checklist-item ${
+                               isDayWithNoTasksCompleted ? "completed" : ""
+                             }" data-task-id="day${dayData.day}-completed">
+                                <input type="checkbox" id="day${
+                                  dayData.day
+                                }-completed" ${
+                                isDayWithNoTasksCompleted ? "checked" : ""
+                              }>
+                                <label for="day${
+                                  dayData.day
+                                }-completed" class="flex-grow">Mark day as completed</label>
+                            </div>
+                        </div>
+                        `
+                        }
+                    </div>
+                `;
+          feather.replace();
+        };
+
+        // --- EVENT LISTENERS ---
+
+        navigationContainer.addEventListener("click", (e) => {
+          e.preventDefault();
+          const link = e.target.closest(".sidebar-link");
+          if (link) {
+            const day = parseInt(link.dataset.day);
+            renderContent(day);
+          }
+        });
+
+        contentContainer.addEventListener("click", (e) => {
+          const item = e.target.closest(".checklist-item");
+          if (item) {
+            const checkbox = item.querySelector('input[type="checkbox"]');
+            const taskId = item.dataset.taskId;
+            if (e.target.tagName !== "INPUT")
+              checkbox.checked = !checkbox.checked;
+            progress[taskId] = checkbox.checked;
+            item.classList.toggle("completed", checkbox.checked);
+            saveProgress();
+            renderNavigation();
+            updateProgressDisplay();
+          }
+
+          const bookmarkBtn = e.target.closest("#bookmark-btn");
+          if (bookmarkBtn) {
+            const dayNum = parseInt(
+              document.querySelector(".sidebar-link.active").dataset.day
+            );
+            const index = bookmarks.indexOf(dayNum);
+            if (index > -1) {
+              bookmarks.splice(index, 1);
+            } else {
+              bookmarks.push(dayNum);
+              bookmarks.sort((a, b) => a - b);
+            }
+            saveBookmarks();
+            renderContent(dayNum);
+            updateBookmarksDropdown();
+          }
+        });
+
+        bookmarksDropdown.addEventListener("change", (e) => {
+          const day = parseInt(e.target.value);
+          if (day) {
+            renderContent(day);
+          }
+          e.target.value = "";
+        });
+
+        // --- DARK MODE LOGIC ---
+        const darkIcon = darkModeToggle.querySelector(".dark-icon");
+        const lightIcon = darkModeToggle.querySelector(".light-icon");
+
+        const applyDarkMode = (isDark) => {
+          if (isDark) {
+            htmlEl.classList.add("dark");
+            darkIcon.classList.add("hidden");
+            lightIcon.classList.remove("hidden");
+          } else {
+            htmlEl.classList.remove("dark");
+            darkIcon.classList.remove("hidden");
+            lightIcon.classList.add("hidden");
+          }
+        };
+
+        // Check for saved preference, otherwise check system preference
+        const userPrefersDark = localStorage.getItem("darkMode") === "true";
+        const systemPrefersDark =
+          window.matchMedia &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches;
+        const initialDarkMode =
+          localStorage.getItem("darkMode") !== null
+            ? userPrefersDark
+            : systemPrefersDark;
+
+        applyDarkMode(initialDarkMode);
+
+        darkModeToggle.addEventListener("click", () => {
+          const isDark = htmlEl.classList.toggle("dark");
+          localStorage.setItem("darkMode", isDark);
+          applyDarkMode(isDark);
+        });
+
+        // --- INITIALIZATION ---
+        renderNavigation();
+        updateProgressDisplay();
+        updateBookmarksDropdown();
+        renderContent(1);
+      });
+    </script>
+  </body>
+</html>
