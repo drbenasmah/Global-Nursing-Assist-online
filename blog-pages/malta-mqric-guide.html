@@ -6,8 +6,10 @@
     <title>
       A Nurse's Guide to Malta: MQRIC Recognition | Nursing Assist PL
     </title>
-    <link rel="stylesheet" href="malta-mqric-guide.css" />
     <link rel="stylesheet" href="../styles.css" />
+    <link rel="stylesheet" href="malta-mqric-guide.css" />
+    
+    
     <script src="https://unpkg.com/feather-icons"></script>
   </head>
   <body>
@@ -20,19 +22,52 @@
               src="../src/assets/img/logo1.png"
               alt="Nurse Assist PL Logo"
               class="logo-img"
+              onerror="this.onerror=null;this.src='https://placehold.co/200x50/1e40af/ffffff?text=Logo';"
             />
-            <span class="logo-text">Nursing Assist PL</span>
+            <span class="logo-text">Nursing School Assist PL</span>
           </a>
         </div>
         <div class="nav-menu" id="nav-menu">
-          <a href="#home" class="nav-link">Home</a>
-          <a href="#about" class="nav-link">About</a>
-          <a href="#services" class="nav-link">Services</a>
-          <a href="#testimonials" class="nav-link">Testimonials</a>
-          <a href="#articles" class="nav-link">Articles</a>
-          <a href="#resources" class="nav-link">Resources</a>
-          <a href="#contact" class="nav-link">Contact</a>
-          <a href="blog.html" class="nav-link">Blog</a>
+          <a href="../index.html" class="nav-link">Home</a>
+          <a href="../index.html#about" class="nav-link">About</a>
+          <a href="../index.html#services" class="nav-link">Services</a>
+          <a href="../index.html#testimonials" class="nav-link">Testimonials</a>
+          <a href="../index.html#articles" class="nav-link">Articles</a>
+
+          <!-- Dropdown Menu for Resources -->
+          <div class="dropdown">
+            <a href="#resources" class="nav-link" id="resources-link">
+              Resources
+              <i
+                data-feather="chevron-down"
+                style="width: 16px; height: 16px"
+              ></i>
+            </a>
+            <div class="dropdown-menu">
+              <a href="../ai-page/ai-assistant.html" class="dropdown-link"
+                >AI Interview Assistant</a
+              >
+              <a href="../Malta-study-plan/onemonth.html" class="dropdown-link"
+                >Study Plan</a
+              >
+              <a
+                href="../Malta-study-plan/study-guide1.html"
+                class="dropdown-link"
+                >Study Guide</a
+              >
+              <a
+                href="../Malta-study-plan/flashcard-m.html"
+                class="dropdown-link"
+                >Flashcards</a
+              >
+              <a href="../index.html#resources" class="dropdown-link"
+                >Free Downloads</a
+              >
+            </div>
+          </div>
+
+          <a href="../index.html#contact" class="nav-link">Contact</a>
+          <a href="../blog.html" class="nav-link">Blog</a>
         </div>
         <button
           class="nav-toggle"
@@ -45,8 +80,7 @@
         </button>
       </div>
     </nav>
-
-    <!-- === NAVIGATION BAR === -->
+    <!-- ===  === -->
         <main>
           <article class="post-full">
             <header class="post-full-header">

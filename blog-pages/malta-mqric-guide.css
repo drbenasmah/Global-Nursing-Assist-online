@@ -5,7 +5,7 @@
 
 /* Blog-specific overrides */
 .post-full {
-  margin-top: 80px; /* Account for fixed navbar */
+  /* Account for fixed navbar */
   background: #ffffff;
 }
 
