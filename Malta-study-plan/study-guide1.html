@@ -6,7 +6,6 @@
     <title>
       1-Month Malta Nursing Interview Study Plan | Nursing Assist PL
     </title>
-    <link rel="stylesheet" href="../styles.css" />
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -218,77 +217,49 @@
   </head>
   <body>
     <!-- === NAVIGATION BAR === -->
-    <nav class="navbar">
-      <div class="nav-container">
-        <div class="nav-logo">
-          <a href="../index.html">
-            <img
-              src="../src/assets/img/logo1.png"
-              alt="Nurse Assist PL Logo"
-              class="logo-img"
-              onerror="this.onerror=null;this.src='https://placehold.co/200x50/1e40af/ffffff?text=Logo';"
-            />
-            <span class="logo-text">Nursing School Assist PL</span>
-          </a>
-        </div>
-        <div class="nav-menu" id="nav-menu">
-          <a href="../index.html" class="nav-link">Home</a>
-          <a href="../index.html#about" class="nav-link">About</a>
-          <a href="../index.html#services" class="nav-link">Services</a>
-          <a href="../index.html#testimonials" class="nav-link">Testimonials</a>
-          <a href="../index.html#articles" class="nav-link">Articles</a>
-
-          <!-- Dropdown Menu for Resources -->
-          <div class="dropdown">
-            <a href="#resources" class="nav-link" id="resources-link">
-              Resources
-              <i
-                data-feather="chevron-down"
-                style="width: 16px; height: 16px"
-              ></i>
-            </a>
-            <div class="dropdown-menu">
-              <a href="../ai-page/ai-assistant.html" class="dropdown-link"
-                >AI Interview Assistant</a
-              >
-              <a href="../Malta-study-plan/onemonth.html" class="dropdown-link"
-                >Study Plan</a
-              >
-              <a
-                href="../Malta-study-plan/study-guide1.html"
-                class="dropdown-link"
-                >Study Guide</a
-              >
-              <a
-                href="../Malta-study-plan/flashcard-m.html"
-                class="dropdown-link"
-                >Flashcards</a
-              >
-              <a href="../index.html#resources" class="dropdown-link"
-                >Free Downloads</a
-              >
-            </div>
+    <nav class="bg-white/80 backdrop-blur-lg sticky top-0 z-20 border-b">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16">
+          <div class="flex items-center">
+            <a href="#" class="font-heading text-xl font-bold text-blue-800"
+              >Nursing Assist PL</a
+            >
           </div>
-
-          <a href="../index.html#contact" class="nav-link">Contact</a>
-          <a href="../blog.html" class="nav-link">Blog</a>
+          <div class="flex items-center gap-4">
+            <div class="hidden md:block">
+              <div class="ml-10 flex items-baseline space-x-4">
+                <a
+                  href="#"
+                  class="text-gray-600 hover:text-blue-800 px-3 py-2 rounded-md text-sm font-medium"
+                  >Home</a
+                >
+                <a
+                  href="#"
+                  class="text-blue-800 bg-blue-100 px-3 py-2 rounded-md text-sm font-medium"
+                  aria-current="page"
+                  >Daily Guide</a
+                >
+                <a
+                  href="#"
+                  class="text-gray-600 hover:text-blue-800 px-3 py-2 rounded-md text-sm font-medium"
+                  >AI Assistant</a
+                >
+                <a
+                  href="#"
+                  class="text-gray-600 hover:text-blue-800 px-3 py-2 rounded-md text-sm font-medium"
+                  >Blog</a
+                >
+              </div>
+            </div>
+            <button
+              id="dark-mode-toggle"
+              class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700"
+            >
+              <i data-feather="moon" class="dark-icon"></i>
+              <i data-feather="sun" class="light-icon hidden"></i>
+            </button>
+          </div>
         </div>
-        <button
-          class="nav-toggle"
-          id="nav-toggle"
-          aria-label="Toggle navigation menu"
-        >
-          <span class="bar"></span>
-          <span class="bar"></span>
-          <span class="bar"></span>
-        </button>
-        <button
-          id="dark-mode-toggle"
-          class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700"
-        >
-          <i data-feather="moon" class="dark-icon"></i>
-          <i data-feather="sun" class="light-icon hidden"></i>
-        </button>
       </div>
     </nav>
 
@@ -596,7 +567,7 @@
                   "<strong>Using a Structured Assessment Tool:</strong> A common mnemonic is PQRSTU (Provokes, Quality, Radiates, Severity, Time, Understanding).",
                   "<strong>Pain Scales:</strong> Be prepared to mention common scales like the Numeric Rating Scale (0-10) and the Wong-Baker FACES Scale.",
                 ],
-                image: "nrs-img.png",
+                image: "Npr-img.jpg",
                 takeaway:
                   "A systematic pain assessment is crucial for providing the right intervention, evaluating its effectiveness, and advocating for the patient's comfort.",
                 questions: [
@@ -821,16 +792,43 @@
             week: 1,
             day: 7,
             title: "Weekly Review",
-            objective: "...",
-            detailedContent: [],
+            objective:
+              "To consolidate your knowledge from Week 1, connect concepts, and begin applying your understanding to practical, scenario-based questions.",
+            detailedContent: [
+              {
+                title: "Review of Core Concepts (Week 1)",
+                coreConcept:
+                  "This is your opportunity to ensure the foundational knowledge from the past six days is secure in your long-term memory. Active recall is the most effective way to achieve this.",
+                keyAreas: [
+                  "<strong>Review Your Notes & Flashcards (1 Hour):</strong> Go through all the notes and flashcards you created from Day 1 to Day 6. Pay special attention to any topics you feel less confident about.",
+                  "<strong>Speak & Explain (1 Hour):</strong> Pick at least one key topic from each day. Set a timer for 60-90 seconds for each topic. Explain the concept out loud as if you were teaching it to someone else.",
+                ],
+              },
+              {
+                title: "Application to Practice Scenarios",
+                coreConcept:
+                  "The interview will not just test what you know, but how you apply what you know. This session is about combining different concepts to solve a clinical problem.",
+                keyAreas: [
+                  "<strong>Scenario 1: The Post-Operative Patient</strong><br>Situation: A patient has just returned to your ward after hip replacement surgery. They are drowsy but rousable.<br>Question: 'What are your immediate nursing priorities for this patient?'",
+                  "<strong>Scenario 2: The Medication Round</strong><br>Situation: You are preparing to administer an oral antibiotic to a patient. You notice a red wristband on the patient, indicating an allergy, but the allergy section on the medication chart is blank.<br>Question: 'What is your immediate course of action?'",
+                  "<strong>Scenario 3: The At-Risk Patient</strong><br>Situation: You are admitting an elderly, frail patient from a nursing home. They are incontinent and have limited mobility.<br>Question: 'What are two key risks for this patient, and what is one preventive action you would take for each?'",
+                ],
+              },
+            ],
+            takeaway:
+              "Today is about building fluency. The more you practice explaining these concepts and scenarios out loud, the more confident and professional you will sound during your actual interview. This is the most important step in your preparation.",
             checklist: [
               {
                 id: "day7-task1",
-                text: "Review all flashcards from the week.",
+                text: "Review all notes and flashcards from Day 1 to Day 6.",
               },
               {
                 id: "day7-task2",
-                text: "Pick 10 topics and explain each one out loud for 60 seconds.",
+                text: "Verbally explain at least one key topic from each day of the week.",
+              },
+              {
+                id: "day7-task3",
+                text: "Verbally answer the three practice scenarios out loud.",
               },
             ],
           },
@@ -838,61 +836,505 @@
           {
             week: 2,
             day: 8,
-            title: "Controlled Drugs (CDs)",
-            objective: "...",
-            detailedContent: [],
+            title: "Controlled Drugs (CDs) - Critical Safety Topic",
+            objective:
+              "To master the strict legal and professional procedures for managing Controlled Drugs on a ward, demonstrating your commitment to patient safety and accountability.",
+            detailedContent: [
+              {
+                title: "The Principles of Controlled Drug Management",
+                source: "exam GOVT.pdf, Pages 14-16",
+                coreConcept:
+                  "Controlled Drugs are medications that have a high potential for misuse and are therefore governed by strict laws. The procedures for managing them are designed to ensure a clear, unbroken chain of accountability.",
+                keyAreas: [
+                  "<strong>Requisitioning (Ordering) CDs:</strong> Must be ordered using a specific CD order book, with a separate page for each item, including full details and a signature from an authorized RN.",
+                  "<strong>Storage of CDs:</strong> Must be stored in a locked cupboard or safe. Keys must be kept secure. High-strength opiates should be stored on a separate shelf from lower-strength ones to prevent errors.",
+                ],
+                takeaway:
+                  "Every step in the management of Controlled Drugs is designed to be secure and auditable. There is no room for shortcuts.",
+                questions: [
+                  {
+                    q: "What are the key safety requirements for storing controlled drugs on a ward?",
+                    a: "The key requirements for storing controlled drugs are security and segregation. All CDs must be kept in a dedicated, locked metal cupboard that complies with regulations. The keys must be held by the nurse in charge or a designated registered nurse and never left unattended. To prevent errors, high-strength formulations, like morphine infusions, must be stored on a separate shelf from lower-strength ampoules. These measures are essential to prevent both misuse and administration errors.",
+                  },
+                  {
+                    q: "You need to order a new stock of morphine for the ward. What is the correct procedure?",
+                    a: "To order a new stock of morphine, I must follow a strict and legally compliant procedure. First, I would get the ward's Controlled Drug order book, which must be stored securely in a locked cupboard. I would open a new, separate page specifically for the morphine order. I would then clearly write the full details required: the hospital and ward name, the date, the drug name 'Morphine Sulphate', its form and strength, for example, '10mg in 1ml ampoules', and the total quantity needed, for instance, 'Ten ampoules'. Finally, as an authorized Registered Nurse, I would sign the order. This ensures the requisition is clear, accurate, and auditable.",
+                  },
+                ],
+              },
+              {
+                title: "The Two-Nurse Check: Receipt & Stock Reconciliation",
+                source: "exam GOVT.pdf, Pages 15, 17-18",
+                coreConcept:
+                  "The principle of the 'two-nurse check' (or two registered professionals) is the cornerstone of CD safety. It ensures that every action involving the movement or counting of CDs is witnessed and verified, creating a robust audit trail.",
+                keyAreas: [
+                  "<strong>Receipt of New CD Stock:</strong> When new stock arrives, it must be immediately checked by an RN and a witness. The receipt is then recorded and signed by both in the CD Register.",
+                  "<strong>Daily Stock Balance Reconciliation:</strong> A stock check must be performed every 24 hours by two registered professionals. They physically count the stock against the register balance and both sign to confirm it is correct.",
+                ],
+                takeaway:
+                  "No action involving a CD—from receiving it to counting it to administering it—is ever performed by one person alone. The two-person check is a non-negotiable safety rule.",
+                questions: [
+                  {
+                    q: "Walk me through the procedure for receiving a new stock of controlled drugs onto the ward.",
+                    a: "When a new stock of controlled drugs arrives, my first action is to find a second registered nurse to act as a witness. Together, we would immediately check the contents against the order book, verifying the drug, strength, and quantity. We would then record the receipt in the correct page of the Controlled Drug Register, noting the date, the quantity received, and updating the running balance. Finally, both myself and the witnessing nurse would sign the register to complete the entry. This immediate, witnessed check is vital to maintain a secure and accurate chain of custody for these medications.",
+                  },
+                  {
+                    q: "How often should a stock check of controlled drugs be performed, and who is responsible for doing it?",
+                    a: null,
+                  },
+                ],
+              },
+            ],
             checklist: [],
           },
           {
             week: 2,
             day: 9,
             title: "IV Therapy & Blood Transfusions",
-            objective: "...",
-            detailedContent: [],
+            objective:
+              "To master the procedures for IV therapy and blood transfusions, focusing on aseptic technique, complication management, and the critical safety checks required for these high-risk interventions.",
+            detailedContent: [
+              {
+                title: "IV Cannulation & Bolus Administration",
+                source:
+                  "Malta interview question.docx, Questions 11, 13 & Recent Interview Recall",
+                coreConcept:
+                  "Intravenous (IV) cannulation is a common invasive procedure that provides direct access to the vascular system for administering fluids and medications. Administering an IV bolus requires a meticulous process to ensure the medication is delivered safely and the IV line remains patent.",
+                keyAreas: [
+                  "<strong>IV Cannulation Steps:</strong> Preparation, Patient & Site Selection, Aseptic Technique, Cannula Insertion, Securing, and Documentation.",
+                  "<strong>Administering an IV Bolus (SAS Method):</strong> Pause infusion, Scrub the Hub, Flush with Saline, Administer Medication at prescribed rate, Flush with Saline again, Restart infusion, and Document.",
+                ],
+                takeaway:
+                  "The 'Scrub the Hub' and 'Saline-Administer-Saline' (SAS) methods are critical safety steps to prevent infection and ensure the full dose of medication is delivered.",
+                questions: [
+                  {
+                    q: "Walk me through the step-by-step process of administering an IV bolus antibiotic to a patient who is already receiving an infusion of normal saline.",
+                    a: null,
+                  },
+                  {
+                    q: "Why is it important to flush the cannula with saline before and after administering an IV medication?",
+                    a: "Flushing the cannula with saline before and after giving an IV medication is a crucial safety step for two main reasons. The first flush, before administration, confirms the patency of the cannula. It ensures the line is not blocked or tissued, which would cause the medication to leak into the surrounding tissue. The second flush, after administration, is essential to push all of the medication from the IV line into the patient's bloodstream, ensuring they receive the complete and correct dose. It also clears the line of any residual medication that could be incompatible with other drugs or the primary infusion fluid.",
+                  },
+                ],
+              },
+              {
+                title: "IV Site Complications - Phlebitis",
+                source: "exam GOVT.pdf, Page 26 & Recent Interview Recall",
+                coreConcept:
+                  "Phlebitis is the inflammation of a vein, a common complication of IV therapy. Nurses must assess IV sites regularly using a standardized scale to detect phlebitis early and take appropriate action to prevent further harm.",
+                keyAreas: [
+                  "<strong>Signs of Inflammation (Phlebitis):</strong> Pain, Erythema (redness), Swelling, Warmth, Induration (hardness), and a palpable venous cord.",
+                  "<strong>The Phlebitis Scale:</strong> Be able to describe the progression from Grade 0 (no symptoms) to Grade 4 (purulent drainage).",
+                  "<strong>Nursing Actions for Phlebitis:</strong> Stop the infusion, remove the cannula, elevate the limb, apply a compress, re-site the cannula elsewhere, document, and escalate.",
+                ],
+                takeaway:
+                  "Regular assessment of IV sites is a proactive nursing responsibility. Early detection and intervention for phlebitis prevent pain and more serious complications like thrombosis or infection.",
+                questions: [
+                  {
+                    q: "What are the signs of IV catheter site inflammation, and what are your nursing actions if you detect it?",
+                    a: "My immediate priority would be to stop the infusion to prevent any further irritation to the vein. I would then inform the patient what is happening, remove the cannula, and apply a compress to the site to help with the discomfort. I would assess the severity using the hospital's phlebitis scale, re-site the cannula in a different location if needed, and document my findings and actions. This immediate response is crucial to prevent the phlebitis from worsening and to ensure the patient's safety and comfort.",
+                  },
+                  {
+                    q: "You assess an IV site and find it is red, swollen, and painful to the touch. What is your immediate priority?",
+                    a: null,
+                  },
+                ],
+              },
+              {
+                title: "Blood Transfusion Procedure",
+                source: "exam GOVT.pdf, Pages 11-14",
+                coreConcept:
+                  "A blood transfusion is a high-risk procedure that can be life-saving but also has the potential for severe adverse reactions. The entire process is governed by strict identification and monitoring protocols to ensure the right blood is given to the right patient.",
+                keyAreas: [
+                  "<strong>Pre-Transfusion Checks:</strong> Ensure valid order, signed consent, and perform baseline vitals. The 2-nurse bedside check is critical: verify patient ID, blood bag ID, expiry date, and blood type compatibility.",
+                  "<strong>Administration and Monitoring:</strong> Start slowly for the first 15 minutes and stay with the patient. Repeat vital signs after 15 minutes and monitor for signs of a reaction (fever, shortness of breath, pain, rash).",
+                  "<strong>Action for a Transfusion Reaction:</strong> STOP THE TRANSFUSION IMMEDIATELY. Maintain IV access with normal saline, alert the team, and follow hospital protocol.",
+                ],
+                takeaway:
+                  "The bedside check by two registered professionals is the final, critical safety barrier to prevent a catastrophic mismatched transfusion.",
+                questions: [
+                  {
+                    q: "Can you describe the process of administering a blood transfusion?",
+                    a: null,
+                  },
+                  {
+                    q: "What is the most important safety check you must perform before starting a blood transfusion?",
+                    a: "The single most important safety check is the final bedside check, which must be performed by two registered professionals. We would go to the patient's bedside with the blood unit and the paperwork. We would ask the patient to state their full name and date of birth, and we would check this against their wristband. Then, we would meticulously check those details against the details on the blood bag label and the compatibility form. We would also confirm the blood type and the unique unit number match across all documents. This final check is the last opportunity to catch a potential error and prevent a life-threatening mismatched transfusion.",
+                  },
+                ],
+              },
+            ],
             checklist: [],
           },
           {
             week: 2,
             day: 10,
             title: "Post-Operative & Musculoskeletal Care",
-            objective: "...",
-            detailedContent: [],
+            objective:
+              "To master the principles of post-operative care, including immediate assessment, prevention of common complications, and management of specific musculoskeletal injuries.",
+            detailedContent: [
+              {
+                title: "Immediate Post-Operative Assessment",
+                source: "Malta interview question.docx, Question 19",
+                coreConcept:
+                  "The immediate post-operative period is a critical time when a patient is recovering from anesthesia and is at high risk for complications. The nurse's first priority is a rapid and systematic assessment to ensure the patient is stable.",
+                keyAreas: [
+                  "<strong>A - Airway:</strong> Is the patient's airway clear and open?",
+                  "<strong>B - Breathing:</strong> What is their respiratory rate and oxygen saturation?",
+                  "<strong>C - Circulation:</strong> What is their heart rate and blood pressure?",
+                  "<strong>D - Disability:</strong> What is their level of consciousness (GCS or AVPU)?",
+                  "<strong>E - Exposure:</strong> Check the surgical wound site for bleeding and check drains.",
+                ],
+                takeaway:
+                  "The initial post-operative assessment is a systematic 'head-to-toe' check that prioritizes life-threatening issues (Airway, Breathing, Circulation) before moving on to other aspects of care.",
+                questions: [
+                  {
+                    q: "A patient has just returned to the ward after surgery. What are your immediate assessment priorities?",
+                    a: "My immediate priority for a fresh post-operative patient is to perform a systematic ABCDE assessment. I would first ensure their Airway is patent and they are maintaining it. Then I'd assess their Breathing by checking their respiratory rate and oxygen saturation. For Circulation, I would check their blood pressure and heart rate against their pre-op baseline. For Disability, I'd assess their level of consciousness. Finally, for Exposure, I would check their surgical dressing for any signs of fresh bleeding and ensure all drains are functioning correctly. This structured approach ensures I can rapidly identify and respond to any life-threatening complications.",
+                  },
+                  {
+                    q: "What specific things would you check regarding the surgical site on a fresh post-op patient?",
+                    a: null,
+                  },
+                ],
+              },
+              {
+                title: "Preventing Post-Operative Complications",
+                source:
+                  "exam GOVT.pdf, Page 5-6 & Malta interview question.docx, Question 49",
+                coreConcept:
+                  "A key part of the nurse's role is to proactively prevent common post-operative complications, particularly Deep Vein Thrombosis (DVT) and respiratory issues. Early mobility is one of the most effective strategies.",
+                keyAreas: [
+                  "<strong>Deep Vein Thrombosis (DVT) Prevention:</strong> Early ambulation, in-bed exercises, anti-embolic stockings (TEDS), and administering prescribed anticoagulants.",
+                  "<strong>Importance of Early Ambulation (Mobility):</strong> It improves respiratory function, stimulates gut motility, and reduces pain and stiffness.",
+                ],
+                takeaway:
+                  "The nurse's role in post-operative care is not just reactive (treating problems) but proactive (preventing them). Early ambulation is a cornerstone of this proactive care.",
+                questions: [
+                  {
+                    q: "What are the key nursing interventions to prevent a DVT in a post-operative patient?",
+                    a: null,
+                  },
+                  {
+                    q: "Why is early ambulation so important for a patient after surgery?",
+                    a: "Early ambulation is crucial because it helps prevent a range of serious post-operative complications. Primarily, it prevents Deep Vein Thrombosis by promoting blood flow in the legs. It also significantly improves respiratory function; walking encourages deep breathing, which helps to prevent chest infections like pneumonia. Furthermore, it stimulates the gut to prevent constipation and improves the patient's overall strength and sense of well-being, leading to a faster recovery.",
+                  },
+                ],
+              },
+              {
+                title: "Nursing Care of a Fractured Limb",
+                source: "Malta interview question.docx, Question 47",
+                coreConcept:
+                  "When caring for a patient with a fractured limb (especially one in a cast or splint), the nurse's priority is to manage pain and conduct regular neurovascular observations to detect and prevent serious complications like compartment syndrome.",
+                keyAreas: [
+                  "<strong>Pain Management:</strong> Regularly assess pain and administer analgesia. Pain out of proportion to the injury is a red flag for compartment syndrome.",
+                  "<strong>Neurovascular Observations (The '6 Ps'):</strong> Regularly assess Pain, Pallor, Pulselessness, Paresthesia, Paralysis, and Pressure in the affected limb.",
+                  "<strong>Other Key Interventions:</strong> Elevation of the limb, application of ice, and checking skin around cast edges.",
+                ],
+                takeaway:
+                  "Regular and accurate neurovascular observations are essential to detect compartment syndrome, a surgical emergency that can lead to permanent limb damage if not treated quickly.",
+                questions: [
+                  {
+                    q: "Describe your approach to caring for a patient with a newly fractured arm that is in a cast.",
+                    a: "When caring for a patient with a new fracture in a cast, my priorities are pain management and neurovascular assessment. I would regularly assess their pain and ensure they have adequate analgesia. Crucially, at least every 2-4 hours, I would perform a full set of neurovascular observations on their hand. I would check the color, warmth, and capillary refill of their fingers. I would assess for any numbness or tingling, and test their ability to move their fingers. I would also check their radial pulse. Any signs of compromise, such as severe pain, pallor, or numbness, would be escalated to the medical team immediately as it could indicate compartment syndrome.",
+                  },
+                  {
+                    q: "What are the signs of neurovascular compromise in a patient with a fractured leg?",
+                    a: null,
+                  },
+                ],
+              },
+            ],
             checklist: [],
           },
           {
             week: 2,
             day: 11,
             title: "Medical Emergencies (Part 1)",
-            objective: "...",
-            detailedContent: [],
+            objective:
+              "To master the recognition of, and immediate nursing response to, life-threatening conditions like Sepsis, Anaphylaxis, and Cardiac Arrest.",
+            detailedContent: [
+              {
+                title: "Recognizing and Responding to Sepsis",
+                source: "exam GOVT.pdf, Sepsis topic from user-provided list",
+                coreConcept:
+                  "Sepsis is a life-threatening organ dysfunction caused by a dysregulated host response to infection. It is a medical emergency where early recognition and rapid intervention are critical to patient survival.",
+                keyAreas: [
+                  "<strong>Recognition of Sepsis:</strong> Look for signs of infection PLUS signs of organ dysfunction (Altered mental state, high respiratory rate, low blood pressure, high heart rate, low urine output).",
+                  "<strong>Immediate Nursing Interventions (The 'Sepsis Six' Bundle):</strong> Give high-flow oxygen, take blood cultures, give broad-spectrum IV antibiotics, give IV fluid resuscitation, check lactate level, and monitor urine output.",
+                ],
+                takeaway:
+                  "With sepsis, 'time is tissue.' Your role is to recognize the signs early, escalate immediately, and initiate these time-critical interventions as prescribed.",
+                questions: [
+                  {
+                    q: "What signs would make you suspect a patient has sepsis?",
+                    a: null,
+                  },
+                  {
+                    q: "You suspect your patient is septic. What are your immediate nursing priorities?",
+                    a: "If I suspect a patient is septic, my immediate priorities are to escalate care and initiate the Sepsis Six bundle. I would immediately alert the senior nurse and the medical team, stating my concern for sepsis. While waiting for them, I would perform a full set of vital signs and administer high-flow oxygen to the patient. I would ensure they have IV access to prepare for taking blood cultures, administering IV antibiotics, and starting fluid resuscitation as soon as they are prescribed. Early recognition and starting these time-critical interventions are key to improving the patient's outcome.",
+                  },
+                ],
+              },
+              {
+                title: "Managing Anaphylaxis",
+                source:
+                  "exam GOVT.pdf, Anaphylaxis topic from user-provided list",
+                coreConcept:
+                  "Anaphylaxis is a severe, life-threatening, systemic allergic reaction. It is a medical emergency that requires immediate intervention to manage the airway and reverse the effects of the allergic reaction.",
+                keyAreas: [
+                  "<strong>Recognition of Anaphylaxis:</strong> Sudden onset of Airway/Breathing problems (wheezing, swelling), Circulation problems (hypotension, tachycardia), and/or Skin changes (hives, rash).",
+                  "<strong>Immediate Nursing Interventions:</strong> Call for help, administer intramuscular Adrenaline (Epinephrine), position the patient appropriately (sit up for breathing, lay flat for hypotension), and manage ABCs (oxygen, IV access).",
+                ],
+                takeaway:
+                  "In anaphylaxis, the immediate administration of intramuscular adrenaline is the priority intervention that can save the patient's life.",
+                questions: [
+                  {
+                    q: "What are the classic signs of an anaphylactic reaction?",
+                    a: null,
+                  },
+                  {
+                    q: "Your patient develops signs of anaphylaxis after receiving an IV antibiotic. What is your immediate nursing action?",
+                    a: "My immediate action would be to stop the antibiotic infusion and call for help, declaring a medical emergency. My next and most critical action would be to administer intramuscular adrenaline into the patient's thigh, as this is the first-line, life-saving treatment. While waiting for the emergency team, I would position the patient to support their breathing or circulation, administer high-flow oxygen, and continuously monitor their vital signs.",
+                  },
+                ],
+              },
+              {
+                title: "Your Role in a 'Code Blue' / Cardiac Arrest",
+                source: "Malta interview question.docx, Question 72",
+                coreConcept:
+                  "A 'Code Blue' is a hospital emergency code for a patient in cardiopulmonary arrest. Your role as the first responder is to quickly assess the situation, call for help, and initiate high-quality Basic Life Support (BLS).",
+                keyAreas: [
+                  "<strong>Recognition of Cardiac Arrest:</strong> The patient is unresponsive and not breathing normally.",
+                  "<strong>Immediate Nursing Actions (DRS ABCD):</strong> Check for Danger, check for Response, Shout for help (and activate alarm), open Airway, check Breathing, start high-quality chest Compressions, and apply Defibrillator as soon as it arrives.",
+                ],
+                takeaway:
+                  "As the first responder, your most important actions are to recognize the arrest, call for help immediately, and start high-quality chest compressions to maintain circulation to the brain.",
+                questions: [
+                  {
+                    q: "Walk me through the steps of initiating a code blue response.",
+                    a: null,
+                  },
+                  {
+                    q: "You find a patient unresponsive and not breathing in their bed. What is your first action?",
+                    a: "If I find a patient unresponsive, my first action after ensuring the scene is safe is to check for a response and simultaneously shout for help. I would immediately activate the code blue alarm to summon the resuscitation team. While help is on the way, I would open the patient's airway and check for breathing. If they are not breathing normally, I would immediately commence high-quality chest compressions. My role is to start Basic Life Support and continue it until the full resuscitation team arrives with the defibrillator.",
+                  },
+                ],
+              },
+            ],
             checklist: [],
           },
           {
             week: 2,
             day: 12,
             title: "Medical Emergencies (Part 2)",
-            objective: "...",
-            detailedContent: [],
+            objective:
+              "To master the immediate assessment and management of an unconscious patient, applying both general life support principles and specific knowledge related to conditions like diabetes.",
+            detailedContent: [
+              {
+                title: "Immediate Response to the Unconscious Patient",
+                source:
+                  "exam GOVT.pdf, Pages 22-24 & Malta interview question.docx, Questions 36, 37",
+                coreConcept:
+                  "An unconscious patient is unable to protect their own airway and is considered a medical emergency until proven otherwise. The immediate nursing response must be a rapid, systematic assessment following the ABCDE approach to identify and treat life-threatening problems immediately.",
+                keyAreas: [
+                  "<strong>The Initial Assessment (DRS ABCD):</strong> Check for Danger, Response, Shout for help, open Airway, check Breathing, and check Circulation. Start CPR if not breathing normally.",
+                  "<strong>The Secondary Assessment:</strong> If breathing, place in the recovery position. Perform a GCS assessment, get vital signs, and do a quick head-to-toe check for injuries or clues.",
+                  "<strong>Ongoing Nursing Care:</strong> Includes airway management, pressure area care, and eye/mouth care.",
+                ],
+                takeaway:
+                  "For any unconscious patient, your first priorities are to call for help and assess/manage the airway. Never leave an unconscious patient alone.",
+                questions: [
+                  {
+                    q: "You enter a patient's room and find them unresponsive in bed. Walk me through your immediate actions.",
+                    a: "If I find a patient unresponsive, my first action after ensuring the area is safe is to check for a response and immediately shout for help, activating the emergency alarm. My next priority is to assess their airway and breathing. I would open their airway with a head-tilt, chin-lift and check for normal breathing. If they are not breathing, I would start CPR. If they are breathing, I would place them in the recovery position to protect their airway from obstruction while I wait for the emergency team to arrive. My role is to perform this rapid initial assessment, call for help, and initiate basic life support.",
+                  },
+                  {
+                    q: "What is the purpose of the recovery position for an unconscious patient who is breathing?",
+                    a: null,
+                  },
+                ],
+              },
+              {
+                title: "Specific Actions for the Unconscious Diabetic Patient",
+                source:
+                  "Malta interview question.docx, Question 51 & Recall Questions",
+                coreConcept:
+                  "While you must always follow the ABCDE approach first, if you find an unconscious patient who is known to have diabetes, one of the most likely and rapidly reversible causes is severe hypoglycemia (a very low blood sugar level).",
+                keyAreas: [
+                  "<strong>Follow the ABCDE Approach First:</strong> Do not delay this to check their blood sugar.",
+                  "<strong>The Critical Extra Step: Check Blood Glucose:</strong> Once ABCs are stable and help is coming, check their capillary blood glucose.",
+                  "<strong>Understanding the Findings and Interventions:</strong> If low (hypoglycemia), prepare for IV Dextrose or IM Glucagon. If high (hyperglycemia), prepare for IV fluids and an insulin infusion.",
+                ],
+                takeaway:
+                  "For an unconscious diabetic patient, after ensuring their ABCs are stable, the single most important diagnostic test is an immediate blood glucose check.",
+                questions: [
+                  {
+                    q: "What would you do for an unconscious patient who you know has diabetes?",
+                    a: "For an unconscious patient with known diabetes, I would first follow the standard emergency protocol: check for a response, call for help, and assess their airway, breathing, and circulation. Once I've established they are breathing and have a pulse, my next critical action would be to check their capillary blood glucose level. This is because severe hypoglycemia is a common and rapidly reversible cause of unconsciousness in diabetic patients. I would secure IV access and report the blood sugar reading to the responding medical team immediately, preparing to administer IV Dextrose if it is low and prescribed. This rapid assessment and intervention can be life-saving.",
+                  },
+                  {
+                    q: "Why is hypoglycemia a more immediate life-threat to an unconscious patient than hyperglycemia?",
+                    a: null,
+                  },
+                ],
+              },
+            ],
             checklist: [],
           },
           {
             week: 2,
             day: 13,
             title: "Cardiovascular & Neurological Emergencies",
-            objective: "...",
-            detailedContent: [],
+            objective:
+              "To master the recognition and immediate nursing response for life-threatening cardiovascular and neurological emergencies, including Myocardial Infarction (MI), Stroke, and Deep Vein Thrombosis (DVT).",
+            detailedContent: [
+              {
+                title: "Myocardial Infarction (MI) / Chest Pain",
+                source: "Malta interview question.docx, Question 32",
+                coreConcept:
+                  "Acute chest pain is a medical emergency that must be treated as a potential Myocardial Infarction (heart attack) until proven otherwise. An MI occurs when blood flow to a part of the heart muscle is blocked, causing tissue to die. The nurse's role is to rapidly assess the patient, initiate immediate interventions to preserve heart muscle, and alleviate pain.",
+                keyAreas: [
+                  "<strong>Recognition of MI:</strong> Classic symptom is sudden, severe, crushing chest pain, which may radiate to the left arm, jaw, or back. Associated signs include shortness of breath, sweating, and nausea.",
+                  "<strong>Immediate Nursing Interventions (MONA):</strong> Assess and call for help, position the patient upright, administer Oxygen, obtain a 12-lead ECG, secure IV access, and prepare medications like Aspirin, Nitrates, and Morphine as prescribed.",
+                ],
+                takeaway:
+                  "For a patient with acute chest pain, your immediate priorities are to get an ECG, administer oxygen, and prepare for critical medications.",
+                questions: [
+                  {
+                    q: "Describe the steps in providing care for a patient presenting with acute chest pain.",
+                    a: "If a patient complains of acute chest pain, my first action is to treat it as a cardiac emergency. I would immediately call for help, sit the patient up to ease their breathing, and administer oxygen. My absolute priority would be to get a 12-lead ECG within 10 minutes, as this is vital for diagnosis. While doing this, I would also secure IV access and prepare to administer medications like aspirin, GTN, and morphine as prescribed by the medical team. Continuous monitoring of their vital signs and pain score is essential throughout.",
+                  },
+                  {
+                    q: "What is the primary purpose of administering aspirin to a patient having a suspected heart attack?",
+                    a: null,
+                  },
+                ],
+              },
+              {
+                title: "Stroke",
+                source:
+                  "exam GOVT.pdf, Page 5 & Malta interview question.docx, Question 36",
+                coreConcept:
+                  "A stroke is a medical emergency that occurs when the blood supply to part of the brain is interrupted or reduced, preventing brain tissue from getting oxygen and nutrients. Rapid recognition using the F.A.S.T. assessment and immediate medical attention are crucial to minimize brain damage.",
+                keyAreas: [
+                  "<strong>Recognition of Stroke (F.A.S.T.):</strong> Face (drooping), Arms (weakness), Speech (slurred), Time (to call for help immediately).",
+                  "<strong>Immediate Nursing Interventions:</strong> Activate the stroke team, ensure ABCs are stable, check vital signs and blood glucose, keep the patient NPO (nil by mouth), and prepare for an urgent non-contrast CT scan of the head.",
+                ],
+                takeaway:
+                  "With a stroke, 'Time is Brain.' The nurse's role is to recognize the signs using F.A.S.T. and act immediately to get the patient to definitive diagnosis and treatment.",
+                questions: [
+                  {
+                    q: "How would you assess a patient you suspect is having a stroke?",
+                    a: "My immediate priority is to recognize this as a potential stroke and act with urgency. I would use the F.A.S.T. assessment: check their Face for a droop, their Arms for weakness, and their Speech for slurring. Because this is a time-critical emergency, I would immediately call for help and activate the stroke team. While waiting, I would perform a rapid ABC assessment, check their vital signs, and get a blood glucose reading. I would also ensure they are kept nil by mouth to prevent aspiration and prepare them for an urgent CT scan of their head.",
+                  },
+                  {
+                    q: "A patient suddenly develops a facial droop and slurred speech. What is your immediate priority?",
+                    a: null,
+                  },
+                ],
+              },
+              {
+                title: "Deep Vein Thrombosis (DVT)",
+                source: "exam GOVT.pdf, Pages 5-6",
+                coreConcept:
+                  "A DVT is a blood clot that forms in a deep vein, most commonly in the leg. While it is often a complication of immobility that nurses work to prevent, you must also be able to recognize the signs of an established DVT and understand its management.",
+                keyAreas: [
+                  "<strong>Early Warning Signs:</strong> Unilateral (one-sided) pain, swelling, warmth, and redness in the leg, often in the calf.",
+                  "<strong>Nursing Management:</strong> Bed rest and elevation of the limb, safe administration of prescribed anticoagulants, pain management, and monitoring for the most serious complication: a Pulmonary Embolism (PE).",
+                ],
+                takeaway:
+                  "While prevention is key, the nurse must be able to recognize the signs of a DVT and manage the patient's care to prevent the life-threatening complication of a pulmonary embolism.",
+                questions: [
+                  {
+                    q: "What are the classic signs and symptoms of a DVT?",
+                    a: null,
+                  },
+                  {
+                    q: "What is the most serious complication of a DVT, and what signs would you watch for?",
+                    a: "The classic signs of a DVT are unilateral leg swelling, pain, warmth, and redness, often starting in the calf. The most serious complication is a Pulmonary Embolism, which is a medical emergency. I would monitor the patient closely for any sudden onset of shortness of breath, sharp chest pain, a rapid heart rate, or coughing up blood. If I observed any of these signs, I would immediately call for help and initiate an emergency response.",
+                  },
+                ],
+              },
+            ],
             checklist: [],
           },
           {
             week: 2,
             day: 14,
-            title: "Weekly Review",
-            objective: "...",
-            detailedContent: [],
+            title: "Weekly Review & Scenario Practice",
+            objective:
+              "To apply your clinical knowledge from Week 2 to common, high-pressure nursing scenarios. This session focuses on demonstrating critical thinking, prioritization, and clear communication.",
+            detailedContent: [
+              {
+                title: "Scenario - The Patient Fall",
+                source: "Malta interview question.docx, Recall Questions",
+                coreConcept:
+                  "When a patient falls, the nurse's immediate priorities are to ensure the safety of the patient and themselves, perform a systematic assessment for injury before moving the patient, and then to escalate and document the event appropriately.",
+                keyAreas: [
+                  "<strong>Immediate Response:</strong> Check for danger, instruct the patient not to move, and call for help immediately.",
+                  "<strong>Primary Assessment (On the Floor):</strong> Check responsiveness (AVPU/GCS), assess ABCs, and look for obvious injuries like major bleeding or deformities.",
+                  "<strong>Subsequent Actions:</strong> Safely mobilize the patient with assistance, perform a full set of vital signs and neurological observations, escalate to the senior nurse and medical team, and complete an incident report.",
+                ],
+                takeaway:
+                  "In a fall scenario, your ability to stay calm, assess methodically before acting, and communicate clearly is being tested.",
+                questions: [
+                  {
+                    q: "You walk into a room and find your patient on the floor. Walk me through your immediate actions.",
+                    a: "My first action would be to ensure the scene is safe and immediately call for help. I would approach the patient and instruct them not to move. I would then perform a rapid primary assessment, checking their responsiveness and their ABCs. I would quickly check for any signs of major injury, such as bleeding or an obvious limb deformity, or any indication they hit their head. If no serious injury is apparent and the patient is stable, I would get help from a colleague to assist the patient back to bed safely. Once they are comfortable, I would perform a full set of vital signs and neurological observations and immediately report my findings to the doctor and the nurse in charge. Finally, I would complete an incident report and document the entire event in the patient's notes.",
+                  },
+                ],
+              },
+              {
+                title: "Scenario - The Aggressive or Confused Patient",
+                source: "Malta interview question.docx, Recall Questions",
+                coreConcept:
+                  "Managing a confused or aggressive patient is a challenge that prioritizes the safety of everyone involved—the patient, yourself, and others. The approach is to de-escalate the situation verbally while simultaneously assessing for a reversible underlying cause.",
+                keyAreas: [
+                  "<strong>Personal Safety:</strong> Never turn your back, maintain a safe distance, ensure a clear exit, and call for help early.",
+                  "<strong>De-escalation Techniques:</strong> Use a calm, quiet voice and open body language. Acknowledge the patient's feelings.",
+                  "<strong>Assess for Underlying Causes:</strong> Think about and check for reversible causes of delirium, such as Infection, Hypoxia, Pain, Dehydration, or Medication side effects.",
+                ],
+                takeaway:
+                  "Your response should demonstrate a 'safety first' approach, followed by calm de-escalation and critical thinking to find and treat the cause.",
+                questions: [
+                  {
+                    q: "How would you manage a patient who is suddenly confused and becoming aggressive?",
+                    a: "My immediate priority would be to ensure the safety of the patient and myself. I would maintain a safe distance, use a calm and reassuring voice, and immediately call for help from a colleague. I would not attempt to manage the situation alone. While trying to verbally de-escalate, I would be performing a rapid assessment for any obvious causes of their confusion. I would check their vital signs, particularly their oxygen saturation, and get a blood glucose reading. My goal is to calm the situation and identify and treat any underlying medical cause, such as hypoxia, infection, or pain, which is often the trigger for acute confusion.",
+                  },
+                ],
+              },
+              {
+                title: "Scenario - Sudden Shortness of Breath (SOB)",
+                source: "Malta interview question.docx, Question 73",
+                coreConcept:
+                  "Sudden shortness of breath is a medical emergency. The nurse's role is to recognize the severity of the situation and initiate immediate, life-saving interventions while calling for urgent medical assistance.",
+                keyAreas: [
+                  "<strong>Rapid Assessment:</strong> Quickly assess the patient's Breathing (rate, effort, sats), Airway, and Circulation.",
+                  "<strong>Immediate Nursing Interventions:</strong> Call for help, sit the patient upright, administer high-flow oxygen, and provide calm reassurance while waiting for the medical team.",
+                ],
+                takeaway:
+                  "For a patient with acute SOB, your response must be fast and systematic: Call for help, sit them up, and give them oxygen.",
+                questions: [
+                  {
+                    q: "You enter a room and your patient is sitting on the edge of the bed, struggling to breathe. What are your immediate nursing actions?",
+                    a: "My immediate actions would be to hit the emergency call bell and shout for help. I would immediately sit the patient fully upright to help ease their breathing. While help is on the way, I would administer high-flow oxygen as per protocol and perform a rapid assessment of their respiratory rate, effort, and oxygen saturation. I would stay with the patient, offering calm reassurance to reduce their anxiety, which can worsen breathlessness. My priority is to support their breathing and get urgent medical assistance to the bedside as quickly as possible.",
+                  },
+                ],
+              },
+            ],
             checklist: [
               {
                 id: "day14-task1",
-                text: "Focus on scenario questions. Talk through your response to a patient fall, an aggressive patient, and a patient with sudden shortness of breath.",
+                text: "Verbally answer the 'Patient Fall' scenario.",
+              },
+              {
+                id: "day14-task2",
+                text: "Verbally answer the 'Aggressive Patient' scenario.",
+              },
+              {
+                id: "day14-task3",
+                text: "Verbally answer the 'Sudden Shortness of Breath' scenario.",
               },
             ],
           },
@@ -900,39 +1342,171 @@
           {
             week: 3,
             day: 15,
-            title: "Practice with SAFE/SBAR Framework (Day 1)",
-            objective: "...",
-            detailedContent: [],
+            title: "Scenario Application & Professional Reasoning",
+            objective:
+              "To practice applying your clinical knowledge to real interview questions using a structured communication framework. This will help you sound confident, competent, and safe.",
+            detailedContent: [
+              {
+                title: "Mastering the SAFE Framework",
+                coreConcept:
+                  "Knowing the answer is only half the battle. The interviewers are assessing your thought process and how you prioritize. The SAFE framework is a simple, powerful tool to structure your answers for any scenario-based question.",
+                keyAreas: [
+                  "<strong>S - Safety:</strong> What is the immediate safety risk? State it first.",
+                  "<strong>A - Assess:</strong> What are the first things you would assess? (Think ABCs, vital signs, GCS, targeted assessment).",
+                  "<strong>F - First Actions:</strong> What are the first 2-3 critical interventions you would perform? (Think call for help, position the patient, give oxygen).",
+                  "<strong>E - Explain Rationale:</strong> Briefly explain why you are taking these actions. This demonstrates your critical thinking.",
+                ],
+              },
+              {
+                title: "Practice with High-Priority Scenarios",
+                coreConcept:
+                  "Let's apply the SAFE framework to some of the most important recall questions. Your task today is to read the breakdown, then practice answering the questions out loud yourself.",
+                questions: [
+                  {
+                    q: "How do you administer an IV bolus medication to a patient who is already receiving normal saline? Describe the process step-by-step.",
+                    a: "Administering an IV bolus is a safety-critical procedure. My process would be as follows: First, I would perform my three checks with the medication against the prescription chart, confirming the right patient, drug, dose, route, and time.\nAt the bedside, I would confirm the patient's identity with two identifiers. I would then pause the normal saline infusion, perform hand hygiene, and vigorously scrub the access port closest to the patient with an alcohol swab for 15 seconds to prevent infection.\nI would then flush the line with normal saline to confirm its patency. After that, I would administer the medication at the prescribed rate. Finally, I would flush the line again with normal saline to ensure the patient receives the full dose and to clear the line. After restarting the infusion, I would document the administration immediately.",
+                  },
+                  {
+                    q: "What would you do for an unconscious patient who you know has diabetes?",
+                    a: "My immediate priority for any unconscious patient, even a known diabetic, is to ensure their basic life support. I would immediately check for a response and shout for help, activating the emergency team.\nI would then perform a rapid ABC assessment: open their Airway, check for normal Breathing, and check for Circulation.\nOnce I've established they are breathing and help is on the way, my next critical action would be to check their capillary blood glucose level, as severe hypoglycemia is a likely and reversible cause. I would report my findings to the responding team and prepare to secure IV access to administer IV Dextrose if it is prescribed.",
+                  },
+                  {
+                    q: "What are the signs of IV catheter site inflammation, and what are your nursing actions if you detect it?",
+                    a: "The classic signs of IV site inflammation, or phlebitis, are pain, redness, swelling, and warmth at the site. The vein may also feel hard or cord-like.\nIf I detected these signs, my immediate nursing action would be to stop the infusion to prevent further harm. I would then inform the patient, remove the cannula, and apply a warm compress as per policy to ease their discomfort.\nAfter that, I would elevate the limb, re-site the cannula in a different location if IV access is still needed, and document my assessment findings and actions in the patient's notes, including the phlebitis score. This ensures the patient is safe and the issue is clearly communicated.",
+                  },
+                ],
+              },
+            ],
             checklist: [
               {
                 id: "day15-task1",
-                text: "Take 3-4 real recall questions from your list. Verbally answer each one using a clear structure (Safety, Assessment, First Actions, Rationale).",
+                text: "Read through the SAFE framework examples carefully.",
+              },
+              {
+                id: "day15-task2",
+                text: "Select 3-4 other scenario questions from your master list.",
+              },
+              {
+                id: "day15-task3",
+                text: "Practice answering them out loud, using the SAFE framework.",
+              },
+              {
+                id: "day15-task4",
+                text: "Record yourself on your phone if you can. Listening back is a powerful way to improve.",
               },
             ],
           },
           {
             week: 3,
             day: 16,
-            title: "Practice with SAFE/SBAR Framework (Day 2)",
-            objective: "...",
-            detailedContent: [],
+            title: "Scenario Application & Professional Reasoning",
+            objective:
+              "To continue practicing the application of your clinical knowledge to common scenarios, using a structured communication framework to demonstrate critical thinking and prioritization.",
+            detailedContent: [
+              {
+                title: "Continuing with the SAFE Framework",
+                coreConcept:
+                  "Today, we will continue to use the SAFE framework. Remember, this tool is designed to help you structure your answers logically, ensuring you always prioritize the most critical actions.",
+                keyAreas: [
+                  "<strong>S - Safety:</strong> What is the immediate safety risk?",
+                  "<strong>A - Assess:</strong> What are your initial assessments?",
+                  "<strong>F - First Actions:</strong> What are your first 2-3 interventions?",
+                  "<strong>E - Explain Rationale:</strong> Why are you taking these actions?",
+                ],
+              },
+              {
+                title: "Practice with Core Nursing Scenarios",
+                coreConcept:
+                  "Let's apply the SAFE framework to another set of important scenarios from your master list.",
+                questions: [
+                  {
+                    q: "You walk into a patient's room and find them on the floor next to their bed. Walk me through your immediate actions.",
+                    a: "My first action would be to ensure the scene is safe and immediately call for help. I would approach the patient, reassure them, and instruct them not to move.\nI would then perform a rapid primary assessment, checking their responsiveness and their ABCs. I would quickly check for any signs of major injury, such as bleeding, an obvious limb deformity, or any indication they hit their head.\nIf no serious injury is apparent and the patient is stable, I would get help from a colleague to assist the patient back to bed safely using appropriate moving and handling techniques. Once they are comfortable, I would perform a full set of vital signs and neurological observations. I would then immediately report my findings to the doctor and the nurse in charge, and finally, I would complete an incident report and document the entire event in the patient's notes.",
+                  },
+                  {
+                    q: "What are your immediate assessment priorities for a patient who has just returned to the ward from surgery?",
+                    a: "My immediate priority for a fresh post-operative patient is to perform a systematic ABCDE assessment to ensure they are stable.\nI would first ensure their Airway is patent and they are maintaining it. Then I'd assess their Breathing by checking their respiratory rate, effort, and oxygen saturation. For Circulation, I would check their blood pressure and heart rate against their pre-op baseline. For Disability, I'd assess their level of consciousness using the GCS or AVPU scale. Finally, for Exposure, I would check their surgical dressing for any signs of fresh bleeding and ensure all drains are functioning correctly.\nThis structured approach ensures I can rapidly identify and respond to any life-threatening complications like airway obstruction or hemorrhage.",
+                  },
+                  {
+                    q: "How would you manage a patient who is suddenly confused and becoming agitated?",
+                    a: "My immediate priority would be to ensure the safety of the patient and myself. I would maintain a safe distance, use a calm and reassuring voice, and immediately call for help from a colleague. I would not attempt to manage the situation alone.\nWhile trying to verbally de-escalate, I would be performing a rapid assessment for any obvious causes of their confusion. I would check their vital signs, particularly their oxygen saturation, and get a blood glucose reading.\nMy goal is to calm the situation while simultaneously trying to identify and treat any underlying medical cause, such as hypoxia, infection, or pain, which is often the trigger for acute confusion or delirium.",
+                  },
+                ],
+              },
+            ],
             checklist: [
               {
                 id: "day16-task1",
-                text: "Take another 3-4 real recall questions. Focus on timing and clarity.",
+                text: "Read through these new examples carefully.",
+              },
+              {
+                id: "day16-task2",
+                text: "Select 2-3 different scenario questions from your master list (e.g., a patient with chest pain, a patient with a DVT, a patient refusing medication).",
+              },
+              {
+                id: "day16-task3",
+                text: "Practice answering them out loud, using the SAFE framework.",
+              },
+              {
+                id: "day16-task4",
+                text: "Focus on making your answers sound natural and confident, not like you are just reciting a list.",
               },
             ],
           },
           {
             week: 3,
             day: 17,
-            title: "Practice with SAFE/SBAR Framework (Day 3)",
-            objective: "...",
-            detailedContent: [],
+            title: "Scenario Application & Professional Reasoning",
+            objective:
+              "To solidify your ability to structure clear, safe, and professional answers to complex clinical and ethical scenarios using a logical framework.",
+            detailedContent: [
+              {
+                title: "Reinforcing the SAFE Framework",
+                coreConcept:
+                  "We will continue to use the SAFE framework as our primary tool for structuring answers. This method ensures you consistently demonstrate a focus on safety and critical thinking.",
+                keyAreas: [
+                  "<strong>S - Safety:</strong> What is the immediate safety risk?",
+                  "<strong>A - Assess:</strong> What are your initial assessments?",
+                  "<strong>F - First Actions:</strong> What are your first 2-3 critical interventions?",
+                  "<strong>E - Explain Rationale:</strong> Why are you taking these actions?",
+                ],
+              },
+              {
+                title: "Practice with Critical Scenarios",
+                coreConcept:
+                  "Let's apply the SAFE framework to the scenarios you were tasked with practicing at the end of Day 16.",
+                questions: [
+                  {
+                    q: "You enter a room, and your patient is complaining of sudden, severe chest pain. What are your immediate priorities?",
+                    a: "My immediate priority is to treat this as a cardiac emergency. I would first hit the emergency call bell and shout for help.\nI would then perform a rapid assessment, checking the patient's ABCs while positioning them in a semi-Fowler's position to ease their breathing and reduce cardiac workload.\nMy first actions would be to administer high-flow oxygen as per protocol and immediately obtain a 12-lead ECG. While waiting for the medical team, I would secure IV access and prepare to administer medications like aspirin, GTN, and morphine as prescribed. Continuous monitoring of their vital signs and pain score is essential throughout this process.",
+                  },
+                  {
+                    q: "You are assessing a post-operative patient who complains of a painful, swollen, and red calf. What do you suspect, and what would you do?",
+                    a: "Based on the unilateral pain, swelling, and redness, I would have a high suspicion of a Deep Vein Thrombosis.\nMy immediate action would be to instruct the patient to remain on bed rest and to elevate the affected leg on pillows. This is a critical safety measure to reduce the risk of the clot dislodging.\nI would then perform a full set of vital signs, paying close attention to their respiratory rate and oxygen saturation to assess for any signs of a potential Pulmonary Embolism. I would immediately report my assessment findings and my suspicion of a DVT to the doctor and the nurse in charge. I would not rub or massage the leg and would prepare the patient for further investigation, such as an ultrasound scan.",
+                  },
+                  {
+                    q: "You are about to administer a prescribed antibiotic to a patient who is alert and oriented. They tell you, 'I don't want to take that.' What do you do?",
+                    a: "My first action would be to respect the patient's decision and not administer the medication. Patient autonomy is a fundamental ethical principle.\nI would then sit with the patient and try to assess their reasons for refusal. I would ask open-ended questions like, 'Can you tell me more about why you don't want to take this medication?' to understand their concerns. It could be a misunderstanding about what the drug is for, or they may be experiencing a side effect.\nI would then provide further education to address their specific concerns and explain the risks of not taking the antibiotic. If they still refuse, I would respect their decision, document the refusal and the conversation in their notes, and immediately inform the prescribing doctor so that an alternative treatment plan can be considered.",
+                  },
+                ],
+              },
+            ],
             checklist: [
               {
                 id: "day17-task1",
-                text: "Take a final 3-4 real recall questions. Explain your rationale in detail for each step.",
+                text: "Read through these new examples carefully.",
+              },
+              {
+                id: "day17-task2",
+                text: "Select 2-3 different scenario questions from your master list that involve a professional or ethical dilemma.",
+              },
+              {
+                id: "day17-task3",
+                text: "Practice answering them out loud, using the SAFE framework.",
+              },
+              {
+                id: "day17-task4",
+                text: "Focus on integrating the principles of patient safety and ethics into every answer.",
               },
             ],
           },
@@ -940,24 +1514,144 @@
             week: 3,
             day: 18,
             title: "Ethics & Communication in Practice",
-            objective: "...",
-            detailedContent: [],
+            objective:
+              "To master the application of ethical principles and therapeutic communication in challenging, real-world nursing scenarios.",
+            detailedContent: [
+              {
+                title: "Ensuring Informed Consent",
+                source:
+                  "exam GOVT.pdf, Page 3 & Malta interview question.docx, Question 86",
+                coreConcept:
+                  "Informed consent is a fundamental ethical and legal principle. It is not just about getting a signature on a form; it is the process of ensuring a patient has a clear understanding of a procedure, its risks, benefits, and alternatives, so they can make an autonomous decision about their own care.",
+                keyAreas: [
+                  "<strong>The Nurse's Role:</strong> Your role is to advocate for the patient, confirm they understand the information, and ensure the consent is given voluntarily.",
+                  "<strong>The Elements of Valid Consent:</strong> Must be Informed, Voluntary, and the patient must have the Capacity to decide.",
+                  "<strong>What to Do if You Have Concerns:</strong> If you believe a patient does not understand, it is your professional duty to pause the process and escalate your concerns to the senior nurse and the doctor.",
+                ],
+                takeaway:
+                  "Your primary role in the consent process is to be the patient's advocate, ensuring their decision is truly informed and voluntary.",
+                questions: [
+                  {
+                    q: "You are preparing a patient for a procedure, and they say to you, 'The doctor explained it, but I don't really understand what's happening.' What do you do?",
+                    a: "If a patient expressed that they didn't understand a procedure they had consented to, my immediate action would be to pause and not proceed. I would tell the patient that it's very important they feel comfortable and informed. I would sit with them and ask what parts are unclear, and I would explain the nursing aspects of the care. However, I would not re-explain the medical procedure itself, as that is the doctor's responsibility. I would immediately contact the doctor and inform them that the patient requires further explanation before we can proceed, as we do not have valid informed consent. This ensures I am acting as the patient's advocate and upholding their right to autonomy.",
+                  },
+                  {
+                    q: "How do you ensure patient autonomy during your nursing practice?",
+                    a: null,
+                  },
+                ],
+              },
+              {
+                title: "Handling Ethical Dilemmas",
+                source: "Malta interview question.docx, Question 87",
+                coreConcept:
+                  "An ethical dilemma occurs when there is a conflict between two or more ethical principles (e.g., a conflict between patient autonomy and beneficence). There is often no 'easy' answer, and the nurse must use a structured approach to navigate the situation.",
+                keyAreas: [
+                  "<strong>The Structured Approach:</strong> Assess the facts, Identify the conflicting principles, Consult with the team (senior nurse, doctors, ethics committee), and then Act and Evaluate.",
+                  "<strong>Common Scenarios:</strong> A patient refusing life-saving treatment, a family demanding futile treatment, or a patient asking you to keep a secret from their family.",
+                ],
+                takeaway:
+                  "In an ethical dilemma, your role is not to solve it alone, but to recognize it, use a structured thought process, and involve the wider multidisciplinary team.",
+                questions: [
+                  {
+                    q: "Describe your approach to handling an ethical dilemma in your practice.",
+                    a: null,
+                  },
+                  {
+                    q: "A patient's family insists that you do not tell the patient their cancer diagnosis. The patient is alert and oriented and is asking you what is wrong with them. What would you do?",
+                    a: "This is a complex ethical dilemma where the family's wishes are in direct conflict with the patient's right to autonomy and to be informed about their own health. My first action would be to listen to the family's concerns to understand why they feel this way. However, my primary duty is to the patient. I would not lie to the patient. I would explain to the family that I have a professional and ethical obligation to be truthful with my patient. I would then escalate the situation immediately to the senior nurse and the doctor. This requires a team approach, and we would likely arrange a family meeting, led by the doctor, to discuss the importance of honesty with the patient and to find a way to support both the patient and the family through the process.",
+                  },
+                ],
+              },
+              {
+                title:
+                  "Communicating with Confused or Anxious Patients & Families",
+                source: "Malta interview question.docx, Questions 76, 97",
+                coreConcept:
+                  "Therapeutic communication is a core nursing skill. For confused or anxious individuals, your approach must be adapted to be calming, clear, and reassuring.",
+                keyAreas: [
+                  "<strong>Communicating with the Confused Patient:</strong> Prioritize safety, use a calm and simple approach, do not argue with their reality but gently reorient them, and assess for underlying causes of confusion (delirium).",
+                  "<strong>Communicating with the Anxious Patient or Family:</strong> Use active listening, provide clear and simple information, show empathy by acknowledging their feelings, and involve them in care when appropriate.",
+                ],
+                takeaway:
+                  "For both confused and anxious patients, the key is to remain calm, listen actively, and adapt your communication style to meet their needs, always with the goal of reducing their distress.",
+                questions: [
+                  {
+                    q: "How would you approach communicating with a patient who has dementia and is frightened?",
+                    a: null,
+                  },
+                  {
+                    q: "A patient's family member is very anxious and is asking you lots of questions. How do you handle this situation?",
+                    a: "If a family member is anxious, my first step is to take them to a private, quiet space to talk. I would use active listening to allow them to express all their concerns without interruption, acknowledging how difficult the situation must be for them. I would then provide clear and honest information about their loved one's condition, within the limits of patient confidentiality. I would answer any questions I can and explain what the next steps in the care plan are. By being calm, empathetic, and informative, I can help to reduce their anxiety and build a trusting, therapeutic relationship.",
+                  },
+                ],
+              },
+            ],
             checklist: [],
           },
           {
             week: 3,
             day: 19,
             title: "Mock Interview #1 (Self-Led)",
-            objective: "...",
-            detailedContent: [],
+            objective:
+              "To simulate the real interview experience, practice answering a range of questions under timed conditions, and critically evaluate your own performance to identify areas for improvement.",
+            detailedContent: [
+              {
+                title: "Setting Up Your Mock Interview",
+                coreConcept:
+                  "The goal is to make this feel as real as possible. A realistic simulation will help you manage nerves and practice your timing and delivery.",
+                keyAreas: [
+                  "<strong>Create the Right Environment:</strong> Find a quiet space, sit at a desk, and dress professionally to get into the right mindset.",
+                  "<strong>Prepare Your Tools:</strong> Use your phone or computer to record the session, have a timer ready (aim for 1-2 minutes per answer), and have your question list prepared.",
+                ],
+              },
+              {
+                title: "The Mock Interview Questions",
+                coreConcept:
+                  "Read each question, take a moment to think, and then answer it out loud to your recording device as if you were speaking to the panel. Move from one question to the next.",
+                keyAreas: [
+                  "<strong>Opener:</strong> 'Can you tell me a little bit about yourself and why you want to work as a nurse in Malta?'",
+                  "<strong>Recent Recall:</strong> 'Walk me through the step-by-step process of administering an IV bolus medication...'",
+                  "<strong>Scenario:</strong> 'You walk into a room and find your patient on the floor. What are your immediate actions?'",
+                  "<strong>Core Knowledge:</strong> 'What are the five rights of medication administration?'",
+                  "<strong>Recent Recall:</strong> 'What are the signs of IV catheter site inflammation...?'",
+                  "<strong>Procedure:</strong> 'How do you confirm that a newly inserted nasogastric tube is correctly placed...?'",
+                  "<strong>Emergency:</strong> 'You suspect your patient is developing sepsis. What are your immediate nursing priorities?'",
+                  "<strong>Ethics:</strong> 'How do you ensure you obtain informed consent...?'",
+                  "<strong>Professional Practice:</strong> 'Why is accurate documentation so important in nursing?'",
+                  "<strong>Closer:</strong> 'Do you have any questions for us?'",
+                ],
+              },
+              {
+                title: "How to Critique Your Performance",
+                coreConcept:
+                  "This is the most important part of today's study. Watching your recording and critically (but fairly) assessing your performance is how you will improve.",
+                keyAreas: [
+                  "<strong>Structure and Clarity:</strong> Did I use a logical structure (like SAFE)? Was my answer clear and easy to follow?",
+                  "<strong>Content and Safety:</strong> Did I prioritize patient safety? Did I include the most critical steps for each procedure?",
+                  "<strong>Timing and Delivery:</strong> Was my answer concise (under 2 minutes)? Did I use professional language?",
+                  "<strong>Identify Your Weak Spots:</strong> After your review, pick the 2-3 questions you felt least confident about. These will be your focus for your refinement session on Day 20.",
+                ],
+              },
+            ],
+            takeaway:
+              "The goal of this mock interview is not to be perfect. The goal is to identify your strengths and weaknesses in a safe environment so you can polish your performance before the real interview. Be honest with yourself in your critique.",
             checklist: [
               {
                 id: "day19-task1",
-                text: "Select 10 questions from your full list. Record yourself answering them on your phone.",
+                text: "Set up a quiet, professional environment for your mock interview.",
               },
               {
                 id: "day19-task2",
-                text: "Review the recording and critique your clarity and structure.",
+                text: "Record yourself answering the full set of 10 mock interview questions.",
+              },
+              {
+                id: "day19-task3",
+                text: "Watch the recording and critique your performance based on the provided criteria.",
+              },
+              {
+                id: "day19-task4",
+                text: "Identify 2-3 specific topics or questions to focus on for Day 20's review.",
               },
             ],
           },
@@ -965,8 +1659,32 @@
             week: 3,
             day: 20,
             title: "Refine & Review",
-            objective: "...",
-            detailedContent: [],
+            objective:
+              "To critically analyze your mock interview performance, identify specific areas for improvement, and strengthen your answers through focused re-study and practice.",
+            detailedContent: [
+              {
+                title: "Analyze Your Mock Interview Recording",
+                coreConcept:
+                  "The most effective learning comes from self-assessment. Watching your recording allows you to see what the interviewers will see and hear what they will hear. Be objective and constructive.",
+                keyAreas: [
+                  "<strong>Watch Your Recording:</strong> Watch the entire recording from Day 19 from start to finish without stopping. Get an overall impression of your performance.",
+                  "<strong>Use the Critique Checklist:</strong> Watch it a second time, but this time, pause after each question and use the checklist from Day 19 to score yourself honestly on Structure, Clarity, Content, Safety, Timing, and Delivery.",
+                  "<strong>Identify Your 2-3 Weakest Questions:</strong> Based on your critique, select the 2 or 3 questions where your answers were the weakest. Write these questions down.",
+                ],
+              },
+              {
+                title: "Deep Dive, Re-formulate, and Re-practice",
+                coreConcept:
+                  "This is where you fix the problems. By going back to the source material and rebuilding your answers, you will create stronger, more confident responses.",
+                keyAreas: [
+                  "<strong>Go Back to the Source:</strong> For each of your identified weak-spot questions, go back to the relevant study day and re-read the material.",
+                  "<strong>Re-write Your Answer:</strong> On a piece of paper, write out a new, improved answer for each weak-spot question using the SAFE framework and bullet points for procedures.",
+                  "<strong>Practice Out Loud (The Repetition Method):</strong> Read your new answer, then practice saying it from memory 5-10 times until it becomes fluent and automatic.",
+                ],
+              },
+            ],
+            takeaway:
+              "Today is about turning weaknesses into strengths. A successful interview isn't about knowing everything perfectly the first time; it's about identifying gaps and working specifically to close them. By the end of today, your weakest answers should be among your strongest.",
             checklist: [
               {
                 id: "day20-task1",
@@ -982,13 +1700,63 @@
           {
             week: 4,
             day: 21,
-            title: "Mock Interview #2 (With a Peer)",
-            objective: "...",
-            detailedContent: [],
+            title: "Mock Interview #2 (Peer-Led)",
+            objective:
+              "To simulate the pressure of a real interview by practicing with another person and to receive valuable external feedback on your performance, clarity, and professionalism.",
+            detailedContent: [
+              {
+                title: "The Importance of a Peer-Led Mock Interview",
+                coreConcept:
+                  "Practicing on your own is essential, but practicing with another person is the closest you can get to the real thing. It introduces an element of unpredictability and forces you to think on your feet. The feedback you receive from someone else is invaluable, as they will notice things about your delivery and clarity that you might miss.",
+                keyAreas: [
+                  "<strong>Find a Partner:</strong> Ask a nursing colleague, a fellow student, or even a family member or friend who can be objective.",
+                  "<strong>Prepare Your Partner (The 'Interviewer'):</strong> Give them the list of questions and ask them to act as a professional interviewer, taking notes on your answers.",
+                  "<strong>Set Up the Environment:</strong> Treat this exactly like the real interview. Find a quiet space, dress professionally, and set up your computer or phone for a video call if needed.",
+                ],
+              },
+              {
+                title: "The Mock Interview Question Set",
+                coreConcept:
+                  "Answer each question as completely and professionally as you can. Use the SAFE framework for scenario questions. Try not to use any notes.",
+                keyAreas: [
+                  "<strong>Opener:</strong> 'Can you tell me about your nursing background and why you are interested in working in Malta?'",
+                  "<strong>Procedure:</strong> 'Walk me through the steps of inserting a urinary catheter, focusing on how you would prevent infection.'",
+                  "<strong>Emergency:</strong> 'You find a patient who has fallen. What are your immediate actions?'",
+                  "<strong>Medication Safety:</strong> 'What are the five rights of medication administration?'",
+                  "<strong>Scenario:</strong> 'How would you manage a patient who is suddenly confused and agitated?'",
+                  "<strong>Procedure:</strong> 'What are the key safety checks you must perform before starting a blood transfusion?'",
+                  "<strong>Emergency:</strong> 'Your patient complains of sudden, severe chest pain. What are your priorities?'",
+                  "<strong>Ethics:</strong> 'A patient's family asks you not to tell the patient their diagnosis... How do you handle this?'",
+                  "<strong>Core Knowledge:</strong> 'What are the signs of IV phlebitis, and what do you do if you detect it?'",
+                  "<strong>Closer:</strong> 'Do you have any questions for us?'",
+                ],
+              },
+              {
+                title: "Giving and Receiving Feedback",
+                coreConcept:
+                  "The goal of this session is to get honest, constructive feedback. After the mock interview is complete, sit down with your partner and go through their notes.",
+                keyAreas: [
+                  "<strong>Clarity and Confidence:</strong> Did I sound confident? Was my answer easy to understand?",
+                  "<strong>Structure:</strong> For scenario questions, did my answer follow a logical sequence? Did I state my priorities?",
+                  "<strong>Patient Safety:</strong> Did it sound like patient safety was my top priority? Did I mention key safety steps?",
+                  "<strong>Rationale:</strong> Did I just list actions, or did I explain the 'why' behind my actions?",
+                ],
+              },
+            ],
+            takeaway:
+              "Listen to the feedback with an open mind. The goal is not to defend your answers, but to understand how they are perceived by someone else. Thank your partner for their time and their honesty. Use their feedback to make your final preparations in the coming days.",
             checklist: [
               {
                 id: "day21-task1",
-                text: "Ask a friend or colleague to quiz you. The pressure of a live audience is invaluable practice.",
+                text: "Find a partner to conduct a mock interview with you.",
+              },
+              {
+                id: "day21-task2",
+                text: "Complete the full mock interview, answering all questions to the best of your ability.",
+              },
+              {
+                id: "day21-task3",
+                text: "Receive and take notes on the feedback provided by your partner.",
               },
             ],
           },
@@ -996,12 +1764,55 @@
             week: 4,
             day: 22,
             title: "Final Content Polish",
-            objective: "...",
-            detailedContent: [],
+            objective:
+              "To identify and strengthen your weakest areas based on feedback from your mock interviews, and to build complete fluency in explaining high-stakes, safety-critical procedures.",
+            detailedContent: [
+              {
+                title: "Identifying Your Weak Spots",
+                coreConcept:
+                  "The feedback from your mock interviews is the most valuable data you have. It tells you exactly where to focus your energy for maximum impact. Today is about strategically addressing those specific areas.",
+                keyAreas: [
+                  "<strong>Review Your Feedback:</strong> Go back to the notes from your mock interviews. Look for patterns in hesitation, clarity, or content.",
+                  "<strong>Select Your 3 'Focus Topics':</strong> Identify the 2-3 topics or questions where you felt least confident. Write these questions down as your priority for today.",
+                ],
+              },
+              {
+                title: "The Deep Dive & Re-Practice",
+                coreConcept:
+                  "Now that you've identified your focus topics, the goal is to rebuild your understanding and your answers from the ground up, making them stronger, clearer, and more confident.",
+                keyAreas: [
+                  "<strong>Go Back to the Source:</strong> For each focus topic, find the original study day guide and re-read the material carefully.",
+                  "<strong>Re-write Your Answer:</strong> On a piece of paper, write out a new, ideal answer for each weak-spot question using the SAFE framework and bullet points for procedures.",
+                  "<strong>Practice Out Loud (The Repetition Method):</strong> Read your new answer, then practice saying it from memory 5-10 times until it becomes fluent and automatic.",
+                ],
+              },
+              {
+                title: "High-Stakes Procedure Fluency",
+                coreConcept:
+                  "Some procedures are so critical to patient safety that you must be able to explain them flawlessly. Today is a good day to do a final, focused review of these.",
+                keyAreas: [
+                  "Administering an IV Bolus (from Day 9)",
+                  "The Full Blood Transfusion Procedure (from Day 9)",
+                  "The Controlled Drug Administration Process (from Day 8 & 4)",
+                  "Your Immediate Response to Sepsis (from Day 11)",
+                  "Initiating a 'Code Blue' (from Day 11)",
+                ],
+              },
+            ],
+            takeaway:
+              "Today is about precision and confidence. By focusing intensely on your specific areas for improvement, you are turning potential weaknesses into strengths. This targeted practice will have the biggest impact on your overall performance.",
             checklist: [
               {
                 id: "day22-task1",
-                text: "Go back one last time to any topic you feel hesitant about. Focus on high-stakes procedures (CDs, Blood Transfusions).",
+                text: "Review all feedback from your mock interviews and identify 2-3 focus topics.",
+              },
+              {
+                id: "day22-task2",
+                text: "Re-write and re-practice your answers for your focus topics until they are fluent.",
+              },
+              {
+                id: "day22-task3",
+                text: "Verbally walk through all the high-stakes procedures listed.",
               },
             ],
           },
@@ -1009,16 +1820,52 @@
             week: 4,
             day: 23,
             title: "Prepare Your 'Bookends'",
-            objective: "...",
-            detailedContent: [],
+            objective:
+              "To craft a confident, professional introduction and prepare thoughtful questions to ask the interviewers, ensuring you make a strong first and last impression.",
+            detailedContent: [
+              {
+                title:
+                  "Crafting Your Professional Introduction ('Tell me about yourself')",
+                coreConcept:
+                  "This is not an invitation to share your life story. It is your first opportunity to present yourself as a competent, motivated professional who is a perfect fit for the role. Your answer should be a concise, 60-90 second summary of your professional self using the Present - Past - Future formula.",
+                keyAreas: [
+                  "<strong>Present:</strong> Who are you right now? (A recent nursing graduate).",
+                  "<strong>Past:</strong> What key experiences brought you here? (Your studies in Poland, your background).",
+                  "<strong>Future:</strong> Why are you here today? (Why you want to be a nurse in Malta).",
+                ],
+                takeaway:
+                  "Your introduction sets the first impression, and your questions set the last. Today is about ensuring both are professional, confident, and memorable.",
+                questions: [
+                  {
+                    q: "Sample Strong Answer (Tailored for you)",
+                    a: "Thank you for the opportunity. My name is [Your Name], and I am a recent and passionate nursing graduate.\nI completed my Bachelor of Science in Nursing in Poland, where I gained a comprehensive understanding of evidence-based nursing practice through both rigorous academic work and diverse clinical placements. Originally from Ghana, this international experience has taught me to be highly adaptable and culturally sensitive in my approach to patient care.\nI am now very eager to begin my professional career, and I am particularly drawn to Malta because of its high standards of healthcare. I am confident that my training has prepared me to be a safe, compassionate, and effective nurse, and I am excited about the opportunity to contribute to your team and continue my professional development here.",
+                  },
+                ],
+              },
+              {
+                title: "Preparing Thoughtful Questions for the Interviewers",
+                coreConcept:
+                  "At the end of the interview, when they ask, 'Do you have any questions for us?', your answer should always be 'Yes.' Asking thoughtful questions demonstrates your engagement, initiative, and genuine interest in the role. It is your final chance to impress them.",
+                keyAreas: [
+                  "<strong>Brainstorm Question Categories:</strong> Think about what is important to you as a new nurse (e.g., The Role & The Team, Orientation & Support, Professional Development).",
+                  "<strong>Prepare 2-3 Specific Questions:</strong> Have a few questions ready that show you are thinking long-term about your career.",
+                  "<strong>Sample Strong Questions:</strong> 'What kind of orientation or preceptorship program do you offer for newly registered nurses?' or 'What opportunities for continuing professional development are available to nurses in this hospital?'",
+                  "<strong>Questions to AVOID:</strong> Avoid asking about salary, vacation time, or benefits in the first interview. Also avoid questions that could be easily answered with a quick search on the hospital's website.",
+                ],
+              },
+            ],
             checklist: [
               {
                 id: "day23-task1",
-                text: "Prepare and practice a confident, concise answer to 'Tell me about yourself.'",
+                text: "Draft and write down your 'Tell me about yourself' answer using the Present-Past-Future formula.",
               },
               {
                 id: "day23-task2",
-                text: "Prepare 2-3 thoughtful questions to ask the interviewers.",
+                text: "Practice saying your introduction out loud until it sounds confident and natural.",
+              },
+              {
+                id: "day23-task3",
+                text: "Write down 2-3 thoughtful questions to ask the interviewers at the end of the interview.",
               },
             ],
           },
@@ -1026,56 +1873,209 @@
             week: 4,
             day: 24,
             title: "Full Dress Rehearsal",
-            objective: "...",
-            detailedContent: [],
+            objective:
+              "To build maximum confidence and reduce interview-day anxiety by conducting a full, realistic simulation of the entire interview process from start to finish.",
+            detailedContent: [
+              {
+                title: "Setting the Stage for Success",
+                coreConcept:
+                  "The goal of a dress rehearsal is to eliminate as many variables as possible so that on the actual day, you can focus solely on your answers, not on your environment or technology.",
+                keyAreas: [
+                  "<strong>Prepare Your Physical Space:</strong> Choose your exact location, ensure it's quiet and clean, check your background, and make sure your face is well-lit from the front.",
+                  "<strong>Prepare Your Technology:</strong> Use the same device, test your internet, check your camera/microphone, and turn off all notifications.",
+                  "<strong>Prepare Yourself:</strong> Wear your exact interview outfit. Have a glass of water, your CV, and your prepared questions on your desk.",
+                ],
+              },
+              {
+                title: "The Final Mock Interview",
+                coreConcept:
+                  "This is your last chance to practice the full flow of the interview. It's not about learning new content, but about delivering what you already know with confidence and professionalism.",
+                keyAreas: [
+                  "<strong>Practice Your 'Bookends':</strong> Start by recording your 'Tell me about yourself' introduction and practice asking one of your prepared questions at the end.",
+                  "<strong>Run a 'Greatest Hits' Mock Interview:</strong> Select 5-7 of the most important questions from your master list and answer them out loud.",
+                  "<strong>Final Self-Critique:</strong> Briefly review your performance. Focus on delivery, timing, and confidence.",
+                ],
+              },
+            ],
+            takeaway:
+              "Today is about building 'muscle memory' for the interview process. By simulating the environment and practicing the flow, you are training your brain to be calm and focused when it really counts. After today, your hard preparation is complete. Trust in the work you have done.",
             checklist: [
               {
                 id: "day24-task1",
-                text: "Set up your interview space exactly as it will be. Wear your interview clothes.",
+                text: "Set up your interview space exactly as it will be for the real interview.",
               },
               {
                 id: "day24-task2",
-                text: "Do a final, short mock interview to get comfortable with the setup.",
+                text: "Put on your professional interview attire.",
+              },
+              {
+                id: "day24-task3",
+                text: "Conduct a final, short mock interview with your most important questions.",
+              },
+              {
+                id: "day24-task4",
+                text: "Confirm that all your technology (camera, microphone, internet) is working perfectly.",
               },
             ],
           },
           {
             week: 4,
             day: 25,
-            title: "Light Review ONLY",
-            objective: "...",
-            detailedContent: [],
+            title: "Final Light Review",
+            objective:
+              "To conduct a final, light review of the most critical topics, reinforcing your knowledge without cramming, and to shift your focus towards mental preparation and building confidence.",
+            detailedContent: [
+              {
+                title: "The 'Greatest Hits' Review",
+                coreConcept:
+                  "You have studied everything in detail. Today is not for learning new information. The goal is to quickly refresh your memory on the most important, high-stakes topics that are most likely to be asked. This will ensure they are at the front of your mind.",
+                keyAreas: [
+                  "<strong>Read, Don't Cram:</strong> Go through your notes or flashcards for the following critical topics. Spend no more than 5-10 minutes on each.",
+                  "<strong>The 'Must-Know' List:</strong> The 5 Rights of Medication Administration, IV Bolus administration, Sepsis response, Patient Fall response, GCS components, NG Tube placement confirmation, and Blood Transfusion bedside checks.",
+                ],
+              },
+              {
+                title: "Verbalizing Your 'Bookends'",
+                coreConcept:
+                  "A strong start and a confident finish frame the entire interview. Practice your introduction and your closing questions one last time so they feel natural.",
+                keyAreas: [
+                  "<strong>Practice Your Introduction:</strong> Stand up and say your 'Tell me about yourself' answer out loud 2-3 times.",
+                  "<strong>Review Your Questions:</strong> Read over the 2-3 thoughtful questions you prepared on Day 23 to ask the interviewers.",
+                ],
+              },
+              {
+                title: "Final Mental and Physical Preparation",
+                coreConcept:
+                  "At this stage, your mental state is just as important as your knowledge. The goal is to reduce anxiety and ensure you are calm and rested for the interview.",
+                keyAreas: [
+                  "<strong>Trust Your Preparation:</strong> You have completed a comprehensive, 24-day study plan. Acknowledge this and trust that you are well-prepared.",
+                  "<strong>Organize for Tomorrow:</strong> Lay out your professional interview clothes, prepare any needed documents, and double-check the interview time and link.",
+                  "<strong>STOP STUDYING:</strong> This is the most important step. After this light review, put all your notes away. Cramming now will only increase your anxiety.",
+                ],
+              },
+            ],
+            takeaway:
+              "Your preparation is complete. Today is about a final, calm confirmation of your knowledge. Your priority now is to rest and allow your brain to consolidate everything you've learned. You are ready.",
             checklist: [
               {
                 id: "day25-task1",
-                text: "Read through your notes. Trust your preparation. Do not cram.",
+                text: "Conduct a light review of the 'Greatest Hits' topics.",
+              },
+              {
+                id: "day25-task2",
+                text: "Practice your 'Tell me about yourself' introduction out loud one last time.",
+              },
+              {
+                id: "day25-task3",
+                text: "Lay out your interview clothes and prepare your space for tomorrow.",
+              },
+              {
+                id: "day25-task4",
+                text: "Stop studying, put your notes away, and focus on relaxing.",
               },
             ],
           },
           {
             week: 4,
             day: 26,
-            title: "REST",
-            objective: "...",
-            detailedContent: [],
+            title: "Rest & Mental Preparation",
+            objective:
+              "To completely stop active studying, rest your mind and body, and build a calm, confident mindset for your interview.",
+            detailedContent: [
+              {
+                title: "The 'No Studying' Rule",
+                coreConcept:
+                  "At this point, you have completed an intensive study plan. All the knowledge you need is already there. Cramming today will not add new information; it will only increase anxiety and mental fatigue, which can negatively impact your performance. Your brain needs time to consolidate everything you've learned.",
+                keyAreas: [
+                  "<strong>Put Your Notes Away:</strong> Physically put your notebooks, flashcards, and study guides out of sight. Close any open tabs on your computer related to the interview.",
+                  "<strong>Trust the Process:</strong> Acknowledge the hard work you have put in over the last 25 days. You are prepared. Trust that the information will be there when you need it.",
+                  "<strong>Correctly Answer 'What if I forget something?':</strong> If you feel the urge to 'just check one more thing,' recognize this as anxiety, not a lack of knowledge. Remind yourself that a rested mind recalls information far better than a tired, stressed one.",
+                ],
+              },
+              {
+                title: "Active Rest and Mental Preparation",
+                coreConcept:
+                  "Rest is not just about doing nothing; it's about doing things that will put you in a positive and calm state of mind.",
+                keyAreas: [
+                  "<strong>Light Physical Activity:</strong> Go for a walk. Gentle exercise is proven to reduce stress and improve mental clarity. Do not do an intense workout.",
+                  "<strong>Engage in a Hobby:</strong> Do something you enjoy that is completely unrelated to nursing. Watch a movie, listen to music, cook a nice meal, or talk to a friend about anything other than the interview.",
+                  "<strong>Practice Visualization:</strong> Spend 5-10 minutes visualizing a successful interview. Imagine yourself answering questions calmly and confidently. Picture yourself receiving good news. This is a powerful technique for building confidence.",
+                ],
+              },
+              {
+                title: "Final Logistics Check",
+                coreConcept:
+                  "Handling the small practical details today will free up your mental energy tomorrow so you can be completely focused on the interview.",
+                keyAreas: [
+                  "<strong>Confirm the Details:</strong> Double-check the exact time of the interview (confirming the time zone if necessary) and the video call link.",
+                  "<strong>Prepare Your Space and Outfit:</strong> Ensure your interview space is clean and ready. Make sure your professional outfit is laid out and ready to go.",
+                  "<strong>Plan Your Pre-Interview Time:</strong> Decide what time you will wake up, what you will have for breakfast, and what you will do in the hour before the interview to stay calm.",
+                ],
+              },
+            ],
+            takeaway:
+              "Your preparation is finished. Today's task is the most important one yet: rest. A calm, confident, and well-rested candidate will always perform better than one who is tired and anxious from last-minute cramming. Trust your hard work. You are ready.",
             checklist: [
               {
                 id: "day26-task1",
-                text: "Your preparation is complete. Get good sleep, eat well, and relax.",
+                text: "Put all study materials away and out of sight.",
               },
+              {
+                id: "day26-task2",
+                text: "Engage in a relaxing, non-study-related activity for at least one hour.",
+              },
+              {
+                id: "day26-task3",
+                text: "Double-check your interview time, link, and technology.",
+              },
+              { id: "day26-task4", text: "Get a good night's sleep." },
             ],
           },
           {
             week: 4,
             day: 27,
-            title: "REST",
-            objective: "...",
-            detailedContent: [],
-            checklist: [
+            title: "Rest & Confidence",
+            objective:
+              "To continue resting your mind, finalize your practical preparations, and build a positive, confident mindset for your interview.",
+            detailedContent: [
               {
-                id: "day27-task1",
-                text: "A rested mind performs best. Good luck!",
+                title: "Continue the 'No Studying' Rule",
+                coreConcept:
+                  "The principles from yesterday still apply. Your brain has consolidated the information, and your priority is to be fresh and alert. Actively resisting the urge to cram is a sign of confidence in your preparation.",
+                keyAreas: [
+                  "<strong>Avoid 'Just One Last Look':</strong> If you feel anxious, acknowledge the feeling but don't react by opening your notes. Trust that you have done enough.",
+                  "<strong>Stay Off Nursing Forums/Groups:</strong> Avoid discussions that might introduce new anxieties or make you second-guess your knowledge. Protect your calm mindset.",
+                  "<strong>Re-read Your 'Bookends':</strong> If you feel you must do something, simply read your prepared 'Tell me about yourself' introduction and the questions you plan to ask them one more time. Do not review any clinical content.",
+                ],
               },
+              {
+                title: "Focus on Confidence and Well-being",
+                coreConcept:
+                  "Confidence is a key part of your performance. Today is about engaging in activities that make you feel good and reduce stress hormones.",
+                keyAreas: [
+                  "<strong>Plan a Relaxing Day:</strong> Do not leave your day unstructured. Plan to do specific, enjoyable activities. This could be watching a specific film, going to a favorite cafe, or spending time on a hobby.",
+                  "<strong>Eat Well and Hydrate:</strong> Eat nutritious meals and drink plenty of water. Avoid excessive caffeine or sugar, which can increase anxiety.",
+                  "<strong>Get to Bed Early:</strong> Aim for a full night of quality sleep. This is the single most effective thing you can do now to ensure you are sharp and articulate during your interview.",
+                ],
+              },
+              {
+                title: "Final Practical Preparations",
+                coreConcept:
+                  "Getting everything ready today means you will have a calm, stress-free pre-interview period tomorrow.",
+                keyAreas: [
+                  "<strong>Final Tech Check:</strong> Briefly turn on your computer, open the video call application, and check your camera and microphone one last time.",
+                  "<strong>Prepare Your Space:</strong> Make sure your interview space is clean, tidy, and ready. Have your professional outfit laid out.",
+                  "<strong>Pack Your 'Go-Bag' (even for a video call):</strong> Have a small bag or area on your desk with everything you might need: a copy of your CV, your list of questions, a pen and paper, and a glass of water.",
+                ],
+              },
+            ],
+            takeaway:
+              "You have prepared thoroughly. Your final task is to arrive at the interview rested, calm, and confident. Trust in your preparation and focus on being your best self. Good luck!",
+            checklist: [
+              { id: "day27-task1", text: "Do a final, brief tech check." },
+              { id: "day27-task2", text: "Engage in a relaxing activity." },
+              { id: "day27-task3", text: "Eat a healthy, nutritious meal." },
+              { id: "day27-task4", text: "Go to bed early." },
             ],
           },
         ];
@@ -1185,22 +2185,20 @@
 
           const detailedContentHtml = (dayData.detailedContent || [])
             .map((topic) => {
-              const keyAreasHtml = topic.keyAreas
+              const keyAreasHtml = (topic.keyAreas || [])
                 .map(
                   (area) =>
                     `<li class="flex items-start"><i data-feather="check-circle" class="w-5 h-5 text-blue-600 mr-3 mt-1 flex-shrink-0"></i><span>${area}</span></li>`
                 )
                 .join("");
-              const questionsHtml = topic.questions
+              const questionsHtml = (topic.questions || [])
                 .map(
                   (q) => `
                         <div class="mt-4">
-                            <p class="font-semibold text-gray-800">Potential Question: "${
-                              q.q
-                            }"</p>
+                            <p class="font-semibold text-gray-800">${q.q}</p>
                             ${
                               q.a
-                                ? `<div class="sample-answer mt-2 text-gray-700"><p>${q.a}</p></div>`
+                                ? `<div class="sample-answer mt-2 text-gray-700 whitespace-pre-line">${q.a}</div>`
                                 : ""
                             }
                         </div>
@@ -1214,16 +2212,28 @@
 
               return `
                         <div class="topic-card">
-                            <h3 class="font-heading text-xl font-semibold text-gray-900">${topic.title}</h3>
-                            <p class="text-sm text-gray-500 mb-4"><em>Source: ${topic.source}</em></p>
-                            <p class="text-gray-700 mb-4">${topic.coreConcept}</p>
-                            <h4 class="font-semibold text-gray-800 mb-2">Key Areas to Master</h4>
-                            <ul class="space-y-2 text-gray-700 mb-4">${keyAreasHtml}</ul>
+                            <h3 class="font-heading text-xl font-semibold text-gray-900">${
+                              topic.title
+                            }</h3>
+                            ${
+                              topic.source
+                                ? `<p class="text-sm text-gray-500 mb-4"><em>Source: ${topic.source}</em></p>`
+                                : ""
+                            }
+                            <p class="text-gray-700 mb-4">${
+                              topic.coreConcept
+                            }</p>
+                            ${
+                              keyAreasHtml
+                                ? `<h4 class="font-semibold text-gray-800 mb-2">Key Areas to Master</h4><ul class="space-y-2 text-gray-700 mb-4">${keyAreasHtml}</ul>`
+                                : ""
+                            }
                             ${imageHtml}
-                            <div class="bg-blue-50 border-l-4 border-blue-500 p-4 rounded">
-                                <p class="font-semibold text-blue-800">Key Takeaway</p>
-                                <p class="text-blue-700">${topic.takeaway}</p>
-                            </div>
+                            ${
+                              topic.takeaway
+                                ? `<div class="bg-blue-50 border-l-4 border-blue-500 p-4 rounded"><p class="font-semibold text-blue-800">Key Takeaway</p><p class="text-blue-700">${topic.takeaway}</p></div>`
+                                : ""
+                            }
                             ${questionsHtml}
                         </div>
                     `;
