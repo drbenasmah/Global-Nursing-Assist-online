@@ -1,282 +1,876 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Malta Interview Flashcards</title>
-    <link rel="stylesheet" href="../styles.css" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Malta Interview Flashcards — Enhanced</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:wght@600&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://unpkg.com/feather-icons"></script>
     <style>
+      :root {
+        --brand-blue: #1e40af;
+        --brand-blue-light: #dbeafe;
+        --brand-secondary: #059669;
+        --bg-light: #f1f5f9;
+        --card-bg: #ffffff;
+        --radius: 12px;
+        --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.05);
+        --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.1);
+        --font-primary: "Inter", sans-serif;
+        --font-headings: "Lora", serif;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html,
       body {
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-        background: linear-gradient(120deg, #e6f2ff, #f2f9ff);
-        text-align: center;
-        padding: 30px;
+        height: 100%;
         margin: 0;
       }
-
-      h1 {
-        margin-bottom: 30px;
-        color: #003366;
-        font-size: 2rem;
+      body {
+        font-family: var(--font-primary);
+        color: #1e293b;
+        background-color: var(--bg-light);
+        display: flex;
+        flex-direction: column;
+      }
+      .main-layout {
+        display: flex;
+        flex-grow: 1;
+        overflow: hidden;
       }
 
+      /* Sidebar */
+      .sidebar {
+        width: 280px;
+        flex-shrink: 0;
+        background-color: var(--card-bg);
+        padding: 1.5rem;
+        border-right: 1px solid #e2e8f0;
+        overflow-y: auto;
+      }
+      .sidebar-header {
+        font-family: var(--font-headings);
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: var(--brand-blue);
+        margin-bottom: 1.5rem;
+      }
+      .week-header {
+        font-weight: 600;
+        color: #475569;
+        margin-top: 1.5rem;
+        margin-bottom: 0.5rem;
+        font-size: 0.9rem;
+      }
+      .day-link {
+        display: block;
+        padding: 0.75rem 1rem;
+        border-radius: 8px;
+        text-decoration: none;
+        color: #334155;
+        font-weight: 500;
+        transition: all 0.2s ease;
+      }
+      .day-link:hover {
+        background-color: var(--brand-blue-light);
+        color: var(--brand-blue);
+      }
+      .day-link.active {
+        background-color: var(--brand-blue);
+        color: white;
+        font-weight: 600;
+      }
+
+      /* Main Content */
+      .content-wrap {
+        flex-grow: 1;
+        padding: 1.5rem;
+        overflow-y: auto;
+      }
+      .content-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1.5rem;
+      }
+      .content-header h1 {
+        font-family: var(--font-headings);
+        font-size: 2rem;
+        margin: 0;
+      }
+      .controls {
+        display: flex;
+        gap: 0.75rem;
+      }
+      .btn {
+        background: var(--brand-blue);
+        color: #fff;
+        border: none;
+        padding: 0.6rem 1rem;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: 600;
+        box-shadow: var(--shadow-sm);
+        transition: all 0.2s ease;
+      }
+      .btn:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 6px 20px rgba(30, 64, 175, 0.2);
+      }
+      .btn.ghost {
+        background: transparent;
+        border: 1px solid #cbd5e1;
+        color: #475569;
+        box-shadow: none;
+      }
+      .btn.ghost:hover {
+        background-color: #f1f5f9;
+        border-color: #94a3b8;
+      }
+
+      /* Flashcard Grid */
       .flashcard-container {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 25px;
-        padding: 0 20px;
+        gap: 1.5rem;
       }
-
       .card {
-        perspective: 1000px;
+        position: relative;
+        perspective: 1200px;
+        height: 240px;
       }
-
       .card-inner {
         width: 100%;
-        height: 220px;
-        transition: transform 0.8s ease-in-out;
+        height: 100%;
+        border-radius: var(--radius);
+        transition: transform 0.7s;
         transform-style: preserve-3d;
-        position: relative;
         cursor: pointer;
+        box-shadow: var(--shadow-sm);
       }
-
-      .card:hover .card-inner {
+      .card.flipped .card-inner {
         transform: rotateY(180deg);
       }
-
-      .card-front,
-      .card-back {
+      .card-face {
         position: absolute;
-        width: 100%;
-        height: 100%;
-        padding: 20px;
-        box-sizing: border-box;
-        border-radius: 15px;
-        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+        inset: 0;
+        padding: 1.25rem;
+        border-radius: var(--radius);
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 1rem;
+        font-size: 1.1rem;
         backface-visibility: hidden;
-      }
-
-      .card-front {
-        background: #ffffff;
-        color: #003366;
-      }
-
-      .card-back {
-        background: #d0e8ff;
-        transform: rotateY(180deg);
-        color: #003366;
-      }
-
-      footer {
-        background-color: #002244;
-        color: #ffffff;
-        padding: 40px 0 20px;
-        margin-top: 60px;
         text-align: center;
       }
-
-      .footer-container {
+      .card-front {
+        background: white;
+        border: 1px solid #e2e8f0;
+        font-weight: 600;
+      }
+      .card-back {
+        background: var(--brand-blue-light);
+        transform: rotateY(180deg);
+        color: var(--brand-blue);
+      }
+      .card-actions {
+        position: absolute;
+        bottom: 12px;
+        right: 12px;
         display: flex;
-        flex-wrap: wrap;
+        gap: 8px;
+        z-index: 2;
+      }
+      .card-action {
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(4px);
+        border-radius: 50%;
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
         justify-content: center;
-        gap: 40px;
-        max-width: 1200px;
-        margin: 0 auto 30px;
+        cursor: pointer;
+        border: 1px solid #e2e8f0;
+        transition: all 0.2s ease;
+      }
+      .card-action:hover {
+        background-color: white;
+        transform: scale(1.1);
       }
 
-      .footer-section {
-        flex: 1 1 250px;
-        min-width: 200px;
+      /* Create/Edit Modal */
+      .modal-overlay {
+        position: fixed;
+        inset: 0;
+        background-color: rgba(17, 24, 39, 0.6);
+        backdrop-filter: blur(4px);
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+      }
+      .modal-overlay.open {
+        opacity: 1;
+        visibility: visible;
+      }
+      .modal-content {
+        background-color: white;
+        padding: 2rem;
+        border-radius: var(--radius);
+        box-shadow: var(--shadow-md);
+        width: 90%;
+        max-width: 500px;
+        transform: scale(0.95);
+        transition: transform 0.3s ease;
+      }
+      .modal-overlay.open .modal-content {
+        transform: scale(1);
+      }
+      .modal-content h2 {
+        font-family: var(--font-headings);
+        font-size: 1.5rem;
+        margin-top: 0;
+      }
+      .modal-content textarea,
+      .modal-content input {
+        width: 100%;
+        padding: 0.75rem;
+        border-radius: 8px;
+        border: 1px solid #cbd5e1;
+        font-size: 1rem;
+        margin-bottom: 1rem;
+      }
+      .modal-content textarea {
+        min-height: 120px;
+        resize: vertical;
       }
 
-      .footer-section h3,
-      .footer-section h4 {
-        color: #ffffff;
-        margin-bottom: 10px;
+      /* Toast */
+      #toast {
+        position: fixed;
+        right: 20px;
+        bottom: 24px;
+        background: #1e293b;
+        color: white;
+        padding: 12px 16px;
+        border-radius: 10px;
+        box-shadow: 0 8px 30px rgba(2, 12, 35, 0.25);
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.3s ease;
+        z-index: 999;
+      }
+      #toast.show {
+        opacity: 1;
+        transform: translateY(0);
       }
 
-      .footer-section p,
-      .footer-section ul {
-        color: #dddddd;
-        margin: 0;
-        padding: 0;
-        list-style: none;
-      }
-
-      .footer-links li {
-        margin-bottom: 8px;
-      }
-
-      .footer-links a {
-        color: #dddddd;
-        text-decoration: none;
-      }
-
-      .footer-links a:hover {
-        text-decoration: underline;
-      }
-
-      .footer-bottom {
-        font-size: 0.9rem;
-        color: #cccccc;
+      @media (max-width: 768px) {
+        .main-layout {
+          flex-direction: column;
+        }
+        .sidebar {
+          width: 100%;
+          border-right: none;
+          border-bottom: 1px solid #e2e8f0;
+          height: auto;
+          max-height: 200px;
+        }
+        .content-header {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 1rem;
+        }
       }
     </style>
   </head>
   <body>
-    <!-- === NAVIGATION BAR === -->
-    <nav class="navbar">
-      <div class="nav-container">
-        <div class="nav-logo">
-          <a href="#home">
-            <img
-              src="../src/assets/img/logo1.png"
-              alt="Nurse Assist PL Logo"
-              class="logo-img"
-              onerror="this.onerror=null;this.src='https://placehold.co/200x50/1e40af/ffffff?text=Logo';"
-            />
-            <span class="logo-text">Nursing School Assist PL</span>
-          </a>
+    <div class="main-layout">
+      <!-- Sidebar for Day Selection -->
+      <aside class="sidebar">
+        <h2 class="sidebar-header">Study Plan Days</h2>
+        <div id="day-navigation">
+          <!-- Day links will be injected here -->
         </div>
-        <div class="nav-menu" id="nav-menu">
-          <a href="../index.html" class="nav-link">Home</a>
-          <a href="../index.html#about" class="nav-link">About</a>
-          <a href="../index.html#services" class="nav-link">Services</a>
-          <a href="../index.html#testimonials" class="nav-link">Testimonials</a>
-          <a href="../index.html#articles" class="nav-link">Articles</a>
+      </aside>
 
-          <!-- Dropdown Menu for Resources -->
-          <div class="dropdown">
-            <a href="#resources" class="nav-link" id="resources-link">
-              Resources
-              <i
-                data-feather="chevron-down"
-                style="width: 16px; height: 16px"
-              ></i>
-            </a>
-            <div class="dropdown-menu">
-              <a href="../ai-page/ai-assistant.html" class="dropdown-link"
-                >AI Interview Assistant</a
-              >
-              <a href="../Malta-study-plan/onemonth.html" class="dropdown-link"
-                >Study Plan</a
-              >
-              <a
-                href="../Malta-study-plan/study-guide1.html"
-                class="dropdown-link"
-                >Study Guide</a
-              >
-              <a
-                href="../Malta-study-plan/flashcard-m.html"
-                class="dropdown-link"
-                >Flashcards</a
-              >
-              <a href="../index.html#resources" class="dropdown-link"
-                >Free Downloads</a
-              >
-            </div>
+      <!-- Main Content -->
+      <div class="content-wrap">
+        <header class="content-header">
+          <h1 id="deck-title">Day 1: Professional Foundations</h1>
+          <div class="controls">
+            <button class="btn ghost" id="shuffle">Shuffle</button>
+            <button class="btn" id="add-new-card">Add New Card</button>
           </div>
-
-          <a href="../index.html#contact" class="nav-link">Contact</a>
-          <a href="../blog.html" class="nav-link">Blog</a>
-        </div>
-        <button
-          class="nav-toggle"
-          id="nav-toggle"
-          aria-label="Toggle navigation menu"
-        >
-          <span class="bar"></span>
-          <span class="bar"></span>
-          <span class="bar"></span>
-        </button>
+        </header>
+        <div
+          id="flashcardContainer"
+          class="flashcard-container"
+          aria-live="polite"
+        ></div>
       </div>
-    </nav>
+    </div>
 
-    <!-- === FLASHCARDS   === -->
-    <h1>Day 1 & 2 – Flashcards</h1>
-    <div class="flashcard-container">
-      <div class="card">
-        <div class="card-inner">
-          <div class="card-front">Why is teamwork important in healthcare?</div>
-          <div class="card-back">
-            Teamwork promotes safety, improves patient outcomes, and enables
-            coordinated care. It ensures that patient needs are met through
-            shared responsibility and clear communication.
-          </div>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-inner">
-          <div class="card-front">
-            What is the Maltese Code of Ethics for nurses?
-          </div>
-          <div class="card-back">
-            It outlines the ethical responsibilities of nurses in Malta —
-            including patient advocacy, respect for dignity, accountability,
-            professional conduct, and collaboration with colleagues.
-          </div>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-inner">
-          <div class="card-front">Name the 5 Moments of Hand Hygiene.</div>
-          <div class="card-back">
-            1. Before touching a patient<br />
-            2. Before a clean/aseptic procedure<br />
-            3. After body fluid exposure risk<br />
-            4. After touching a patient<br />
-            5. After touching patient surroundings
-          </div>
+    <!-- Create/Edit Modal -->
+    <div id="modal" class="modal-overlay">
+      <div class="modal-content">
+        <h2 id="modal-title">Create New Flashcard</h2>
+        <input
+          id="q"
+          placeholder="Enter question or topic"
+          aria-label="Question"
+        />
+        <textarea
+          id="a"
+          placeholder="Enter answer"
+          aria-label="Answer"
+        ></textarea>
+        <div style="display: flex; gap: 8px">
+          <button id="save-card" class="btn">Save Card</button>
+          <button id="modal-close" class="btn ghost">Cancel</button>
         </div>
       </div>
     </div>
 
-    <footer>
-      <div class="footer-container">
-        <div class="footer-section">
-          <h3>Nurse Assist PL</h3>
-          <p>
-            Empowering nursing students and professionals across Poland, UK, and
-            Malta with expert guidance and proven strategies.
-          </p>
-        </div>
-        <div class="footer-section">
-          <h4>Services</h4>
-          <ul class="footer-links">
-            <li><a href="#services">IELTS Coaching</a></li>
-            <li><a href="#services">Thesis Help</a></li>
-            <li><a href="#services">Clinical Coaching</a></li>
-            <li><a href="#services">Job Preparation</a></li>
-          </ul>
-        </div>
-        <div class="footer-section">
-          <h4>Resources</h4>
-          <ul class="footer-links">
-            <li><a href="ai-assistant.html">AI Interview Assistant</a></li>
-            <li><a href="daily-guide.html">Study Plan</a></li>
-            <li><a href="#">Study Guide</a></li>
-            <li><a href="#">Flashcards</a></li>
-            <li><a href="#resources">Free Downloads</a></li>
-            <li><a href="#testimonials">Success Stories</a></li>
-            <li><a href="#contact">Contact Us</a></li>
-            <li><a href="blog.html">Blog</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        &copy; <span id="current-year"></span> Nurse Assist PL – All rights
-        reserved.
-      </div>
-    </footer>
+    <div id="toast" role="status"></div>
 
     <script>
-      document.getElementById("current-year").textContent =
-        new Date().getFullYear();
+      document.addEventListener("DOMContentLoaded", () => {
+        // --- DATA PREPARATION (from study guide) ---
+        const guideData = [
+          // WEEK 1
+          {
+            week: 1,
+            day: 1,
+            title: "Professional Foundations",
+            flashcards: [
+              {
+                q: "Why is teamwork essential in healthcare?",
+                a: "It enhances patient care, improves responsiveness to changes, and reduces medical errors by providing a system of checks and balances. Its core purpose is to ensure patient safety.",
+              },
+              {
+                q: "What are the core principles of the Maltese Code of Ethics?",
+                a: "Key principles include Non-maleficence (do no harm), Beneficence (do good), Respect for Autonomy (informed consent), Justice (fairness), and Confidentiality.",
+              },
+              {
+                q: "What is the primary purpose of nursing documentation?",
+                a: "To ensure patient safety through clear communication. It serves as a communication tool for the healthcare team and a legal record of care provided.",
+              },
+            ],
+          },
+          {
+            week: 1,
+            day: 2,
+            title: "Infection Control Mastery",
+            flashcards: [
+              {
+                q: "What is the single most effective way to prevent cross-infection?",
+                a: "Proper hand hygiene, performed according to the 5 Moments.",
+              },
+              {
+                q: "What are the 5 Moments for Hand Hygiene?",
+                a: "1. Before touching a patient.\n2. Before a clean/aseptic procedure.\n3. After body fluid exposure risk.\n4. After touching a patient.\n5. After touching patient surroundings.",
+              },
+              {
+                q: "What are Standard Precautions?",
+                a: "The minimum infection prevention practices applied to all patients. Key examples include hand hygiene, use of PPE, and safe sharps disposal.",
+              },
+              {
+                q: "What extra precautions are needed for a patient with MRSA?",
+                a: "In addition to Standard Precautions, use Contact Precautions. This includes wearing gloves and a gown and placing the patient in a single room if possible.",
+              },
+            ],
+          },
+          {
+            week: 1,
+            day: 3,
+            title: "Core Patient Assessment",
+            flashcards: [
+              {
+                q: "Why is it important to count a patient's respiratory rate without them knowing?",
+                a: "Because breathing can be voluntarily controlled. If a patient knows you are watching, they may alter their normal breathing pattern, leading to an inaccurate reading.",
+              },
+              {
+                q: "What are the three components of the Glasgow Coma Scale (GCS)?",
+                a: "1. Eye Opening Response (Score 1-4).\n2. Verbal Response (Score 1-5).\n3. Motor Response (Score 1-6).",
+              },
+              {
+                q: "What does a GCS score of 8 or less typically indicate?",
+                a: "A severe head injury.",
+              },
+              {
+                q: "What is the purpose of using a pain scale (e.g., 0-10)?",
+                a: "To get an objective baseline of the patient's subjective pain. This allows the nurse to evaluate the effectiveness of pain relief and communicate the pain level clearly to the team.",
+              },
+            ],
+          },
+          {
+            week: 1,
+            day: 4,
+            title: "Medication Administration Fundamentals",
+            flashcards: [
+              {
+                q: "What are the 5 Rights of Medication Administration?",
+                a: "1. Right Patient.\n2. Right Drug.\n3. Right Dose.\n4. Right Route.\n5. Right Time.",
+              },
+              {
+                q: "What are the 'three checks' in medication administration?",
+                a: "1. When taking the drug from the shelf.\n2. When preparing the drug.\n3. At the patient's bedside before administration.",
+              },
+              {
+                q: "What is medication reconciliation?",
+                a: "The process of creating the most accurate list of all medications a patient is taking and comparing it against physician's orders on admission, transfer, or discharge to prevent errors.",
+              },
+            ],
+          },
+          {
+            week: 1,
+            day: 5,
+            title: "Wound Care & Skin Integrity",
+            flashcards: [
+              {
+                q: "Why should you clean a wound from the center outwards?",
+                a: "To avoid dragging microorganisms from the surrounding skin into the clean wound bed, which would increase the risk of infection.",
+              },
+              {
+                q: "What is the first sign of a Stage 1 pressure ulcer?",
+                a: "Non-blanching redness over a bony prominence. The skin is still intact.",
+              },
+              {
+                q: "What are the key principles of the 'SSKIN' bundle for pressure ulcer prevention?",
+                a: "Surface (pressure-relieving mattress), Skin Inspection, Keep Moving (repositioning), Incontinence/Moisture, Nutrition/Hydration.",
+              },
+              {
+                q: "What does the acronym REEDA stand for in wound assessment?",
+                a: "Redness, Edema (swelling), Ecchymosis (bruising), Discharge, Approximation (of wound edges).",
+              },
+            ],
+          },
+          {
+            week: 1,
+            day: 6,
+            title: "GI & GU Basics",
+            flashcards: [
+              {
+                q: "What is the gold standard for confirming initial NG tube placement?",
+                a: "A Chest X-ray (CXR).",
+              },
+              {
+                q: "What is the first bedside check for NG tube placement, and what pH indicates it's likely in the stomach?",
+                a: "Aspirate gastric contents and test the pH. A pH of less than 5.5 (acidic) suggests correct placement.",
+              },
+              {
+                q: "What are the three most important nursing actions to prevent a CAUTI (Catheter-Associated UTI)?",
+                a: "1. Maintain a closed drainage system.\n2. Keep the drainage bag below the level of the bladder.\n3. Provide daily perineal hygiene.",
+              },
+            ],
+          },
+          {
+            week: 1,
+            day: 7,
+            title: "Weekly Review",
+            flashcards: [
+              {
+                q: "(Scenario) A patient has just returned from hip surgery. What are your immediate ABCDE assessment priorities?",
+                a: "Airway (is it clear?), Breathing (rate, SpO2), Circulation (BP, HR, perfusion), Disability (level of consciousness/GCS), Exposure (check wound for bleeding, check temperature).",
+              },
+              {
+                q: "(Scenario) You are admitting an elderly, immobile, incontinent patient. What are two key risks?",
+                a: "1. Risk for pressure ulcers due to immobility.\n2. Risk for infection (especially CAUTI if catheterized) due to incontinence and vulnerability.",
+              },
+            ],
+          },
+          // WEEK 2
+          {
+            week: 2,
+            day: 8,
+            title: "Controlled Drugs (CDs)",
+            flashcards: [
+              {
+                q: "What are the two key principles for storing CDs on a ward?",
+                a: "Security (locked cupboard compliant with regulations) and Segregation (storing high-strength and low-strength formulations separately).",
+              },
+              {
+                q: "Who must be present when receiving new CD stock onto the ward?",
+                a: "A Registered Nurse and a witness (another RN, doctor, or pharmacist).",
+              },
+              {
+                q: "How often must a CD stock check be performed and by whom?",
+                a: "Every 24 hours, performed by two registered professionals (e.g., two RNs).",
+              },
+            ],
+          },
+          {
+            week: 2,
+            day: 9,
+            title: "IV Therapy & Blood Transfusions",
+            flashcards: [
+              {
+                q: "What is the 'SAS' method for giving an IV bolus?",
+                a: "Saline flush (to check patency), Administer medication, Saline flush (to push the full dose through).",
+              },
+              {
+                q: "What are the classic signs of phlebitis?",
+                a: "Pain, Erythema (redness), Swelling, Warmth, and a palpable venous cord.",
+              },
+              {
+                q: "What is the most important safety check before starting a blood transfusion?",
+                a: "The bedside check performed by two registered professionals, verifying the patient's ID against their wristband and the details on the blood bag.",
+              },
+              {
+                q: "What is your immediate first action if you suspect a transfusion reaction?",
+                a: "STOP THE TRANSFUSION IMMEDIATELY.",
+              },
+            ],
+          },
+          {
+            week: 2,
+            day: 10,
+            title: "Post-Operative & Musculoskeletal Care",
+            flashcards: [
+              {
+                q: "What are the key nursing interventions to prevent a post-operative DVT?",
+                a: "Early ambulation, in-bed leg exercises, applying anti-embolic stockings (TEDS), and administering prescribed anticoagulants.",
+              },
+              {
+                q: "What are the '6 Ps' of a neurovascular assessment for a fractured limb?",
+                a: "Pain, Pallor (pale skin), Pulselessness, Paresthesia (pins and needles), Paralysis, Pressure (swelling).",
+              },
+              {
+                q: "Why is early ambulation important after surgery?",
+                a: "It prevents DVTs, improves respiratory function (preventing pneumonia), and stimulates gut motility.",
+              },
+            ],
+          },
+          {
+            week: 2,
+            day: 11,
+            title: "Medical Emergencies (Part 1)",
+            flashcards: [
+              {
+                q: "What are the two key components for recognizing sepsis?",
+                a: "Signs of an infection PLUS signs of organ dysfunction (e.g., new confusion, high respiratory rate, low blood pressure).",
+              },
+              {
+                q: "What is the single most important, life-saving medication for anaphylaxis?",
+                a: "Intramuscular (IM) Adrenaline (Epinephrine).",
+              },
+              {
+                q: "You find a patient unresponsive and not breathing normally. What are your first two actions?",
+                a: "1. Shout for help / Activate the emergency call system.\n2. Immediately start high-quality chest compressions.",
+              },
+            ],
+          },
+          {
+            week: 2,
+            day: 12,
+            title: "Medical Emergencies (Part 2)",
+            flashcards: [
+              {
+                q: "What is the purpose of the recovery position for an unconscious patient who is breathing?",
+                a: "To protect their airway and prevent it from being obstructed by their tongue or vomit.",
+              },
+              {
+                q: "After establishing ABCs are stable, what is the next critical step for an unconscious patient with known diabetes?",
+                a: "Immediately check their capillary blood glucose level.",
+              },
+              {
+                q: "What is the treatment for severe hypoglycemia in an unconscious patient with IV access?",
+                a: "IV Dextrose, as prescribed by the medical team.",
+              },
+            ],
+          },
+          {
+            week: 2,
+            day: 13,
+            title: "Cardiovascular & Neurological Emergencies",
+            flashcards: [
+              {
+                q: "What does F.A.S.T. acronym stand for in stroke recognition?",
+                a: "Face (drooping), Arms (weakness), Speech (slurred), Time (to call for help).",
+              },
+              {
+                q: "What are your priority interventions for a patient with a suspected MI (heart attack)?",
+                a: "Call for help, sit the patient up, administer Oxygen, obtain a 12-lead ECG, and prepare to give medications like Aspirin, Nitrates, and Morphine.",
+              },
+              {
+                q: "What is the most serious complication of a DVT?",
+                a: "A Pulmonary Embolism (PE), where the clot travels to the lungs.",
+              },
+            ],
+          },
+          {
+            week: 2,
+            day: 14,
+            title: "Weekly Review",
+            flashcards: [
+              {
+                q: "(Scenario) You find a patient on the floor. What is your first action after ensuring the scene is safe?",
+                a: "Call for help and instruct the patient not to move until they have been assessed.",
+              },
+              {
+                q: "(Scenario) A patient is suddenly confused. What are three potential underlying medical causes to consider?",
+                a: "Infection (e.g., UTI), Hypoxia (low oxygen), and Pain. (Also dehydration, electrolyte imbalance, medication side effects).",
+              },
+            ],
+          },
+          // WEEK 3 & 4
+          {
+            week: 3,
+            day: 15,
+            title: "Scenarios & Ethics",
+            flashcards: [
+              {
+                q: "What does the 'SAFE' framework for answering scenario questions stand for?",
+                a: "Safety (state the risk), Assess (what you would check), First Actions (your first 2-3 interventions), Explain Rationale (why you're doing it).",
+              },
+              {
+                q: "(Scenario) A competent patient refuses a prescribed medication. What is the core ethical principle you must uphold?",
+                a: "Respect for Autonomy. Your role is to assess their reason, educate them on the risks of refusal, but ultimately respect their decision and inform the doctor.",
+              },
+              {
+                q: "(Scenario) A patient's family asks you not to tell the patient their diagnosis. The patient asks you directly. What is your primary duty to?",
+                a: "Your primary duty is to the patient. You must not lie. The correct action is to escalate to the senior nurse and doctor to facilitate an honest conversation.",
+              },
+            ],
+          },
+          { week: 3, day: 16, title: "Scenario Application", flashcards: [] },
+          { week: 3, day: 17, title: "Scenario Application", flashcards: [] },
+          { week: 3, day: 18, title: "Ethics & Communication", flashcards: [] },
+          { week: 3, day: 19, title: "Mock Interview #1", flashcards: [] },
+          { week: 3, day: 20, title: "Refine & Review", flashcards: [] },
+          { week: 4, day: 21, title: "Mock Interview #2", flashcards: [] },
+          { week: 4, day: 22, title: "Final Content Polish", flashcards: [] },
+          {
+            week: 4,
+            day: 23,
+            title: "Performance & Confidence",
+            flashcards: [
+              {
+                q: "What is the 'Present - Past - Future' formula for answering 'Tell me about yourself'?",
+                a: "Present: Who you are now (e.g., recent nursing graduate). Past: Key experiences that brought you here (e.g., studies in Poland). Future: Why you are here (e.g., want to start your career in Malta).",
+              },
+              {
+                q: "What kind of questions should you AVOID asking the interviewers?",
+                a: "Avoid questions about salary or vacation time in the first interview. Also, avoid questions that could be easily answered by looking at the hospital's website.",
+              },
+              {
+                q: "What is the goal of the final days before the interview (Day 26-27)?",
+                a: "To REST. Stop active studying, trust your preparation, get good sleep, and focus on being calm and confident. A rested mind performs better than a tired one.",
+              },
+            ],
+          },
+          { week: 4, day: 24, title: "Full Dress Rehearsal", flashcards: [] },
+          { week: 4, day: 25, title: "Final Light Review", flashcards: [] },
+          { week: 4, day: 26, title: "REST", flashcards: [] },
+          { week: 4, day: 27, title: "REST", flashcards: [] },
+        ];
+
+        function generateDecksFromGuide() {
+          return guideData.map((day) => ({
+            day: day.day,
+            title: day.title,
+            week: day.week,
+            cards: day.flashcards || [],
+          }));
+        }
+
+        // --- DOM ELEMENTS ---
+        const dayNavigation = document.getElementById("day-navigation");
+        const deckTitle = document.getElementById("deck-title");
+        const container = document.getElementById("flashcardContainer");
+        const modal = document.getElementById("modal");
+        const modalTitle = document.getElementById("modal-title");
+        const qInput = document.getElementById("q");
+        const aInput = document.getElementById("a");
+        const shuffleBtn = document.getElementById("shuffle");
+        const addNewBtn = document.getElementById("add-new-card");
+        const saveBtn = document.getElementById("save-card");
+        const closeBtn = document.getElementById("modal-close");
+        const toast = document.getElementById("toast");
+
+        // --- STATE ---
+        let currentDay = 1;
+        let allDecks =
+          JSON.parse(localStorage.getItem("flashcardDecks_v1")) ||
+          generateDecksFromGuide();
+        let currentCards =
+          allDecks.find((d) => d.day === currentDay)?.cards || [];
+        let editingIndex = -1;
+
+        // --- FUNCTIONS ---
+        function showToast(msg, time = 2000) {
+          toast.textContent = msg;
+          toast.classList.add("show");
+          setTimeout(() => toast.classList.remove("show"), time);
+        }
+
+        function saveDecks() {
+          localStorage.setItem("flashcardDecks_v1", JSON.stringify(allDecks));
+        }
+
+        function renderDayNavigation() {
+          let currentWeek = 0;
+          dayNavigation.innerHTML = "";
+          allDecks.forEach((deck) => {
+            const dayData = guideData.find((d) => d.day === deck.day);
+            if (dayData && dayData.week !== currentWeek) {
+              currentWeek = dayData.week;
+              const weekHeader = document.createElement("h3");
+              weekHeader.className = "week-header";
+              weekHeader.textContent = `Week ${currentWeek}`;
+              dayNavigation.appendChild(weekHeader);
+            }
+            const link = document.createElement("a");
+            link.href = "#";
+            link.className = "day-link";
+            link.dataset.day = deck.day;
+            link.textContent = `Day ${deck.day}: ${deck.title}`;
+            if (deck.day === currentDay) link.classList.add("active");
+            dayNavigation.appendChild(link);
+          });
+        }
+
+        function renderCards() {
+          container.innerHTML = "";
+          currentCards.forEach((card, index) => {
+            const cardEl = document.createElement("div");
+            cardEl.className = "card";
+            cardEl.innerHTML = `
+                    <div class="card-inner">
+                        <div class="card-face card-front">${card.q}</div>
+                        <div class="card-face card-back">${card.a.replace(
+                          /\n/g,
+                          "<br>"
+                        )}</div>
+                    </div>
+                    <div class="card-actions">
+                        <button class="card-action edit-btn" data-index="${index}" title="Edit"><i data-feather="edit-2" style="width:16px; height:16px;"></i></button>
+                        <button class="card-action delete-btn" data-index="${index}" title="Delete"><i data-feather="trash-2" style="width:16px; height:16px;"></i></button>
+                    </div>
+                `;
+            container.appendChild(cardEl);
+          });
+          feather.replace();
+        }
+
+        function switchDeck(day) {
+          currentDay = day;
+          let deck = allDecks.find((d) => d.day === day);
+          if (!deck) {
+            const dayData = guideData.find((d) => d.day === day);
+            deck = { day, title: dayData.title, cards: [] };
+            allDecks.push(deck);
+          }
+          currentCards = deck.cards;
+          deckTitle.textContent = `Day ${deck.day}: ${deck.title}`;
+          document
+            .querySelectorAll(".day-link")
+            .forEach((l) =>
+              l.classList.toggle("active", parseInt(l.dataset.day) === day)
+            );
+          renderCards();
+        }
+
+        function openModal(title, q = "", a = "", index = -1) {
+          modalTitle.textContent = title;
+          qInput.value = q;
+          aInput.value = a;
+          editingIndex = index;
+          modal.classList.add("open");
+        }
+
+        function closeModal() {
+          modal.classList.remove("open");
+        }
+
+        function saveCard() {
+          const q = qInput.value.trim();
+          const a = aInput.value.trim();
+          if (!q || !a) {
+            showToast("Question and answer cannot be empty.");
+            return;
+          }
+
+          if (editingIndex > -1) {
+            currentCards[editingIndex] = { q, a };
+            showToast("Card updated!");
+          } else {
+            currentCards.push({ q, a });
+            showToast("Card added!");
+          }
+
+          saveDecks();
+          renderCards();
+          closeModal();
+        }
+
+        // --- EVENT LISTENERS ---
+        dayNavigation.addEventListener("click", (e) => {
+          const link = e.target.closest(".day-link");
+          if (link) {
+            e.preventDefault();
+            switchDeck(parseInt(link.dataset.day));
+          }
+        });
+
+        container.addEventListener("click", (e) => {
+          const cardInner = e.target.closest(".card-inner");
+          if (cardInner) {
+            cardInner.parentElement.classList.toggle("flipped");
+          }
+          const deleteBtn = e.target.closest(".delete-btn");
+          if (deleteBtn) {
+            if (confirm("Are you sure you want to delete this card?")) {
+              currentCards.splice(parseInt(deleteBtn.dataset.index), 1);
+              saveDecks();
+              renderCards();
+              showToast("Card deleted.");
+            }
+          }
+          const editBtn = e.target.closest(".edit-btn");
+          if (editBtn) {
+            const index = parseInt(editBtn.dataset.index);
+            const card = currentCards[index];
+            openModal("Edit Flashcard", card.q, card.a, index);
+          }
+        });
+
+        shuffleBtn.addEventListener("click", () => {
+          for (let i = currentCards.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [currentCards[i], currentCards[j]] = [
+              currentCards[j],
+              currentCards[i],
+            ];
+          }
+          renderCards();
+          showToast("Deck shuffled!");
+        });
+
+        addNewBtn.addEventListener("click", () =>
+          openModal("Create New Flashcard")
+        );
+        saveBtn.addEventListener("click", saveCard);
+        modal.addEventListener("click", (e) => {
+          if (e.target === modal || e.target === closeBtn) {
+            closeModal();
+          }
+        });
+
+        // --- INITIALIZATION ---
+        renderDayNavigation();
+        renderCards();
+        feather.replace();
+      });
     </script>
   </body>
 </html>

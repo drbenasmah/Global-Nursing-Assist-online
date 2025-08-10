@@ -3,16 +3,28 @@
   --primary-color: #1e40af;
   --primary-light: #3b82f6;
   --primary-dark: #1e3a8a;
-  --secondary-color: #10b981;
+  --secondary-color: #059669; /* brand green */
   --secondary-light: #34d399;
-  --accent-color: #3b82f6;
+  --accent-color: #d97706; /* brand amber */
   --success-color: #059669;
   --warning-color: #f59e0b;
   --error-color: #dc2626;
+  --heading-font: "Lora", serif;
+  --brand-gradient: linear-gradient(
+    135deg,
+    var(--primary-color),
+    var(--secondary-color)
+  );
+  --brand-accent-gradient: linear-gradient(
+    135deg,
+    var(--primary-color),
+    var(--accent-color)
+  );
   --background-gradient: linear-gradient(
     135deg,
     #f8fafc 0%,
-    #f1f5f9 50%,
+    #eef2ff 40%,
+    #ecfeff 70%,
     #f0fdf4 100%
   );
   --glass-bg: rgba(255, 255, 255, 0.85);
@@ -79,6 +91,27 @@ body.loading {
   padding: 0 20px;
 }
 
+/* Utilities */
+.hidden {
+  display: none !important;
+}
+
+:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+.control-btn:focus-visible,
+.week-tab:focus-visible,
+.bookmark-day:focus-visible,
+.add-note:focus-visible,
+.bookmark-btn:focus-visible,
+.timer-btn:focus-visible,
+.btn-secondary:focus-visible,
+.btn-danger:focus-visible,
+.search-input:focus-visible {
+  box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.2);
+}
+
 /* Navigation */
 .navbar {
   background: var(--glass-bg);
@@ -95,6 +128,13 @@ body.loading {
   background: rgba(255, 255, 255, 0.98);
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
     0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* Elevated navbar on scroll */
+.navbar.scrolled {
+  background: rgba(255, 255, 255, 0.98);
+  box-shadow: 0 6px 18px -8px rgba(0, 0, 0, 0.3);
+  border-bottom-color: rgba(30, 64, 175, 0.15);
 }
 
 .nav-controls {
@@ -173,15 +213,24 @@ body.loading {
   color: var(--primary-color);
 }
 
-.nav-link.active::after {
+.nav-link::after {
   content: "";
   position: absolute;
-  bottom: -5px;
   left: 0;
   right: 0;
+  bottom: -6px;
   height: 2px;
-  background: var(--primary-color);
+  background: var(--brand-accent-gradient);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease;
   border-radius: 1px;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  transform: scaleX(1);
+  transform-origin: left;
 }
 
 /* Hero Section */
@@ -310,6 +359,14 @@ body.loading {
   color: #64748b;
   max-width: 600px;
   margin: 0 auto;
+}
+
+/* Brand typography */
+.hero-title,
+.week-info h3,
+.day-header h4 {
+  font-family: var(--heading-font);
+  letter-spacing: -0.015em;
 }
 
 /* Progress Section */
@@ -596,12 +653,13 @@ body.loading {
 
 /* Day Cards */
 .day-card {
-  background: rgba(255, 255, 255, 0.95);
+  background: linear-gradient(#ffffff, #ffffff) padding-box,
+    var(--brand-gradient) border-box;
   backdrop-filter: blur(10px);
   border-radius: var(--border-radius);
   padding: 1.5rem;
   box-shadow: var(--card-shadow);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid transparent;
   transition: var(--transition);
   position: relative;
   overflow: hidden;
@@ -905,6 +963,16 @@ body.loading {
   }
   50% {
     background-position: 100% 50%;
+  }
+}
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
   }
 }
 
