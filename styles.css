@@ -765,4 +765,63 @@ section {
   .dropdown.open .nav-link .feather {
     transform: rotate(180deg);
   }
+
+  /* === Dark Mode & Theme Toggle Styles === */
+
+  /* Container for buttons on the right */
+  .nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  /* Theme toggle button */
+  .theme-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+  }
+
+  .theme-toggle:hover {
+    background-color: #f0f0f0;
+  }
+
+  /* Core Dark Mode Styles */
+  html.dark {
+    background-color: #111827;
+    color-scheme: dark;
+  }
+
+  html.dark body {
+    background-color: #111827;
+    color: #f9fafb;
+  }
+
+  html.dark .navbar {
+    background: rgba(31, 41, 55, 0.95);
+    border-bottom-color: #374151;
+  }
+
+  html.dark .logo-text,
+  html.dark .nav-link {
+    color: #d1d5db;
+  }
+
+  html.dark .post-full {
+    background: #1f2937;
+  }
+
+  /* Add more dark mode styles for other sections as needed... */
+  /* Example: */
+  /*
+html.dark .footer {
+    background-color: #0f172a;
+}
+*/
 }
