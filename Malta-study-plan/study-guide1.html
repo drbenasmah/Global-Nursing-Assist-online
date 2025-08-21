@@ -31,6 +31,55 @@
       .font-heading {
         font-family: var(--font-headings);
       }
+
+      /* --- Navbar Fix --- */
+      .navbar {
+        background-color: rgba(255, 255, 255, 0.8);
+        border-bottom-color: #e2e8f0;
+      }
+      html.dark .navbar {
+        background-color: rgba(31, 41, 55, 0.8);
+        border-bottom-color: #374151;
+      }
+      .nav-container {
+        width: 100%;
+        max-width: 1440px;
+        margin: 0 auto;
+        padding: 0 2.5rem; /* Adjust padding for edge alignment */
+      }
+
+      /* FIX: Explicitly set nav link colors */
+      .navbar .nav-link,
+      .navbar .group button {
+        color: #4b5563; /* Standard gray for light mode */
+      }
+      html.dark .navbar .nav-link,
+      html.dark .navbar .group button {
+        color: #d1d5db; /* Light gray for dark mode */
+      }
+      .navbar .nav-link:hover,
+      .navbar .group button:hover {
+        color: var(--color-primary);
+      }
+      html.dark .navbar .nav-link:hover,
+      html.dark .navbar .group button:hover {
+        color: white;
+      }
+      /* FIX: Explicitly set logo text color for light and dark modes */
+      .logo-text {
+        color: #1e40af; /* This is the deep blue for light mode */
+      }
+
+      html.dark .logo-text {
+        color: #93c5fd; /* This is the light blue for dark mode */
+      }
+
+      @media (max-width: 768px) {
+        .nav-container {
+          padding: 0 1.5rem;
+        }
+      }
+
       /* Light Mode styles are default */
 
       /* Dark Mode Styles */
@@ -40,9 +89,6 @@
       }
       html.dark .bg-white {
         background-color: #1f2937;
-      }
-      html.dark .bg-white\/80 {
-        background-color: rgba(31, 41, 55, 0.8);
       }
       html.dark .border-b,
       html.dark .border {
@@ -217,40 +263,77 @@
   </head>
   <body>
     <!-- === NAVIGATION BAR === -->
-    <nav class="bg-white/80 backdrop-blur-lg sticky top-0 z-20 border-b">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex items-center justify-between h-16">
-          <div class="flex items-center">
-            <a href="#" class="font-heading text-xl font-bold text-blue-800"
-              >Nursing Assist PL</a
-            >
+    <nav class="navbar backdrop-blur-lg sticky top-0 z-20 border-b">
+      <div class="nav-container">
+        <div class="flex items-center justify-between h-20">
+          <!-- Logo -->
+          <div class="flex-shrink-0">
+            <a href="../index.html" class="flex items-center gap-3">
+              <img
+                class="h-12"
+                src="../src/assets/img/logo1.png"
+                alt="Nurse Assist PL Logo"
+                onerror="this.onerror=null;this.src='https://placehold.co/200x50/1e40af/ffffff?text=Logo';"
+              />
+              <span
+                class="font-heading text-xl font-bold logo-text hidden sm:block"
+                >Nursing School Assist PL</span
+              >
+            </a>
           </div>
-          <div class="flex items-center gap-4">
-            <div class="hidden md:block">
-              <div class="ml-10 flex items-baseline space-x-4">
+          <!-- Desktop Menu -->
+          <div class="hidden md:flex items-center space-x-6">
+            <a href="../index.html" class="nav-link font-medium">Home</a>
+            <a href="../index.html#about" class="nav-link font-medium">About</a>
+            <a href="../index.html#services" class="nav-link font-medium"
+              >Services</a
+            >
+            <!-- Dropdown -->
+            <div class="relative group">
+              <button class="font-medium flex items-center gap-1">
+                Resources
+                <i
+                  data-feather="chevron-down"
+                  class="w-4 h-4 transition-transform duration-300 group-hover:rotate-180"
+                ></i>
+              </button>
+              <div
+                class="absolute top-full left-1/2 -translate-x-1/2 mt-4 w-60 bg-white dark:bg-gray-800 rounded-lg shadow-xl p-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300"
+              >
                 <a
-                  href="#"
-                  class="text-gray-600 hover:text-blue-800 px-3 py-2 rounded-md text-sm font-medium"
-                  >Home</a
+                  href="../ai-page/ai-assistant.html"
+                  class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-800 rounded-md"
+                  >AI Interview Assistant</a
                 >
                 <a
-                  href="#"
-                  class="text-blue-800 bg-blue-100 px-3 py-2 rounded-md text-sm font-medium"
-                  aria-current="page"
-                  >Daily Guide</a
+                  href="./onemonth.html"
+                  class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-800 rounded-md"
+                  >Study Plan</a
                 >
                 <a
-                  href="#"
-                  class="text-gray-600 hover:text-blue-800 px-3 py-2 rounded-md text-sm font-medium"
-                  >AI Assistant</a
+                  href="./study-guide1.html"
+                  class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-800 rounded-md"
+                  >Study Guide</a
                 >
                 <a
-                  href="#"
-                  class="text-gray-600 hover:text-blue-800 px-3 py-2 rounded-md text-sm font-medium"
-                  >Blog</a
+                  href="./flashcard-m.html"
+                  class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-800 rounded-md"
+                  >Flashcards</a
+                >
+                <a
+                  href="../index.html#resources"
+                  class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-800 rounded-md"
+                  >Free Downloads</a
                 >
               </div>
             </div>
+            <a href="../index.html#contact" class="nav-link font-medium"
+              >Contact</a
+            >
+            <a href="../blog.html" class="nav-link font-medium">Blog</a>
+          </div>
+          <!-- Right Actions -->
+          <div class="flex items-center gap-2">
             <button
               id="dark-mode-toggle"
               class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700"
@@ -258,11 +341,89 @@
               <i data-feather="moon" class="dark-icon"></i>
               <i data-feather="sun" class="light-icon hidden"></i>
             </button>
+            <button
+              id="nav-toggle"
+              class="md:hidden p-2 rounded-md hover:bg-gray-200 dark:hover:bg-gray-700"
+            >
+              <i data-feather="menu" class="w-6 h-6"></i>
+            </button>
+          </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden">
+          <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            <a
+              href="../index.html"
+              class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700"
+              >Home</a
+            >
+            <a
+              href="../index.html#about"
+              class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700"
+              >About</a
+            >
+            <a
+              href="../index.html#services"
+              class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700"
+              >Services</a
+            >
+            <div
+              class="border-t border-gray-200 dark:border-gray-700 my-2"
+            ></div>
+            <button
+              id="mobile-dropdown-toggle"
+              class="w-full flex justify-between items-center px-3 py-2 text-base font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-md"
+            >
+              <span>Resources</span>
+              <i
+                data-feather="chevron-down"
+                class="w-5 h-5 transition-transform duration-300"
+              ></i>
+            </button>
+            <div id="mobile-dropdown-menu" class="hidden pl-8 space-y-1">
+              <a
+                href="../ai-page/ai-assistant.html"
+                class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700"
+                >AI Assistant</a
+              >
+              <a
+                href="./onemonth.html"
+                class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700"
+                >Study Plan</a
+              >
+              <a
+                href="./study-guide1.html"
+                class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700"
+                >Study Guide</a
+              >
+              <a
+                href="./flashcard-m.html"
+                class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700"
+                >Flashcards</a
+              >
+              <a
+                href="../index.html#resources"
+                class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700"
+                >Free Downloads</a
+              >
+            </div>
+            <div
+              class="border-t border-gray-200 dark:border-gray-700 my-2"
+            ></div>
+            <a
+              href="../index.html#contact"
+              class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700"
+              >Contact</a
+            >
+            <a
+              href="../blog.html"
+              class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700"
+              >Blog</a
+            >
           </div>
         </div>
       </div>
     </nav>
-
     <!-- === MAIN GUIDE CONTENT === -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <!-- Guide Header -->
@@ -2087,6 +2248,14 @@
         const bookmarksDropdown = document.getElementById("bookmarks-dropdown");
         const darkModeToggle = document.getElementById("dark-mode-toggle");
         const htmlEl = document.documentElement;
+        const navToggle = document.getElementById("nav-toggle");
+        const mobileMenu = document.getElementById("mobile-menu");
+        const mobileDropdownToggle = document.getElementById(
+          "mobile-dropdown-toggle"
+        );
+        const mobileDropdownMenu = document.getElementById(
+          "mobile-dropdown-menu"
+        );
 
         let progress =
           JSON.parse(localStorage.getItem("maltaGuideProgress")) || {};
@@ -2094,7 +2263,6 @@
           JSON.parse(localStorage.getItem("maltaGuideBookmarks")) || [];
 
         // --- FUNCTIONS ---
-
         const saveProgress = () =>
           localStorage.setItem("maltaGuideProgress", JSON.stringify(progress));
         const saveBookmarks = () =>
@@ -2105,7 +2273,7 @@
 
         const updateProgressDisplay = () => {
           const completedDays = guideData.filter((day) => {
-            const dayTasks = day.checklist.map((task) => task.id);
+            const dayTasks = (day.checklist || []).map((task) => task.id);
             if (dayTasks.length === 0)
               return progress[`day${day.day}-completed`] || false;
             return dayTasks.every((id) => progress[id]);
@@ -2146,7 +2314,7 @@
               navigationContainer.appendChild(weekHeader);
             }
 
-            const dayTasks = day.checklist.map((task) => task.id);
+            const dayTasks = (day.checklist || []).map((task) => task.id);
             const isCompleted =
               dayTasks.length > 0
                 ? dayTasks.every((id) => progress[id])
@@ -2241,9 +2409,9 @@
             .join("");
 
           const isDayWithNoTasksCompleted =
-            dayData.checklist.length === 0 &&
+            (dayData.checklist || []).length === 0 &&
             (progress[`day${dayData.day}-completed`] || false);
-          const checklistHtml = dayData.checklist
+          const checklistHtml = (dayData.checklist || [])
             .map(
               (task) => `
                     <div class="checklist-item ${
@@ -2291,7 +2459,7 @@
                         ${detailedContentHtml}
 
                         ${
-                          dayData.checklist.length > 0
+                          (dayData.checklist || []).length > 0
                             ? `
                         <div>
                             <h2 class="font-heading text-xl font-semibold text-gray-900 mb-4">Action Items</h2>
@@ -2370,6 +2538,17 @@
           e.target.value = "";
         });
 
+        navToggle.addEventListener("click", () => {
+          mobileMenu.classList.toggle("hidden");
+        });
+
+        mobileDropdownToggle.addEventListener("click", () => {
+          mobileDropdownMenu.classList.toggle("hidden");
+          mobileDropdownToggle
+            .querySelector("i")
+            .classList.toggle("rotate-180");
+        });
+
         // --- DARK MODE LOGIC ---
         const darkIcon = darkModeToggle.querySelector(".dark-icon");
         const lightIcon = darkModeToggle.querySelector(".light-icon");
@@ -2377,12 +2556,12 @@
         const applyDarkMode = (isDark) => {
           if (isDark) {
             htmlEl.classList.add("dark");
-            darkIcon.classList.add("hidden");
-            lightIcon.classList.remove("hidden");
+            darkIcon.style.display = "none";
+            lightIcon.style.display = "block";
           } else {
             htmlEl.classList.remove("dark");
-            darkIcon.classList.remove("hidden");
-            lightIcon.classList.add("hidden");
+            darkIcon.style.display = "block";
+            lightIcon.style.display = "none";
           }
         };
 
@@ -2409,6 +2588,7 @@
         updateProgressDisplay();
         updateBookmarksDropdown();
         renderContent(1);
+        feather.replace();
       });
     </script>
   </body>
