@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      How Polish Nursing Graduates Can Register to Practice in Malta | Nursing
+      Assist PL
+    </title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* === CSS Variables & Base Styles === */
+      :root {
+        --color-primary: #1e40af;
+        --color-secondary: #059669;
+        --color-text: #1e293b;
+        --color-text-light: #64748b;
+        --color-background: #ffffff;
+        --color-border: #e2e8f0;
+        --color-primary-light: #dbeafe;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        line-height: 1.7;
+        color: var(--color-text);
+        background-color: var(--color-background);
+        padding-top: 80px;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      /* === Navigation Bar === */
+      .navbar {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
+        height: 80px;
+        display: flex;
+        align-items: center;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+      }
+      .nav-container {
+        width: 100%;
+        max-width: 1440px;
+        margin: 0 auto;
+        padding: 0 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .nav-logo a {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        color: inherit;
+      }
+      .logo-img {
+        height: 40px;
+        margin-right: 10px;
+      }
+      .logo-text {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: var(--color-primary);
+      }
+      .nav-menu {
+        display: flex;
+        gap: 2rem;
+        align-items: center;
+      }
+      .nav-link {
+        text-decoration: none;
+        color: var(--color-text-light);
+        font-weight: 500;
+        transition: color 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+      }
+      .nav-link:hover {
+        color: var(--color-primary);
+      }
+      .nav-toggle {
+        display: none;
+      }
+      .dropdown {
+        position: relative;
+      }
+      .dropdown-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        padding: 0.5rem 0;
+        min-width: 220px;
+        z-index: 1001;
+      }
+      .dropdown:hover .dropdown-menu {
+        display: block;
+      }
+      .dropdown-link {
+        display: block;
+        padding: 0.75rem 1.5rem;
+        color: var(--color-text);
+        text-decoration: none;
+      }
+      .dropdown-link:hover {
+        background-color: var(--color-primary-light);
+        color: var(--color-primary);
+      }
+
+      /* === Blog Post Styles === */
+      .post-full-header {
+        padding: 4rem 0;
+        text-align: center;
+        background-color: #f8fafc;
+      }
+      .post-card-category {
+        color: var(--color-primary);
+        font-weight: 600;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+      .post-full-title {
+        font-size: 2.8rem;
+        margin: 0.5rem 0 1.5rem;
+        color: var(--color-text);
+      }
+      .post-full-meta {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .post-card-author {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+      .author-avatar {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+      }
+      .post-card-author div {
+        text-align: left;
+      }
+      .author-name {
+        display: block;
+        font-weight: 600;
+      }
+      .post-date {
+        font-size: 0.9rem;
+        color: var(--color-text-light);
+      }
+
+      .post-full-image {
+        margin: 0;
+        width: 100%;
+        height: 500px;
+        overflow: hidden;
+      }
+      .post-full-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .post-full-content {
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+        max-width: 720px;
+      }
+      .post-full-content h2 {
+        font-size: 1.8rem;
+        color: var(--color-text);
+        margin: 2.5rem 0 1rem;
+        border-bottom: 2px solid var(--color-border);
+        padding-bottom: 0.5rem;
+      }
+      .post-full-content h3 {
+        font-size: 1.4rem;
+        color: var(--color-text);
+        margin: 2rem 0 1rem;
+      }
+      .post-full-content p {
+        font-size: 1.1rem;
+        margin-bottom: 1.5rem;
+      }
+      .post-full-content a {
+        font-weight: 600;
+        word-break: break-all;
+      }
+      .post-full-content ul,
+      .post-full-content ol {
+        margin: 0 0 1.5rem 1.5rem;
+        padding-left: 1rem;
+      }
+      .post-full-content li {
+        margin-bottom: 0.75rem;
+      }
+      .post-content-image {
+        width: 100%;
+        border-radius: 8px;
+        margin: 2rem 0;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      }
+      hr {
+        border: none;
+        border-top: 1px solid var(--color-border);
+        margin: 3rem 0;
+      }
+
+      /* Callout Box */
+      .blog-callout {
+        background-color: var(--color-primary-light);
+        border-left: 4px solid var(--color-primary);
+        padding: 1.5rem;
+        margin: 2rem 0;
+        border-radius: 0 8px 8px 0;
+      }
+      .cta-link {
+        font-weight: 700;
+      }
+
+      /* === Footer === */
+      .footer {
+        background: var(--color-text);
+        color: #a0aec0;
+        padding: 3rem 0;
+      }
+      .footer-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        margin-bottom: 2rem;
+      }
+      .footer-section h3,
+      .footer-section h4 {
+        color: white;
+        margin-bottom: 1rem;
+      }
+      .footer-links {
+        list-style: none;
+        padding: 0;
+      }
+      .footer-links li {
+        margin-bottom: 0.5rem;
+      }
+      .footer-links a {
+        text-decoration: none;
+        color: inherit;
+      }
+      .footer-links a:hover {
+        color: white;
+      }
+      .footer-bottom {
+        border-top: 1px solid #4a5568;
+        padding-top: 2rem;
+        text-align: center;
+      }
+
+      /* Responsive */
+      @media (max-width: 992px) {
+        .nav-menu {
+          display: none;
+        }
+        .nav-toggle {
+          display: block;
+        }
+      }
+      @media (max-width: 768px) {
+        .post-full-title {
+          font-size: 2rem;
+        }
+        .post-full-image {
+          height: 300px;
+        }
+        .logo-text {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- === NAVIGATION BAR === -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="nav-logo">
+          <a href="#">
+            <img
+              src="/src/assets/img/logo1.png"
+              alt="Nurse Assist PL Logo"
+              class="logo-img"
+              onerror="this.onerror=null;this.src='https://placehold.co/200x50/1e40af/ffffff?text=Logo';"
+            />
+            <span class="logo-text">Nursing School Assist PL</span>
+          </a>
+        </div>
+        <div class="nav-menu" id="nav-menu">
+          <a href="/index.html" class="nav-link">Home</a>
+          <a href="/index.html#about" class="nav-link">About</a>
+          <a href="/index.html#services" class="nav-link">Services</a>
+          <div class="dropdown">
+            <a href="#" class="nav-link">Resources</a>
+            <div class="dropdown-menu">
+              <a href="/Malta-study-plan/Qbank_Malta.html" class="dropdown-link"
+                >Malta Qbank</a
+              >
+              <a href="/Malta-study-plan/onemonth.html" class="dropdown-link"
+                >Study Plan</a
+              >
+              <a
+                href="/Malta-study-plan/study-guide1.html"
+                class="dropdown-link"
+                >Study Guide</a
+              >
+            </div>
+          </div>
+          <a href="/index.html#contact" class="nav-link">Contact</a>
+          <a href="/blog.html" class="nav-link">Blog</a>
+        </div>
+        <button
+          class="nav-toggle"
+          id="nav-toggle"
+          aria-label="Toggle navigation menu"
+        >
+          <!-- Hamburger Icon SVG would go here -->
+        </button>
+      </div>
+    </nav>
+
+    <main>
+      <article class="post-full">
+        <header class="post-full-header">
+          <div class="container">
+            <span class="post-card-category">Malta Registration Guide</span>
+            <h1 class="post-full-title">
+              How Polish Nursing Graduates Can Register to Practice in Malta
+            </h1>
+            <div class="post-full-meta">
+              <div class="post-card-author">
+                <img
+                  src="/src/assets/img/author1.jpg"
+                  alt="Author avatar for Ben Asmah"
+                  class="author-avatar"
+                />
+                <div>
+                  <span class="author-name">Dr. Ben Asmah</span>
+                  <span class="post-date"
+                    >August 24, 2025 &middot; 6 min read</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </header>
+
+        <figure class="post-full-image">
+          <img
+            src="/blog-pages/blog-img/Malta ChatGPT .png"
+            alt="A scenic view of Malta's coastline representing the nursing journey"
+          />
+        </figure>
+
+        <div class="post-full-content container">
+          <p>
+            Graduating from a nursing program in Poland is a huge milestone. But
+            for many international graduates, the next challenge is figuring out
+            where to begin their career. While some stay in Poland, others look
+            for opportunities abroad. Malta is a strong option, especially
+            because English is an official language and the Malta Council for
+            Nurses and Midwives (MCNM) offers a clear route for recognition.
+          </p>
+          <p>
+            This guide explains the process from the perspective of a
+            Polish-trained graduate.
+          </p>
+
+          <hr />
+
+          <h2>Step 1: Registration Category</h2>
+          <p>
+            If you are a non-EU citizen trained in Poland, you must apply under
+            <strong>1st Level Nurse – Temporary Registration</strong> with MCNM.
+            This registration is valid for 24 months and can be renewed.
+          </p>
+
+          <h2>Step 2: Documents Required</h2>
+          <p>
+            To apply, you will need to prepare and (if necessary) translate the
+            following documents into English. Because some documents (like the
+            Brown Certificate and diploma) take time to issue, it is smart to
+            begin early.
+          </p>
+          <ul>
+            <li>Polish nursing degree certificate</li>
+            <li>
+              OIPiP “Brown Certificate” confirming your qualification meets EU
+              standards
+            </li>
+            <li>Transcript and diploma supplement</li>
+            <li>Passport copy</li>
+            <li>
+              IELTS Academic certificate (minimum overall 6.5, no band below
+              6.0)
+            </li>
+            <li>Police Clearance Certificate (from Poland)</li>
+            <li>MQRIC certificate</li>
+            <li>Passport-size photo</li>
+            <li>Europass CV</li>
+            <li>Proof of payment (€192.50 application fee)</li>
+          </ul>
+
+          <h2>Step 3: Submitting the Application</h2>
+          <p>
+            Applications are submitted online through the MCNM portal:
+            <a
+              href="https://nursesandmidwivesregistration.gov.mt"
+              target="_blank"
+              >nursesandmidwivesregistration.gov.mt</a
+            >
+          </p>
+          <img
+            src="/blog-pages/blog-img/malta_reg/signup_malta.png"
+            alt="MCNM signup and login page screenshot"
+            class="post-content-image"
+          />
+          <ol>
+            <li>Sign up with Custom Authentication.</li>
+            <li>Fill in personal details and upload a passport photo.</li>
+            <li>Enter contact information and confirm by email.</li>
+            <li>
+              Start a new application and select
+              <strong>Nurse – 1st Level Nurse</strong>.
+            </li>
+            <li>
+              Add university and certificate details. If your school is not
+              listed, check the “University is not listed” box and type the name
+              manually.
+            </li>
+            <img
+              src="/blog-pages/blog-img/malta_reg/reg_malta.png"
+              alt="Application registration screenshot"
+              class="post-content-image"
+            />
+            <li>
+              Upload documents: MQRIC in section 09, Brown Certificate in
+              section 11, and Europass CV under “Additional Documents”.
+            </li>
+            <img
+              src="/blog-pages/blog-img/malta_reg/document_malta.png"
+              alt="Document upload list screenshot"
+              class="post-content-image"
+            />
+            <li>
+              Pay the fee (€192.50). You’ll receive a receipt and reference
+              number to track your case.
+            </li>
+          </ol>
+
+          <h2>Step 4: The Interview – The Most Important Step</h2>
+          <p>
+            All applicants must attend an in-person interview in Malta. This is
+            the most critical requirement in the whole process because it covers
+            clinical knowledge, tests professional judgment through case
+            scenarios, and evaluates English communication skills in a
+            healthcare setting.
+          </p>
+          <div class="blog-callout">
+            <p>
+              ⚠️
+              <strong
+                >If you fail the interview, you must wait six months before
+                reapplying.</strong
+              >
+              That’s a long delay in your career.
+            </p>
+            <p>
+              👉 This is where <strong>Global Nursing Assist</strong> comes in.
+              We specialize in mock interviews, communication coaching, and
+              provide free study materials to help you succeed the first time.
+              <a href="#" class="cta-link">Visit our website today</a> to book
+              your free 30-minute consultation.
+            </p>
+          </div>
+
+          <h2>Step 5: Receiving Your PIN</h2>
+          <p>
+            If successful, you will be issued a temporary PIN valid for 24
+            months, allowing you to work legally as a nurse in Malta. Afterward,
+            this can be renewed or converted into full registration.
+          </p>
+
+          <hr />
+
+          <h2>Key Tips from Polish Graduates</h2>
+          <ul>
+            <li>
+              <strong>Manage your residence card:</strong> If your Polish TRC is
+              close to expiring, attend your Malta interview before renewal
+              begins, since travel may be restricted during processing.
+            </li>
+            <li>
+              <strong>Budget carefully:</strong> Consider costs for
+              translations, certificates, flights, and accommodation in Malta.
+            </li>
+            <li>
+              <strong>Prepare for the interview:</strong> Many applicants
+              underestimate this stage—practice clinical scenarios and
+              communication drills.
+            </li>
+          </ul>
+
+          <h2>Frequently Asked Questions (FAQ)</h2>
+          <h3>Do I need IELTS even though I studied in English in Poland?</h3>
+          <p>
+            Yes. MCNM requires IELTS Academic with an overall score of 6.5 and
+            no band below 6.0. Proof of English studies is not a substitute.
+          </p>
+          <h3>How long does registration take?</h3>
+          <p>
+            From application to PIN, the process can take 1-3 months, depending
+            on how quickly documents are verified and when interview dates are
+            available.
+          </p>
+          <h3>What happens if I fail the interview?</h3>
+          <p>
+            You can reapply but after 6 months. Many candidates improve their
+            knowledge and communication skills, then pass on the second attempt.
+          </p>
+
+          <h2>Final Thoughts</h2>
+          <p>
+            Malta offers an attractive first step for Polish-trained nursing
+            graduates seeking an international career. The process requires
+            preparation, but with the right documents, planning, and interview
+            practice, you can achieve registration and begin your nursing career
+            in Malta.
+          </p>
+          <div class="blog-callout">
+            <p>
+              📌 At <strong>Global Nursing Assist</strong>, we not only guide
+              graduates through MCNM registration but also coach candidates to
+              pass IELTS and prepare for the interview.
+              <a href="#" class="cta-link"
+                >Book a free 30-minute consultation to get started.</a
+              >
+            </p>
+          </div>
+        </div>
+      </article>
+    </main>
+
+    <!-- === FOOTER === -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3>Nursing Assist PL</h3>
+            <p>
+              Empowering nursing students and professionals across Poland, UK,
+              and Malta with expert guidance.
+            </p>
+          </div>
+          <div class="footer-section">
+            <h4>Services</h4>
+            <ul class="footer-links">
+              <li><a href="#">IELTS Coaching</a></li>
+              <li><a href="#">Thesis Help</a></li>
+              <li><a href="#">Clinical Coaching</a></li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h4>Resources</h4>
+            <ul class="footer-links">
+              <li><a href="#">Free Downloads</a></li>
+              <li><a href="#">Contact Us</a></li>
+              <li><a href="#">Blog</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>
+            &copy; <span id="current-year"></span> Nurse Assist PL. All rights
+            reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      document.getElementById("current-year").textContent =
+        new Date().getFullYear();
+    </script>
+  </body>
+</html>
