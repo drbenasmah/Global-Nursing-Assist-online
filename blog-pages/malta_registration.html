@@ -105,7 +105,30 @@
       }
       .nav-toggle {
         display: none;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 5px;
+        z-index: 1001;
       }
+      .nav-toggle .bar {
+        display: block;
+        width: 25px;
+        height: 3px;
+        margin: 5px auto;
+        background-color: var(--color-text);
+        transition: all 0.3s ease-in-out;
+      }
+      .nav-toggle.active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+      }
+      .nav-toggle.active .bar:nth-child(2) {
+        opacity: 0;
+      }
+      .nav-toggle.active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+      }
+
       .dropdown {
         position: relative;
       }
@@ -291,8 +314,38 @@
       @media (max-width: 992px) {
         .nav-menu {
           display: none;
+          position: absolute;
+          top: 80px;
+          left: 0;
+          width: 100%;
+          background-color: white;
+          flex-direction: column;
+          align-items: flex-start;
+          padding: 1rem 2rem;
+          box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+          gap: 1rem;
+        }
+        .nav-menu.active {
+          display: flex;
         }
         .nav-toggle {
+          display: block;
+        }
+        .dropdown:hover .dropdown-menu {
+          display: none;
+        }
+        .dropdown .dropdown-menu {
+          display: none;
+          position: static;
+          box-shadow: none;
+          border-top: 1px solid var(--color-border);
+          padding-left: 1rem;
+          width: 100%;
+          transform: none;
+          opacity: 1;
+          visibility: visible;
+        }
+        .dropdown.active .dropdown-menu {
           display: block;
         }
       }
@@ -302,9 +355,6 @@
         }
         .post-full-image {
           height: 300px;
-        }
-        .logo-text {
-          display: none;
         }
       }
     </style>
@@ -316,43 +366,51 @@
         <div class="nav-logo">
           <a href="#">
             <img
-              src="/src/assets/img/logo1.png"
+              src="../src/assets/img/logo1.png"
               alt="Nurse Assist PL Logo"
               class="logo-img"
-              onerror="this.onerror=null;this.src='https://placehold.co/200x50/1e40af/ffffff?text=Logo';"
             />
             <span class="logo-text">Nursing School Assist PL</span>
           </a>
         </div>
         <div class="nav-menu" id="nav-menu">
-          <a href="/index.html" class="nav-link">Home</a>
-          <a href="/index.html#about" class="nav-link">About</a>
-          <a href="/index.html#services" class="nav-link">Services</a>
+          <a href="#" class="nav-link">Home</a>
+          <a href="#" class="nav-link">About</a>
+          <a href="#" class="nav-link">Services</a>
           <div class="dropdown">
-            <a href="#" class="nav-link">Resources</a>
+            <a href="#" class="nav-link" id="resources-link">
+              Resources
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </a>
             <div class="dropdown-menu">
-              <a href="/Malta-study-plan/Qbank_Malta.html" class="dropdown-link"
-                >Malta Qbank</a
-              >
-              <a href="/Malta-study-plan/onemonth.html" class="dropdown-link"
-                >Study Plan</a
-              >
-              <a
-                href="/Malta-study-plan/study-guide1.html"
-                class="dropdown-link"
-                >Study Guide</a
-              >
+              <a href="#" class="dropdown-link">AI Interview Assistant</a>
+              <a href="#" class="dropdown-link">Study Plan</a>
+              <a href="#" class="dropdown-link">Study Guide</a>
             </div>
           </div>
-          <a href="/index.html#contact" class="nav-link">Contact</a>
-          <a href="/blog.html" class="nav-link">Blog</a>
+          <a href="#" class="nav-link">Contact</a>
+          <a href="#" class="nav-link">Blog</a>
         </div>
         <button
           class="nav-toggle"
           id="nav-toggle"
           aria-label="Toggle navigation menu"
         >
-          <!-- Hamburger Icon SVG would go here -->
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
         </button>
       </div>
     </nav>
@@ -368,7 +426,7 @@
             <div class="post-full-meta">
               <div class="post-card-author">
                 <img
-                  src="/src/assets/img/author1.jpg"
+                  src="../src/assets/img/author1.jpg"
                   alt="Author avatar for Ben Asmah"
                   class="author-avatar"
                 />
@@ -385,7 +443,7 @@
 
         <figure class="post-full-image">
           <img
-            src="/blog-pages/blog-img/Malta ChatGPT .png"
+            src="../blog-img/Malta ChatGPT .png"
             alt="A scenic view of Malta's coastline representing the nursing journey"
           />
         </figure>
@@ -449,7 +507,7 @@
             >
           </p>
           <img
-            src="/blog-pages/blog-img/malta_reg/signup_malta.png"
+            src="../blog-pages/blog-img/malta_reg/signup_malta.png"
             alt="MCNM signup and login page screenshot"
             class="post-content-image"
           />
@@ -467,7 +525,7 @@
               manually.
             </li>
             <img
-              src="/blog-pages/blog-img/malta_reg/reg_malta.png"
+              src="../blog-pages/blog-img/malta_reg/reg_malta.png"
               alt="Application registration screenshot"
               class="post-content-image"
             />
@@ -476,7 +534,7 @@
               section 11, and Europass CV under “Additional Documents”.
             </li>
             <img
-              src="/blog-pages/blog-img/malta_reg/document_malta.png"
+              src="../blog-pages/blog-img/malta_reg/document_malta.png"
               alt="Document upload list screenshot"
               class="post-content-image"
             />
@@ -617,6 +675,32 @@
     </footer>
 
     <script>
+      // Mobile Navigation Toggle
+      const navToggle = document.getElementById("nav-toggle");
+      const navMenu = document.getElementById("nav-menu");
+      const resourcesLink = document.querySelector(".dropdown .nav-link");
+      const dropdown = resourcesLink
+        ? resourcesLink.closest(".dropdown")
+        : null;
+
+      if (navToggle && navMenu) {
+        navToggle.addEventListener("click", () => {
+          navToggle.classList.toggle("active");
+          navMenu.classList.toggle("active");
+        });
+      }
+
+      // Mobile Dropdown Toggle
+      if (resourcesLink && dropdown) {
+        resourcesLink.addEventListener("click", (event) => {
+          if (window.innerWidth <= 992) {
+            event.preventDefault();
+            dropdown.classList.toggle("active");
+          }
+        });
+      }
+
+      // Set Current Year
       document.getElementById("current-year").textContent =
         new Date().getFullYear();
     </script>
