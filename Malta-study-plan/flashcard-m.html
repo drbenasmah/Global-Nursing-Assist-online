@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Malta Interview Flashcards — Enhanced</title>
+    <!-- This link to styles.css is for the navbar and may not work in a local preview without the file -->
     <link rel="stylesheet" href="../styles.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:wght@600&display=swap"
@@ -15,14 +16,30 @@
         --brand-blue: #1e40af;
         --brand-blue-light: #dbeafe;
         --brand-secondary: #059669;
-        --bg-light: #f1f5f9;
-        --card-bg: #ffffff;
-        --radius: 12px;
-        --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.05);
-        --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.1);
         --font-primary: "Inter", sans-serif;
         --font-headings: "Lora", serif;
+        --radius: 12px;
+
+        /* Light Theme Variables */
+        --bg-primary: #f1f5f9;
+        --bg-secondary: #ffffff;
+        --text-primary: #1e293b;
+        --text-secondary: #475569;
+        --border-primary: #e2e8f0;
+        --shadow-color-rgb: 0, 0, 0;
       }
+
+      body[data-theme="dark"] {
+        /* Dark Theme Variables */
+        --bg-primary: #111827;
+        --bg-secondary: #1f2937;
+        --text-primary: #e5e7eb;
+        --text-secondary: #9ca3af;
+        --border-primary: #374151;
+        --shadow-color-rgb: 220, 220, 220;
+        --brand-blue-light: #1e3a8a;
+      }
+
       * {
         box-sizing: border-box;
       }
@@ -33,10 +50,11 @@
       }
       body {
         font-family: var(--font-primary);
-        color: #1e293b;
-        background-color: var(--bg-light);
+        color: var(--text-primary);
+        background-color: var(--bg-primary);
         display: flex;
         flex-direction: column;
+        transition: background-color 0.3s ease, color 0.3s ease;
       }
       .main-layout {
         display: flex;
@@ -44,14 +62,27 @@
         overflow: hidden;
       }
 
+      /* Shadows */
+      .shadow-sm {
+        box-shadow: 0 4px 12px rgba(var(--shadow-color-rgb), 0.05);
+      }
+      .shadow-md {
+        box-shadow: 0 10px 30px rgba(var(--shadow-color-rgb), 0.1);
+      }
+      .btn:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 6px 20px rgba(30, 64, 175, 0.2);
+      }
+
       /* Sidebar */
       .sidebar {
         width: 280px;
         flex-shrink: 0;
-        background-color: var(--card-bg);
+        background-color: var(--bg-secondary);
         padding: 1.5rem;
-        border-right: 1px solid #e2e8f0;
+        border-right: 1px solid var(--border-primary);
         overflow-y: auto;
+        transition: background-color 0.3s ease, border-color 0.3s ease;
       }
       .sidebar-header {
         font-family: var(--font-headings);
@@ -62,7 +93,7 @@
       }
       .week-header {
         font-weight: 600;
-        color: #475569;
+        color: var(--text-secondary);
         margin-top: 1.5rem;
         margin-bottom: 0.5rem;
         font-size: 0.9rem;
@@ -72,13 +103,16 @@
         padding: 0.75rem 1rem;
         border-radius: 8px;
         text-decoration: none;
-        color: #334155;
+        color: var(--text-secondary);
         font-weight: 500;
         transition: all 0.2s ease;
       }
       .day-link:hover {
         background-color: var(--brand-blue-light);
         color: var(--brand-blue);
+      }
+      body[data-theme="dark"] .day-link:hover {
+        color: #e0e7ff;
       }
       .day-link.active {
         background-color: var(--brand-blue);
@@ -115,22 +149,17 @@
         border-radius: 8px;
         cursor: pointer;
         font-weight: 600;
-        box-shadow: var(--shadow-sm);
         transition: all 0.2s ease;
-      }
-      .btn:hover {
-        transform: translateY(-1px);
-        box-shadow: 0 6px 20px rgba(30, 64, 175, 0.2);
       }
       .btn.ghost {
         background: transparent;
-        border: 1px solid #cbd5e1;
-        color: #475569;
+        border: 1px solid var(--border-primary);
+        color: var(--text-secondary);
         box-shadow: none;
       }
       .btn.ghost:hover {
-        background-color: #f1f5f9;
-        border-color: #94a3b8;
+        background-color: var(--bg-primary);
+        border-color: var(--text-secondary);
       }
 
       /* Flashcard Grid */
@@ -143,6 +172,18 @@
         position: relative;
         perspective: 1200px;
         height: 240px;
+        transition: transform 0.5s ease, opacity 0.5s ease;
+      }
+      .card.learned {
+        opacity: 0.4;
+        transform: scale(0.95);
+        border: 2px solid var(--brand-secondary);
+        box-shadow: 0 0 0 2px var(--brand-secondary), var(--shadow-sm);
+      }
+      .card.hide {
+        transform: scale(0.8);
+        opacity: 0;
+        pointer-events: none;
       }
       .card-inner {
         width: 100%;
@@ -169,14 +210,18 @@
         text-align: center;
       }
       .card-front {
-        background: white;
-        border: 1px solid #e2e8f0;
+        background: var(--bg-secondary);
+        border: 1px solid var(--border-primary);
         font-weight: 600;
+        z-index: 1;
       }
       .card-back {
         background: var(--brand-blue-light);
         transform: rotateY(180deg);
         color: var(--brand-blue);
+      }
+      body[data-theme="dark"] .card-back {
+        color: #e0e7ff;
       }
       .card-actions {
         position: absolute;
@@ -184,27 +229,51 @@
         right: 12px;
         display: flex;
         gap: 8px;
-        z-index: 2;
+        z-index: 3;
       }
       .card-action {
         background: rgba(255, 255, 255, 0.8);
         backdrop-filter: blur(4px);
         border-radius: 50%;
-        width: 32px;
-        height: 32px;
+        width: 36px;
+        height: 36px;
         display: flex;
         align-items: center;
         justify-content: center;
         cursor: pointer;
-        border: 1px solid #e2e8f0;
+        border: 1px solid var(--border-primary);
         transition: all 0.2s ease;
+        color: var(--text-secondary);
+      }
+      body[data-theme="dark"] .card-action {
+        background: rgba(31, 41, 55, 0.8);
       }
       .card-action:hover {
-        background-color: white;
+        background-color: var(--bg-secondary);
         transform: scale(1.1);
       }
+      .card-action.btn-learned {
+        color: var(--brand-secondary);
+      }
 
-      /* Create/Edit Modal */
+      /* Progress Bar */
+      .progress-container {
+        width: 100%;
+        background-color: var(--border-primary);
+        border-radius: 8px;
+        margin-bottom: 2rem;
+        height: 12px;
+        overflow: hidden;
+      }
+      .progress-bar {
+        height: 100%;
+        width: 0%;
+        background-color: var(--brand-secondary);
+        border-radius: 8px;
+        transition: width 0.4s ease;
+      }
+
+      /* Modals */
       .modal-overlay {
         position: fixed;
         inset: 0;
@@ -223,7 +292,7 @@
         visibility: visible;
       }
       .modal-content {
-        background-color: white;
+        background-color: var(--bg-secondary);
         padding: 2rem;
         border-radius: var(--radius);
         box-shadow: var(--shadow-md);
@@ -245,9 +314,11 @@
         width: 100%;
         padding: 0.75rem;
         border-radius: 8px;
-        border: 1px solid #cbd5e1;
+        border: 1px solid var(--border-primary);
         font-size: 1rem;
         margin-bottom: 1rem;
+        background-color: var(--bg-primary);
+        color: var(--text-primary);
       }
       .modal-content textarea {
         min-height: 120px;
@@ -281,7 +352,7 @@
         .sidebar {
           width: 100%;
           border-right: none;
-          border-bottom: 1px solid #e2e8f0;
+          border-bottom: 1px solid var(--border-primary);
           height: auto;
           max-height: 200px;
         }
@@ -291,11 +362,41 @@
           gap: 1rem;
         }
       }
+
+      /* --- DARK MODE NAVBAR OVERRIDES --- */
+      .navbar {
+        transition: background-color 0.3s ease, border-color 0.3s ease;
+      }
+      body[data-theme="dark"] .navbar {
+        background-color: var(--bg-secondary);
+        border-bottom: 1px solid var(--border-primary);
+      }
+      body[data-theme="dark"] .nav-link,
+      body[data-theme="dark"] .logo-text {
+        color: var(--text-primary);
+      }
+      body[data-theme="dark"] .nav-link:hover {
+        color: var(--brand-blue);
+      }
+      body[data-theme="dark"] .dropdown-menu {
+        background-color: var(--bg-secondary);
+        border: 1px solid var(--border-primary);
+      }
+      body[data-theme="dark"] .dropdown-link {
+        color: var(--text-secondary);
+      }
+      body[data-theme="dark"] .dropdown-link:hover {
+        background-color: var(--bg-primary);
+        color: var(--text-primary);
+      }
+      body[data-theme="dark"] .nav-toggle .bar {
+        background-color: var(--text-primary);
+      }
     </style>
   </head>
 
   <body>
-    <!-- === NAVIGATION BAR === -->
+    <!-- The navbar might not display correctly without the linked CSS file -->
     <nav class="navbar">
       <div class="nav-container">
         <div class="nav-logo">
@@ -315,8 +416,6 @@
           <a href="../index.html#services" class="nav-link">Services</a>
           <a href="../index.html#testimonials" class="nav-link">Testimonials</a>
           <a href="../index.html#articles" class="nav-link">Articles</a>
-
-          <!-- Dropdown Menu for Resources -->
           <div class="dropdown">
             <a href="#resources" class="nav-link" id="resources-link">
               Resources
@@ -326,28 +425,13 @@
               ></i>
             </a>
             <div class="dropdown-menu">
-              <a href="../ai-page/ai-assistant.html" class="dropdown-link"
-                >AI Interview Assistant</a
-              >
-              <a href="../Malta-study-plan/onemonth.html" class="dropdown-link"
-                >Study Plan</a
-              >
-              <a
-                href="../Malta-study-plan/study-guide1.html"
-                class="dropdown-link"
-                >Study Guide</a
-              >
-              <a
-                href="../Malta-study-plan/flashcard-m.html"
-                class="dropdown-link"
-                >Flashcards</a
-              >
-              <a href="../index.html#resources" class="dropdown-link"
-                >Free Downloads</a
-              >
+              <a href="#" class="dropdown-link">AI Interview Assistant</a>
+              <a href="#" class="dropdown-link">Study Plan</a>
+              <a href="#" class="dropdown-link">Study Guide</a>
+              <a href="#" class="dropdown-link">Flashcards</a>
+              <a href="#" class="dropdown-link">Free Downloads</a>
             </div>
           </div>
-
           <a href="../index.html#contact" class="nav-link">Contact</a>
           <a href="../blog.html" class="nav-link">Blog</a>
         </div>
@@ -362,7 +446,6 @@
         </button>
       </div>
     </nav>
-    <!-- === Main === -->
 
     <div class="main-layout">
       <!-- Sidebar for Day Selection -->
@@ -378,10 +461,27 @@
         <header class="content-header">
           <h1 id="deck-title">Day 1: Professional Foundations</h1>
           <div class="controls">
+            <button class="btn ghost" id="reset-progress">
+              Reset Progress
+            </button>
             <button class="btn ghost" id="shuffle">Shuffle</button>
             <button class="btn" id="add-new-card">Add New Card</button>
+            <button
+              class="btn ghost"
+              id="theme-toggle"
+              title="Toggle Theme"
+              style="padding: 0.6rem"
+            >
+              <i data-feather="moon"></i>
+            </button>
           </div>
         </header>
+
+        <!-- New Progress Bar -->
+        <div class="progress-container">
+          <div id="progress-bar" class="progress-bar"></div>
+        </div>
+
         <div
           id="flashcardContainer"
           class="flashcard-container"
@@ -411,11 +511,29 @@
       </div>
     </div>
 
+    <!-- Custom Confirmation Modal -->
+    <div id="confirm-modal" class="modal-overlay">
+      <div class="modal-content">
+        <h2 id="confirm-title">Are you sure?</h2>
+        <p id="confirm-text">This action cannot be undone.</p>
+        <div style="display: flex; gap: 8px; justify-content: flex-end">
+          <button id="confirm-cancel" class="btn ghost">Cancel</button>
+          <button id="confirm-ok" class="btn">OK</button>
+        </div>
+      </div>
+    </div>
+
     <div id="toast" role="status"></div>
 
     <script>
       document.addEventListener("DOMContentLoaded", () => {
-        // --- DATA PREPARATION (from study guide) ---
+        // --- DATA & VERSIONING ---
+        // IMPORTANT: To force a refresh of the flashcard data, change this version number.
+        // For example, change it from "3.0" to "3.1" after editing guideData.
+        const SCRIPT_VERSION = "3.0";
+        const DECKS_STORAGE_KEY = `flashcardDecks_v${SCRIPT_VERSION}`;
+        const VERSION_STORAGE_KEY = "flashcardAppVersion";
+
         const guideData = [
           // WEEK 1
           {
@@ -434,6 +552,62 @@
               {
                 q: "What is the primary purpose of nursing documentation?",
                 a: "To ensure patient safety through clear communication. It serves as a communication tool for the healthcare team and a legal record of care provided.",
+              },
+              {
+                q: "Why is teamwork essential in healthcare?",
+                a: "It ensures patient safety by combining skills, improving monitoring, reducing errors, and providing holistic care.",
+              },
+              {
+                q: "How does teamwork reduce medical errors?",
+                a: "Through clear communication, shared responsibility, and double-checking during handovers and ward rounds.",
+              },
+              {
+                q: "How can a nurse foster a positive team environment?",
+                a: "By respecting colleagues’ roles, communicating clearly, and supporting others under stress.",
+              },
+              {
+                q: "What are the main responsibilities of a nurse under the Maltese Code of Ethics?",
+                a: "Responsibilities to patients (safety, dignity), to self (competence), and to co-workers (respect, collaboration).",
+              },
+              {
+                q: "Which ethical principle applies when a patient refuses life-saving treatment?",
+                a: "Respect for Autonomy – the patient’s right to make decisions about their own care.",
+              },
+              {
+                q: "How do you ensure ethical practice as a new graduate nurse?",
+                a: "By obtaining informed consent, protecting confidentiality, and advocating for safe, evidence-based care.",
+              },
+              {
+                q: "Why is documentation important in nursing?",
+                a: "It ensures continuity of care, prevents errors, and serves as a legal record of all interventions.",
+              },
+              {
+                q: "What does the phrase 'If it wasn’t documented, it wasn’t done' mean?",
+                a: "Care that is not recorded in the patient’s notes is legally considered not to have been provided.",
+              },
+              {
+                q: "How can poor documentation harm patients?",
+                a: "It can cause missed treatments, repeated medications, or overlooked allergies, risking patient safety.",
+              },
+              {
+                q: "A colleague asks you to document a medication they administered. What should you do?",
+                a: "Refuse politely, explain professional accountability, and offer help so they can document it themselves.",
+              },
+              {
+                q: "What key details must be included in nursing notes?",
+                a: "Date, time, patient identifiers, assessment, interventions, outcomes, and nurse’s signature.",
+              },
+              {
+                q: "How should you correct an error in patient documentation?",
+                a: "Draw a single line through the mistake, add the correction, sign, and date—never erase or use correction fluid.",
+              },
+              {
+                q: "How would you hand over care of a post-op patient?",
+                a: "Use SBAR: Situation, Background, Assessment, Recommendation—covering vitals, wound status, meds, and complications.",
+              },
+              {
+                q: "What do you do if you realize you missed something important during handover?",
+                a: "Immediately clarify with the colleague, document the information, and communicate it to ensure patient safety.",
               },
             ],
           },
@@ -457,6 +631,62 @@
               {
                 q: "What extra precautions are needed for a patient with MRSA?",
                 a: "In addition to Standard Precautions, use Contact Precautions. This includes wearing gloves and a gown and placing the patient in a single room if possible.",
+              },
+              {
+                q: "What are the 5 Moments of Hand Hygiene?",
+                a: "1) Before touching a patient, 2) Before clean/aseptic procedures, 3) After body fluid exposure, 4) After touching a patient, 5) After touching patient surroundings.",
+              },
+              {
+                q: "Why is hand hygiene considered the single most important infection control measure?",
+                a: "Because it prevents transmission of microorganisms between healthcare workers, patients, and the environment.",
+              },
+              {
+                q: "When should alcohol-based hand rub NOT be used?",
+                a: "When hands are visibly soiled or after caring for patients with spore-forming organisms (e.g., C. difficile). Use soap and water instead.",
+              },
+              {
+                q: "What are Standard Precautions?",
+                a: "Infection prevention practices applied to all patients regardless of diagnosis. Includes hand hygiene, PPE, sharps safety, respiratory hygiene, and environmental cleaning.",
+              },
+              {
+                q: "When should gloves be worn?",
+                a: "During contact with blood, body fluids, mucous membranes, non-intact skin, or contaminated equipment.",
+              },
+              {
+                q: "What is MRSA?",
+                a: "Methicillin-Resistant Staphylococcus Aureus – a bacteria resistant to many antibiotics, often spread in healthcare settings.",
+              },
+              {
+                q: "How do you prevent the spread of MRSA in a hospital?",
+                a: "Hand hygiene, contact precautions (gloves, gowns), patient isolation if necessary, and strict environmental cleaning.",
+              },
+              {
+                q: "What is CRE?",
+                a: "Carbapenem-Resistant Enterobacteriaceae – a group of bacteria resistant to nearly all antibiotics, associated with high mortality.",
+              },
+              {
+                q: "What precautions are required for CRE patients?",
+                a: "Contact isolation, strict hand hygiene, use of dedicated equipment, and careful antibiotic stewardship.",
+              },
+              {
+                q: "How do you safely dispose of used sharps?",
+                a: "Immediately into a puncture-proof sharps container at the point of use. Never recap, bend, or break needles.",
+              },
+              {
+                q: "What should you do if you sustain a needlestick injury?",
+                a: "Wash the area with soap and water, report immediately, follow hospital post-exposure protocol, and seek medical evaluation.",
+              },
+              {
+                q: "What PPE would you wear for suctioning a patient with a productive cough?",
+                a: "Gloves, mask (surgical or N95 depending on risk), and eye protection to prevent droplet exposure.",
+              },
+              {
+                q: "How do you prevent cross-contamination when removing PPE?",
+                a: "Remove gloves first, then gown, then perform hand hygiene before touching your face or clean surfaces.",
+              },
+              {
+                q: "What is the role of environmental cleaning in infection prevention?",
+                a: "Regular cleaning of high-touch surfaces reduces transmission of resistant organisms like MRSA and CRE.",
               },
             ],
           },
@@ -693,7 +923,7 @@
               },
             ],
           },
-          // WEEK 3 & 4
+          // WEEK 3
           {
             week: 3,
             day: 15,
@@ -713,13 +943,112 @@
               },
             ],
           },
-          { week: 3, day: 16, title: "Scenario Application", flashcards: [] },
-          { week: 3, day: 17, title: "Scenario Application", flashcards: [] },
-          { week: 3, day: 18, title: "Ethics & Communication", flashcards: [] },
-          { week: 3, day: 19, title: "Mock Interview #1", flashcards: [] },
-          { week: 3, day: 20, title: "Refine & Review", flashcards: [] },
-          { week: 4, day: 21, title: "Mock Interview #2", flashcards: [] },
-          { week: 4, day: 22, title: "Final Content Polish", flashcards: [] },
+          {
+            week: 3,
+            day: 16,
+            title: "Scenario Application",
+            flashcards: [
+              {
+                q: "(Scenario) You enter a room and find a patient has fallen. What are your immediate actions?",
+                a: "1. Call for help. 2. Assess the patient for immediate danger (ABCDE). 3. Do not move the patient until a proper assessment is done, especially if a spinal injury is suspected.",
+              },
+              {
+                q: "(Scenario) A patient's vital signs are deteriorating rapidly. What framework should you use to communicate this?",
+                a: "Use the SBAR framework: Situation (who you are, patient name, problem), Background (relevant history), Assessment (your findings, vital signs), Recommendation (what you need).",
+              },
+            ],
+          },
+          {
+            week: 3,
+            day: 17,
+            title: "Scenario Application",
+            flashcards: [
+              {
+                q: "(Scenario) You witness a colleague not washing their hands between patients. What should you do?",
+                a: "Address it directly and politely in private. Remind them of the hand hygiene policy. If the behavior continues, you must escalate it to the nurse in charge to protect patient safety.",
+              },
+              {
+                q: "(Scenario) A patient complains of 10/10 chest pain. What are your priority nursing interventions?",
+                a: "1. Call for immediate medical assistance. 2. Administer oxygen if prescribed/needed. 3. Obtain a 12-lead ECG. 4. Prepare to administer MONA (Morphine, Oxygen, Nitrates, Aspirin) as per protocol.",
+              },
+            ],
+          },
+          {
+            week: 3,
+            day: 18,
+            title: "Ethics & Communication",
+            flashcards: [
+              {
+                q: "How would you handle a complaint from a patient's family member?",
+                a: "Listen actively and empathetically without being defensive. Acknowledge their concerns. Explain what you can do to help and escalate the issue to the nurse in charge if you cannot resolve it yourself.",
+              },
+              {
+                q: "What is 'duty of care'?",
+                a: "A legal and professional obligation to provide a reasonable standard of care to patients, acting in their best interests and protecting them from foreseeable harm.",
+              },
+            ],
+          },
+          {
+            week: 3,
+            day: 19,
+            title: "Mock Interview #1",
+            flashcards: [
+              {
+                q: "'Tell me about a time you had to handle a stressful situation.'",
+                a: "Use the STAR method: Situation (describe the context), Task (what was required of you), Action (what you did), Result (the outcome of your actions).",
+              },
+              {
+                q: "'Why do you want to work as a nurse in Malta?'",
+                a: "Mention the high standard of healthcare, the opportunity for professional development, the multicultural environment, and your desire to contribute your skills to the Maltese healthcare system.",
+              },
+            ],
+          },
+          {
+            week: 3,
+            day: 20,
+            title: "Refine & Review",
+            flashcards: [
+              {
+                q: "What is the importance of continuing professional development (CPD) in nursing?",
+                a: "It ensures nurses remain up-to-date with the latest clinical practices, maintain high standards of care, and adapt to new technologies and challenges in healthcare.",
+              },
+              {
+                q: "How do you ensure you are a good team player?",
+                a: "By communicating clearly and respectfully, offering help to colleagues, being reliable and accountable for my tasks, and actively listening to others' perspectives.",
+              },
+            ],
+          },
+          // WEEK 4
+          {
+            week: 4,
+            day: 21,
+            title: "Mock Interview #2",
+            flashcards: [
+              {
+                q: "'What are your strengths and weaknesses as a nurse?'",
+                a: "Strengths: Mention 2-3 relevant skills (e.g., compassion, attention to detail, communication). Weakness: Choose a real but manageable weakness and show how you are working to improve it (e.g., 'I'm working on becoming more confident in delegating tasks').",
+              },
+              {
+                q: "'Where do you see yourself in 5 years?'",
+                a: "Express a desire for growth within the hospital/organization. Mention specializing in a particular area of interest or taking on more senior responsibilities like mentoring new nurses.",
+              },
+            ],
+          },
+          {
+            week: 4,
+            day: 22,
+            title: "Final Content Polish",
+            flashcards: [
+              {
+                q: "What is the role of a nurse in patient education?",
+                a: "To provide patients and their families with clear information about their condition, treatment, medications, and self-care strategies to empower them to manage their health effectively.",
+              },
+              {
+                q: "Review the 5 Rights of Medication Administration.",
+                a: "Right Patient, Right Drug, Right Dose, Right Route, Right Time.",
+              },
+            ],
+          },
           {
             week: 4,
             day: 23,
@@ -739,10 +1068,58 @@
               },
             ],
           },
-          { week: 4, day: 24, title: "Full Dress Rehearsal", flashcards: [] },
-          { week: 4, day: 25, title: "Final Light Review", flashcards: [] },
-          { week: 4, day: 26, title: "REST", flashcards: [] },
-          { week: 4, day: 27, title: "REST", flashcards: [] },
+          {
+            week: 4,
+            day: 24,
+            title: "Full Dress Rehearsal",
+            flashcards: [
+              {
+                q: "Practice your 'Tell me about yourself' answer out loud.",
+                a: "Use the 'Present - Past - Future' formula. Keep it concise (around 90 seconds) and relevant to the nursing role you are applying for.",
+              },
+              {
+                q: "Prepare 2-3 thoughtful questions to ask the interviewer.",
+                a: "Examples: 'What does a typical day look like for a nurse on this ward?' or 'What opportunities are there for professional development and further training?'",
+              },
+            ],
+          },
+          {
+            week: 4,
+            day: 25,
+            title: "Final Light Review",
+            flashcards: [
+              {
+                q: "Review the F.A.S.T. acronym for stroke.",
+                a: "Face (drooping), Arms (weakness), Speech (slurred), Time (to call for help).",
+              },
+              {
+                q: "What is your first action if you suspect a transfusion reaction?",
+                a: "STOP THE TRANSFUSION IMMEDIATELY.",
+              },
+            ],
+          },
+          {
+            week: 4,
+            day: 26,
+            title: "REST",
+            flashcards: [
+              {
+                q: "What is the plan for today?",
+                a: "No active studying. Focus on relaxation, light exercise, and getting a good night's sleep. Trust in your preparation.",
+              },
+            ],
+          },
+          {
+            week: 4,
+            day: 27,
+            title: "REST",
+            flashcards: [
+              {
+                q: "What is the plan for today?",
+                a: "Final day of rest. Prepare your interview outfit and documents. Eat a healthy meal and go to bed early. Visualize success.",
+              },
+            ],
+          },
         ];
 
         function generateDecksFromGuide() {
@@ -750,7 +1127,11 @@
             day: day.day,
             title: day.title,
             week: day.week,
-            cards: day.flashcards || [],
+            cards: day.flashcards.map((c) => ({
+              ...c,
+              learned: false,
+              id: crypto.randomUUID(),
+            })),
           }));
         }
 
@@ -767,17 +1148,58 @@
         const saveBtn = document.getElementById("save-card");
         const closeBtn = document.getElementById("modal-close");
         const toast = document.getElementById("toast");
+        const progressBar = document.getElementById("progress-bar");
+        const resetProgressBtn = document.getElementById("reset-progress");
+        const confirmModal = document.getElementById("confirm-modal");
+        const themeToggleBtn = document.getElementById("theme-toggle");
 
-        // --- STATE ---
+        // --- STATE & DATA INITIALIZATION ---
         let currentDay = 1;
-        let allDecks =
-          JSON.parse(localStorage.getItem("flashcardDecks_v1")) ||
-          generateDecksFromGuide();
-        let currentCards =
-          allDecks.find((d) => d.day === currentDay)?.cards || [];
+        let allDecks; // Will be initialized by initializeData()
+        let currentCards; // Will be set by switchDeck()
         let editingIndex = -1;
 
-        // --- FUNCTIONS ---
+        function initializeData() {
+          const storedVersion = localStorage.getItem(VERSION_STORAGE_KEY);
+          if (storedVersion !== SCRIPT_VERSION) {
+            // Version mismatch or first load. Clear old data and use fresh data from the script.
+            // This loop clears any potential older versions to keep localStorage clean.
+            Object.keys(localStorage).forEach((key) => {
+              if (key.startsWith("flashcardDecks_v")) {
+                localStorage.removeItem(key);
+              }
+            });
+            localStorage.setItem(VERSION_STORAGE_KEY, SCRIPT_VERSION);
+            console.log(
+              "Data version mismatch. Loading fresh data from script."
+            );
+            return generateDecksFromGuide();
+          } else {
+            // Versions match, try to load from storage. Fallback to generating if storage is empty for some reason.
+            const storedDecks = localStorage.getItem(DECKS_STORAGE_KEY);
+            console.log("Data version matches. Loading from localStorage.");
+            return storedDecks
+              ? JSON.parse(storedDecks)
+              : generateDecksFromGuide();
+          }
+        }
+
+        // --- THEME FUNCTIONS ---
+        function applyTheme(theme) {
+          document.body.dataset.theme = theme;
+          localStorage.setItem("theme", theme);
+          const icon = theme === "dark" ? "sun" : "moon";
+          themeToggleBtn.innerHTML = `<i data-feather="${icon}"></i>`;
+          feather.replace();
+        }
+
+        function toggleTheme() {
+          const currentTheme = document.body.dataset.theme || "light";
+          const newTheme = currentTheme === "light" ? "dark" : "light";
+          applyTheme(newTheme);
+        }
+
+        // --- GENERAL FUNCTIONS ---
         function showToast(msg, time = 2000) {
           toast.textContent = msg;
           toast.classList.add("show");
@@ -785,60 +1207,100 @@
         }
 
         function saveDecks() {
-          localStorage.setItem("flashcardDecks_v1", JSON.stringify(allDecks));
+          localStorage.setItem(DECKS_STORAGE_KEY, JSON.stringify(allDecks));
+        }
+
+        function updateProgress() {
+          const totalCards = currentCards.length;
+          if (totalCards === 0) {
+            progressBar.style.width = "0%";
+            return;
+          }
+          const learnedCards = currentCards.filter((c) => c.learned).length;
+          const progress = (learnedCards / totalCards) * 100;
+          progressBar.style.width = `${progress}%`;
         }
 
         function renderDayNavigation() {
           let currentWeek = 0;
           dayNavigation.innerHTML = "";
-          allDecks.forEach((deck) => {
-            const dayData = guideData.find((d) => d.day === deck.day);
-            if (dayData && dayData.week !== currentWeek) {
-              currentWeek = dayData.week;
-              const weekHeader = document.createElement("h3");
-              weekHeader.className = "week-header";
-              weekHeader.textContent = `Week ${currentWeek}`;
-              dayNavigation.appendChild(weekHeader);
-            }
-            const link = document.createElement("a");
-            link.href = "#";
-            link.className = "day-link";
-            link.dataset.day = deck.day;
-            link.textContent = `Day ${deck.day}: ${deck.title}`;
-            if (deck.day === currentDay) link.classList.add("active");
-            dayNavigation.appendChild(link);
-          });
+          allDecks
+            .sort((a, b) => a.day - b.day)
+            .forEach((deck) => {
+              if (deck.week !== currentWeek) {
+                currentWeek = deck.week;
+                const weekHeader = document.createElement("h3");
+                weekHeader.className = "week-header";
+                weekHeader.textContent = `Week ${currentWeek}`;
+                dayNavigation.appendChild(weekHeader);
+              }
+              const link = document.createElement("a");
+              link.href = "#";
+              link.className = "day-link";
+              link.dataset.day = deck.day;
+              link.textContent = `Day ${deck.day}: ${deck.title}`;
+              if (deck.day === currentDay) link.classList.add("active");
+              dayNavigation.appendChild(link);
+            });
         }
 
         function renderCards() {
           container.innerHTML = "";
-          currentCards.forEach((card, index) => {
-            const cardEl = document.createElement("div");
-            cardEl.className = "card";
-            cardEl.innerHTML = `
-                    <div class="card-inner">
-                        <div class="card-face card-front">${card.q}</div>
-                        <div class="card-face card-back">${card.a.replace(
-                          /\n/g,
-                          "<br>"
-                        )}</div>
-                    </div>
-                    <div class="card-actions">
-                        <button class="card-action edit-btn" data-index="${index}" title="Edit"><i data-feather="edit-2" style="width:16px; height:16px;"></i></button>
-                        <button class="card-action delete-btn" data-index="${index}" title="Delete"><i data-feather="trash-2" style="width:16px; height:16px;"></i></button>
-                    </div>
-                `;
-            container.appendChild(cardEl);
-          });
+          const visibleCards = currentCards.filter((card) => !card.learned);
+
+          if (visibleCards.length === 0 && currentCards.length > 0) {
+            container.innerHTML = `<p style="text-align: center; grid-column: 1 / -1;">Congratulations! You've learned all the cards for today. Use the "Reset Progress" button to review them again.</p>`;
+          } else {
+            visibleCards.forEach((card) => {
+              const cardEl = document.createElement("div");
+              cardEl.className = `card`;
+              cardEl.dataset.id = card.id;
+              cardEl.innerHTML = `
+                        <div class="card-inner">
+                            <div class="card-face card-front">${card.q}</div>
+                            <div class="card-face card-back">${card.a.replace(
+                              /\n/g,
+                              "<br>"
+                            )}</div>
+                        </div>
+                        <div class="card-actions">
+                            <button class="card-action btn-learned" data-id="${
+                              card.id
+                            }" title="Mark as Learned"><i data-feather="check" style="pointer-events: none;"></i></button>
+                            <button class="card-action edit-btn" data-id="${
+                              card.id
+                            }" title="Edit"><i data-feather="edit-2" style="pointer-events: none;"></i></button>
+                            <button class="card-action delete-btn" data-id="${
+                              card.id
+                            }" title="Delete"><i data-feather="trash-2" style="pointer-events: none;"></i></button>
+                        </div>
+                    `;
+              container.appendChild(cardEl);
+            });
+          }
           feather.replace();
+          updateProgress();
         }
 
         function switchDeck(day) {
           currentDay = day;
           let deck = allDecks.find((d) => d.day === day);
           if (!deck) {
-            const dayData = guideData.find((d) => d.day === day);
-            deck = { day, title: dayData.title, cards: [] };
+            const dayData = guideData.find((d) => d.day === day) || {
+              day,
+              title: `Day ${day}`,
+              cards: [],
+            };
+            deck = {
+              day,
+              title: dayData.title,
+              week: dayData.week,
+              cards: dayData.flashcards.map((c) => ({
+                ...c,
+                learned: false,
+                id: crypto.randomUUID(),
+              })),
+            };
             allDecks.push(deck);
           }
           currentCards = deck.cards;
@@ -863,6 +1325,30 @@
           modal.classList.remove("open");
         }
 
+        function showConfirm(title, text, onOk) {
+          document.getElementById("confirm-title").textContent = title;
+          document.getElementById("confirm-text").textContent = text;
+          confirmModal.classList.add("open");
+
+          const okBtn = document.getElementById("confirm-ok");
+          const cancelBtn = document.getElementById("confirm-cancel");
+
+          function cleanup() {
+            confirmModal.classList.remove("open");
+            okBtn.removeEventListener("click", handleOk);
+            cancelBtn.removeEventListener("click", handleCancel);
+          }
+
+          const handleOk = () => {
+            onOk();
+            cleanup();
+          };
+          const handleCancel = () => cleanup();
+
+          okBtn.addEventListener("click", handleOk, { once: true });
+          cancelBtn.addEventListener("click", handleCancel, { once: true });
+        }
+
         function saveCard() {
           const q = qInput.value.trim();
           const a = aInput.value.trim();
@@ -872,10 +1358,16 @@
           }
 
           if (editingIndex > -1) {
-            currentCards[editingIndex] = { q, a };
+            currentCards[editingIndex].q = q;
+            currentCards[editingIndex].a = a;
             showToast("Card updated!");
           } else {
-            currentCards.push({ q, a });
+            currentCards.push({
+              q,
+              a,
+              learned: false,
+              id: crypto.randomUUID(),
+            });
             showToast("Card added!");
           }
 
@@ -885,6 +1377,8 @@
         }
 
         // --- EVENT LISTENERS ---
+        themeToggleBtn.addEventListener("click", toggleTheme);
+
         dayNavigation.addEventListener("click", (e) => {
           const link = e.target.closest(".day-link");
           if (link) {
@@ -894,25 +1388,58 @@
         });
 
         container.addEventListener("click", (e) => {
-          const cardInner = e.target.closest(".card-inner");
-          if (cardInner) {
-            cardInner.parentElement.classList.toggle("flipped");
+          const target = e.target;
+          const cardId = target.closest(".card-action")?.dataset.id;
+          if (!cardId) {
+            const cardInner = target.closest(".card-inner");
+            if (cardInner) cardInner.parentElement.classList.toggle("flipped");
+            return;
           }
-          const deleteBtn = e.target.closest(".delete-btn");
-          if (deleteBtn) {
-            if (confirm("Are you sure you want to delete this card?")) {
-              currentCards.splice(parseInt(deleteBtn.dataset.index), 1);
+
+          const cardIndex = currentCards.findIndex((c) => c.id === cardId);
+          if (cardIndex === -1) return;
+
+          if (target.closest(".delete-btn")) {
+            showConfirm(
+              "Delete Card?",
+              "Are you sure you want to delete this card?",
+              () => {
+                currentCards.splice(cardIndex, 1);
+                saveDecks();
+                renderCards();
+                showToast("Card deleted.");
+              }
+            );
+          } else if (target.closest(".edit-btn")) {
+            const card = currentCards[cardIndex];
+            openModal("Edit Flashcard", card.q, card.a, cardIndex);
+          } else if (target.closest(".btn-learned")) {
+            currentCards[cardIndex].learned = true;
+            saveDecks();
+            const cardEl = document.querySelector(`.card[data-id="${cardId}"]`);
+            if (cardEl) {
+              cardEl.classList.add("learned");
+              setTimeout(() => {
+                cardEl.classList.add("hide");
+                setTimeout(renderCards, 300);
+              }, 500);
+            }
+            showToast("Card marked as learned! ✨");
+            updateProgress();
+          }
+        });
+
+        resetProgressBtn.addEventListener("click", () => {
+          showConfirm(
+            "Reset Progress?",
+            'This will mark all cards in this deck as "unlearned".',
+            () => {
+              currentCards.forEach((card) => (card.learned = false));
               saveDecks();
               renderCards();
-              showToast("Card deleted.");
+              showToast("Progress for this deck has been reset.");
             }
-          }
-          const editBtn = e.target.closest(".edit-btn");
-          if (editBtn) {
-            const index = parseInt(editBtn.dataset.index);
-            const card = currentCards[index];
-            openModal("Edit Flashcard", card.q, card.a, index);
-          }
+          );
         });
 
         shuffleBtn.addEventListener("click", () => {
@@ -932,15 +1459,19 @@
         );
         saveBtn.addEventListener("click", saveCard);
         modal.addEventListener("click", (e) => {
-          if (e.target === modal || e.target === closeBtn) {
-            closeModal();
-          }
+          if (e.target === modal || e.target === closeBtn) closeModal();
         });
 
         // --- INITIALIZATION ---
+        const savedTheme = localStorage.getItem("theme");
+        const prefersDark =
+          window.matchMedia &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches;
+        applyTheme(savedTheme || (prefersDark ? "dark" : "light"));
+
+        allDecks = initializeData();
         renderDayNavigation();
-        renderCards();
-        feather.replace();
+        switchDeck(currentDay); // Initial load
       });
     </script>
   </body>

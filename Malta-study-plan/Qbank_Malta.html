@@ -1,0 +1,2123 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>QBank for Malta Nursing Interview</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = { darkMode: "class" };
+    </script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Feather Icons -->
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+
+    <!-- Custom Styles -->
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+      }
+      h1,
+      h2,
+      h3 {
+        font-family: "Lora", serif;
+      }
+      .sidebar {
+        position: sticky;
+        top: 80px;
+        align-self: flex-start;
+      }
+      .accordion-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.5s ease-out;
+      }
+      .accordion-content.open {
+        max-height: 1000px;
+        transition: max-height 0.5s ease-in;
+      }
+      .chevron {
+        transition: transform 0.3s ease-in-out;
+      }
+      .chevron.rotate-180 {
+        transform: rotate(180deg);
+      }
+      .flashcard {
+        cursor: pointer;
+        perspective: 1000px;
+      }
+      .flashcard-inner {
+        transition: transform 0.6s;
+        transform-style: preserve-3d;
+      }
+      .flashcard.flipped .flashcard-inner {
+        transform: rotateY(180deg);
+      }
+      .flashcard-front,
+      .flashcard-back {
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+      }
+      .flashcard-back {
+        transform: rotateY(180deg);
+      }
+      .difficulty-filter-btn.active {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1),
+          0 2px 4px -2px rgb(0 0 0 / 0.1);
+      }
+
+      /* Navbar Styles */
+      .navbar {
+        background-color: white;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        position: sticky;
+        top: 0;
+        z-index: 50;
+      }
+      .dark .navbar {
+        background-color: #1f2937; /* slate-800 */
+      }
+      .nav-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 2rem; /* Increased padding for edges */
+        width: 100%;
+        height: 4rem;
+      }
+      .nav-logo a {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+      }
+      .logo-img {
+        height: 40px;
+      }
+      .logo-text {
+        font-family: "Lora", serif;
+        font-weight: 700;
+        font-size: 1.25rem;
+        color: #1e40af; /* blue-800 */
+        margin-left: 0.5rem;
+      }
+      .dark .logo-text {
+        color: #60a5fa; /* blue-400 */
+      }
+
+      .nav-menu {
+        display: none;
+        align-items: center;
+        gap: 1.5rem;
+      }
+      @media (min-width: 768px) {
+        .nav-menu {
+          display: flex;
+        }
+      }
+      .nav-link {
+        color: #4b5563; /* gray-600 */
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.2s;
+      }
+      .dark .nav-link {
+        color: #d1d5db; /* gray-300 */
+      }
+      .nav-link:hover {
+        color: #1e40af; /* blue-800 */
+      }
+      .dark .nav-link:hover {
+        color: #60a5fa; /* blue-400 */
+      }
+
+      .dropdown {
+        position: relative;
+      }
+      .dropdown-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: white;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        border-radius: 0.5rem;
+        padding: 0.5rem 0;
+        min-width: 160px;
+      }
+      .dark .dropdown-menu {
+        background-color: #374151; /* gray-700 */
+      }
+      .dropdown:hover .dropdown-menu {
+        display: block;
+      }
+      .dropdown-link {
+        display: block;
+        padding: 0.5rem 1rem;
+        color: #4b5563; /* gray-600 */
+        text-decoration: none;
+      }
+      .dark .dropdown-link {
+        color: #d1d5db; /* gray-300 */
+      }
+      .dropdown-link:hover {
+        background-color: #f3f4f6; /* gray-100 */
+      }
+      .dark .dropdown-link:hover {
+        background-color: #4b5563; /* gray-600 */
+      }
+
+      .nav-toggle {
+        display: block;
+        cursor: pointer;
+        background: none;
+        border: none;
+      }
+      @media (min-width: 768px) {
+        .nav-toggle {
+          display: none;
+        }
+      }
+      .bar {
+        display: block;
+        width: 25px;
+        height: 3px;
+        margin: 5px auto;
+        background-color: #4b5563; /* gray-600 */
+        transition: all 0.3s ease-in-out;
+      }
+      .dark .bar {
+        background-color: #d1d5db; /* gray-300 */
+      }
+
+      /* Mobile Menu Styles */
+      .nav-menu.active {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 4rem;
+        left: 0;
+        width: 100%;
+        background-color: white;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        padding: 1rem;
+        gap: 1rem;
+      }
+      .dark .nav-menu.active {
+        background-color: #1f2937; /* slate-800 */
+      }
+    </style>
+  </head>
+  <body
+    class="bg-slate-100 dark:bg-slate-900 text-slate-800 dark:text-slate-300 transition-colors duration-300"
+  >
+    <!-- Header -->
+    <header>
+      <nav class="navbar">
+        <div class="nav-container">
+          <div class="nav-logo">
+            <a href="#">
+              <img
+                src="../src/assets/img/logo1.png"
+                alt="Nurse Assist PL Logo"
+                class="logo-img"
+                onerror="this.onerror=null;this.src='https://placehold.co/200x50/1e40af/ffffff?text=Logo';"
+              />
+              <span class="logo-text">Nursing School Assist PL</span>
+            </a>
+          </div>
+          <div class="nav-menu" id="nav-menu">
+            <a href="../index.html" class="nav-link">Home</a>
+            <a href="../index.html#about" class="nav-link">About</a>
+            <a href="../index.html#services" class="nav-link">Services</a>
+            <a href="../index.html#testimonials" class="nav-link"
+              >Testimonials</a
+            >
+            <a href="../index.html#articles" class="nav-link">Articles</a>
+            <div class="dropdown">
+              <a
+                href="#"
+                class="nav-link flex items-center"
+                id="resources-link"
+              >
+                Resources
+                <i data-feather="chevron-down" class="w-4 h-4 ml-1"></i>
+              </a>
+              <div class="dropdown-menu">
+                <a
+                  href="../index.html#ai-interview-assistant"
+                  class="dropdown-link"
+                  >AI Interview Assistant</a
+                >
+                <a href="../index.html#study-plan" class="dropdown-link"
+                  >Study Plan</a
+                >
+                <a href="../index.html#study-guide" class="dropdown-link"
+                  >Study Guide</a
+                >
+                <a href="../index.html#flashcards" class="dropdown-link"
+                  >Flashcards</a
+                >
+                <a href="../index.html#free-downloads" class="dropdown-link"
+                  >Free Downloads</a
+                >
+              </div>
+            </div>
+            <a href="../index.html#contact" class="nav-link">Contact</a>
+            <a href="../index.html#blog" class="nav-link">Blog</a>
+            <button
+              id="theme-toggle"
+              aria-label="Toggle theme"
+              class="p-2 rounded-full text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+            >
+              <svg
+                id="theme-icon-light"
+                class="h-6 w-6 hidden"
+                aria-hidden="true"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
+                />
+              </svg>
+              <svg
+                id="theme-icon-dark"
+                class="h-6 w-6 hidden"
+                aria-hidden="true"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+                />
+              </svg>
+            </button>
+          </div>
+          <button
+            class="nav-toggle"
+            id="nav-toggle"
+            aria-label="Toggle navigation menu"
+          >
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div class="flex flex-col md:flex-row md:space-x-8">
+        <!-- Left Sidebar -->
+        <aside class="w-full md:w-3/12 mb-8 md:mb-0">
+          <div class="sidebar space-y-6">
+            <div class="bg-white dark:bg-slate-800 p-6 rounded-lg shadow-lg">
+              <h2
+                class="text-xl font-bold mb-4 text-blue-800 dark:text-blue-400 flex items-center"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-5 w-5 mr-2"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M3 3a1 1 0 011-1h12a1 1 0 011 1v3a1 1 0 01-.293.707L12 11.414V15a1 1 0 01-.293.707l-2 2A1 1 0 018 17v-5.586L3.293 6.707A1 1 0 013 6V3z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+                Controls
+              </h2>
+
+              <!-- Search Input -->
+              <div class="relative mb-4">
+                <label for="search" class="sr-only">Search Questions</label>
+                <div
+                  class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"
+                >
+                  <svg
+                    class="h-5 w-5 text-gray-400"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                </div>
+                <input
+                  type="text"
+                  id="search"
+                  placeholder="Search questions..."
+                  class="w-full pl-10 pr-3 py-2 border border-gray-300 dark:border-slate-600 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 transition bg-white dark:bg-slate-700 dark:placeholder-slate-400"
+                />
+              </div>
+
+              <!-- Filter by Category -->
+              <div class="mb-4">
+                <label for="category-filter" class="sr-only"
+                  >Filter by Category</label
+                >
+                <select
+                  id="category-filter"
+                  class="w-full px-3 py-2 border border-gray-300 dark:border-slate-600 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 transition bg-white dark:bg-slate-700"
+                >
+                  <!-- Options will be dynamically populated -->
+                </select>
+              </div>
+
+              <!-- Practice Mode -->
+              <div class="mb-4">
+                <div class="flex items-center">
+                  <input
+                    id="practice-mode-toggle"
+                    type="checkbox"
+                    class="h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500 dark:bg-slate-700 dark:border-slate-600"
+                  />
+                  <label for="practice-mode-toggle" class="ml-2 block text-sm"
+                    >Activate Practice Mode</label
+                  >
+                </div>
+              </div>
+
+              <!-- Action Buttons -->
+              <div class="space-y-2 border-t pt-4 dark:border-slate-700">
+                <button
+                  id="open-modal-btn"
+                  class="w-full flex items-center justify-center bg-blue-800 text-white font-bold py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-150 ease-in-out"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-5 w-5 mr-2"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                  Add New Card
+                </button>
+                <button
+                  id="manage-cards-btn"
+                  class="w-full flex items-center justify-center bg-slate-600 text-white font-bold py-2 px-4 rounded-md hover:bg-slate-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-400 transition duration-150 ease-in-out"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-5 w-5 mr-2"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                  >
+                    <path
+                      d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z"
+                    />
+                    <path
+                      fill-rule="evenodd"
+                      d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                  Manage My Cards
+                </button>
+              </div>
+              <div class="space-y-2 border-t pt-4 dark:border-slate-700">
+                <button
+                  id="export-btn"
+                  class="w-full flex items-center justify-center bg-gray-200 text-gray-800 dark:bg-slate-700 dark:text-slate-200 font-bold py-2 px-4 rounded-md hover:bg-gray-300 dark:hover:bg-slate-600 transition duration-150 ease-in-out"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-5 w-5 mr-2"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM6.293 6.707a1 1 0 010-1.414l3-3a1 1 0 011.414 0l3 3a1 1 0 01-1.414 1.414L11 5.414V13a1 1 0 11-2 0V5.414L7.707 6.707a1 1 0 01-1.414 0z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                  Export My Cards
+                </button>
+                <button
+                  id="import-btn"
+                  class="w-full flex items-center justify-center bg-gray-200 text-gray-800 dark:bg-slate-700 dark:text-slate-200 font-bold py-2 px-4 rounded-md hover:bg-gray-300 dark:hover:bg-slate-600 transition duration-150 ease-in-out"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-5 w-5 mr-2"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                  Import My Cards
+                </button>
+                <input
+                  type="file"
+                  id="import-file"
+                  class="hidden"
+                  accept=".json"
+                />
+              </div>
+            </div>
+
+            <!-- NEW: Progress Stats -->
+            <div class="bg-white dark:bg-slate-800 p-6 rounded-lg shadow-lg">
+              <h2
+                class="text-xl font-bold mb-4 text-blue-800 dark:text-blue-400 flex items-center"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-5 w-5 mr-2"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />
+                  <path
+                    fill-rule="evenodd"
+                    d="M4 5a2 2 0 012-2h8a2 2 0 012 2v10a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+                My Progress
+              </h2>
+              <div id="progress-stats" class="space-y-2 text-sm">
+                <div class="flex justify-between items-center">
+                  <span class="flex items-center"
+                    ><span class="w-3 h-3 rounded-full bg-red-500 mr-2"></span
+                    >Hard</span
+                  ><span id="progress-hard" class="font-bold">0</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="flex items-center"
+                    ><span
+                      class="w-3 h-3 rounded-full bg-yellow-500 mr-2"
+                    ></span
+                    >Medium</span
+                  ><span id="progress-medium" class="font-bold">0</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="flex items-center"
+                    ><span class="w-3 h-3 rounded-full bg-green-500 mr-2"></span
+                    >Easy</span
+                  ><span id="progress-easy" class="font-bold">0</span>
+                </div>
+                <div
+                  class="flex justify-between items-center border-t pt-2 mt-2 dark:border-slate-700"
+                >
+                  <span class="text-gray-500 dark:text-slate-400">Unrated</span
+                  ><span id="progress-unrated" class="font-bold">0</span>
+                </div>
+              </div>
+              <div
+                id="difficulty-filter-container"
+                class="grid grid-cols-2 gap-2 mt-4"
+              >
+                <button
+                  data-difficulty="hard"
+                  class="difficulty-filter-btn text-sm w-full bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200 font-bold py-1 px-2 rounded-md hover:bg-red-200 dark:hover:bg-red-800 transition"
+                >
+                  Hard
+                </button>
+                <button
+                  data-difficulty="medium"
+                  class="difficulty-filter-btn text-sm w-full bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200 font-bold py-1 px-2 rounded-md hover:bg-yellow-200 dark:hover:bg-yellow-800 transition"
+                >
+                  Medium
+                </button>
+                <button
+                  data-difficulty="easy"
+                  class="difficulty-filter-btn text-sm w-full bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200 font-bold py-1 px-2 rounded-md hover:bg-green-200 dark:hover:bg-green-800 transition"
+                >
+                  Easy
+                </button>
+                <button
+                  data-difficulty="all"
+                  class="difficulty-filter-btn text-sm w-full bg-slate-200 text-slate-800 dark:bg-slate-700 dark:text-slate-200 font-bold py-1 px-2 rounded-md hover:bg-slate-300 dark:hover:bg-slate-600 transition active"
+                >
+                  All
+                </button>
+              </div>
+            </div>
+
+            <div
+              id="question-counter-container"
+              class="bg-white dark:bg-slate-800 p-6 rounded-lg shadow-lg text-center"
+            >
+              <p
+                class="text-4xl font-bold text-blue-800 dark:text-blue-400"
+                id="question-count"
+              >
+                0
+              </p>
+              <p
+                class="text-sm text-gray-500 dark:text-slate-400"
+                id="question-count-label"
+              >
+                Total Questions
+              </p>
+            </div>
+          </div>
+        </aside>
+
+        <!-- Right Content Area -->
+        <div class="w-full md:w-9/12">
+          <!-- Main Content View -->
+          <div id="main-content-view">
+            <!-- Recall Questions Section (conditionally hidden) -->
+            <section id="recall-questions-section" class="mb-8">
+              <h2
+                class="text-2xl font-bold text-blue-800 dark:text-blue-400 mb-4 flex items-center"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-6 w-6 mr-2 text-blue-500 dark:text-blue-400"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
+                  />
+                </svg>
+                Recall Questions
+              </h2>
+              <div id="recall-questions-container" class="space-y-4"></div>
+            </section>
+
+            <!-- Main QBank Section -->
+            <section id="qbank-section">
+              <h2
+                class="text-2xl font-bold text-blue-800 dark:text-blue-400 mb-4 flex items-center"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-6 w-6 mr-2 text-blue-500 dark:text-blue-400"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+                  />
+                </svg>
+                <span id="qbank-title-text">Full Question Bank</span>
+              </h2>
+              <div id="qbank-container" class="space-y-4"></div>
+            </section>
+          </div>
+
+          <!-- Practice Mode View (Initially Hidden) -->
+          <div id="practice-mode-view" class="hidden">
+            <h2
+              class="text-3xl font-bold text-blue-800 dark:text-blue-400 mb-2"
+            >
+              Practice Mode
+            </h2>
+            <div
+              class="mb-4 text-center bg-blue-100 dark:bg-slate-700 p-2 rounded-lg"
+            >
+              <p class="text-gray-700 dark:text-slate-300">
+                Practicing from:
+                <strong
+                  id="practice-context"
+                  class="text-blue-800 dark:text-blue-400"
+                  >All Questions</strong
+                >
+              </p>
+              <p class="text-sm text-gray-500 dark:text-slate-400">
+                (<span id="practice-count">0</span> questions available)
+              </p>
+            </div>
+            <div class="perspective-1000">
+              <div id="flashcard" class="flashcard w-full h-96 relative">
+                <div class="flashcard-inner w-full h-full text-center relative">
+                  <!-- Flashcard Front -->
+                  <div
+                    id="flashcard-front"
+                    class="flashcard-front absolute w-full h-full bg-white dark:bg-slate-700 rounded-lg shadow-xl p-8 flex flex-col justify-center items-center"
+                  >
+                    <p class="text-lg text-gray-500 dark:text-slate-400 mb-4">
+                      Question:
+                    </p>
+                    <h3
+                      id="practice-question"
+                      class="text-2xl font-semibold"
+                    ></h3>
+                  </div>
+                  <!-- Flashcard Back -->
+                  <div
+                    id="flashcard-back"
+                    class="flashcard-back absolute w-full h-full bg-blue-50 dark:bg-slate-800 rounded-lg shadow-xl p-8 flex flex-col justify-center items-center overflow-y-auto"
+                  >
+                    <p
+                      class="text-lg text-blue-800 dark:text-blue-400 font-semibold mb-4"
+                    >
+                      Answer:
+                    </p>
+                    <p id="practice-answer" class="text-md text-left"></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              id="difficulty-buttons"
+              class="mt-4 flex justify-center space-x-2 hidden"
+            >
+              <button
+                data-difficulty="easy"
+                class="difficulty-btn bg-green-200 text-green-800 dark:bg-green-900 dark:text-green-300 font-bold py-2 px-4 rounded-md hover:bg-green-300 dark:hover:bg-green-800 transition"
+              >
+                Easy
+              </button>
+              <button
+                data-difficulty="medium"
+                class="difficulty-btn bg-yellow-200 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300 font-bold py-2 px-4 rounded-md hover:bg-yellow-300 dark:hover:bg-yellow-800 transition"
+              >
+                Medium
+              </button>
+              <button
+                data-difficulty="hard"
+                class="difficulty-btn bg-red-200 text-red-800 dark:bg-red-900 dark:text-red-300 font-bold py-2 px-4 rounded-md hover:bg-red-300 dark:hover:bg-red-800 transition"
+              >
+                Hard
+              </button>
+            </div>
+            <div
+              class="mt-6 flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4"
+            >
+              <button
+                id="reveal-answer-btn"
+                class="bg-blue-200 text-blue-800 dark:bg-blue-900 dark:text-blue-300 font-bold py-3 px-6 rounded-md hover:bg-blue-300 dark:hover:bg-blue-800 transition duration-150 ease-in-out"
+              >
+                Reveal Answer
+              </button>
+              <button
+                id="next-question-btn"
+                class="bg-blue-800 text-white font-bold py-3 px-6 rounded-md hover:bg-blue-700 transition duration-150 ease-in-out"
+              >
+                Next Question
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Modal for Adding/Editing Card -->
+    <div
+      id="add-card-modal"
+      class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center p-4"
+    >
+      <div
+        class="bg-white dark:bg-slate-800 rounded-lg shadow-xl p-8 w-full max-w-lg"
+      >
+        <div class="flex justify-between items-center mb-4">
+          <h3
+            id="modal-title"
+            class="text-2xl font-bold text-blue-800 dark:text-blue-400"
+          >
+            Add a New Flashcard
+          </h3>
+          <button
+            id="close-modal-btn"
+            class="text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 text-3xl leading-none"
+          >
+            &times;
+          </button>
+        </div>
+        <form id="add-card-form">
+          <input type="hidden" id="edit-card-id" />
+          <div class="mb-4">
+            <label
+              for="category-select-modal"
+              class="block text-sm font-medium mb-1"
+              >Category*</label
+            >
+            <select
+              id="category-select-modal"
+              class="w-full px-3 py-2 border border-gray-300 dark:border-slate-600 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 bg-white dark:bg-slate-700"
+            ></select>
+          </div>
+          <div id="new-category-wrapper" class="mb-4 hidden">
+            <label
+              for="new-category-input"
+              class="block text-sm font-medium mb-1"
+              >New Category Name*</label
+            >
+            <input
+              type="text"
+              id="new-category-input"
+              placeholder="e.g., Cardiology, Pediatrics"
+              class="w-full px-3 py-2 border border-gray-300 dark:border-slate-600 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 bg-white dark:bg-slate-700"
+            />
+          </div>
+          <div class="mb-4">
+            <label for="new-question" class="block text-sm font-medium mb-1"
+              >Question*</label
+            >
+            <textarea
+              id="new-question"
+              rows="3"
+              required
+              class="w-full px-3 py-2 border border-gray-300 dark:border-slate-600 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 bg-white dark:bg-slate-700"
+            ></textarea>
+          </div>
+          <div class="mb-6">
+            <label for="new-answer" class="block text-sm font-medium mb-1"
+              >Answer*</label
+            >
+            <textarea
+              id="new-answer"
+              rows="5"
+              required
+              class="w-full px-3 py-2 border border-gray-300 dark:border-slate-600 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 bg-white dark:bg-slate-700"
+            ></textarea>
+          </div>
+          <div class="flex justify-end space-x-4">
+            <button
+              type="button"
+              id="cancel-modal-btn"
+              class="bg-gray-200 dark:bg-slate-600 text-gray-800 dark:text-slate-200 font-bold py-2 px-4 rounded-md hover:bg-gray-300 dark:hover:bg-slate-500 transition"
+            >
+              Cancel
+            </button>
+            <button
+              type="submit"
+              class="bg-blue-800 text-white font-bold py-2 px-4 rounded-md hover:bg-blue-700 transition"
+            >
+              Save Card
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Delete Confirmation Modal -->
+    <div
+      id="delete-confirm-modal"
+      class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center p-4"
+    >
+      <div
+        class="bg-white dark:bg-slate-800 rounded-lg shadow-xl p-8 w-full max-w-sm"
+      >
+        <h3 class="text-lg font-bold text-gray-900 dark:text-white">
+          Delete Card
+        </h3>
+        <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">
+          Are you sure you want to delete this card? This action cannot be
+          undone.
+        </p>
+        <div class="mt-4 flex justify-end space-x-4">
+          <button
+            id="cancel-delete-btn"
+            class="bg-gray-200 dark:bg-slate-600 text-gray-800 dark:text-slate-200 font-bold py-2 px-4 rounded-md hover:bg-gray-300 dark:hover:bg-slate-500 transition"
+          >
+            Cancel
+          </button>
+          <button
+            id="confirm-delete-btn"
+            class="bg-red-600 text-white font-bold py-2 px-4 rounded-md hover:bg-red-500 transition"
+          >
+            Delete
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        // --- DATA ---
+        const qbankData = [
+          // Section 1: Patient Assessment & Vital Signs
+          {
+            category: "Patient Assessment & Vital Signs",
+            q: "How do you assess a patient's respiratory rate?",
+            a: "I ensure the patient is at rest and not aware I am counting, because awareness can alter breathing. I observe chest movements or feel abdominal rise for one full minute, noting the rate, rhythm, and depth. I also check for abnormal sounds, use of accessory muscles, or signs of distress. I document findings immediately.",
+          },
+          {
+            category: "Patient Assessment & Vital Signs",
+            q: "What factors do you consider when assessing a patient's blood pressure?",
+            a: "I choose the correct cuff size, ensure the patient is seated or lying with the arm at heart level, and allow 5 minutes of rest before measurement. I consider recent activity, stress, caffeine, or medications that may affect the reading. I repeat if necessary for accuracy and compare to the patient's baseline.",
+          },
+          {
+            category: "Patient Assessment & Vital Signs",
+            q: "Describe the steps in measuring a patient's temperature accurately.",
+            a: "I select the appropriate method (oral, tympanic, axillary, rectal) based on the patient's condition and contraindications. I ensure the thermometer is clean and calibrated, place it correctly (e.g., under tongue for oral), wait the recommended time, then record the value. I also interpret the result in context of baseline and symptoms.",
+          },
+          {
+            category: "Patient Assessment & Vital Signs",
+            q: "How often do you perform a complete head-to-toe physical assessment?",
+            a: "A full assessment is performed on admission, at the start of each shift, and whenever there is a change in the patient's condition. Focused assessments are done more frequently as the situation requires, such as hourly neuro checks after head injury.",
+          },
+          {
+            category: "Patient Assessment & Vital Signs",
+            q: "Explain the importance of monitoring oxygen saturation in patients.",
+            a: "Oxygen saturation gives an early indication of hypoxemia before clinical signs appear. Monitoring helps guide oxygen therapy, assess treatment effectiveness, and detect deterioration quickly. However, I also consider clinical signs like cyanosis or respiratory distress, since pulse oximetry has limitations.",
+          },
+          {
+            category: "Patient Assessment & Vital Signs",
+            q: "How do you assess a patient's respiratory status?",
+            a: "I begin with inspection-respiratory rate, rhythm, depth, chest symmetry, and use of accessory muscles. I auscultate for breath sounds, palpate for chest expansion, and percuss if needed. I also assess oxygen saturation and note signs of distress such as cyanosis or restlessness.",
+          },
+          {
+            category: "Patient Assessment & Vital Signs",
+            q: "How do you conduct a neurological assessment on a patient?",
+            a: "I assess the level of consciousness using AVPU or the Glasgow Coma Scale (GCS). I check pupil size and reactivity, motor function, limb strength, and sensation. I also assess speech, orientation to person, place, and time, and monitor for changes that may indicate deterioration.",
+          },
+          {
+            category: "Patient Assessment & Vital Signs",
+            q: "How do you assess a head injury?",
+            a: "I check airway, breathing, and circulation first (ABC). I then assess the level of consciousness using the Glasgow Coma Scale and observe for bleeding, swelling, or a CSF leak from the nose or ears. I check pupil size and reactivity and monitor vital signs and neurological status regularly to detect any changes.",
+          },
+          {
+            category: "Patient Assessment & Vital Signs",
+            q: "What is the classification of head injury?",
+            a: "Head injuries are classified by severity using the Glasgow Coma Scale (GCS): Mild: GCS 14-15; Moderate: GCS 9-13; Severe: GCS 3-8. They can also be classified as open (skull fracture/penetrating) or closed (blunt trauma).",
+          },
+          {
+            category: "Patient Assessment & Vital Signs",
+            q: "Walk us through the steps of obtaining a comprehensive patient history.",
+            a: "I use a structured approach: Chief complaint and history of present illness; Past medical, surgical, and medication history; Family history and genetic risks; Social history (smoking, alcohol, occupation); Review of systems (head-to-toe); and Allergies. This provides a complete clinical picture to guide care.",
+          },
+
+          // Section 2: Medication Safety & Administration
+          {
+            category: "Medication Safety & Administration",
+            q: "What are the 5 rights of medication administration?",
+            a: "The five core rights are Right Patient, Right Drug, Right Dose, Right Route, and Right Time. Modern practice often includes additional rights like Right Documentation and Right Reason to enhance safety.",
+          },
+          {
+            category: "Medication Safety & Administration",
+            q: "Walk us through the process of administering oral medications.",
+            a: "I verify the prescription, check the 5 Rights, and perform allergy checks. I explain the medication to the patient, ensure they can swallow safely, and provide water unless contraindicated. I stay with the patient until ingestion is complete and then document the administration.",
+          },
+          {
+            category: "Medication Safety & Administration",
+            q: "How do you handle medication reconciliation for a new patient?",
+            a: "I collect a complete list of all medications the patient is taking, including prescription, over-the-counter, and herbal products. I compare it with the current hospital prescriptions, identify discrepancies, and clarify them with the physician or pharmacist. Accurate reconciliation prevents omissions, duplications, or interactions.",
+          },
+          {
+            category: "Medication Safety & Administration",
+            q: "What steps do you take to prevent medication errors?",
+            a: 'I strictly follow the "five rights" of medication administration, double-check high-alert drugs with another nurse, clarify unclear orders, and use barcode scanning if available. I never rush, I minimize distractions during preparation, and I always document immediately after administration.',
+          },
+          {
+            category: "Medication Safety & Administration",
+            q: "Describe your approach to educating patients about their medications.",
+            a: "I explain the purpose, dosage, timing, and potential side effects in simple language the patient understands. I encourage questions, verify understanding with the teach-back method, and provide written instructions if needed. I also stress adherence and safety precautions.",
+          },
+          {
+            category: "Medication Safety & Administration",
+            q: "How do you prioritize medication administration in a busy environment?",
+            a: "I first give time-critical medications such as antibiotics, insulin, or analgesics for acute pain. I then proceed with scheduled medications, grouping them by patient when safe. I continually reassess priorities based on changes in patient conditions to ensure no dose is missed.",
+          },
+
+          // Section 3: Procedural Care (IV, GI, and GU)
+          {
+            category: "Procedural Care (IV, GI, and GU)",
+            q: "Explain the steps involved in starting an IV line.",
+            a: "I verify the order, explain the procedure, and gather sterile equipment. After hand hygiene, I select an appropriate vein, apply a tourniquet, clean the site with antiseptic, and insert the cannula using aseptic technique. Once flashback is seen, I advance the catheter, release the tourniquet, secure the site, and flush with saline to confirm patency.",
+          },
+          {
+            category: "Procedural Care (IV, GI, and GU)",
+            q: "How do you ensure proper hydration when administering IV fluids?",
+            a: "I verify the correct fluid and infusion rate, monitor the IV site, and assess the patient's fluid balance by tracking intake, output, daily weight, and skin turgor. I also watch for signs of fluid overload (e.g., edema, crackles) or dehydration.",
+          },
+          {
+            category: "Procedural Care (IV, GI, and GU)",
+            q: "Discuss your approach to managing complications with IV therapy.",
+            a: "For infiltration, I stop the infusion, remove the cannula, elevate the limb, and apply a compress. For phlebitis, I stop the infusion, remove the cannula, assess using the phlebitis scale, and document. For infection, I notify the physician, take a swab if required, and follow infection control protocols.",
+          },
+          {
+            category: "Procedural Care (IV, GI, and GU)",
+            q: "Can you describe the process of administering a blood transfusion?",
+            a: "I verify the order and obtain consent. I check the patient's identity and blood compatibility with another nurse and inspect the blood product. I use a dedicated IV line with a filter, start the transfusion slowly, and monitor vital signs closely for the first 15 minutes for any reaction. I continue regular observations until completion and document throughout.",
+          },
+          {
+            category: "Procedural Care (IV, GI, and GU)",
+            q: "What precautions do you take when caring for a patient with a central line?",
+            a: "I use strict aseptic technique for all handling, scrub the hub before access, and change dressings according to protocol. I assess the insertion site for signs of infection (redness, swelling), monitor catheter patency, and prevent air embolism by clamping the line when not in use.",
+          },
+          {
+            category: "Procedural Care (IV, GI, and GU)",
+            q: "How is a Ryles tube (NG Tube) inserted?",
+            a: "First, I explain the procedure and obtain consent, then position the patient upright (semi-Fowler's). I measure the tube length from the nose to the earlobe, then to the xiphoid process. I lubricate the tip and insert it via a nostril while asking the patient to swallow. Finally, I confirm placement by aspirating gastric contents (pH should be <4) or with a chest X-ray if required, then secure the tube and document.",
+          },
+          {
+            category: "Procedural Care (IV, GI, and GU)",
+            q: "Can you explain the process of inserting a urinary catheter?",
+            a: "I perform hand hygiene, explain the procedure, and maintain privacy. Using an aseptic technique, I clean the urethral meatus, lubricate the catheter, and gently insert it until urine flows. I advance slightly further before inflating the balloon with sterile water, secure the catheter, and connect it to a drainage bag placed below the bladder level.",
+          },
+          {
+            category: "Procedural Care (IV, GI, and GU)",
+            q: "How do you assess and manage urinary retention in patients?",
+            a: "I assess for bladder fullness with palpation or a bladder scan and note the patient's urinary frequency and discomfort. Management may include encouraging natural voiding techniques, catheterization if necessary, monitoring fluid balance, and investigating underlying causes.",
+          },
+          {
+            category: "Procedural Care (IV, GI, and GU)",
+            q: "Walk us through the steps of obtaining a urine specimen for analysis.",
+            a: "I explain the procedure, ensure hand hygiene, and provide a sterile container. For a midstream specimen, I instruct the patient on how to clean the perineal area, void the first part of the urine, then collect the middle portion without touching the inside of the container. From a catheter, I clamp the tubing, disinfect the port, and aspirate urine with a sterile syringe. I then label the sample and send it to the lab promptly.",
+          },
+
+          // Section 4: Wound Care, Infection Control & Prevention
+          {
+            category: "Wound Care, Infection Control & Prevention",
+            q: "Why is infection control important?",
+            a: "It is critical for preventing healthcare-associated infections (HAIs), which protects both patients and healthcare staff. Effective infection control reduces the length of hospital stays, lowers healthcare costs, and helps combat the spread of antibiotic resistance.",
+          },
+          {
+            category: "Wound Care, Infection Control & Prevention",
+            q: "What is the most effective way of preventing cross-infection?",
+            a: "The single most effective method is hand hygiene. This should be combined with standard precautions like using appropriate Personal Protective Equipment (PPE), maintaining aseptic technique during procedures, and following environmental cleaning protocols.",
+          },
+          {
+            category: "Wound Care, Infection Control & Prevention",
+            q: "Walk us through the steps of a sterile dressing change.",
+            a: "I prepare all sterile supplies, perform hand hygiene, and explain the procedure. Using an aseptic technique, I remove the old dressing, assess the wound for drainage, color, and odor, and safely dispose of the soiled material. I clean the wound as prescribed, usually from the cleanest area outward, then apply a new sterile dressing and document the procedure.",
+          },
+          {
+            category: "Wound Care, Infection Control & Prevention",
+            q: "How do you assess and manage wound infections?",
+            a: "I look for signs of infection such as redness, swelling, warmth, pain, and purulent or foul-smelling discharge. I also check the patient's vital signs for fever. Management includes aseptic wound care, swabbing for culture if ordered, administering prescribed antibiotics, and escalating concerns to the physician.",
+          },
+          {
+            category: "Wound Care, Infection Control & Prevention",
+            q: "Discuss your approach to preventing pressure ulcers in bedridden patients.",
+            a: "I use risk assessment tools like the Braden Scale, reposition the patient at least every two hours, and keep their skin clean and dry. I use pressure-relieving devices, ensure adequate nutrition and hydration, and educate the patient and family on prevention strategies.",
+          },
+          {
+            category: "Wound Care, Infection Control & Prevention",
+            q: "Explain the procedure for caring for a patient with a surgical drain.",
+            a: "I ensure the drain is secured below the level of the wound, check and measure the drainage regularly, and use an aseptic technique when emptying it. I monitor for blockages, leakage, or signs of infection at the insertion site. I document the amount, color, and consistency of the drainage.",
+          },
+          {
+            category: "Wound Care, Infection Control & Prevention",
+            q: "How is MRSA managed?",
+            a: "Management requires strict contact precautions, including using gloves and a gown in a single room. Key interventions include rigorous hand hygiene, decolonization with mupirocin nasal ointment and antiseptic body washes, administering appropriate antibiotics like vancomycin, and thorough environmental cleaning.",
+          },
+          {
+            category: "Wound Care, Infection Control & Prevention",
+            q: "What is a CRE?",
+            a: "CRE stands for Carbapenem-resistant Enterobacteriaceae. These are highly drug-resistant bacteria that cause infections that are very difficult to treat, often seen in ICU settings. Management involves strict isolation, contact precautions, and the use of limited, last-resort antibiotic options like colistin or tigecycline.",
+          },
+
+          // Section 5: Pain Management & Emergencies
+          {
+            category: "Pain Management & Emergencies",
+            q: "How do you assess and manage pain in patients?",
+            a: "I use validated pain scales (e.g., 0-10 numeric scale, Wong-Baker Faces, or FLACC for children). I assess the location, intensity, duration, and character of the pain. Management includes administering prescribed analgesics, using non-pharmacological methods (e.g., positioning, relaxation), and reassessing the patient's response after interventions.",
+          },
+          {
+            category: "Pain Management & Emergencies",
+            q: "What interventions do you take for a patient experiencing acute pain?",
+            a: "I assess the pain intensity and cause, provide prescribed analgesics promptly, and use comfort measures like positioning and ice/heat as appropriate. I monitor the patient's response and vital signs and escalate to the physician if the pain persists or worsens.",
+          },
+          {
+            category: "Pain Management & Emergencies",
+            q: "Discuss your familiarity with non-pharmacological pain management techniques.",
+            a: "I have used methods such as relaxation, guided imagery, massage, positioning, distraction, music therapy, and heat/cold applications. These are especially useful alongside medications to reduce the overall pain burden and anxiety.",
+          },
+          {
+            category: "Pain Management & Emergencies",
+            q: "Can you explain the process of assessing and managing chronic pain?",
+            a: "I assess using a holistic approach, considering the physical, psychological, and social aspects of the pain. Management often involves long-term medications, lifestyle changes, physiotherapy, and counseling. I monitor for opioid side effects and encourage coping strategies to improve quality of life.",
+          },
+          {
+            category: "Pain Management & Emergencies",
+            q: "How do you respond to a patient experiencing a medical emergency?",
+            a: "I stay calm, assess Airway, Breathing, and Circulation (ABCs), call for help, and initiate emergency protocols such as Code Blue. I provide immediate interventions within my scope, such as applying oxygen, positioning, or starting chest compressions, until advanced help arrives.",
+          },
+          {
+            category: "Pain Management & Emergencies",
+            q: "Walk us through the steps of initiating a Code Blue response.",
+            a: "I immediately check for responsiveness and breathing, call for help, and activate the emergency response system. I begin high-quality CPR with chest compressions if no pulse is detected, use an AED/defibrillator as soon as it's available, and continue basic life support until the code team arrives.",
+          },
+          {
+            category: "Pain Management & Emergencies",
+            q: "What interventions do you take for a patient experiencing respiratory distress?",
+            a: "I immediately assess the patient's airway, breathing, and circulation. I sit the patient upright to maximize lung expansion, administer oxygen as prescribed, and monitor their vital signs continuously. I call for medical assistance, prepare emergency equipment, and stay with the patient to provide reassurance.",
+          },
+          {
+            category: "Pain Management & Emergencies",
+            q: "Explain your approach to caring for a patient in shock.",
+            a: "I recognize the signs, such as hypotension, tachycardia, clammy skin, and altered mental status. I call for help, lay the patient flat with their legs elevated (if appropriate), administer oxygen, ensure IV access is patent, and prepare for fluid resuscitation or medications as ordered.",
+          },
+
+          // Section 6: Specialized Care: Cardiovascular & Neurological
+          {
+            category: "Specialized Care: Cardiovascular & Neurological",
+            q: "How do you monitor and manage patients with cardiac arrhythmias?",
+            a: "I monitor the patient's ECG rhythm continuously, assess for symptoms like palpitations, chest pain, or dizziness, and check vital signs frequently. If the patient is unstable, I call for immediate medical intervention. If stable, I ensure oxygen delivery, IV access, and administer medication as ordered.",
+          },
+          {
+            category: "Specialized Care: Cardiovascular & Neurological",
+            q: "Describe the steps in providing care for a patient with chest pain.",
+            a: "I have the patient stop any activity, assess their vital signs, and provide oxygen if saturation is low. I place the patient in a comfortable position, usually semi-Fowler's. I obtain a 12-lead ECG, ensure IV access is available, and administer prescribed medications such as nitrates or aspirin. I continuously monitor the patient and prepare for emergency escalation if the pain persists.",
+          },
+          {
+            category: "Specialized Care: Cardiovascular & Neurological",
+            q: "What interventions do you take for a patient with heart failure?",
+            a: "I monitor for fluid overload by checking for edema, listening to lung sounds, and tracking daily weights. I restrict fluids and sodium as prescribed, administer diuretics and cardiac medications, and provide oxygen if needed. I also educate the patient on lifestyle changes, such as daily weight monitoring and medication adherence.",
+          },
+          {
+            category: "Specialized Care: Cardiovascular & Neurological",
+            q: "How do you treat a DVT in the leg?",
+            a: "The main treatments include administering anticoagulants (like heparin, warfarin, or DOACs), applying compression stockings, and elevating the affected leg. Patient education on mobility and recognizing complications is also crucial. In severe cases, thrombolysis or surgery may be required.",
+          },
+          {
+            category: "Specialized Care: Cardiovascular & Neurological",
+            q: "What is the best treatment for DVT?",
+            a: "Anticoagulant therapy is the first-line and most common treatment. This is usually started with a low molecular weight heparin and then transitioned to an oral anticoagulant to prevent the clot from growing and to prevent an embolism.",
+          },
+          {
+            category: "Specialized Care: Cardiovascular & Neurological",
+            q: "Walk us through the process of obtaining an ECG.",
+            a: "I explain the procedure, ensure patient privacy, and position the patient supine. I clean the electrode sites, attach the 10 leads in their correct anatomical positions, and check for any artifact on the screen. Once the recording is complete, I label and submit the ECG and immediately report any critical changes, such as ST-segment elevation.",
+          },
+          {
+            category: "Specialized Care: Cardiovascular & Neurological",
+            q: "Explain the steps involved in lumbar puncture preparation and assistance.",
+            a: "I confirm consent, check the patient's coagulation profile if available, and explain the procedure. I position the patient in a lateral decubitus position with their knees to their chest. During the procedure, I assist with maintaining a sterile technique, hand over equipment, and reassure the patient. Afterward, I monitor for headache or CSF leakage and advise the patient to lie flat to reduce complications.",
+          },
+
+          // Section 7: Specialized Care: Musculoskeletal & Orthopedic
+          {
+            category: "Specialized Care: Musculoskeletal & Orthopedic",
+            q: "How do you assess and manage musculoskeletal pain in patients?",
+            a: "I assess pain using a validated scale (e.g., 0-10), observing the patient's mobility and muscle strength, and identifying aggravating or relieving factors. Management includes administering analgesics, collaborating with physiotherapy, applying heat/cold therapy, and supporting safe mobility.",
+          },
+          {
+            category: "Specialized Care: Musculoskeletal & Orthopedic",
+            q: "Describe your approach to caring for a patient with a fractured limb.",
+            a: "I immobilize the limb using splints or casts, regularly monitor circulation, sensation, and movement (neurovascular checks), manage pain, and elevate the limb to reduce swelling. I also watch for serious complications such as compartment syndrome and educate the patient on cast care.",
+          },
+          {
+            category: "Specialized Care: Musculoskeletal & Orthopedic",
+            q: "What interventions do you take for a patient with joint replacement surgery?",
+            a: "I monitor for signs of infection or DVT, prevent dislocation with proper positioning (e.g., using an abduction pillow for a hip replacement), manage pain, and support early mobilization with physiotherapy. I also educate patients on any post-operative precautions (e.g., not crossing legs).",
+          },
+          {
+            category: "Specialized Care: Musculoskeletal & Orthopedic",
+            q: "Explain the process of conducting a mobility assessment.",
+            a: "I evaluate the patient's range of motion, muscle strength, balance, and gait. I assess their ability to perform daily activities, transfer, and ambulate, and I identify any risks for falls. I document their baseline status and collaborate with physiotherapy as needed.",
+          },
+
+          // Section 8: Specialized Care: Endocrine & Diabetes
+          {
+            category: "Specialized Care: Endocrine & Diabetes",
+            q: "How do you monitor and manage patients with diabetes?",
+            a: "I monitor blood glucose levels regularly, assess for signs of hypo-and hyperglycemia, and observe for long-term complications such as neuropathy or poor wound healing. Management includes administering insulin or oral hypoglycemics, encouraging diet and exercise adherence, and educating patients on self-monitoring and proper foot care.",
+          },
+          {
+            category: "Specialized Care: Endocrine & Diabetes",
+            q: "Describe the steps involved in administering insulin.",
+            a: "I check the prescription and blood glucose level carefully, confirming the type of insulin (e.g., rapid, short, long-acting) and using the correct syringe or pen. I rotate injection sites, clean the area, pinch the skin, inject at a 90° angle (or 45° in thin patients), withdraw the needle, and safely dispose of the sharps.",
+          },
+          {
+            category: "Specialized Care: Endocrine & Diabetes",
+            q: "What considerations do you have when caring for a patient with thyroid disorders?",
+            a: "I monitor for symptoms of hypothyroidism (fatigue, cold intolerance) or hyperthyroidism (tachycardia, heat intolerance), ensure medication adherence, and watch for complications like myxedema coma or thyroid storm. Education includes taking medications at the same time daily and recognizing warning signs.",
+          },
+          {
+            category: "Specialized Care: Endocrine & Diabetes",
+            q: "Can you explain the process of assessing and caring for a patient with adrenal insufficiency?",
+            a: "I monitor for fatigue, hypotension, hyponatremia, and hyperkalemia. Management includes administering corticosteroid replacement therapy, monitoring vital signs and electrolytes, and educating the patient about never abruptly stopping steroids and the need for stress-dose adjustments.",
+          },
+
+          // Section 9: Special Populations: Pediatrics & Geriatrics
+          {
+            category: "Special Populations: Pediatrics & Geriatrics",
+            q: "How do you adapt nursing procedures for pediatric patients?",
+            a: "I use age-appropriate communication, involve parents in care for comfort and cooperation, and use smaller, correctly-sized equipment. Medication doses must be carefully calculated based on weight. I also provide reassurance and use distraction techniques to reduce anxiety.",
+          },
+          {
+            category: "Special Populations: Pediatrics & Geriatrics",
+            q: "Discuss your experience in providing care for geriatric patients.",
+            a: "Geriatric care requires attention to polypharmacy, fall prevention, nutrition, mobility, and cognitive changes. I focus on maintaining the patient's independence, preventing pressure injuries, and providing emotional support. Family involvement and advance care planning are also very important.",
+          },
+          {
+            category: "Special Populations: Pediatrics & Geriatrics",
+            q: "What considerations do you have when caring for pediatric patients undergoing surgery?",
+            a: "I ensure preoperative preparation is explained in simple, child-friendly terms, provide emotional support to both the child and their family, and strictly follow pediatric anesthesia safety protocols. Postoperatively, I monitor vital signs, pain, hydration, and comfort, and involve parents in recovery care.",
+          },
+          {
+            category: "Special Populations: Pediatrics & Geriatrics",
+            q: "Walk us through the steps of conducting a comprehensive geriatric assessment.",
+            a: "I assess physical health (chronic diseases, mobility, nutrition), mental health (cognition, mood), functional ability (ADLs/IADLs), social support systems, and environmental safety. I also evaluate medication use (polypharmacy) and specific risks such as falls or neglect.",
+          },
+          {
+            category: "Special Populations: Pediatrics & Geriatrics",
+            q: "How do you ensure patient safety during nursing procedures in pediatric settings?",
+            a: "I double-check weight-based medication dosages, use pediatric-specific equipment, maintain strict infection control, and never leave children unattended. Consent from parents or legal guardians is always obtained, and comfort measures (e.g., distraction, play) are used to minimize trauma.",
+          },
+
+          // Section 10: Mental Health Nursing
+          {
+            category: "Mental Health Nursing",
+            q: "Why is psychiatric nursing important?",
+            a: "Psychiatric nursing is vital because it addresses the mental, emotional, and behavioral health needs of patients. It helps reduce stigma, provides therapeutic support, ensures medication adherence, and improves the overall quality of life for patients with mental health disorders.",
+          },
+          {
+            category: "Mental Health Nursing",
+            q: "What are key psychiatric nursing skills?",
+            a: "Key skills include therapeutic communication (active listening, empathy), crisis intervention, de-escalation techniques, and thorough assessment of mood, behavior, and thought processes. It also involves administering and monitoring psychiatric medications, and building trust while maintaining professional boundaries.",
+          },
+          {
+            category: "Mental Health Nursing",
+            q: "What are the major psychiatric disorders?",
+            a: "The five major categories of mental illness include schizophrenia, bipolar disorder, major depressive disorder, anxiety disorders, and substance use disorders.",
+          },
+          {
+            category: "Mental Health Nursing",
+            q: "What are the most common types of anxiety disorders?",
+            a: "The six main types are Generalized Anxiety Disorder (GAD), Panic Disorder, Social Anxiety Disorder, Specific Phobias, Obsessive-Compulsive Disorder (OCD), and Post-Traumatic Stress Disorder (PTSD).",
+          },
+          {
+            category: "Mental Health Nursing",
+            q: "What is the number one cause of depression?",
+            a: "Depression is multifactorial and typically has no single cause. The most common cause is a combination of a chemical imbalance in the brain (involving serotonin and dopamine), stressful life events, genetic predisposition, and other medical conditions.",
+          },
+          {
+            category: "Mental Health Nursing",
+            q: "What are the signs of mania?",
+            a: "Signs of a manic episode include an elevated or irritable mood, increased energy and hyperactivity, a decreased need for sleep, grandiose beliefs, rapid or pressured speech, and impulsive, risk-taking behavior.",
+          },
+          {
+            category: "Mental Health Nursing",
+            q: "What is the difference between substance abuse and substance use disorder?",
+            a: "Substance abuse refers to the misuse of drugs or alcohol that leads to harmful effects but may be occasional. Substance Use Disorder (SUD) is a formal medical diagnosis that involves a pattern of chronic, compulsive drug use, tolerance, withdrawal symptoms, and impaired control over the substance use.",
+          },
+          {
+            category: "Mental Health Nursing",
+            q: "How can abuse be treated?",
+            a: "The first priority is ensuring the immediate safety of the victim. This is followed by mandatory reporting to authorities (safeguarding), providing medical care for injuries, and arranging psychological support or counseling. Nurses must follow local safeguarding protocols.",
+          },
+
+          // Section 11: Professionalism, Ethics & Communication
+          {
+            category: "Professionalism, Ethics & Communication",
+            q: "Why is teamwork important in healthcare?",
+            a: "Teamwork ensures that patient care is safe, coordinated, and effective. No single healthcare professional can meet all of a patient's needs independently, so collaboration reduces medical errors, speeds up the response to changes in a patient's condition, and improves overall health outcomes.",
+          },
+          {
+            category: "Professionalism, Ethics & Communication",
+            q: "Why is nursing a profession?",
+            a: "Nursing is a profession because it requires specialized education and training, adherence to a strict code of ethics, a commitment to continuous professional development, and the responsibility to serve the public with accountability and clinical autonomy.",
+          },
+          {
+            category: "Professionalism, Ethics & Communication",
+            q: "What are the 9 core principles of the nursing code of ethics?",
+            a: "According to professional nursing codes, the main responsibilities are: Respect for human dignity and the individual patient. Commitment to the patient as the primary concern. Advocacy to protect the patient's health and rights. Accountability and responsibility for one's own nursing practice. The duty to maintain personal competence and professional growth. The responsibility to maintain a safe and high-quality care environment. Professional collaboration with colleagues to meet patient needs. Advancing the nursing profession through practice, education, and research. Upholding the values of the profession and social justice.",
+          },
+          {
+            category: "Professionalism, Ethics & Communication",
+            q: "What are the 7 main ethical principles in healthcare?",
+            a: "The seven core principles are: Autonomy: Respecting a patient's right to make their own decisions. Beneficence: Acting in the patient's best interest. Non-maleficence: The duty to do no harm. Justice: Ensuring fairness in the delivery of care. Confidentiality/Veracity: Respecting privacy and being truthful. Fidelity/Accountability: Being loyal and responsible for one's actions. Proportionality: Balancing the benefits of treatment against the risks and costs.",
+          },
+          {
+            category: "Professionalism, Ethics & Communication",
+            q: "What is the importance of documentation in nursing?",
+            a: "Documentation is essential for patient safety, continuity of care, and legal protection. It communicates vital information between healthcare providers, provides a legal record of the care that was delivered, and helps prevent errors. As the saying goes, \"If it wasn't documented, it wasn't done.\"",
+          },
+          {
+            category: "Professionalism, Ethics & Communication",
+            q: "How can a nurse contribute to the nursing profession?",
+            a: "A nurse can contribute by delivering safe and evidence-based care, mentoring junior colleagues and students, engaging in lifelong learning and continuous professional development, participating in research or quality improvement audits, and consistently upholding the highest ethical and professional standards.",
+          },
+          {
+            category: "Professionalism, Ethics & Communication",
+            q: "What is the difference between a vocational and a professional course?",
+            a: "A vocational course focuses on teaching practical skills for a specific job or trade, like a healthcare assistant or electrician. A professional course provides specialized, degree-level training for a recognized profession that is often regulated, such as nursing, medicine, or law, and typically leads to licensure.",
+          },
+          {
+            category: "Professionalism, Ethics & Communication",
+            q: "How do you ensure effective communication during shift handovers?",
+            a: "I use a structured tool like SBAR (Situation, Background, Assessment, Recommendation). I provide concise, factual, and up-to-date information about each patient, highlighting current concerns, pending investigations, and priority tasks. I also allow the incoming nurse to ask questions to ensure clarity and a safe transfer of care.",
+          },
+          {
+            category: "Professionalism, Ethics & Communication",
+            q: "How do you stay updated on new nursing procedures and guidelines?",
+            a: "I regularly review evidence-based practices through nursing journals, professional development workshops, and online courses. I also participate in conferences, attend hospital meetings, and collaborate with colleagues to share best practices.",
+          },
+          {
+            category: "Professionalism, Ethics & Communication",
+            q: "How do you ensure patient autonomy and informed consent during procedures?",
+            a: "I ensure patients understand their diagnosis, the proposed procedure, its potential risks, and any alternatives by explaining them clearly in simple terms. I provide written information, allow time for questions, and confirm their understanding with the teach-back method before obtaining their voluntary consent.",
+          },
+          {
+            category: "Professionalism, Ethics & Communication",
+            q: "Walk us through the process of reporting and documenting adverse events.",
+            a: "When an adverse event occurs, my first priority is to assess and stabilize the patient. I then complete the required incident report, documenting the objective facts without personal opinions or blame. I ensure the event is reported through the proper channels and that follow-up actions are taken to prevent it from happening again.",
+          },
+        ];
+
+        const recallQuestionsData = [
+          {
+            category: "Recall Questions",
+            q: "What do you check on a post-op patient?",
+            a: "The immediate assessment follows the ABCDE approach: Airway, Breathing, Circulation, Disability (consciousness), and Exposure (checking the wound, drains, and for bleeding). I would also check vital signs frequently, assess pain levels, check for nausea/vomiting, and monitor urine output.",
+          },
+          {
+            category: "Recall Questions",
+            q: "What is the NEWS2 score?",
+            a: "NEWS2 (National Early Warning Score 2) is a tool used to standardize the assessment of acute illness. It scores six physiological parameters: respiration rate, oxygen saturation, systolic blood pressure, pulse rate, level of consciousness, and temperature. A higher score indicates a greater risk of deterioration.",
+          },
+          {
+            category: "Recall Questions",
+            q: "What would you do in case of sepsis?",
+            a: "I would immediately escalate to the medical team and initiate the Sepsis Six pathway within one hour: 1. Give high-flow oxygen. 2. Take blood cultures. 3. Give IV antibiotics. 4. Give IV fluid resuscitation. 5. Measure serum lactate. 6. Measure urine output.",
+          },
+        ];
+
+        // --- DOM ELEMENTS ---
+        const qbankContainer = document.getElementById("qbank-container");
+        const recallContainer = document.getElementById(
+          "recall-questions-container"
+        );
+        const categoryFilter = document.getElementById("category-filter");
+        const searchInput = document.getElementById("search");
+        const practiceModeToggle = document.getElementById(
+          "practice-mode-toggle"
+        );
+        const mainContentView = document.getElementById("main-content-view");
+        const practiceModeView = document.getElementById("practice-mode-view");
+        const practiceQuestion = document.getElementById("practice-question");
+        const practiceAnswer = document.getElementById("practice-answer");
+        const revealAnswerBtn = document.getElementById("reveal-answer-btn");
+        const nextQuestionBtn = document.getElementById("next-question-btn");
+        const flashcard = document.getElementById("flashcard");
+        const openModalBtn = document.getElementById("open-modal-btn");
+        const modal = document.getElementById("add-card-modal");
+        const closeModalBtn = document.getElementById("close-modal-btn");
+        const cancelModalBtn = document.getElementById("cancel-modal-btn");
+        const addCardForm = document.getElementById("add-card-form");
+        const questionCountEl = document.getElementById("question-count");
+        const questionCountLabelEl = document.getElementById(
+          "question-count-label"
+        );
+        const practiceContextEl = document.getElementById("practice-context");
+        const practiceCountEl = document.getElementById("practice-count");
+        const themeToggle = document.getElementById("theme-toggle");
+        const themeIconLight = document.getElementById("theme-icon-light");
+        const themeIconDark = document.getElementById("theme-icon-dark");
+        const qbankTitleText = document.getElementById("qbank-title-text");
+        const categorySelectModal = document.getElementById(
+          "category-select-modal"
+        );
+        const newCategoryWrapper = document.getElementById(
+          "new-category-wrapper"
+        );
+        const newCategoryInput = document.getElementById("new-category-input");
+        const manageCardsBtn = document.getElementById("manage-cards-btn");
+        const modalTitle = document.getElementById("modal-title");
+        const editCardIdInput = document.getElementById("edit-card-id");
+        const deleteConfirmModal = document.getElementById(
+          "delete-confirm-modal"
+        );
+        const cancelDeleteBtn = document.getElementById("cancel-delete-btn");
+        const confirmDeleteBtn = document.getElementById("confirm-delete-btn");
+        const difficultyButtons = document.getElementById("difficulty-buttons");
+        const exportBtn = document.getElementById("export-btn");
+        const importBtn = document.getElementById("import-btn");
+        const importFileInput = document.getElementById("import-file");
+        const progressHard = document.getElementById("progress-hard");
+        const progressMedium = document.getElementById("progress-medium");
+        const progressEasy = document.getElementById("progress-easy");
+        const progressUnrated = document.getElementById("progress-unrated");
+        const difficultyFilterContainer = document.getElementById(
+          "difficulty-filter-container"
+        );
+
+        // --- STATE VARIABLES ---
+        let allCards = []; // This will hold the unified list of all cards.
+        let cardDifficulties = {}; // Object to store difficulty ratings { cardId: 'difficulty' }
+        let isManageMode = false;
+        let cardToDeleteId = null;
+        let currentPracticeCard = null;
+        let difficultyFilter = "all"; // 'all', 'easy', 'medium', 'hard'
+
+        // --- FUNCTIONS ---
+
+        /**
+         * Loads all card data from constants and localStorage, assigns unique IDs,
+         * and merges saved difficulty ratings. This is the new central data setup.
+         */
+        const initializeAllCards = () => {
+          const userCards =
+            JSON.parse(localStorage.getItem("userFlashcards")) || [];
+          cardDifficulties =
+            JSON.parse(localStorage.getItem("cardDifficulties")) || {};
+
+          // Combine all data sources and assign unique IDs
+          const combinedData = [
+            ...qbankData.map((card, index) => ({
+              ...card,
+              id: `qbank-${index}`,
+              isDefault: true,
+            })),
+            ...recallQuestionsData.map((card, index) => ({
+              ...card,
+              id: `recall-${index}`,
+              isDefault: true,
+            })),
+            ...userCards, // User cards should already have a unique ID
+          ];
+
+          // Merge difficulties into the main card objects
+          allCards = combinedData.map((card) => ({
+            ...card,
+            difficulty: cardDifficulties[card.id] || null,
+          }));
+        };
+
+        /**
+         * Saves the entire card difficulties map to localStorage.
+         */
+        const saveDifficulties = () => {
+          localStorage.setItem(
+            "cardDifficulties",
+            JSON.stringify(cardDifficulties)
+          );
+        };
+
+        /**
+         * Saves only the user-created cards to localStorage.
+         */
+        const saveUserCards = () => {
+          const userCards = allCards.filter((card) => !card.isDefault);
+          localStorage.setItem("userFlashcards", JSON.stringify(userCards));
+        };
+
+        /**
+         * Renders questions into a specified container element.
+         * @param {Array} questions - Array of question objects to render.
+         * @param {HTMLElement} container - The element to render questions into.
+         */
+        const renderQuestions = (questions, container) => {
+          container.innerHTML = "";
+          if (questions.length === 0) {
+            container.innerHTML = `<p class="text-gray-500 dark:text-slate-400">No questions found for the selected filter.</p>`;
+            return;
+          }
+          questions.forEach((item) => {
+            const questionEl = document.createElement("div");
+            questionEl.className =
+              "bg-white dark:bg-slate-800 rounded-lg shadow-md overflow-hidden";
+            questionEl.innerHTML = `
+                    <button class="accordion-toggle w-full text-left p-4 hover:bg-blue-50 dark:hover:bg-slate-700 focus:outline-none flex justify-between items-center">
+                        <div class="flex-grow pr-4">
+                            <p class="text-sm font-medium text-blue-600 dark:text-blue-400 mb-1">${item.category}</p>
+                            <h3 class="text-lg font-semibold text-gray-800 dark:text-slate-200">${item.q}</h3>
+                        </div>
+                        <svg class="chevron w-6 h-6 text-blue-800 dark:text-blue-400 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="p-4 border-t border-gray-200 dark:border-slate-700">
+                           <p class="text-gray-700 dark:text-slate-300 whitespace-pre-line">${item.a}</p>
+                        </div>
+                    </div>
+                `;
+            container.appendChild(questionEl);
+          });
+        };
+
+        /**
+         * Renders user cards in Manage Mode with Edit/Delete buttons.
+         */
+        const renderManageView = () => {
+          const userCards = allCards.filter((card) => !card.isDefault);
+          const container = document.getElementById("qbank-container");
+          container.innerHTML = "";
+          if (userCards.length === 0) {
+            container.innerHTML = `<p class="text-gray-500 dark:text-slate-400">You haven't added any cards yet. Click "Add New Card" to get started.</p>`;
+            return;
+          }
+          userCards.forEach((card) => {
+            const cardEl = document.createElement("div");
+            cardEl.className =
+              "bg-white dark:bg-slate-800 rounded-lg shadow-md p-4 flex justify-between items-center";
+            cardEl.innerHTML = `
+                    <div class="flex-grow pr-4">
+                        <p class="text-sm font-medium text-blue-600 dark:text-blue-400 mb-1">${card.category}</p>
+                        <h3 class="text-lg font-semibold text-gray-800 dark:text-slate-200">${card.q}</h3>
+                    </div>
+                    <div class="flex-shrink-0 flex space-x-2">
+                        <button class="edit-btn p-2 rounded-full hover:bg-gray-200 dark:hover:bg-slate-700" data-id="${card.id}" aria-label="Edit card">
+                            <svg class="h-5 w-5 text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z" /><path fill-rule="evenodd" d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" clip-rule="evenodd" /></svg>
+                        </button>
+                        <button class="delete-btn p-2 rounded-full hover:bg-gray-200 dark:hover:bg-slate-700" data-id="${card.id}" aria-label="Delete card">
+                            <svg class="h-5 w-5 text-red-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd" /></svg>
+                        </button>
+                    </div>
+                `;
+            container.appendChild(cardEl);
+          });
+        };
+
+        /**
+         * Gets all unique categories from all data sources.
+         * @returns {Array} - Sorted array of unique category names.
+         */
+        const getUniqueCategories = () => {
+          return [...new Set(allCards.map((item) => item.category))].sort();
+        };
+
+        /**
+         * Populates the main category filter dropdown.
+         */
+        const populateCategoryFilter = () => {
+          const allCategories = getUniqueCategories();
+          const currentVal = categoryFilter.value;
+          categoryFilter.innerHTML =
+            '<option value="all">All Categories</option>';
+          allCategories.forEach((category) => {
+            const option = document.createElement("option");
+            option.value = category;
+            option.textContent = category;
+            categoryFilter.appendChild(option);
+          });
+          if (currentVal) {
+            categoryFilter.value = currentVal;
+          }
+        };
+
+        /**
+         * Populates the category select dropdown in the modal.
+         */
+        const populateCategoryModalSelect = () => {
+          const allCategories = getUniqueCategories();
+          categorySelectModal.innerHTML =
+            '<option value="" disabled selected>Select an existing category</option>';
+          allCategories.forEach((category) => {
+            const option = document.createElement("option");
+            option.value = category;
+            option.textContent = category;
+            categorySelectModal.appendChild(option);
+          });
+          categorySelectModal.innerHTML +=
+            '<option value="new-category">Create New Category...</option>';
+        };
+
+        /**
+         * Gets the current set of filtered questions based on UI controls.
+         */
+        const getFilteredQuestions = () => {
+          const category = categoryFilter.value;
+          const searchTerm = searchInput.value.toLowerCase();
+
+          let filtered = allCards;
+
+          // 1. Filter by category
+          if (category !== "all") {
+            filtered = filtered.filter((q) => q.category === category);
+          }
+
+          // 2. Filter by difficulty
+          if (difficultyFilter !== "all") {
+            filtered = filtered.filter(
+              (q) => q.difficulty === difficultyFilter
+            );
+          }
+
+          // 3. Filter by search term
+          if (searchTerm) {
+            return filtered.filter(
+              (q) =>
+                q.q.toLowerCase().includes(searchTerm) ||
+                (q.a && q.a.toLowerCase().includes(searchTerm))
+            );
+          }
+          return filtered;
+        };
+
+        /**
+         * Updates the progress stats display in the sidebar.
+         */
+        const updateProgressStats = () => {
+          let hard = 0,
+            medium = 0,
+            easy = 0;
+          for (const id in cardDifficulties) {
+            if (cardDifficulties[id] === "hard") hard++;
+            else if (cardDifficulties[id] === "medium") medium++;
+            else if (cardDifficulties[id] === "easy") easy++;
+          }
+          progressHard.textContent = hard;
+          progressMedium.textContent = medium;
+          progressEasy.textContent = easy;
+          progressUnrated.textContent =
+            allCards.length - (hard + medium + easy);
+        };
+
+        /**
+         * Updates the entire view based on current filters and modes.
+         */
+        const updateView = () => {
+          updateProgressStats();
+
+          if (isManageMode) {
+            document.getElementById("recall-questions-section").style.display =
+              "none";
+            document.getElementById("qbank-section").style.display = "block";
+            qbankTitleText.textContent = "Manage My Cards";
+            renderManageView();
+            questionCountEl.textContent = allCards.filter(
+              (c) => !c.isDefault
+            ).length;
+            questionCountLabelEl.textContent = "Your Cards";
+            return;
+          }
+
+          const filteredQuestions = getFilteredQuestions();
+          const category = categoryFilter.value;
+          const searchTerm = searchInput.value.toLowerCase();
+          const categoryText =
+            categoryFilter.selectedIndex > -1
+              ? categoryFilter.options[categoryFilter.selectedIndex].text
+              : "All Categories";
+
+          // Update question count
+          questionCountEl.textContent = filteredQuestions.length;
+          questionCountLabelEl.textContent =
+            category === "all" && !searchTerm && difficultyFilter === "all"
+              ? "Total Questions"
+              : "Filtered Questions";
+
+          // Update title
+          if (searchTerm) {
+            qbankTitleText.textContent = "Search Results";
+          } else if (difficultyFilter !== "all") {
+            qbankTitleText.textContent = `${
+              difficultyFilter.charAt(0).toUpperCase() +
+              difficultyFilter.slice(1)
+            } Rated Cards`;
+          } else if (category === "all") {
+            qbankTitleText.textContent = "Full Question Bank";
+          } else {
+            qbankTitleText.textContent = categoryText;
+          }
+
+          const recallSection = document.getElementById(
+            "recall-questions-section"
+          );
+          const qbankSection = document.getElementById("qbank-section");
+
+          const showRecallSeparately =
+            !searchTerm &&
+            difficultyFilter === "all" &&
+            (category === "all" || category === "Recall Questions");
+
+          if (showRecallSeparately) {
+            recallSection.style.display = "block";
+            qbankSection.style.display = "block";
+            const recallCards = allCards.filter(
+              (c) => c.category === "Recall Questions"
+            );
+            const otherCards = filteredQuestions.filter(
+              (c) => c.category !== "Recall Questions"
+            );
+
+            renderQuestions(recallCards, recallContainer);
+            renderQuestions(otherCards, qbankContainer);
+          } else {
+            recallSection.style.display = "none";
+            recallContainer.innerHTML = "";
+            qbankSection.style.display = "block";
+            renderQuestions(filteredQuestions, qbankContainer);
+          }
+
+          // Update practice mode if active
+          if (practiceModeToggle.checked) {
+            loadPracticeQuestion();
+          }
+        };
+
+        /**
+         * Handles the click event on an accordion to toggle it open or closed.
+         */
+        const handleAccordionClick = (e) => {
+          const button = e.target.closest(".accordion-toggle");
+          if (!button) return;
+
+          const content = button.nextElementSibling;
+          const chevron = button.querySelector(".chevron");
+          const wasOpen = content.classList.contains("open");
+
+          document
+            .querySelectorAll(".accordion-content.open")
+            .forEach((openContent) => {
+              openContent.classList.remove("open");
+              openContent.previousElementSibling
+                .querySelector(".chevron")
+                .classList.remove("rotate-180");
+            });
+
+          if (!wasOpen) {
+            content.classList.add("open");
+            chevron.classList.add("rotate-180");
+          }
+        };
+
+        /**
+         * Loads a new random question for practice mode based on current filters.
+         */
+        const loadPracticeQuestion = () => {
+          const practicePool = getFilteredQuestions();
+          const categoryText =
+            categoryFilter.selectedIndex > -1
+              ? categoryFilter.options[categoryFilter.selectedIndex].text
+              : "All Categories";
+
+          practiceContextEl.textContent =
+            difficultyFilter !== "all"
+              ? `${
+                  difficultyFilter.charAt(0).toUpperCase() +
+                  difficultyFilter.slice(1)
+                } Cards`
+              : categoryText;
+          practiceCountEl.textContent = practicePool.length;
+
+          if (practicePool.length === 0) {
+            practiceQuestion.textContent =
+              "No questions available for this filter.";
+            practiceAnswer.textContent =
+              "Try changing your category or search term.";
+            revealAnswerBtn.disabled = true;
+            nextQuestionBtn.disabled = true;
+            flashcard.classList.remove("flipped");
+            difficultyButtons.classList.add("hidden");
+            return;
+          }
+
+          revealAnswerBtn.disabled = false;
+          nextQuestionBtn.disabled = false;
+
+          // Prioritize hard, then medium, then easy/unrated
+          const hardCards = practicePool.filter((c) => c.difficulty === "hard");
+          const mediumCards = practicePool.filter(
+            (c) => c.difficulty === "medium"
+          );
+          const otherCards = practicePool.filter(
+            (c) => c.difficulty !== "hard" && c.difficulty !== "medium"
+          );
+
+          let selectionPool = [];
+          if (hardCards.length > 0 && Math.random() < 0.5) {
+            selectionPool = hardCards;
+          } else if (mediumCards.length > 0 && Math.random() < 0.7) {
+            selectionPool = mediumCards;
+          } else {
+            selectionPool = otherCards;
+          }
+          if (selectionPool.length === 0) selectionPool = practicePool; // Fallback
+
+          const randomIndex = Math.floor(Math.random() * selectionPool.length);
+          currentPracticeCard = selectionPool[randomIndex];
+
+          practiceQuestion.textContent = currentPracticeCard.q;
+          practiceAnswer.textContent = currentPracticeCard.a;
+
+          flashcard.classList.remove("flipped");
+          revealAnswerBtn.textContent = "Reveal Answer";
+          difficultyButtons.classList.add("hidden");
+        };
+
+        /**
+         * Handles the submission of the add/edit card form.
+         */
+        const handleFormSubmit = (e) => {
+          e.preventDefault();
+          const selectedCategory = categorySelectModal.value;
+          let categoryText = "";
+
+          if (selectedCategory === "new-category") {
+            categoryText = newCategoryInput.value.trim();
+            if (!categoryText) {
+              alert("Please enter a name for the new category.");
+              return;
+            }
+          } else if (selectedCategory) {
+            categoryText = selectedCategory;
+          } else {
+            alert("Please select a category.");
+            return;
+          }
+
+          const questionText = document
+            .getElementById("new-question")
+            .value.trim();
+          const answerText = document.getElementById("new-answer").value.trim();
+          const editId = editCardIdInput.value;
+
+          if (categoryText && questionText && answerText) {
+            if (editId) {
+              // Editing existing card
+              const cardIndex = allCards.findIndex((c) => c.id == editId);
+              if (cardIndex > -1) {
+                allCards[cardIndex] = {
+                  ...allCards[cardIndex],
+                  category: categoryText,
+                  q: questionText,
+                  a: answerText,
+                };
+              }
+            } else {
+              // Adding new card
+              const newCard = {
+                category: categoryText,
+                q: questionText,
+                a: answerText,
+                id: `user-${Date.now()}`,
+                isDefault: false,
+                difficulty: null,
+              };
+              allCards.push(newCard);
+            }
+
+            saveUserCards();
+            addCardForm.reset();
+            modal.classList.add("hidden");
+            newCategoryWrapper.classList.add("hidden");
+            populateCategoryFilter();
+            categoryFilter.value = categoryText;
+            updateView();
+          }
+        };
+
+        /**
+         * Opens the modal to edit a specific card.
+         */
+        const openEditModal = (id) => {
+          const cardToEdit = allCards.find((c) => c.id == id);
+          if (!cardToEdit) return;
+
+          modalTitle.textContent = "Edit Flashcard";
+          editCardIdInput.value = id;
+
+          populateCategoryModalSelect();
+          categorySelectModal.value = cardToEdit.category;
+          newCategoryWrapper.classList.add("hidden");
+          newCategoryInput.required = false;
+
+          document.getElementById("new-question").value = cardToEdit.q;
+          document.getElementById("new-answer").value = cardToEdit.a;
+
+          modal.classList.remove("hidden");
+        };
+
+        /**
+         * Deletes a card after confirmation.
+         */
+        const deleteCard = (id) => {
+          allCards = allCards.filter((c) => c.id != id);
+          delete cardDifficulties[id];
+          saveUserCards();
+          saveDifficulties();
+          populateCategoryFilter();
+          updateView();
+        };
+
+        /**
+         * Applies the selected theme (dark/light).
+         */
+        const applyTheme = (theme) => {
+          if (theme === "dark") {
+            document.documentElement.classList.add("dark");
+            themeIconLight.classList.remove("hidden");
+            themeIconDark.classList.add("hidden");
+          } else {
+            document.documentElement.classList.remove("dark");
+            themeIconLight.classList.add("hidden");
+            themeIconDark.classList.remove("hidden");
+          }
+        };
+
+        /**
+         * Handles flipping the practice mode card and updating the button text.
+         */
+        const flipPracticeCard = () => {
+          flashcard.classList.toggle("flipped");
+          const isFlipped = flashcard.classList.contains("flipped");
+          revealAnswerBtn.textContent = isFlipped
+            ? "Hide Answer"
+            : "Reveal Answer";
+          difficultyButtons.classList.toggle("hidden", !isFlipped);
+        };
+
+        // --- EVENT LISTENERS ---
+
+        themeToggle.addEventListener("click", () => {
+          const isDark = document.documentElement.classList.contains("dark");
+          const newTheme = isDark ? "light" : "dark";
+          localStorage.setItem("theme", newTheme);
+          applyTheme(newTheme);
+        });
+
+        categoryFilter.addEventListener("change", updateView);
+        searchInput.addEventListener("input", updateView);
+
+        practiceModeToggle.addEventListener("change", (e) => {
+          mainContentView.classList.toggle("hidden", e.target.checked);
+          practiceModeView.classList.toggle("hidden", !e.target.checked);
+          if (e.target.checked) loadPracticeQuestion();
+        });
+
+        revealAnswerBtn.addEventListener("click", flipPracticeCard);
+        flashcard.addEventListener("click", flipPracticeCard);
+        nextQuestionBtn.addEventListener("click", loadPracticeQuestion);
+
+        difficultyButtons.addEventListener("click", (e) => {
+          const button = e.target.closest(".difficulty-btn");
+          if (!button) return;
+
+          const difficulty = button.dataset.difficulty;
+          if (difficulty && currentPracticeCard) {
+            // Update the main data store
+            const cardInStore = allCards.find(
+              (c) => c.id === currentPracticeCard.id
+            );
+            if (cardInStore) cardInStore.difficulty = difficulty;
+
+            // Update the persistent difficulties map
+            cardDifficulties[currentPracticeCard.id] = difficulty;
+            saveDifficulties();
+            updateProgressStats();
+
+            // Automatically go to next question
+            loadPracticeQuestion();
+          }
+        });
+
+        difficultyFilterContainer.addEventListener("click", (e) => {
+          const button = e.target.closest(".difficulty-filter-btn");
+          if (!button) return;
+
+          difficultyFilter = button.dataset.difficulty;
+
+          document
+            .querySelectorAll(".difficulty-filter-btn")
+            .forEach((btn) => btn.classList.remove("active"));
+          button.classList.add("active");
+
+          updateView();
+        });
+
+        openModalBtn.addEventListener("click", () => {
+          modalTitle.textContent = "Add a New Flashcard";
+          addCardForm.reset();
+          editCardIdInput.value = "";
+          populateCategoryModalSelect();
+          newCategoryWrapper.classList.add("hidden");
+          newCategoryInput.required = false;
+          modal.classList.remove("hidden");
+        });
+        closeModalBtn.addEventListener("click", () =>
+          modal.classList.add("hidden")
+        );
+        cancelModalBtn.addEventListener("click", () =>
+          modal.classList.add("hidden")
+        );
+        modal.addEventListener("click", (e) => {
+          if (e.target === modal) modal.classList.add("hidden");
+        });
+
+        categorySelectModal.addEventListener("change", () => {
+          const isNew = categorySelectModal.value === "new-category";
+          newCategoryWrapper.classList.toggle("hidden", !isNew);
+          newCategoryInput.required = isNew;
+        });
+
+        addCardForm.addEventListener("submit", handleFormSubmit);
+
+        mainContentView.addEventListener("click", (e) => {
+          const accordionToggle = e.target.closest(".accordion-toggle");
+          const editBtn = e.target.closest(".edit-btn");
+          const deleteBtn = e.target.closest(".delete-btn");
+
+          if (accordionToggle) handleAccordionClick(e);
+          if (editBtn) openEditModal(editBtn.dataset.id);
+          if (deleteBtn) {
+            cardToDeleteId = deleteBtn.dataset.id;
+            deleteConfirmModal.classList.remove("hidden");
+          }
+        });
+
+        cancelDeleteBtn.addEventListener("click", () => {
+          cardToDeleteId = null;
+          deleteConfirmModal.classList.add("hidden");
+        });
+        confirmDeleteBtn.addEventListener("click", () => {
+          if (cardToDeleteId !== null) {
+            deleteCard(cardToDeleteId);
+          }
+          cardToDeleteId = null;
+          deleteConfirmModal.classList.add("hidden");
+        });
+
+        manageCardsBtn.addEventListener("click", () => {
+          isManageMode = !isManageMode;
+          if (isManageMode) {
+            manageCardsBtn.textContent = "Back to QBank";
+            manageCardsBtn.classList.replace("bg-slate-600", "bg-green-600");
+            manageCardsBtn.classList.replace(
+              "hover:bg-slate-500",
+              "hover:bg-green-500"
+            );
+            categoryFilter.disabled = true;
+            searchInput.disabled = true;
+            difficultyFilterContainer
+              .querySelectorAll("button")
+              .forEach((b) => (b.disabled = true));
+          } else {
+            manageCardsBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor"><path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z" /><path fill-rule="evenodd" d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" clip-rule="evenodd" /></svg> Manage My Cards`;
+            manageCardsBtn.classList.replace("bg-green-600", "bg-slate-600");
+            manageCardsBtn.classList.replace(
+              "hover:bg-green-500",
+              "hover:bg-slate-500"
+            );
+            categoryFilter.disabled = false;
+            searchInput.disabled = false;
+            difficultyFilterContainer
+              .querySelectorAll("button")
+              .forEach((b) => (b.disabled = false));
+          }
+          updateView();
+        });
+
+        exportBtn.addEventListener("click", () => {
+          const dataToExport = {
+            userCards: allCards.filter((c) => !c.isDefault),
+            difficulties: cardDifficulties,
+          };
+          const dataStr =
+            "data:text/json;charset=utf-8," +
+            encodeURIComponent(JSON.stringify(dataToExport, null, 2));
+          const downloadAnchorNode = document.createElement("a");
+          downloadAnchorNode.setAttribute("href", dataStr);
+          downloadAnchorNode.setAttribute(
+            "download",
+            "my_nursing_qbank_data.json"
+          );
+          document.body.appendChild(downloadAnchorNode);
+          downloadAnchorNode.click();
+          downloadAnchorNode.remove();
+        });
+
+        importBtn.addEventListener("click", () => importFileInput.click());
+        importFileInput.addEventListener("change", (event) => {
+          const file = event.target.files[0];
+          if (!file) return;
+
+          const reader = new FileReader();
+          reader.onload = (e) => {
+            try {
+              const importedData = JSON.parse(e.target.result);
+              if (
+                !importedData ||
+                (!importedData.userCards && !importedData.difficulties)
+              )
+                throw new Error("Invalid format");
+
+              // Import and merge difficulties
+              if (importedData.difficulties) {
+                Object.assign(cardDifficulties, importedData.difficulties);
+                saveDifficulties();
+              }
+
+              // Import and merge user cards
+              if (
+                importedData.userCards &&
+                Array.isArray(importedData.userCards)
+              ) {
+                const existingUserCardIds = new Set(
+                  allCards.filter((c) => !c.isDefault).map((c) => c.id)
+                );
+                const newCards = importedData.userCards.filter(
+                  (importedCard) => !existingUserCardIds.has(importedCard.id)
+                );
+                allCards.push(...newCards);
+                saveUserCards();
+                alert(
+                  `${newCards.length} new card(s) and progress data imported successfully!`
+                );
+              } else {
+                alert(`Progress data imported successfully!`);
+              }
+
+              initializeAllCards(); // Re-initialize to merge everything correctly
+              populateCategoryFilter();
+              updateView();
+            } catch (error) {
+              alert(
+                "Error importing file. Please make sure it's a valid JSON file exported from this app."
+              );
+            }
+          };
+          reader.readAsText(file);
+          importFileInput.value = "";
+        });
+
+        // Navbar Toggle for mobile
+        const navToggle = document.getElementById("nav-toggle");
+        const navMenu = document.getElementById("nav-menu");
+        navToggle.addEventListener("click", () => {
+          navMenu.classList.toggle("active");
+        });
+
+        // --- INITIALIZATION ---
+        const init = () => {
+          feather.replace(); // Initialize Feather Icons
+          const theme = localStorage.getItem("theme") || "light";
+          applyTheme(theme);
+
+          initializeAllCards();
+          populateCategoryFilter();
+          categoryFilter.value = "all"; // Explicitly set default value
+          updateView();
+        };
+
+        init();
+      });
+    </script>
+  </body>
+</html>
