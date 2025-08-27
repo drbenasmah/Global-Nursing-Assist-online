@@ -1,401 +1,1080 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Nursing Insights | Global Nursing Assist</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap"
+      rel="stylesheet"
+    />
     <script src="https://unpkg.com/feather-icons"></script>
     <style>
-        :root {
-            --color-primary: #1e40af;
-            --color-secondary: #059669;
-            --color-accent: #fbbf24;
-            --color-text: #111827;
-            --color-text-light: #6b7280;
-            --color-background: #f9fafb;
-            --color-white: #ffffff;
-            --color-border: #e5e7eb;
-            --font-primary: 'Inter', sans-serif;
-            --font-secondary: 'Playfair Display', serif;
-            --border-radius: 12px;
-            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
-            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-            --transition-speed: 0.3s;
-        }
+      :root {
+        --color-primary: #1e40af;
+        --color-secondary: #059669;
+        --color-accent: #fbbf24;
+        --color-text: #111827;
+        --color-text-light: #6b7280;
+        --color-background: #f9fafb;
+        --color-white: #ffffff;
+        --color-border: #e5e7eb;
+        --font-primary: "Inter", sans-serif;
+        --font-secondary: "Playfair Display", serif;
+        --border-radius: 12px;
+        --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+        --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+          0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+          0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        --transition-speed: 0.3s;
+      }
 
-        /* === Base & Reset === */
-        *, *::before, *::after { box-sizing: border-box; }
-        body {
-            margin: 0;
-            font-family: var(--font-primary);
-            line-height: 1.6;
-            color: var(--color-text);
-            /* Updated background color */
-            background-color: #f7f7f7;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-        .container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
+      /* === Base & Reset === */
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font-family: var(--font-primary);
+        line-height: 1.6;
+        color: var(--color-text);
+        background-color: #f7f7f7;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+      .container {
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
 
-        /* === SVG Icons === */
-        .icon {
-            width: 1.2em;
-            height: 1.2em;
-            vertical-align: middle;
+      /* === SVG Icons === */
+      .icon {
+        width: 1.2em;
+        height: 1.2em;
+        vertical-align: middle;
+      }
+      .category-icon {
+        width: 1em;
+        height: 1em;
+        margin-right: 0.5em;
+        vertical-align: -0.1em;
+      }
+
+      /* === Navigation === */
+      .navbar {
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(10px);
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
+        padding: 1rem 0;
+        border-bottom: 1px solid var(--color-border);
+      }
+      .nav-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .nav-logo a {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        color: var(--color-text);
+        font-weight: 700;
+        font-size: 1.25rem;
+      }
+      .logo-img {
+        height: 40px;
+        margin-right: 12px;
+      }
+      .nav-menu {
+        display: flex;
+        gap: 2.5rem;
+        align-items: center;
+      }
+      .nav-link {
+        text-decoration: none;
+        color: var(--color-text-light);
+        font-weight: 500;
+        transition: color var(--transition-speed) ease;
+        position: relative;
+        padding: 4px 0;
+      }
+      .nav-link::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background-color: var(--color-primary);
+        transition: width var(--transition-speed) ease;
+      }
+      .nav-link:hover {
+        color: var(--color-primary);
+      }
+      .nav-link:hover::after {
+        width: 100%;
+      }
+      .nav-cta {
+        background: var(--color-primary);
+        color: var(--color-white);
+        padding: 10px 20px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 500;
+        transition: all var(--transition-speed) ease;
+      }
+      .nav-cta:hover {
+        background: #1d4ed8;
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-md);
+      }
+
+      /* Mobile Navigation Toggle */
+      .nav-toggle {
+        display: none;
+        flex-direction: column;
+        justify-content: space-around;
+        width: 30px;
+        height: 25px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+        z-index: 1002;
+      }
+      .nav-toggle .bar {
+        height: 3px;
+        width: 100%;
+        background: var(--color-primary);
+        border-radius: 10px;
+        transition: all 0.3s ease-in-out;
+      }
+      .nav-toggle.is-active .bar:nth-child(1) {
+        transform: translateY(9px) rotate(45deg);
+      }
+      .nav-toggle.is-active .bar:nth-child(2) {
+        opacity: 0;
+      }
+      .nav-toggle.is-active .bar:nth-child(3) {
+        transform: translateY(-9px) rotate(-45deg);
+      }
+
+      .mobile-nav-panel {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 85%;
+        max-width: 320px;
+        height: 100vh;
+        background: var(--color-white);
+        z-index: 1001;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        padding: 6rem 2rem 2rem;
+        transition: right 0.4s ease-in-out;
+        box-shadow: -10px 0 30px rgba(0, 0, 0, 0.1);
+      }
+      .mobile-nav-panel.is-active {
+        right: 0;
+      }
+      .mobile-nav-panel .nav-menu {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.5rem;
+        width: 100%;
+      }
+      .mobile-nav-panel .nav-link {
+        font-size: 1.25rem;
+        font-weight: 600;
+        padding: 0.5rem 0;
+        width: 100%;
+      }
+      .mobile-nav-panel .nav-cta {
+        margin-top: 2rem;
+        width: 100%;
+        text-align: center;
+      }
+
+      /* === Hero Section === */
+      .blog-hero {
+        padding: 140px 0 100px;
+        text-align: center;
+      }
+      .hero-tagline {
+        color: var(--color-primary);
+        font-weight: 600;
+        margin-bottom: 1rem;
+        display: block;
+      }
+      .blog-hero-title {
+        font-family: var(--font-secondary);
+        font-size: clamp(2.5rem, 5vw, 4rem);
+        line-height: 1.1;
+        margin-bottom: 1.5rem;
+      }
+      .blog-hero-subtitle {
+        font-size: 1.125rem;
+        color: var(--color-text-light);
+        max-width: 600px;
+        margin: 0 auto 2.5rem;
+      }
+      .search-form {
+        position: relative;
+        max-width: 500px;
+        margin: 0 auto;
+      }
+      .search-input {
+        width: 100%;
+        padding: 1rem 1rem 1rem 3rem;
+        border-radius: 50px;
+        border: 1px solid var(--color-border);
+        font-size: 1rem;
+        box-shadow: var(--shadow-sm);
+      }
+      .search-icon {
+        position: absolute;
+        left: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--color-text-light);
+      }
+
+      /* === Featured Article === */
+      .featured-post {
+        padding: 40px 0 80px;
+      }
+      .section-header {
+        text-align: center;
+        margin-bottom: 4rem;
+      }
+      .section-header h2 {
+        font-family: var(--font-secondary);
+        font-size: 2.5rem;
+      }
+      .featured-article {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: 2rem;
+        align-items: center;
+      }
+      .featured-image {
+        grid-column: 1 / span 7;
+        border-radius: var(--border-radius);
+        overflow: hidden;
+        box-shadow: var(--shadow-lg);
+      }
+      .featured-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform var(--transition-speed) ease;
+      }
+      .featured-article:hover .featured-image img {
+        transform: scale(1.05);
+      }
+      .featured-content {
+        grid-column: 8 / span 5;
+      }
+      .category {
+        background-color: var(--color-secondary);
+        color: white;
+        padding: 6px 14px;
+        border-radius: 20px;
+        font-size: 0.875rem;
+        font-weight: 500;
+        display: inline-flex;
+        align-items: center;
+        margin-bottom: 1rem;
+      }
+      .featured-content h2 {
+        font-family: var(--font-secondary);
+        font-size: 2.25rem;
+        line-height: 1.2;
+        margin-bottom: 1rem;
+      }
+      .featured-content p {
+        color: var(--color-text-light);
+        margin-bottom: 2rem;
+      }
+      .post-meta {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+      .author-image {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+      .author-info {
+        font-size: 0.9rem;
+      }
+      .author {
+        font-weight: 600;
+        color: var(--color-text);
+      }
+      .date {
+        color: var(--color-text-light);
+      }
+      .btn-read-more {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: var(--color-primary);
+        text-decoration: none;
+        font-weight: 600;
+        margin-top: 2rem;
+      }
+      .btn-read-more .arrow {
+        transition: transform var(--transition-speed) ease;
+      }
+      .btn-read-more:hover .arrow {
+        transform: translateX(4px);
+      }
+
+      /* === Newsletter Section === */
+      .newsletter-section {
+        padding: 80px 0;
+        background: var(--color-primary);
+        color: var(--color-white);
+      }
+      .newsletter-content {
+        text-align: center;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+      .newsletter-content h2 {
+        font-family: var(--font-secondary);
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+      }
+      .newsletter-content p {
+        opacity: 0.9;
+        margin-bottom: 2rem;
+      }
+      .newsletter-form {
+        display: flex;
+        gap: 0.5rem;
+        max-width: 400px;
+        margin: 0 auto;
+      }
+      .newsletter-input {
+        flex-grow: 1;
+        padding: 0.75rem 1rem;
+        border: none;
+        border-radius: 8px;
+      }
+      .newsletter-btn {
+        background: var(--color-accent);
+        color: var(--color-text);
+        border: none;
+        padding: 0.75rem 1.5rem;
+        border-radius: 8px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background-color var(--transition-speed) ease;
+      }
+      .newsletter-btn:hover {
+        background: #facc15;
+      }
+
+      /* === Blog Posts Grid & Filtering === */
+      .blog-posts {
+        padding: 80px 0;
+      }
+      .filter-bar {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin-bottom: 3rem;
+        flex-wrap: wrap;
+      }
+      .filter-btn {
+        background: var(--color-white);
+        color: var(--color-text-light);
+        border: 1px solid var(--color-border);
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        cursor: pointer;
+        font-weight: 500;
+        transition: all var(--transition-speed) ease;
+      }
+      .filter-btn.active,
+      .filter-btn:hover {
+        background: var(--color-primary);
+        color: var(--color-white);
+        border-color: var(--color-primary);
+      }
+      .posts-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        gap: 2rem;
+      }
+      .post-card {
+        background: var(--color-white);
+        border-radius: var(--border-radius);
+        box-shadow: var(--shadow-md);
+        overflow: hidden;
+        text-decoration: none;
+        color: inherit;
+        display: flex;
+        flex-direction: column;
+        transition: all var(--transition-speed) ease;
+      }
+      .post-card.hidden {
+        transform: scale(0.9);
+        opacity: 0;
+        display: none;
+      }
+      .post-card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-lg);
+      }
+      .post-image {
+        height: 200px;
+        overflow: hidden;
+      }
+      .post-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform var(--transition-speed) ease;
+      }
+      .post-card:hover .post-image img {
+        transform: scale(1.05);
+      }
+      .post-content {
+        padding: 1.5rem;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+      }
+      .post-content h3 {
+        font-size: 1.25rem;
+        margin: 0.5rem 0;
+        line-height: 1.4;
+      }
+      .post-content p {
+        color: var(--color-text-light);
+        font-size: 0.95rem;
+        flex-grow: 1;
+        margin-bottom: 1.5rem;
+      }
+      .post-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-top: 1px solid var(--color-border);
+        padding-top: 1rem;
+      }
+      .read-time {
+        font-size: 0.875rem;
+        color: var(--color-text-light);
+      }
+      .read-more-link {
+        color: var(--color-primary);
+        font-weight: 500;
+        text-decoration: none;
+      }
+
+      /* === Footer === */
+      .footer {
+        background: var(--color-text);
+        color: #9ca3af;
+        padding: 4rem 0 2rem;
+        margin-top: 80px;
+      }
+      .footer-content {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr 1fr;
+        gap: 2rem;
+        margin-bottom: 3rem;
+      }
+      .footer-section h3 {
+        color: var(--color-white);
+        margin-bottom: 1rem;
+      }
+      .footer-links {
+        list-style: none;
+        padding: 0;
+      }
+      .footer-links li {
+        margin-bottom: 0.75rem;
+      }
+      .footer-links a {
+        text-decoration: none;
+        color: inherit;
+        transition: color var(--transition-speed) ease;
+      }
+      .footer-links a:hover {
+        color: var(--color-white);
+      }
+      .footer-bottom {
+        border-top: 1px solid #374151;
+        padding-top: 2rem;
+        text-align: center;
+      }
+
+      /* === Responsive === */
+      @media (max-width: 1024px) {
+        .featured-article {
+          grid-template-columns: 1fr;
         }
-        .category-icon {
-            width: 1em;
-            height: 1em;
-            margin-right: 0.5em;
-            vertical-align: -0.1em;
+        .featured-image,
+        .featured-content {
+          grid-column: auto;
         }
-
-        /* === Navigation === */
-        .navbar {
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(10px);
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            padding: 1rem 0;
-            border-bottom: 1px solid var(--color-border);
+        .featured-image {
+          height: 400px;
         }
-        .nav-container { display: flex; justify-content: space-between; align-items: center; }
-        .nav-logo a { display: flex; align-items: center; text-decoration: none; color: var(--color-text); font-weight: 700; font-size: 1.25rem; }
-        .logo-img { height: 40px; margin-right: 12px; }
-        .nav-menu { display: flex; gap: 2.5rem; align-items: center; }
-        .nav-link { text-decoration: none; color: var(--color-text-light); font-weight: 500; transition: color var(--transition-speed) ease; position: relative; padding: 4px 0; }
-        .nav-link::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background-color: var(--color-primary); transition: width var(--transition-speed) ease; }
-        .nav-link:hover { color: var(--color-primary); }
-        .nav-link:hover::after { width: 100%; }
-        .nav-cta { background: var(--color-primary); color: var(--color-white); padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 500; transition: all var(--transition-speed) ease; }
-        .nav-cta:hover { background: #1d4ed8; transform: translateY(-2px); box-shadow: var(--shadow-md); }
-        .nav-toggle { display: none; }
-
-        /* === Hero Section === */
-        .blog-hero { padding: 140px 0 100px; text-align: center; }
-        .hero-tagline { color: var(--color-primary); font-weight: 600; margin-bottom: 1rem; display: block; }
-        .blog-hero-title { font-family: var(--font-secondary); font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1.1; margin-bottom: 1.5rem; }
-        .blog-hero-subtitle { font-size: 1.125rem; color: var(--color-text-light); max-width: 600px; margin: 0 auto 2.5rem; }
-        .search-form { position: relative; max-width: 500px; margin: 0 auto; }
-        .search-input { width: 100%; padding: 1rem 1rem 1rem 3rem; border-radius: 50px; border: 1px solid var(--color-border); font-size: 1rem; box-shadow: var(--shadow-sm); }
-        .search-icon { position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: var(--color-text-light); }
-
-        /* === Featured Article === */
-        /* Reduced top padding */
-        .featured-post { padding: 40px 0 80px; } 
-        .section-header { text-align: center; margin-bottom: 4rem; }
-        .section-header h2 { font-family: var(--font-secondary); font-size: 2.5rem; }
-        .featured-article { display: grid; grid-template-columns: repeat(12, 1fr); gap: 2rem; align-items: center; }
-        .featured-image { grid-column: 1 / span 7; border-radius: var(--border-radius); overflow: hidden; box-shadow: var(--shadow-lg); }
-        .featured-image img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform var(--transition-speed) ease; }
-        .featured-article:hover .featured-image img { transform: scale(1.05); }
-        .featured-content { grid-column: 8 / span 5; }
-        .category { background-color: var(--color-secondary); color: white; padding: 6px 14px; border-radius: 20px; font-size: 0.875rem; font-weight: 500; display: inline-flex; align-items: center; margin-bottom: 1rem; }
-        .featured-content h2 { font-family: var(--font-secondary); font-size: 2.25rem; line-height: 1.2; margin-bottom: 1rem; }
-        .featured-content p { color: var(--color-text-light); margin-bottom: 2rem; }
-        .post-meta { display: flex; align-items: center; gap: 1rem; }
-        .author-image { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; }
-        .author-info { font-size: 0.9rem; }
-        .author { font-weight: 600; color: var(--color-text); }
-        .date { color: var(--color-text-light); }
-        .btn-read-more { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--color-primary); text-decoration: none; font-weight: 600; margin-top: 2rem; }
-        .btn-read-more .arrow { transition: transform var(--transition-speed) ease; }
-        .btn-read-more:hover .arrow { transform: translateX(4px); }
-
-        /* === Newsletter Section === */
-        .newsletter-section { padding: 80px 0; background: var(--color-primary); color: var(--color-white); }
-        .newsletter-content { text-align: center; max-width: 600px; margin: 0 auto; }
-        .newsletter-content h2 { font-family: var(--font-secondary); font-size: 2.5rem; margin-bottom: 1rem; }
-        .newsletter-content p { opacity: 0.9; margin-bottom: 2rem; }
-        .newsletter-form { display: flex; gap: 0.5rem; max-width: 400px; margin: 0 auto; }
-        .newsletter-input { flex-grow: 1; padding: 0.75rem 1rem; border: none; border-radius: 8px; }
-        .newsletter-btn { background: var(--color-accent); color: var(--color-text); border: none; padding: 0.75rem 1.5rem; border-radius: 8px; font-weight: 600; cursor: pointer; transition: background-color var(--transition-speed) ease; }
-        .newsletter-btn:hover { background: #facc15; }
-
-        /* === Blog Posts Grid & Filtering === */
-        .blog-posts { padding: 80px 0; }
-        .filter-bar { display: flex; justify-content: center; gap: 1rem; margin-bottom: 3rem; flex-wrap: wrap; }
-        .filter-btn { background: var(--color-white); color: var(--color-text-light); border: 1px solid var(--color-border); padding: 0.5rem 1rem; border-radius: 20px; cursor: pointer; font-weight: 500; transition: all var(--transition-speed) ease; }
-        .filter-btn.active, .filter-btn:hover { background: var(--color-primary); color: var(--color-white); border-color: var(--color-primary); }
-        .posts-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 2rem; }
-        .post-card { background: var(--color-white); border-radius: var(--border-radius); box-shadow: var(--shadow-md); overflow: hidden; text-decoration: none; color: inherit; display: flex; flex-direction: column; transition: all var(--transition-speed) ease; }
-        .post-card.hidden { transform: scale(0.9); opacity: 0; display: none; }
-        .post-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); }
-        .post-image { height: 200px; overflow: hidden; }
-        .post-image img { width: 100%; height: 100%; object-fit: cover; transition: transform var(--transition-speed) ease; }
-        .post-card:hover .post-image img { transform: scale(1.05); }
-        .post-content { padding: 1.5rem; flex-grow: 1; display: flex; flex-direction: column; }
-        .post-content h3 { font-size: 1.25rem; margin: 0.5rem 0; line-height: 1.4; }
-        .post-content p { color: var(--color-text-light); font-size: 0.95rem; flex-grow: 1; margin-bottom: 1.5rem; }
-        .post-footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--color-border); padding-top: 1rem; }
-        .read-time { font-size: 0.875rem; color: var(--color-text-light); }
-        .read-more-link { color: var(--color-primary); font-weight: 500; text-decoration: none; }
-        
-        /* === Footer === */
-        .footer { background: var(--color-text); color: #9ca3af; padding: 4rem 0 2rem; margin-top: 80px; }
-        .footer-content { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 2rem; margin-bottom: 3rem; }
-        .footer-section h3 { color: var(--color-white); margin-bottom: 1rem; }
-        .footer-links { list-style: none; padding: 0; }
-        .footer-links li { margin-bottom: 0.75rem; }
-        .footer-links a { text-decoration: none; color: inherit; transition: color var(--transition-speed) ease; }
-        .footer-links a:hover { color: var(--color-white); }
-        .footer-bottom { border-top: 1px solid #374151; padding-top: 2rem; text-align: center; }
-
-        /* === Responsive === */
-        @media (max-width: 1024px) {
-            .featured-article { grid-template-columns: 1fr; }
-            .featured-image, .featured-content { grid-column: auto; }
-            .featured-image { height: 400px; }
+      }
+      @media (max-width: 768px) {
+        .nav-menu {
+          display: none;
         }
-        @media (max-width: 768px) {
-            .nav-menu { display: none; }
-            .nav-toggle { display: block; }
-            .footer-content { grid-template-columns: 1fr 1fr; }
+        .nav-logo span {
+          font-size: 1.2rem;
+          font-weight: 700;
+          color: var(--color-primary);
+        } /* Adjust font size on mobile */
+        .nav-cta {
+          display: none;
+        } /* Hide CTA button on mobile */
+        .nav-toggle {
+          display: flex;
         }
+        .footer-content {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <!-- SVG Icons Definition -->
-    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
-        <symbol id="icon-arrow-right" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" /></symbol>
-        <symbol id="icon-search" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" /></symbol>
-        <symbol id="icon-mqric" viewBox="0 0 20 20" fill="currentColor"><path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" /><path fill-rule="evenodd" d="M4 5a2 2 0 012-2h8a2 2 0 012 2v10a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 011-1h2a1 1 0 110 2H8a1 1 0 01-1-1zm-1 4a1 1 0 100 2h6a1 1 0 100-2H6z" clip-rule="evenodd" /></symbol>
-        <symbol id="icon-registration" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z" clip-rule="evenodd" /></symbol>
-        <symbol id="icon-cv" viewBox="0 0 20 20" fill="currentColor"><path d="M10 12a2 2 0 100-4 2 2 0 000 4z" /><path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd" /></symbol>
-        <symbol id="icon-ielts" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" /></symbol>
-        <symbol id="icon-career" viewBox="0 0 20 20" fill="currentColor"><path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L9 9.61V16a1 1 0 001 1h.01a1 1 0 001-1v-6.39l6.394-2.69a1 1 0 000-1.84l-7-3zM10 8.39L4.606 6 10 3.61 15.394 6 10 8.39z" /></symbol>
-        <symbol id="icon-insights" viewBox="0 0 20 20" fill="currentColor"><path d="M11 3a1 1 0 10-2 0v1a1 1 0 102 0V3zM15.657 5.757a1 1 0 00-1.414-1.414l-.707.707a1 1 0 001.414 1.414l.707-.707zM4.343 5.757a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414l.707.707zM1 11a1 1 0 100 2h1a1 1 0 100-2H1zM18 11a1 1 0 100 2h1a1 1 0 100-2h-1zM5.05 14.95a1 1 0 001.414 1.414l.707-.707a1 1 0 00-1.414-1.414l-.707.707zM14.95 14.95a1 1 0 00-1.414 1.414l.707.707a1 1 0 001.414-1.414l-.707-.707zM11 16a1 1 0 10-2 0v1a1 1 0 102 0v-1z" /><path d="M10 7a3 3 0 013 3 1 1 0 11-2 0 1 1 0 00-1-1 1 1 0 100 2 1 1 0 001 1 1 1 0 110 2 3 3 0 01-3-3z" /></symbol>
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none">
+      <symbol id="icon-arrow-right" viewBox="0 0 20 20" fill="currentColor">
+        <path
+          fill-rule="evenodd"
+          d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+          clip-rule="evenodd"
+        />
+      </symbol>
+      <symbol id="icon-search" viewBox="0 0 20 20" fill="currentColor">
+        <path
+          fill-rule="evenodd"
+          d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+          clip-rule="evenodd"
+        />
+      </symbol>
+      <symbol id="icon-mqric" viewBox="0 0 20 20" fill="currentColor">
+        <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />
+        <path
+          fill-rule="evenodd"
+          d="M4 5a2 2 0 012-2h8a2 2 0 012 2v10a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 011-1h2a1 1 0 110 2H8a1 1 0 01-1-1zm-1 4a1 1 0 100 2h6a1 1 0 100-2H6z"
+          clip-rule="evenodd"
+        />
+      </symbol>
+      <symbol id="icon-registration" viewBox="0 0 20 20" fill="currentColor">
+        <path
+          fill-rule="evenodd"
+          d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z"
+          clip-rule="evenodd"
+        />
+      </symbol>
+      <symbol id="icon-cv" viewBox="0 0 20 20" fill="currentColor">
+        <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+        <path
+          fill-rule="evenodd"
+          d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z"
+          clip-rule="evenodd"
+        />
+      </symbol>
+      <symbol id="icon-ielts" viewBox="0 0 20 20" fill="currentColor">
+        <path
+          fill-rule="evenodd"
+          d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+          clip-rule="evenodd"
+        />
+      </symbol>
+      <symbol id="icon-career" viewBox="0 0 20 20" fill="currentColor">
+        <path
+          d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L9 9.61V16a1 1 0 001 1h.01a1 1 0 001-1v-6.39l6.394-2.69a1 1 0 000-1.84l-7-3zM10 8.39L4.606 6 10 3.61 15.394 6 10 8.39z"
+        />
+      </symbol>
+      <symbol id="icon-insights" viewBox="0 0 20 20" fill="currentColor">
+        <path
+          d="M11 3a1 1 0 10-2 0v1a1 1 0 102 0V3zM15.657 5.757a1 1 0 00-1.414-1.414l-.707.707a1 1 0 001.414 1.414l.707-.707zM4.343 5.757a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414l.707.707zM1 11a1 1 0 100 2h1a1 1 0 100-2H1zM18 11a1 1 0 100 2h1a1 1 0 100-2h-1zM5.05 14.95a1 1 0 001.414 1.414l.707-.707a1 1 0 00-1.414-1.414l-.707.707zM14.95 14.95a1 1 0 00-1.414 1.414l.707.707a1 1 0 001.414-1.414l-.707-.707zM11 16a1 1 0 10-2 0v1a1 1 0 102 0v-1z"
+        />
+        <path
+          d="M10 7a3 3 0 013 3 1 1 0 11-2 0 1 1 0 00-1-1 1 1 0 100 2 1 1 0 001 1 1 1 0 110 2 3 3 0 01-3-3z"
+        />
+      </symbol>
     </svg>
 
     <!-- === Navigation Bar === -->
     <nav class="navbar">
-        <div class="container nav-container">
-            <div class="nav-logo">
-                <a href="./index.html">
-                    <img src="./src/assets/img/logo1.png" alt="Global Nursing Assist Logo" class="logo-img" onerror="this.onerror=null;this.src='https://placehold.co/200x50/1e40af/ffffff?text=GNA';">
-                    <span>Global Nursing Assist</span>
-                </a>
-            </div>
-            <div class="nav-menu">
-                <a href="./index.html" class="nav-link">Home</a>
-                <a href="./index.html#about" class="nav-link">About</a>
-                <a href="./index.html#services" class="nav-link">Services</a>
-                <a href="./index.html#resources" class="nav-link">Resources</a>
-                <a href="./blog.html" class="nav-link">Blog</a>
-            </div>
-            <a href="./index.html#contact" class="nav-cta">Contact Us</a>
-            <button class="nav-toggle" aria-label="Toggle navigation"></button>
+      <div class="container nav-container">
+        <div class="nav-logo">
+          <a href="./index.html">
+            <img
+              src="./src/assets/img/logo1.png"
+              alt="Global Nursing Assist Logo"
+              class="logo-img"
+              onerror="this.onerror=null;this.src='https://placehold.co/200x50/1e40af/ffffff?text=GNA';"
+            />
+            <span>Global Nursing Assist</span>
+          </a>
         </div>
+        <div class="nav-menu">
+          <a href="./index.html" class="nav-link">Home</a>
+          <a href="./index.html#about" class="nav-link">About</a>
+          <a href="./index.html#services" class="nav-link">Services</a>
+          <a href="./index.html#resources" class="nav-link">Resources</a>
+          <a href="./blog.html" class="nav-link">Blog</a>
+        </div>
+        <a href="./index.html#contact" class="nav-cta">Contact Us</a>
+        <button
+          class="nav-toggle"
+          id="nav-toggle"
+          aria-label="Toggle navigation"
+        >
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+      </div>
     </nav>
 
+    <div class="mobile-nav-panel" id="mobile-nav-panel">
+      <div class="nav-menu">
+        <a href="./index.html" class="nav-link">Home</a>
+        <a href="./index.html#about" class="nav-link">About</a>
+        <a href="./index.html#services" class="nav-link">Services</a>
+        <a href="./index.html#resources" class="nav-link">Resources</a>
+        <a href="./blog.html" class="nav-link">Blog</a>
+        <a href="./index.html#contact" class="nav-cta">Contact Us</a>
+      </div>
+    </div>
+
     <main>
-        <!-- === Hero Section === -->
-        <section class="blog-hero">
-            <div class="container">
-                <span class="hero-tagline">Our Insights</span>
-                <h1 class="blog-hero-title">Your Guide to a Successful Nursing Career</h1>
-                <p class="blog-hero-subtitle">Explore expert advice, in-depth guides, and the latest resources designed to help you excel at every stage of your nursing journey.</p>
-                <form class="search-form" id="search-form">
-                    <svg class="icon search-icon" aria-hidden="true"><use xlink:href="#icon-search"></use></svg>
-                    <input type="search" id="search-input" class="search-input" placeholder="Search articles...">
-                </form>
-            </div>
-        </section>
+      <!-- === Hero Section === -->
+      <section class="blog-hero">
+        <div class="container">
+          <span class="hero-tagline">Our Insights</span>
+          <h1 class="blog-hero-title">
+            Your Guide to a Successful Nursing Career
+          </h1>
+          <p class="blog-hero-subtitle">
+            Explore expert advice, in-depth guides, and the latest resources
+            designed to help you excel at every stage of your nursing journey.
+          </p>
+          <form class="search-form" id="search-form">
+            <svg class="icon search-icon" aria-hidden="true">
+              <use xlink:href="#icon-search"></use>
+            </svg>
+            <input
+              type="search"
+              id="search-input"
+              class="search-input"
+              placeholder="Search articles..."
+            />
+          </form>
+        </div>
+      </section>
 
-        <!-- === Featured Article === -->
-        <section class="featured-post">
-            <div class="container">
-                <div class="section-header" style="text-align: left; margin-bottom: 2rem;">
-                    <h2 style="font-size: 1.8rem;">Trending Now</h2>
-                </div>
-                <article class="featured-article">
-                    <div class="featured-image">
-                        <img src="src/assets/img/nursing-education.png" alt="Featured post about nursing interview in Malta">
-                    </div>
-                    <div class="featured-content">
-                        <span class="category"><svg class="icon category-icon"><use xlink:href="#icon-career"></use></svg>Featured Guide</span>
-                        <h2>How to Ace Your Nursing Interview in Malta</h2>
-                        <p>Essential tips and real questions from successful candidates who landed their dream nursing job in Malta.</p>
-                        <div class="post-meta">
-                            <img src="src/assets/img/author1.jpg" alt="Dr. Ben Asmah" class="author-image">
-                            <div class="author-info">
-                                <span class="author">Dr. Ben Asmah</span>
-                                <span class="date">July 25, 2025</span>
-                            </div>
-                        </div>
-                        <a href="/blog-pages/interview_blog.html" class="btn-read-more">
-                            Read Full Article
-                            <svg class="icon arrow"><use xlink:href="#icon-arrow-right"></use></svg>
-                        </a>
-                    </div>
-                </article>
+      <!-- === Featured Article === -->
+      <section class="featured-post">
+        <div class="container">
+          <div
+            class="section-header"
+            style="text-align: left; margin-bottom: 2rem"
+          >
+            <h2 style="font-size: 1.8rem">Trending Now</h2>
+          </div>
+          <article class="featured-article">
+            <div class="featured-image">
+              <img
+                src="src/assets/img/nursing-education.png"
+                alt="Featured post about nursing interview in Malta"
+              />
             </div>
-        </section>
+            <div class="featured-content">
+              <span class="category"
+                ><svg class="icon category-icon">
+                  <use xlink:href="#icon-career"></use></svg
+                >Featured Guide</span
+              >
+              <h2>How to Ace Your Nursing Interview in Malta</h2>
+              <p>
+                Essential tips and real questions from successful candidates who
+                landed their dream nursing job in Malta.
+              </p>
+              <div class="post-meta">
+                <img
+                  src="src/assets/img/author1.jpg"
+                  alt="Dr. Ben Asmah"
+                  class="author-image"
+                />
+                <div class="author-info">
+                  <span class="author">Dr. Ben Asmah</span>
+                  <span class="date">July 25, 2025</span>
+                </div>
+              </div>
+              <a href="/blog-pages/interview_blog.html" class="btn-read-more">
+                Read Full Article
+                <svg class="icon arrow">
+                  <use xlink:href="#icon-arrow-right"></use>
+                </svg>
+              </a>
+            </div>
+          </article>
+        </div>
+      </section>
 
-        <!-- === Newsletter Section === -->
-        <section class="newsletter-section">
-            <div class="container">
-                <div class="newsletter-content">
-                    <h2>Stay Ahead of the Curve</h2>
-                    <p>Subscribe to our newsletter for the latest articles, resources, and career tips delivered straight to your inbox.</p>
-                    <form class="newsletter-form">
-                        <input type="email" class="newsletter-input" placeholder="Enter your email">
-                        <button type="submit" class="newsletter-btn">Subscribe</button>
-                    </form>
-                </div>
-            </div>
-        </section>
+      <!-- === Newsletter Section === -->
+      <section class="newsletter-section">
+        <div class="container">
+          <div class="newsletter-content">
+            <h2>Stay Ahead of the Curve</h2>
+            <p>
+              Subscribe to our newsletter for the latest articles, resources,
+              and career tips delivered straight to your inbox.
+            </p>
+            <form class="newsletter-form">
+              <input
+                type="email"
+                class="newsletter-input"
+                placeholder="Enter your email"
+              />
+              <button type="submit" class="newsletter-btn">Subscribe</button>
+            </form>
+          </div>
+        </div>
+      </section>
 
-        <!-- === Blog Posts Grid === -->
-        <section class="blog-posts">
-            <div class="container">
-                <div class="section-header">
-                    <h2>All Articles</h2>
+      <!-- === Blog Posts Grid === -->
+      <section class="blog-posts">
+        <div class="container">
+          <div class="section-header">
+            <h2>All Articles</h2>
+          </div>
+          <div class="filter-bar" id="filter-bar">
+            <button class="filter-btn active" data-category="all">All</button>
+            <button class="filter-btn" data-category="mqric-guide">
+              MQRIC Guide
+            </button>
+            <button class="filter-btn" data-category="registration">
+              Registration
+            </button>
+            <button class="filter-btn" data-category="europass-cv">
+              Europass CV
+            </button>
+            <button class="filter-btn" data-category="ielts-prep">
+              IELTS Prep
+            </button>
+            <button class="filter-btn" data-category="career-guide">
+              Career Guide
+            </button>
+          </div>
+          <div class="posts-grid" id="posts-grid">
+            <!-- Cards will be dynamically filtered by JS -->
+            <a
+              href="./blog-pages/malta-mqric-guide.html"
+              class="post-card"
+              data-category="mqric-guide"
+              data-title="A Nurse's Guide to Malta: Getting Your MQRIC Recognition"
+            >
+              <div class="post-image">
+                <img
+                  src="./blog-pages/blog-img/mquiric-img/mqiric.png"
+                  alt="MQRIC Guide"
+                />
+              </div>
+              <div class="post-content">
+                <span
+                  class="category"
+                  style="background-color: var(--color-secondary)"
+                  ><svg class="icon category-icon">
+                    <use xlink:href="#icon-mqric"></use></svg
+                  >MQRIC Guide</span
+                >
+                <h3>
+                  A Nurse's Guide to Malta: Getting Your MQRIC Recognition
+                </h3>
+                <p>
+                  A step-by-step guide to getting your foreign nursing
+                  qualifications recognized in Malta.
+                </p>
+                <div class="post-footer">
+                  <span class="read-time">5 min read</span
+                  ><span class="read-more-link">Read More</span>
                 </div>
-                <div class="filter-bar" id="filter-bar">
-                    <button class="filter-btn active" data-category="all">All</button>
-                    <button class="filter-btn" data-category="mqric-guide">MQRIC Guide</button>
-                    <button class="filter-btn" data-category="registration">Registration</button>
-                    <button class="filter-btn" data-category="europass-cv">Europass CV</button>
-                    <button class="filter-btn" data-category="ielts-prep">IELTS Prep</button>
-                    <button class="filter-btn" data-category="career-guide">Career Guide</button>
+              </div>
+            </a>
+            <a
+              href="./blog-pages/malta_registration.html"
+              class="post-card"
+              data-category="registration"
+              data-title="Complete Guide to Malta NMC Registration"
+            >
+              <div class="post-image">
+                <img
+                  src="./blog-pages/blog-img/n_blog2.png"
+                  alt="Malta NMC Registration"
+                />
+              </div>
+              <div class="post-content">
+                <span
+                  class="category"
+                  style="background-color: var(--color-primary)"
+                  ><svg class="icon category-icon">
+                    <use xlink:href="#icon-registration"></use></svg
+                  >Registration</span
+                >
+                <h3>Complete Guide to Malta NMC Registration</h3>
+                <p>
+                  Navigating the Malta NMC registration process, including key
+                  requirements and tips.
+                </p>
+                <div class="post-footer">
+                  <span class="read-time">8 min read</span
+                  ><span class="read-more-link">Read More</span>
                 </div>
-                <div class="posts-grid" id="posts-grid">
-                    <!-- Cards will be dynamically filtered by JS -->
-                    <a href="./blog-pages/malta-mqric-guide.html" class="post-card" data-category="mqric-guide" data-title="A Nurse's Guide to Malta: Getting Your MQRIC Recognition">
-                        <div class="post-image"><img src="./blog-pages/blog-img/mquiric-img/mqiric.png" alt="MQRIC Guide"></div>
-                        <div class="post-content">
-                            <span class="category" style="background-color: var(--color-secondary);"><svg class="icon category-icon"><use xlink:href="#icon-mqric"></use></svg>MQRIC Guide</span>
-                            <h3>A Nurse's Guide to Malta: Getting Your MQRIC Recognition</h3>
-                            <p>A step-by-step guide to getting your foreign nursing qualifications recognized in Malta.</p>
-                            <div class="post-footer"><span class="read-time">5 min read</span><span class="read-more-link">Read More</span></div>
-                        </div>
-                    </a>
-                    <a href="./blog-pages/malta_registration.html" class="post-card" data-category="registration" data-title="Complete Guide to Malta NMC Registration">
-                        <div class="post-image"><img src="./blog-pages/blog-img/n_blog2.png" alt="Malta NMC Registration"></div>
-                        <div class="post-content">
-                            <span class="category" style="background-color: var(--color-primary);"><svg class="icon category-icon"><use xlink:href="#icon-registration"></use></svg>Registration</span>
-                            <h3>Complete Guide to Malta NMC Registration</h3>
-                            <p>Navigating the Malta NMC registration process, including key requirements and tips.</p>
-                            <div class="post-footer"><span class="read-time">8 min read</span><span class="read-more-link">Read More</span></div>
-                        </div>
-                    </a>
-                    <a href="./blog-pages/europass_cv.html" class="post-card" data-category="europass-cv" data-title="Creating a Standout Europass CV">
-                        <div class="post-image"><img src="./blog-pages/blog-img/europass img/europass.png" alt="Europass CV"></div>
-                        <div class="post-content">
-                            <span class="category" style="background-color: var(--color-accent); color: var(--color-text);"><svg class="icon category-icon"><use xlink:href="#icon-cv"></use></svg>Europass CV</span>
-                            <h3>Creating a Standout Europass CV</h3>
-                            <p>A comprehensive guide to crafting a standout Europass CV, including templates and examples.</p>
-                            <div class="post-footer"><span class="read-time">5 min read</span><span class="read-more-link">Read More</span></div>
-                        </div>
-                    </a>
-                    <a href="./blog-pages/ielts8.html" class="post-card" data-category="ielts-prep" data-title="Passing the IELTS on Your First Try">
-                        <div class="post-image"><img src="./blog-pages/blog-img/ielts_img/ielts8.png" alt="IELTS Preparation"></div>
-                        <div class="post-content">
-                            <span class="category" style="background-color: #dc2626;"><svg class="icon category-icon"><use xlink:href="#icon-ielts"></use></svg>IELTS Prep</span>
-                            <h3>Passing the IELTS on Your First Try</h3>
-                            <p>My proven Band 8 strategy for nurses to pass the IELTS exam on the first attempt.</p>
-                            <div class="post-footer"><span class="read-time">5 min read</span><span class="read-more-link">Read More</span></div>
-                        </div>
-                    </a>
-                    <a href="#" class="post-card" data-category="career-guide" data-title="UK Nursing Jobs: Complete Application Guide">
-                        <div class="post-image"><img src="src/assets/img/hero-nurse.png" alt="UK nursing jobs"></div>
-                        <div class="post-content">
-                            <span class="category" style="background-color: #4f46e5;"><svg class="icon category-icon"><use xlink:href="#icon-career"></use></svg>Career Guide</span>
-                            <h3>UK Nursing Jobs: Complete Application Guide</h3>
-                            <p>Everything you need to know about applying for nursing positions in the UK healthcare system.</p>
-                            <div class="post-footer"><span class="read-time">6 min read</span><span class="read-more-link">Read More</span></div>
-                        </div>
-                    </a>
-                    <a href="#" class="post-card" data-category="insights" data-title="Understanding Malta's Healthcare System">
-                        <div class="post-image"><img src="src/assets/img/post6.png" alt="Malta healthcare system"></div>
-                        <div class="post-content">
-                            <span class="category" style="background-color: #64748b;"><svg class="icon category-icon"><use xlink:href="#icon-insights"></use></svg>Insights</span>
-                            <h3>Understanding Malta's Healthcare System</h3>
-                            <p>A comprehensive overview of working as a nurse in Malta, including requirements and opportunities.</p>
-                            <div class="post-footer"><span class="read-time">9 min read</span><span class="read-more-link">Read More</span></div>
-                        </div>
-                    </a>
+              </div>
+            </a>
+            <a
+              href="./blog-pages/europass_cv.html"
+              class="post-card"
+              data-category="europass-cv"
+              data-title="Creating a Standout Europass CV"
+            >
+              <div class="post-image">
+                <img
+                  src="./blog-pages/blog-img/europass img/europass.png"
+                  alt="Europass CV"
+                />
+              </div>
+              <div class="post-content">
+                <span
+                  class="category"
+                  style="
+                    background-color: var(--color-accent);
+                    color: var(--color-text);
+                  "
+                  ><svg class="icon category-icon">
+                    <use xlink:href="#icon-cv"></use></svg
+                  >Europass CV</span
+                >
+                <h3>Creating a Standout Europass CV</h3>
+                <p>
+                  A comprehensive guide to crafting a standout Europass CV,
+                  including templates and examples.
+                </p>
+                <div class="post-footer">
+                  <span class="read-time">5 min read</span
+                  ><span class="read-more-link">Read More</span>
                 </div>
-            </div>
-        </section>
+              </div>
+            </a>
+            <a
+              href="./blog-pages/ielts8.html"
+              class="post-card"
+              data-category="ielts-prep"
+              data-title="Passing the IELTS on Your First Try"
+            >
+              <div class="post-image">
+                <img
+                  src="./blog-pages/blog-img/ielts_img/ielts8.png"
+                  alt="IELTS Preparation"
+                />
+              </div>
+              <div class="post-content">
+                <span class="category" style="background-color: #dc2626"
+                  ><svg class="icon category-icon">
+                    <use xlink:href="#icon-ielts"></use></svg
+                  >IELTS Prep</span
+                >
+                <h3>Passing the IELTS on Your First Try</h3>
+                <p>
+                  My proven Band 8 strategy for nurses to pass the IELTS exam on
+                  the first attempt.
+                </p>
+                <div class="post-footer">
+                  <span class="read-time">5 min read</span
+                  ><span class="read-more-link">Read More</span>
+                </div>
+              </div>
+            </a>
+            <a
+              href="#"
+              class="post-card"
+              data-category="career-guide"
+              data-title="UK Nursing Jobs: Complete Application Guide"
+            >
+              <div class="post-image">
+                <img
+                  src="src/assets/img/hero-nurse.png"
+                  alt="UK nursing jobs"
+                />
+              </div>
+              <div class="post-content">
+                <span class="category" style="background-color: #4f46e5"
+                  ><svg class="icon category-icon">
+                    <use xlink:href="#icon-career"></use></svg
+                  >Career Guide</span
+                >
+                <h3>UK Nursing Jobs: Complete Application Guide</h3>
+                <p>
+                  Everything you need to know about applying for nursing
+                  positions in the UK healthcare system.
+                </p>
+                <div class="post-footer">
+                  <span class="read-time">6 min read</span
+                  ><span class="read-more-link">Read More</span>
+                </div>
+              </div>
+            </a>
+            <a
+              href="#"
+              class="post-card"
+              data-category="insights"
+              data-title="Understanding Malta's Healthcare System"
+            >
+              <div class="post-image">
+                <img
+                  src="src/assets/img/post6.png"
+                  alt="Malta healthcare system"
+                />
+              </div>
+              <div class="post-content">
+                <span class="category" style="background-color: #64748b"
+                  ><svg class="icon category-icon">
+                    <use xlink:href="#icon-insights"></use></svg
+                  >Insights</span
+                >
+                <h3>Understanding Malta's Healthcare System</h3>
+                <p>
+                  A comprehensive overview of working as a nurse in Malta,
+                  including requirements and opportunities.
+                </p>
+                <div class="post-footer">
+                  <span class="read-time">9 min read</span
+                  ><span class="read-more-link">Read More</span>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </section>
     </main>
 
     <!-- === Footer === -->
     <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>Global Nursing Assist</h3>
-                    <p>Empowering nursing students and professionals with expert guidance and proven strategies.</p>
-                </div>
-                <div class="footer-section"><h3>Services</h3><ul class="footer-links"><li><a href="index.html#services">IELTS Coaching</a></li><li><a href="index.html#services">Clinical Coaching</a></li><li><a href="index.html#services">Job Preparation</a></li></ul></div>
-                <div class="footer-section"><h3>Resources</h3><ul class="footer-links"><li><a href="index.html#resources">Free Downloads</a></li><li><a href="index.html#testimonials">Success Stories</a></li><li><a href="blog.html">Blog</a></li></ul></div>
-                <div class="footer-section"><h3>Contact</h3><ul class="footer-links"><li><a href="index.html#contact">Contact Us</a></li><li><a href="#">FAQ</a></li></ul></div>
-            </div>
-            <div class="footer-bottom"><p>&copy; 2025 Global Nursing Assist. All rights reserved.</p></div>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3>Global Nursing Assist</h3>
+            <p>
+              Empowering nursing students and professionals with expert guidance
+              and proven strategies.
+            </p>
+          </div>
+          <div class="footer-section">
+            <h3>Services</h3>
+            <ul class="footer-links">
+              <li><a href="index.html#services">IELTS Coaching</a></li>
+              <li><a href="index.html#services">Clinical Coaching</a></li>
+              <li><a href="index.html#services">Job Preparation</a></li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h3>Resources</h3>
+            <ul class="footer-links">
+              <li><a href="index.html#resources">Free Downloads</a></li>
+              <li><a href="index.html#testimonials">Success Stories</a></li>
+              <li><a href="blog.html">Blog</a></li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h3>Contact</h3>
+            <ul class="footer-links">
+              <li><a href="index.html#contact">Contact Us</a></li>
+              <li><a href="#">FAQ</a></li>
+            </ul>
+          </div>
         </div>
+        <div class="footer-bottom">
+          <p>&copy; 2025 Global Nursing Assist. All rights reserved.</p>
+        </div>
+      </div>
     </footer>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const filterBar = document.getElementById('filter-bar');
-            const postsGrid = document.getElementById('posts-grid');
-            const postCards = postsGrid.querySelectorAll('.post-card');
-            const searchInput = document.getElementById('search-input');
+      document.addEventListener("DOMContentLoaded", () => {
+        const navToggle = document.getElementById("nav-toggle");
+        const mobileNavPanel = document.getElementById("mobile-nav-panel");
+        if (navToggle && mobileNavPanel) {
+          navToggle.addEventListener("click", () => {
+            navToggle.classList.toggle("is-active");
+            mobileNavPanel.classList.toggle("is-active");
+          });
+        }
 
-            // --- Filtering Logic ---
-            if (filterBar) {
-                filterBar.addEventListener('click', (e) => {
-                    if (e.target.tagName !== 'BUTTON') return;
+        const filterBar = document.getElementById("filter-bar");
+        const postsGrid = document.getElementById("posts-grid");
+        const postCards = postsGrid.querySelectorAll(".post-card");
+        const searchInput = document.getElementById("search-input");
 
-                    const activeBtn = filterBar.querySelector('.active');
-                    activeBtn.classList.remove('active');
-                    e.target.classList.add('active');
+        if (filterBar) {
+          filterBar.addEventListener("click", (e) => {
+            if (e.target.tagName !== "BUTTON") return;
+            filterBar.querySelector(".active").classList.remove("active");
+            e.target.classList.add("active");
+            const selectedCategory = e.target.dataset.category;
+            filterPosts(selectedCategory, searchInput.value);
+          });
+        }
 
-                    const selectedCategory = e.target.dataset.category;
-                    filterPosts(selectedCategory, searchInput.value);
-                });
+        if (searchInput) {
+          searchInput.addEventListener("input", () => {
+            const selectedCategory =
+              filterBar.querySelector(".active").dataset.category;
+            filterPosts(selectedCategory, searchInput.value);
+          });
+        }
+
+        function filterPosts(category, searchTerm) {
+          const normalizedSearchTerm = searchTerm.toLowerCase().trim();
+          postCards.forEach((card) => {
+            const cardCategory = card.dataset.category;
+            const cardTitle = card.dataset.title.toLowerCase();
+            const categoryMatch =
+              category === "all" || cardCategory === category;
+            const searchMatch = cardTitle.includes(normalizedSearchTerm);
+            if (categoryMatch && searchMatch) {
+              card.classList.remove("hidden");
+            } else {
+              card.classList.add("hidden");
             }
+          });
+        }
 
-            // --- Search Logic ---
-            if (searchInput) {
-                searchInput.addEventListener('input', () => {
-                    const selectedCategory = filterBar.querySelector('.active').dataset.category;
-                    filterPosts(selectedCategory, searchInput.value);
-                });
-            }
-
-            function filterPosts(category, searchTerm) {
-                const normalizedSearchTerm = searchTerm.toLowerCase().trim();
-
-                postCards.forEach(card => {
-                    const cardCategory = card.dataset.category;
-                    const cardTitle = card.dataset.title.toLowerCase();
-                    
-                    const categoryMatch = category === 'all' || cardCategory === category;
-                    const searchMatch = cardTitle.includes(normalizedSearchTerm);
-
-                    if (categoryMatch && searchMatch) {
-                        card.classList.remove('hidden');
-                    } else {
-                        card.classList.add('hidden');
-                    }
-                });
-            }
-            
-            feather.replace();
-        });
+        feather.replace();
+      });
     </script>
-</body>
-</ht
+  </body>
+</html>
