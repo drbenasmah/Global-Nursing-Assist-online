@@ -86,9 +86,9 @@
         display: flex;
         align-items: center;
         text-decoration: none;
-        color: var(--color-text);
+        color: #1e40af;
         font-weight: 700;
-        font-size: 1.25rem;
+        font-size: 1.5rem;
       }
       .logo-img {
         height: 40px;
@@ -96,8 +96,11 @@
       }
       .nav-menu {
         display: flex;
-        gap: 2.5rem;
+        gap: -1.5rem;
         align-items: center;
+        list-style: none;
+        margin: 0;
+        padding: 0;
       }
       .nav-link {
         text-decoration: none;
@@ -106,22 +109,12 @@
         transition: color var(--transition-speed) ease;
         position: relative;
         padding: 4px 0;
-      }
-      .nav-link::after {
-        content: "";
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 0;
-        height: 2px;
-        background-color: var(--color-primary);
-        transition: width var(--transition-speed) ease;
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
       }
       .nav-link:hover {
         color: var(--color-primary);
-      }
-      .nav-link:hover::after {
-        width: 100%;
       }
       .nav-cta {
         background: var(--color-primary);
@@ -136,6 +129,45 @@
         background: #1d4ed8;
         transform: translateY(-2px);
         box-shadow: var(--shadow-md);
+      }
+
+      /* Dropdown Menu */
+      .dropdown {
+        position: relative;
+      }
+      .dropdown-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: var(--color-white);
+        border-radius: var(--border-radius);
+        box-shadow: var(--shadow-md);
+        padding: 0.5rem 0;
+        min-width: 220px;
+        z-index: 1001;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+      }
+      .dropdown:hover .dropdown-menu {
+        display: block;
+        opacity: 1;
+        visibility: visible;
+        transform: translateX(-50%) translateY(10px);
+      }
+      .dropdown-link {
+        display: block;
+        padding: 0.75rem 1.5rem;
+        color: var(--color-text);
+        text-decoration: none;
+        transition: background-color 0.3s ease, color 0.3s ease;
+        white-space: nowrap;
+      }
+      .dropdown-link:hover {
+        background-color: #eff6ff;
+        color: var(--color-primary);
       }
 
       /* Mobile Navigation Toggle */
@@ -166,45 +198,6 @@
       }
       .nav-toggle.is-active .bar:nth-child(3) {
         transform: translateY(-9px) rotate(-45deg);
-      }
-
-      .mobile-nav-panel {
-        position: fixed;
-        top: 0;
-        right: -100%;
-        width: 85%;
-        max-width: 320px;
-        height: 100vh;
-        background: var(--color-white);
-        z-index: 1001;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        justify-content: flex-start;
-        padding: 6rem 2rem 2rem;
-        transition: right 0.4s ease-in-out;
-        box-shadow: -10px 0 30px rgba(0, 0, 0, 0.1);
-      }
-      .mobile-nav-panel.is-active {
-        right: 0;
-      }
-      .mobile-nav-panel .nav-menu {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 1.5rem;
-        width: 100%;
-      }
-      .mobile-nav-panel .nav-link {
-        font-size: 1.25rem;
-        font-weight: 600;
-        padding: 0.5rem 0;
-        width: 100%;
-      }
-      .mobile-nav-panel .nav-cta {
-        margin-top: 2rem;
-        width: 100%;
-        text-align: center;
       }
 
       /* === Hero Section === */
@@ -543,22 +536,52 @@
         }
       }
       @media (max-width: 768px) {
-        .nav-menu {
-          display: none;
-        }
-        .nav-logo span {
-          font-size: 1.2rem;
-          font-weight: 700;
-          color: var(--color-primary);
-        } /* Adjust font size on mobile */
         .nav-cta {
           display: none;
-        } /* Hide CTA button on mobile */
+        }
         .nav-toggle {
           display: flex;
         }
         .footer-content {
           grid-template-columns: 1fr 1fr;
+        }
+        .nav-menu {
+          position: absolute;
+          top: calc(100% + 1px);
+          left: 0;
+          width: 100%;
+          background: var(--color-white);
+          flex-direction: column;
+          align-items: flex-start;
+          padding: 1rem;
+          border-bottom: 1px solid var(--color-border);
+          box-shadow: var(--shadow-md);
+          display: none; /* Hidden by default */
+        }
+        .nav-menu.is-active {
+          display: flex;
+        }
+        .nav-menu li {
+          width: 100%;
+        }
+        .nav-link {
+          padding: 1rem;
+          width: 100%;
+          justify-content: space-between;
+        }
+        .dropdown-menu {
+          display: none;
+          position: static;
+          box-shadow: none;
+          border-radius: 0;
+          padding: 0.5rem 0 0.5rem 1rem;
+          width: 100%;
+          opacity: 1;
+          visibility: visible;
+          transform: none;
+        }
+        .dropdown.is-active .dropdown-menu {
+          display: block;
         }
       }
     </style>
@@ -639,13 +662,13 @@
             <span>Global Nursing Assist</span>
           </a>
         </div>
-        <div class="nav-menu">
-          <a href="./index.html" class="nav-link">Home</a>
-          <a href="./index.html#about" class="nav-link">About</a>
-          <a href="./index.html#services" class="nav-link">Services</a>
-          <a href="./index.html#resources" class="nav-link">Resources</a>
-          <a href="./blog.html" class="nav-link">Blog</a>
-        </div>
+        <ul class="nav-menu" id="nav-menu">
+          <li><a href="./index.html" class="nav-link">Home</a></li>
+          <li><a href="./index.html#about" class="nav-link">About</a></li>
+          <li><a href="./index.html#services" class="nav-link">Services</a></li>
+
+          <li><a href="./blog.html" class="nav-link">Blog</a></li>
+        </ul>
         <a href="./index.html#contact" class="nav-cta">Contact Us</a>
         <button
           class="nav-toggle"
@@ -658,17 +681,6 @@
         </button>
       </div>
     </nav>
-
-    <div class="mobile-nav-panel" id="mobile-nav-panel">
-      <div class="nav-menu">
-        <a href="./index.html" class="nav-link">Home</a>
-        <a href="./index.html#about" class="nav-link">About</a>
-        <a href="./index.html#services" class="nav-link">Services</a>
-        <a href="./index.html#resources" class="nav-link">Resources</a>
-        <a href="./blog.html" class="nav-link">Blog</a>
-        <a href="./index.html#contact" class="nav-cta">Contact Us</a>
-      </div>
-    </div>
 
     <main>
       <!-- === Hero Section === -->
@@ -734,7 +746,7 @@
                   <span class="date">July 25, 2025</span>
                 </div>
               </div>
-              <a href="./blog-pages/interview_blog.html" class="btn-read-more">
+              <a href="/blog-pages/interview_blog.html" class="btn-read-more">
                 Read Full Article
                 <svg class="icon arrow">
                   <use xlink:href="#icon-arrow-right"></use>
@@ -1026,11 +1038,23 @@
     <script>
       document.addEventListener("DOMContentLoaded", () => {
         const navToggle = document.getElementById("nav-toggle");
-        const mobileNavPanel = document.getElementById("mobile-nav-panel");
-        if (navToggle && mobileNavPanel) {
+        const navMenu = document.getElementById("nav-menu");
+        const dropdown = document.getElementById("resources-dropdown");
+
+        if (navToggle && navMenu) {
           navToggle.addEventListener("click", () => {
             navToggle.classList.toggle("is-active");
-            mobileNavPanel.classList.toggle("is-active");
+            navMenu.classList.toggle("is-active");
+          });
+        }
+
+        if (dropdown) {
+          dropdown.addEventListener("click", (e) => {
+            if (window.innerWidth <= 768) {
+              // Prevent the link from navigating on mobile
+              e.preventDefault();
+              dropdown.classList.toggle("is-active");
+            }
           });
         }
 
