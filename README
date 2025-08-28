@@ -1,72 +1,20 @@
-# Nurse Assist PL
+# Global Nursing Assist PL
 
 Empowering Future Nurses in Poland & Beyond
 
 ## Overview
 
-Nurse Assist PL is a web platform designed to support nursing students and professionals in Poland, the UK, and Malta. It offers expert guidance for IELTS, nursing school success, academic writing, job interviews, and more — all from a nurse who has walked the same path.
+Global Nursing Assist PL is a web platform designed to support nursing students and professionals in Poland, the UK, and Malta. It offers expert guidance for IELTS, nursing school success, academic writing, job interviews, and more — all from a nurse who has walked the same path.
 
 ## Features
 
-- **Mobile-friendly, responsive design**# Nurse Assist PL
+- **Mobile-friendly, responsive design**# Global Nursing Assist PL
 
 Empowering Future Nurses in Poland & Beyond
 
 ## Overview
 
-Nurse Assist PL is a web platform designed to support nursing students and professionals in Poland, the UK, and Malta. It offers expert guidance for IELTS, nursing school success, academic writing, job interviews, and more — all from a nurse who has walked the same path.
-
-## Features
-
-- **Mobile-friendly, responsive design**
-- **Smooth navigation and animated UI**
-- **Sections for Services, Testimonials, Articles, Resources, and Contact**
-- **Downloadable resources (Malta Interview Recall, Thesis Templates, IELTS Samples)**
-- **Contact form with service selection**
-- **Dynamic stats and year display**
-
-## Project Structure
-
-```
-index.html
-styles.css
-script.js
-src/
-  assets/
-    hero-nurse.png
-    logo.png
-    nursing-education.png
-```
-
-- `index.html`: Main HTML file containing all sections.
-- `styles.css`: Custom styles and responsive design.
-- `script.js`: Interactive features (navigation, animations, resource downloads).
-- `src/assets/`: Images used in the site.
-
-## How to Use
-
-1. **Open `index.html` in your browser** to view the site.
-2. **Customize content** in `index.html` as needed.
-3. **Edit styles** in `styles.css` for branding.
-4. **Modify interactivity** in `script.js` for custom behaviors.
-
-## Resource Downloads
-
-Resource download buttons prompt users for their email and display a confirmation message. Actual resource delivery must be implemented separately.
-
-## Contact
-
-For questions or collaboration, email: [benascogroup@gmail.com](mailto:benascogroup@gmail.com)
-
----
-
-© Nurse Assist PL. All rights reserved.# Nurse Assist PL
-
-Empowering Future Nurses in Poland & Beyond
-
-## Overview
-
-Nurse Assist PL is a web platform designed to support nursing students and professionals in Poland, the UK, and Malta. It offers expert guidance for IELTS, nursing school success, academic writing, job interviews, and more — all from a nurse who has walked the same path.
+Global Nursing Assist PL is a web platform designed to support nursing students and professionals in Poland, the UK, and Malta. It offers expert guidance for IELTS, nursing school success, academic writing, job interviews, and more — all from a nurse who has walked the same path.
 
 ## Features
 
@@ -112,13 +60,13 @@ For questions or collaboration, email: [benascogroup@gmail.com](mailto:benascogr
 
 ---
 
-© Nurse Assist PL. All rights reserved.# Nurse Assist PL
+© Global Nursing Assist PL. All rights reserved.# Global Nursing Assist PL
 
 Empowering Future Nurses in Poland & Beyond
 
 ## Overview
 
-Nurse Assist PL is a web platform designed to support nursing students and professionals in Poland, the UK, and Malta. It offers expert guidance for IELTS, nursing school success, academic writing, job interviews, and more — all from a nurse who has walked the same path.
+Global Nursing Assist PL is a web platform designed to support nursing students and professionals in Poland, the UK, and Malta. It offers expert guidance for IELTS, nursing school success, academic writing, job interviews, and more — all from a nurse who has walked the same path.
 
 ## Features
 
@@ -164,4 +112,56 @@ For questions or collaboration, email: [benascogroup@gmail.com](mailto:benascogr
 
 ---
 
-© Nurse Assist PL. All rights reserved.
+© Global Nursing Assist PL. All rights reserved.# Global Nursing Assist PL
+
+Empowering Future Nurses in Poland & Beyond
+
+## Overview
+
+Global Nursing Assist PL is a web platform designed to support nursing students and professionals in Poland, the UK, and Malta. It offers expert guidance for IELTS, nursing school success, academic writing, job interviews, and more — all from a nurse who has walked the same path.
+
+## Features
+
+- **Mobile-friendly, responsive design**
+- **Smooth navigation and animated UI**
+- **Sections for Services, Testimonials, Articles, Resources, and Contact**
+- **Downloadable resources (Malta Interview Recall, Thesis Templates, IELTS Samples)**
+- **Contact form with service selection**
+- **Dynamic stats and year display**
+
+## Project Structure
+
+```
+index.html
+styles.css
+script.js
+src/
+  assets/
+    hero-nurse.png
+    logo.png
+    nursing-education.png
+```
+
+- `index.html`: Main HTML file containing all sections.
+- `styles.css`: Custom styles and responsive design.
+- `script.js`: Interactive features (navigation, animations, resource downloads).
+- `src/assets/`: Images used in the site.
+
+## How to Use
+
+1. **Open `index.html` in your browser** to view the site.
+2. **Customize content** in `index.html` as needed.
+3. **Edit styles** in `styles.css` for branding.
+4. **Modify interactivity** in `script.js` for custom behaviors.
+
+## Resource Downloads
+
+Resource download buttons prompt users for their email and display a confirmation message. Actual resource delivery must be implemented separately.
+
+## Contact
+
+For questions or collaboration, email: [benascogroup@gmail.com](mailto:benascogroup@gmail.com)
+
+---
+
+© Global Nursing Assist PL. All rights reserved.

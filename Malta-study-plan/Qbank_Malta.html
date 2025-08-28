@@ -43,7 +43,7 @@
         transition: max-height 0.5s ease-out;
       }
       .accordion-content.open {
-        max-height: 1000px;
+        max-height: 1500px; /* Increased to accommodate notes */
         transition: max-height 0.5s ease-in;
       }
       .chevron {
@@ -228,22 +228,20 @@
           <div class="nav-logo">
             <a href="#">
               <img
-                src="../src/assets/img/logo1.png"
+                src="https://raw.githubusercontent.com/ai--gen/images/main/logo1.png"
                 alt="Nurse Assist PL Logo"
                 class="logo-img"
                 onerror="this.onerror=null;this.src='https://placehold.co/200x50/1e40af/ffffff?text=Logo';"
               />
-              <span class="logo-text">Global Nursing Assist PL PL</span>
+              <span class="logo-text">Global Nursing Assist PL</span>
             </a>
           </div>
           <div class="nav-menu" id="nav-menu">
-            <a href="../index.html" class="nav-link">Home</a>
-            <a href="../index.html#about" class="nav-link">About</a>
-            <a href="../index.html#services" class="nav-link">Services</a>
-            <a href="../index.html#testimonials" class="nav-link"
-              >Testimonials</a
-            >
-            <a href="../index.html#articles" class="nav-link">Articles</a>
+            <a href="#" class="nav-link">Home</a>
+            <a href="#" class="nav-link">About</a>
+            <a href="#" class="nav-link">Services</a>
+            <a href="#" class="nav-link">Testimonials</a>
+            <a href="#" class="nav-link">Articles</a>
             <div class="dropdown">
               <a
                 href="#"
@@ -254,27 +252,15 @@
                 <i data-feather="chevron-down" class="w-4 h-4 ml-1"></i>
               </a>
               <div class="dropdown-menu">
-                <a
-                  href="../index.html#ai-interview-assistant"
-                  class="dropdown-link"
-                  >AI Interview Assistant</a
-                >
-                <a href="../index.html#study-plan" class="dropdown-link"
-                  >Study Plan</a
-                >
-                <a href="../index.html#study-guide" class="dropdown-link"
-                  >Study Guide</a
-                >
-                <a href="../index.html#flashcards" class="dropdown-link"
-                  >Flashcards</a
-                >
-                <a href="../index.html#free-downloads" class="dropdown-link"
-                  >Free Downloads</a
-                >
+                <a href="#" class="dropdown-link">AI Interview Assistant</a>
+                <a href="#" class="dropdown-link">Study Plan</a>
+                <a href="#" class="dropdown-link">Study Guide</a>
+                <a href="#" class="dropdown-link">Flashcards</a>
+                <a href="#" class="dropdown-link">Free Downloads</a>
               </div>
             </div>
-            <a href="../index.html#contact" class="nav-link">Contact</a>
-            <a href="../index.html#blog" class="nav-link">Blog</a>
+            <a href="#" class="nav-link">Contact</a>
+            <a href="#" class="nav-link">Blog</a>
             <button
               id="theme-toggle"
               aria-label="Toggle theme"
@@ -693,6 +679,19 @@
                       Answer:
                     </p>
                     <p id="practice-answer" class="text-md text-left"></p>
+                    <div
+                      class="w-full mt-4 pt-4 border-t border-blue-200 dark:border-slate-700"
+                    >
+                      <h4
+                        class="text-md font-semibold text-gray-700 dark:text-slate-300 mb-2"
+                      >
+                        My Notes:
+                      </h4>
+                      <p
+                        id="practice-notes"
+                        class="text-sm text-left text-gray-600 dark:text-slate-400 whitespace-pre-line"
+                      ></p>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -1408,6 +1407,7 @@
         // --- STATE VARIABLES ---
         let allCards = []; // This will hold the unified list of all cards.
         let cardDifficulties = {}; // Object to store difficulty ratings { cardId: 'difficulty' }
+        let cardNotes = {}; // Object to store user notes { cardId: 'notes' }
         let isManageMode = false;
         let cardToDeleteId = null;
         let currentPracticeCard = null;
@@ -1417,13 +1417,14 @@
 
         /**
          * Loads all card data from constants and localStorage, assigns unique IDs,
-         * and merges saved difficulty ratings. This is the new central data setup.
+         * and merges saved difficulty ratings and notes.
          */
         const initializeAllCards = () => {
           const userCards =
             JSON.parse(localStorage.getItem("userFlashcards")) || [];
           cardDifficulties =
             JSON.parse(localStorage.getItem("cardDifficulties")) || {};
+          cardNotes = JSON.parse(localStorage.getItem("cardNotes")) || {};
 
           // Combine all data sources and assign unique IDs
           const combinedData = [
@@ -1440,10 +1441,11 @@
             ...userCards, // User cards should already have a unique ID
           ];
 
-          // Merge difficulties into the main card objects
+          // Merge difficulties and notes into the main card objects
           allCards = combinedData.map((card) => ({
             ...card,
             difficulty: cardDifficulties[card.id] || null,
+            notes: cardNotes[card.id] || "",
           }));
         };
 
@@ -1455,6 +1457,13 @@
             "cardDifficulties",
             JSON.stringify(cardDifficulties)
           );
+        };
+
+        /**
+         * Saves the entire card notes map to localStorage.
+         */
+        const saveNotes = () => {
+          localStorage.setItem("cardNotes", JSON.stringify(cardNotes));
         };
 
         /**
@@ -1481,21 +1490,47 @@
             questionEl.className =
               "bg-white dark:bg-slate-800 rounded-lg shadow-md overflow-hidden";
             questionEl.innerHTML = `
-                    <button class="accordion-toggle w-full text-left p-4 hover:bg-blue-50 dark:hover:bg-slate-700 focus:outline-none flex justify-between items-center">
-                        <div class="flex-grow pr-4">
-                            <p class="text-sm font-medium text-blue-600 dark:text-blue-400 mb-1">${item.category}</p>
-                            <h3 class="text-lg font-semibold text-gray-800 dark:text-slate-200">${item.q}</h3>
+                        <button class="accordion-toggle w-full text-left p-4 hover:bg-blue-50 dark:hover:bg-slate-700 focus:outline-none flex justify-between items-center">
+                            <div class="flex-grow pr-4">
+                                <p class="text-sm font-medium text-blue-600 dark:text-blue-400 mb-1">${
+                                  item.category
+                                }</p>
+                                <h3 class="text-lg font-semibold text-gray-800 dark:text-slate-200">${
+                                  item.q
+                                }</h3>
+                            </div>
+                            <svg class="chevron w-6 h-6 text-blue-800 dark:text-blue-400 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="p-4 border-t border-gray-200 dark:border-slate-700">
+                               <p class="text-gray-700 dark:text-slate-300 whitespace-pre-line">${
+                                 item.a
+                               }</p>
+                               <div class="mt-4 pt-4 border-t border-gray-200 dark:border-slate-600">
+                                   <h4 class="text-md font-semibold text-gray-800 dark:text-slate-200 mb-2">My Notes:</h4>
+                                   <div class="card-notes-display text-gray-600 dark:text-slate-400 text-sm whitespace-pre-line">${
+                                     item.notes ||
+                                     "No notes yet. Click the button to add some!"
+                                   }</div>
+                                   <div class="card-notes-editor hidden mt-2">
+                                       <textarea class="w-full p-2 border rounded-md dark:bg-slate-700 dark:border-slate-600" rows="4">${
+                                         item.notes || ""
+                                       }</textarea>
+                                       <button class="save-note-btn mt-2 bg-blue-600 text-white py-1 px-3 rounded-md text-sm hover:bg-blue-700" data-id="${
+                                         item.id
+                                       }">Save Note</button>
+                                   </div>
+                                   <button class="edit-notes-btn mt-2 text-blue-600 dark:text-blue-400 text-sm font-semibold hover:underline" data-id="${
+                                     item.id
+                                   }">${
+              item.notes ? "Edit Notes" : "Add Notes"
+            }</button>
+                               </div>
+                            </div>
                         </div>
-                        <svg class="chevron w-6 h-6 text-blue-800 dark:text-blue-400 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                        </svg>
-                    </button>
-                    <div class="accordion-content">
-                        <div class="p-4 border-t border-gray-200 dark:border-slate-700">
-                           <p class="text-gray-700 dark:text-slate-300 whitespace-pre-line">${item.a}</p>
-                        </div>
-                    </div>
-                `;
+                    `;
             container.appendChild(questionEl);
           });
         };
@@ -1516,19 +1551,19 @@
             cardEl.className =
               "bg-white dark:bg-slate-800 rounded-lg shadow-md p-4 flex justify-between items-center";
             cardEl.innerHTML = `
-                    <div class="flex-grow pr-4">
-                        <p class="text-sm font-medium text-blue-600 dark:text-blue-400 mb-1">${card.category}</p>
-                        <h3 class="text-lg font-semibold text-gray-800 dark:text-slate-200">${card.q}</h3>
-                    </div>
-                    <div class="flex-shrink-0 flex space-x-2">
-                        <button class="edit-btn p-2 rounded-full hover:bg-gray-200 dark:hover:bg-slate-700" data-id="${card.id}" aria-label="Edit card">
-                            <svg class="h-5 w-5 text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z" /><path fill-rule="evenodd" d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" clip-rule="evenodd" /></svg>
-                        </button>
-                        <button class="delete-btn p-2 rounded-full hover:bg-gray-200 dark:hover:bg-slate-700" data-id="${card.id}" aria-label="Delete card">
-                            <svg class="h-5 w-5 text-red-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd" /></svg>
-                        </button>
-                    </div>
-                `;
+                        <div class="flex-grow pr-4">
+                            <p class="text-sm font-medium text-blue-600 dark:text-blue-400 mb-1">${card.category}</p>
+                            <h3 class="text-lg font-semibold text-gray-800 dark:text-slate-200">${card.q}</h3>
+                        </div>
+                        <div class="flex-shrink-0 flex space-x-2">
+                            <button class="edit-btn p-2 rounded-full hover:bg-gray-200 dark:hover:bg-slate-700" data-id="${card.id}" aria-label="Edit card">
+                                <svg class="h-5 w-5 text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z" /><path fill-rule="evenodd" d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" clip-rule="evenodd" /></svg>
+                            </button>
+                            <button class="delete-btn p-2 rounded-full hover:bg-gray-200 dark:hover:bg-slate-700" data-id="${card.id}" aria-label="Delete card">
+                                <svg class="h-5 w-5 text-red-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd" /></svg>
+                            </button>
+                        </div>
+                    `;
             container.appendChild(cardEl);
           });
         };
@@ -1795,6 +1830,8 @@
 
           practiceQuestion.textContent = currentPracticeCard.q;
           practiceAnswer.textContent = currentPracticeCard.a;
+          document.getElementById("practice-notes").textContent =
+            currentPracticeCard.notes || "";
 
           flashcard.classList.remove("flipped");
           revealAnswerBtn.textContent = "Reveal Answer";
@@ -1890,8 +1927,10 @@
         const deleteCard = (id) => {
           allCards = allCards.filter((c) => c.id != id);
           delete cardDifficulties[id];
+          delete cardNotes[id];
           saveUserCards();
           saveDifficulties();
+          saveNotes();
           populateCategoryFilter();
           updateView();
         };
@@ -2012,12 +2051,60 @@
           const accordionToggle = e.target.closest(".accordion-toggle");
           const editBtn = e.target.closest(".edit-btn");
           const deleteBtn = e.target.closest(".delete-btn");
+          const editNotesBtn = e.target.closest(".edit-notes-btn");
+          const saveNotesBtn = e.target.closest(".save-note-btn");
 
           if (accordionToggle) handleAccordionClick(e);
           if (editBtn) openEditModal(editBtn.dataset.id);
           if (deleteBtn) {
             cardToDeleteId = deleteBtn.dataset.id;
             deleteConfirmModal.classList.remove("hidden");
+          }
+          if (editNotesBtn) {
+            const notesContainer = editNotesBtn.parentElement;
+            notesContainer
+              .querySelector(".card-notes-display")
+              .classList.toggle("hidden");
+            notesContainer
+              .querySelector(".card-notes-editor")
+              .classList.toggle("hidden");
+            editNotesBtn.textContent =
+              editNotesBtn.textContent.includes("Add") ||
+              editNotesBtn.textContent.includes("Edit")
+                ? "Cancel"
+                : cardNotes[editNotesBtn.dataset.id]
+                ? "Edit Notes"
+                : "Add Notes";
+          }
+          if (saveNotesBtn) {
+            const cardId = saveNotesBtn.dataset.id;
+            const notesContainer = saveNotesBtn.parentElement.parentElement;
+            const newNoteText = notesContainer.querySelector("textarea").value;
+
+            // Update state
+            cardNotes[cardId] = newNoteText;
+            const cardInAllCards = allCards.find((c) => c.id === cardId);
+            if (cardInAllCards) cardInAllCards.notes = newNoteText;
+
+            // Save to localStorage
+            saveNotes();
+
+            // Update UI
+            const displayEl = notesContainer.querySelector(
+              ".card-notes-display"
+            );
+            displayEl.textContent =
+              newNoteText || "No notes yet. Click the button to add some!";
+            const editButton = notesContainer.querySelector(".edit-notes-btn");
+            editButton.textContent = newNoteText ? "Edit Notes" : "Add Notes";
+
+            // Hide editor
+            notesContainer
+              .querySelector(".card-notes-display")
+              .classList.remove("hidden");
+            notesContainer
+              .querySelector(".card-notes-editor")
+              .classList.add("hidden");
           }
         });
 
@@ -2067,6 +2154,7 @@
           const dataToExport = {
             userCards: allCards.filter((c) => !c.isDefault),
             difficulties: cardDifficulties,
+            notes: cardNotes,
           };
           const dataStr =
             "data:text/json;charset=utf-8," +
@@ -2093,7 +2181,9 @@
               const importedData = JSON.parse(e.target.result);
               if (
                 !importedData ||
-                (!importedData.userCards && !importedData.difficulties)
+                (!importedData.userCards &&
+                  !importedData.difficulties &&
+                  !importedData.notes)
               )
                 throw new Error("Invalid format");
 
@@ -2101,6 +2191,12 @@
               if (importedData.difficulties) {
                 Object.assign(cardDifficulties, importedData.difficulties);
                 saveDifficulties();
+              }
+
+              // Import and merge notes
+              if (importedData.notes) {
+                Object.assign(cardNotes, importedData.notes);
+                saveNotes();
               }
 
               // Import and merge user cards
