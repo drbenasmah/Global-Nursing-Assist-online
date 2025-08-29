@@ -226,9 +226,9 @@
       <nav class="navbar">
         <div class="nav-container">
           <div class="nav-logo">
-            <a href="#">
+            <a href="../index.html">
               <img
-                src="https://raw.githubusercontent.com/ai--gen/images/main/logo1.png"
+                src="../src/assets/img/logo1.png"
                 alt="Nurse Assist PL Logo"
                 class="logo-img"
                 onerror="this.onerror=null;this.src='https://placehold.co/200x50/1e40af/ffffff?text=Logo';"
@@ -237,11 +237,13 @@
             </a>
           </div>
           <div class="nav-menu" id="nav-menu">
-            <a href="#" class="nav-link">Home</a>
-            <a href="#" class="nav-link">About</a>
-            <a href="#" class="nav-link">Services</a>
-            <a href="#" class="nav-link">Testimonials</a>
-            <a href="#" class="nav-link">Articles</a>
+            <a href="../index.html" class="nav-link">Home</a>
+            <a href="../index.html#about" class="nav-link">About</a>
+            <a href="../index.html#services" class="nav-link">Services</a>
+            <a href="../index.html#testimonials" class="nav-link"
+              >Testimonials</a
+            >
+            <a href="../index.html#articles" class="nav-link">Articles</a>
             <div class="dropdown">
               <a
                 href="#"
@@ -252,15 +254,27 @@
                 <i data-feather="chevron-down" class="w-4 h-4 ml-1"></i>
               </a>
               <div class="dropdown-menu">
-                <a href="#" class="dropdown-link">AI Interview Assistant</a>
-                <a href="#" class="dropdown-link">Study Plan</a>
-                <a href="#" class="dropdown-link">Study Guide</a>
-                <a href="#" class="dropdown-link">Flashcards</a>
-                <a href="#" class="dropdown-link">Free Downloads</a>
+                <a
+                  href="../index.html#ai-interview-assistant"
+                  class="dropdown-link"
+                  >AI Interview Assistant</a
+                >
+                <a href="../index.html#study-plan" class="dropdown-link"
+                  >Study Plan</a
+                >
+                <a href="../index.html#study-guide" class="dropdown-link"
+                  >Study Guide</a
+                >
+                <a href="../index.html#flashcards" class="dropdown-link"
+                  >Flashcards</a
+                >
+                <a href="../index.html#free-downloads" class="dropdown-link"
+                  >Free Downloads</a
+                >
               </div>
             </div>
-            <a href="#" class="nav-link">Contact</a>
-            <a href="#" class="nav-link">Blog</a>
+            <a href="../index.html#contact" class="nav-link">Contact</a>
+            <a href="../index.html#blog" class="nav-link">Blog</a>
             <button
               id="theme-toggle"
               aria-label="Toggle theme"
@@ -1509,24 +1523,25 @@
                                  item.a
                                }</p>
                                <div class="mt-4 pt-4 border-t border-gray-200 dark:border-slate-600">
-                                   <h4 class="text-md font-semibold text-gray-800 dark:text-slate-200 mb-2">My Notes:</h4>
-                                   <div class="card-notes-display text-gray-600 dark:text-slate-400 text-sm whitespace-pre-line">${
-                                     item.notes ||
-                                     "No notes yet. Click the button to add some!"
-                                   }</div>
-                                   <div class="card-notes-editor hidden mt-2">
-                                       <textarea class="w-full p-2 border rounded-md dark:bg-slate-700 dark:border-slate-600" rows="4">${
+                                   <button class="toggle-notes-btn text-blue-600 dark:text-blue-400 text-sm font-semibold hover:underline flex items-center" data-id="${
+                                     item.id
+                                   }">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-1"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
+                                        <span>${
+                                          item.notes
+                                            ? "View/Edit Notes"
+                                            : "Add Notes"
+                                        }</span>
+                                   </button>
+                                   <div class="notes-section hidden mt-2">
+                                       <h4 class="text-md font-semibold text-gray-800 dark:text-slate-200 mb-2">My Notes:</h4>
+                                       <textarea class="card-notes-editor w-full p-2 border rounded-md dark:bg-slate-700 dark:border-slate-600" rows="4" placeholder="Add your personal notes here...">${
                                          item.notes || ""
                                        }</textarea>
                                        <button class="save-note-btn mt-2 bg-blue-600 text-white py-1 px-3 rounded-md text-sm hover:bg-blue-700" data-id="${
                                          item.id
                                        }">Save Note</button>
                                    </div>
-                                   <button class="edit-notes-btn mt-2 text-blue-600 dark:text-blue-400 text-sm font-semibold hover:underline" data-id="${
-                                     item.id
-                                   }">${
-              item.notes ? "Edit Notes" : "Add Notes"
-            }</button>
                                </div>
                             </div>
                         </div>
@@ -2051,7 +2066,7 @@
           const accordionToggle = e.target.closest(".accordion-toggle");
           const editBtn = e.target.closest(".edit-btn");
           const deleteBtn = e.target.closest(".delete-btn");
-          const editNotesBtn = e.target.closest(".edit-notes-btn");
+          const toggleNotesBtn = e.target.closest(".toggle-notes-btn");
           const saveNotesBtn = e.target.closest(".save-note-btn");
 
           if (accordionToggle) handleAccordionClick(e);
@@ -2060,26 +2075,14 @@
             cardToDeleteId = deleteBtn.dataset.id;
             deleteConfirmModal.classList.remove("hidden");
           }
-          if (editNotesBtn) {
-            const notesContainer = editNotesBtn.parentElement;
-            notesContainer
-              .querySelector(".card-notes-display")
-              .classList.toggle("hidden");
-            notesContainer
-              .querySelector(".card-notes-editor")
-              .classList.toggle("hidden");
-            editNotesBtn.textContent =
-              editNotesBtn.textContent.includes("Add") ||
-              editNotesBtn.textContent.includes("Edit")
-                ? "Cancel"
-                : cardNotes[editNotesBtn.dataset.id]
-                ? "Edit Notes"
-                : "Add Notes";
+          if (toggleNotesBtn) {
+            const notesSection = toggleNotesBtn.nextElementSibling;
+            notesSection.classList.toggle("hidden");
           }
           if (saveNotesBtn) {
             const cardId = saveNotesBtn.dataset.id;
-            const notesContainer = saveNotesBtn.parentElement.parentElement;
-            const newNoteText = notesContainer.querySelector("textarea").value;
+            const notesSection = saveNotesBtn.parentElement;
+            const newNoteText = notesSection.querySelector("textarea").value;
 
             // Update state
             cardNotes[cardId] = newNoteText;
@@ -2089,22 +2092,15 @@
             // Save to localStorage
             saveNotes();
 
-            // Update UI
-            const displayEl = notesContainer.querySelector(
-              ".card-notes-display"
-            );
-            displayEl.textContent =
-              newNoteText || "No notes yet. Click the button to add some!";
-            const editButton = notesContainer.querySelector(".edit-notes-btn");
-            editButton.textContent = newNoteText ? "Edit Notes" : "Add Notes";
+            // Update UI directly
+            const toggleButtonSpan =
+              notesSection.previousElementSibling.querySelector("span");
+            toggleButtonSpan.textContent = newNoteText
+              ? "View/Edit Notes"
+              : "Add Notes";
 
             // Hide editor
-            notesContainer
-              .querySelector(".card-notes-display")
-              .classList.remove("hidden");
-            notesContainer
-              .querySelector(".card-notes-editor")
-              .classList.add("hidden");
+            notesSection.classList.add("hidden");
           }
         });
 
