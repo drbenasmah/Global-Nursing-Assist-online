@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      A Nurse's Guide to Malta: MQRIC Recognition | Global Global Nursing Assist
+      PL
+    </title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Montserrat:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://unpkg.com/feather-icons"></script>
+    <style>
+      /* CSS Reset and Basic Styles */
+      :root {
+        --primary-color: #005a9e; /* Professional Blue */
+        --secondary-color: #00a99d; /* Teal */
+        --accent-color: #fdb813; /* Yellow */
+        --dark-grey: #333333;
+        --light-grey: #f8f9fa;
+        --white: #ffffff;
+        --border-radius: 12px;
+        --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.05);
+        --shadow-md: 0 10px 20px rgba(0, 0, 0, 0.1),
+          0 3px 6px rgba(0, 0, 0, 0.08);
+      }
+      body {
+        font-family: "Lato", sans-serif;
+        line-height: 1.7;
+        color: #333333;
+        background-color: #edeff0;
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+      }
+
+      /* Navigation Bar */
+      .navbar {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
+        height: 70px;
+        display: flex;
+        align-items: center;
+        transition: all 0.3s ease-in-out;
+        background: transparent;
+      }
+      .navbar.scrolled {
+        background: #fefce8;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        box-shadow: var(--shadow-sm);
+      }
+      .nav-container {
+        width: 100%;
+        max-width: 1440px;
+        margin: 0 auto;
+        padding: 0 25px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .navbar-brand {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 700;
+        font-size: 1.5rem;
+        color: var(--primary-color);
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+      }
+      .logo-img {
+        height: 40px;
+        margin-right: 10px;
+      }
+      .nav-links {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        gap: 25px;
+        align-items: center;
+      }
+      .nav-links a {
+        color: var(--primary-color);
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 1rem;
+        position: relative;
+        padding: 5px 0;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+      .nav-links a::after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: 0;
+        left: 0;
+        background-color: var(--accent-color);
+        transition: width 0.3s ease;
+      }
+      .nav-links a:hover::after {
+        width: 100%;
+      }
+      .dropdown {
+        position: relative;
+      }
+      .dropdown-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        padding: 0.5rem 0;
+        min-width: 220px;
+        z-index: 1001;
+      }
+      .dropdown:hover .dropdown-menu {
+        display: block;
+      }
+      .dropdown-link {
+        display: block;
+        padding: 0.75rem 1.5rem;
+        color: var(--dark-grey);
+        text-decoration: none;
+      }
+      .dropdown-link:hover {
+        background-color: #f0fdf4;
+        color: var(--primary-color);
+      }
+
+      .nav-toggle {
+        display: none;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 5px;
+        z-index: 1001;
+      }
+      .nav-toggle .bar {
+        display: block;
+        width: 25px;
+        height: 3px;
+        margin: 5px auto;
+        background-color: var(--primary-color);
+        transition: all 0.3s ease-in-out;
+      }
+      .nav-toggle.active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+      }
+      .nav-toggle.active .bar:nth-child(2) {
+        opacity: 0;
+      }
+      .nav-toggle.active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+      }
+
+      /* Header */
+      .post-full-header {
+        position: relative;
+        background-color: #0a111e;
+        color: var(--white);
+        text-align: center;
+        padding: 150px 20px 180px 20px;
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+      }
+      .post-full-header::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(10, 17, 30, 0.7);
+      }
+      .post-card-category {
+        display: inline-block;
+        background-color: var(--accent-color);
+        color: var(--dark-grey);
+        padding: 5px 15px;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        font-weight: 700;
+        margin-bottom: 20px;
+        text-transform: uppercase;
+        position: relative;
+        z-index: 1;
+      }
+      .post-full-title {
+        font-family: "Montserrat", sans-serif;
+        font-size: 3.5rem;
+        font-weight: 900;
+        margin: 0 auto;
+        max-width: 800px;
+        line-height: 1.2;
+        position: relative;
+        z-index: 1;
+      }
+      .post-full-meta {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 30px;
+        gap: 15px;
+        position: relative;
+        z-index: 1;
+      }
+      .author-avatar img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        border: 2px solid var(--white);
+      }
+      .author-name-and-date {
+        text-align: left;
+        font-size: 0.9rem;
+      }
+      .author-name {
+        font-weight: 700;
+        margin: 0;
+      }
+      .post-full-date {
+        opacity: 0.8;
+        margin: 0;
+      }
+
+      .content-wrapper {
+        background-color: #fefce8;
+      }
+
+      /* Hero Image */
+      .floating-hero-image {
+        display: block;
+        margin: -120px auto 60px auto;
+        max-width: 1280px;
+        width: 90%;
+        height: 450px;
+        object-fit: cover;
+        border-radius: var(--border-radius);
+        box-shadow: var(--shadow-md);
+        position: relative;
+        z-index: 10;
+      }
+
+      /* Main Content */
+      .post-full-content {
+        padding: 0 20px;
+        max-width: 800px;
+        margin: 0 auto 60px auto;
+      }
+      .post-full-content p,
+      .post-full-content ul,
+      .post-full-content ol,
+      .post-full-content h2,
+      .post-full-content h3 {
+        text-align: left;
+        margin-bottom: 1.5rem;
+      }
+      .post-full-content h2 {
+        font-family: "Montserrat", sans-serif;
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-top: 3rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 3px solid var(--primary-color);
+      }
+      .post-full-content h3 {
+        font-family: "Montserrat", sans-serif;
+        font-size: 1.8rem;
+        font-weight: 600;
+        margin-top: 2.5rem;
+        color: var(--secondary-color);
+      }
+      .post-full-content ul,
+      .post-full-content ol {
+        padding-left: 25px;
+      }
+      .post-full-content ul {
+        list-style-type: "✓ ";
+      }
+      .post-full-content li {
+        padding-left: 10px;
+        margin-bottom: 10px;
+      }
+      .post-full-content strong {
+        color: var(--primary-color);
+        font-weight: 700;
+      }
+      .in-content-image {
+        width: 100%;
+        height: auto;
+        border-radius: var(--border-radius);
+        box-shadow: var(--shadow-sm);
+        margin: 40px 0;
+      }
+
+      /* Callout Boxes */
+      .callout {
+        padding: 25px;
+        margin: 30px 0;
+        border-radius: var(--border-radius);
+        display: block; /* Changed for better structure */
+        text-align: center;
+      }
+      .callout-promo {
+        background-color: #f0fdf4;
+        border-left: 5px solid #22c55e;
+        color: #14532d;
+      }
+      .promo-button {
+        display: inline-block;
+        background-color: var(--secondary-color);
+        color: var(--white);
+        padding: 12px 30px;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 700;
+        margin-top: 20px;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+      .promo-button:hover {
+        transform: translateY(-3px);
+        box-shadow: var(--shadow-md);
+      }
+
+      /* Fade-in Animation */
+      .fade-in-up {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+      }
+      .fade-in-up.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Footer */
+      .footer {
+        background: #1e293b;
+        color: #a0aec0;
+        padding: 3rem 0;
+      }
+      .footer-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        margin-bottom: 2rem;
+        max-width: 1200px;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 0 25px;
+      }
+      .footer-section h3,
+      .footer-section h4 {
+        color: white;
+        margin-bottom: 1rem;
+      }
+      .footer-links {
+        list-style: none;
+        padding: 0;
+      }
+      .footer-links li {
+        margin-bottom: 0.5rem;
+      }
+      .footer-links a {
+        text-decoration: none;
+        color: inherit;
+      }
+      .footer-links a:hover {
+        color: white;
+      }
+      .footer-bottom {
+        border-top: 1px solid #4a5568;
+        padding-top: 2rem;
+        text-align: center;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .post-full-title {
+          font-size: 2.5rem;
+        }
+        .floating-hero-image {
+          height: 300px;
+        }
+        .post-full-content h2 {
+          font-size: 2rem;
+        }
+        .post-full-content h3 {
+          font-size: 1.5rem;
+        }
+        .nav-links {
+          display: none;
+          position: absolute;
+          top: 70px;
+          left: 0;
+          width: 100%;
+          background-color: white;
+          flex-direction: column;
+          align-items: center;
+          padding: 1rem 0;
+          box-shadow: var(--shadow-sm);
+          gap: 1rem;
+        }
+        .nav-links.active {
+          display: flex;
+        }
+        .nav-toggle {
+          display: block;
+        }
+        .navbar-brand {
+          font-size: 1.2rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation Bar -->
+    <nav class="navbar" id="navbar">
+      <div class="nav-container">
+        <a href="../index.html" class="navbar-brand">
+          <img
+            src="../src/assets/img/logo1.png"
+            alt="Global Nursing Assist PL Logo"
+            class="logo-img"
+          />
+          Global Nursing Assist PL
+        </a>
+        <ul class="nav-links" id="nav-links">
+          <li><a href=".html">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li class="dropdown">
+            <a href="#resources"
+              >Resources
+              <i
+                data-feather="chevron-down"
+                style="width: 16px; height: 16px"
+              ></i
+            ></a>
+            <div class="dropdown-menu">
+              <a href="ai-assistant.html" class="dropdown-link"
+                >AI Interview Assistant</a
+              >
+              <a href="onemonth.html" class="dropdown-link">Study Plan</a>
+              <a href="study-guide1.html" class="dropdown-link">Study Guide</a>
+            </div>
+          </li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="#blog">Blog</a></li>
+        </ul>
+        <button class="nav-toggle" id="nav-toggle">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+      </div>
+    </nav>
+
+    <main>
+      <div class="content-wrapper">
+        <!-- Header Section -->
+        <header
+          class="post-full-header"
+          style="background-image: url('../blog-pages/blog-img/n_blog.png')"
+        >
+          <div class="post-card-category fade-in-up">Malta Registration</div>
+          <h1 class="post-full-title fade-in-up">
+            A Nurse's Guide to Malta: Getting Your MQRIC Recognition in Minutes
+          </h1>
+          <div class="post-full-meta fade-in-up">
+            <div class="author-avatar">
+              <img src="../src/assets/img/author1.jpg" alt="Dr. Ben Asmah" />
+            </div>
+            <div class="author-name-and-date">
+              <strong class="author-name">Dr. Ben Asmah</strong>
+              <time class="post-full-date" datetime="2025-07-26"
+                >July 26, 2025 &middot; 4 min read</time
+              >
+            </div>
+          </div>
+        </header>
+
+        <!-- Floating Hero Image -->
+        <img
+          class="floating-hero-image fade-in-up"
+          src="./blog-img/malta_img/n_blog_mt2.png"
+          alt="A scenic view of Malta's coastline, representing the journey to working in Malta."
+        />
+
+        <!-- Main Content -->
+        <div class="post-full-content container">
+          <p class="fade-in-up">
+            <strong
+              >Planning to work as a nurse or another professional in
+              Malta?</strong
+            >
+            The first step in getting your foreign qualifications recognized can
+            seem daunting, but based on my recent experience, it might be much
+            faster and easier than you think.
+          </p>
+          <p class="fade-in-up">
+            My name is Ben Asmah, a nursing graduate from an EU university and
+            the founder of <strong>Global Nursing Assist PL</strong> – a
+            coaching platform supporting international nursing students in
+            Poland and across Europe. I recently completed the Maltese
+            registration process and want to share everything I learned to help
+            you avoid the mistakes I made.
+          </p>
+
+          <h2 class="fade-in-up">What is MQRIC and Why Do You Need It?</h2>
+          <p class="fade-in-up">
+            MQRIC stands for the Malta Qualifications Recognition Information
+            Centre. It's the official body that evaluates foreign qualifications
+            and issues a statement on how they compare to the Malta
+            Qualifications Framework (MQF).
+          </p>
+          <p class="fade-in-up">
+            For nurses applying to the Maltese Council for Nurses and Midwives,
+            obtaining this statement is a mandatory first step. Your
+            qualification must be rated as at least
+            <strong>MQF Level 5</strong> to be considered valid.
+          </p>
+
+          <h2 class="fade-in-up">
+            Step-by-Step Guide to Getting Your MQRIC Statement
+          </h2>
+          <h3 class="fade-in-up">Step 1: Visit the Official Portal</h3>
+          <p class="fade-in-up">
+            Everything starts on the Malta Further & Higher Education Authority
+            (MFHEA) website. Visit
+            <a href="https://mfhea.mt/academic-qualifications/" target="_blank"
+              >https://mfhea.mt/academic-qualifications/</a
+            >
+            and click "Apply Here" to begin.
+          </p>
+          <img
+            src="./blog-img/mquiric-img/apply here.png"
+            alt="Screenshot of the MFHEA website with the 'Apply Here' button highlighted"
+            class="in-content-image fade-in-up"
+          />
+
+          <h3 class="fade-in-up">Step 2: Register and Enter Your Details</h3>
+          <p class="fade-in-up">
+            First, register on the portal. When asked, "Why is the statement
+            required?", choose the option:
+            <strong>"I want to apply for promotion/Job"</strong>.
+          </p>
+          <img
+            src="./blog-img/mquiric-img/register.png"
+            alt="Screenshot of the registration form on the MQRIC portal"
+            class="in-content-image fade-in-up"
+          />
+          <p class="fade-in-up">
+            Next, provide your qualification details. If your university is in
+            the dropdown list, you do not need to upload your degree or
+            transcript. Document uploads are only required if your institution
+            is not listed.
+          </p>
+          <img
+            src="./blog-img/mquiric-img/uni dropdown.png"
+            alt="Dropdown menu showing a list of universities on the MQRIC portal"
+            class="in-content-image fade-in-up"
+          />
+
+          <h3 class="fade-in-up">Step 3: Pay the Fee</h3>
+          <p class="fade-in-up">
+            The fee for a qualification already in the database is
+            <strong>€15</strong>. You can pay this directly on the portal.
+          </p>
+          <img
+            src="./blog-img/mquiric-img/payment.png"
+            alt="Secure online payment interface"
+            class="in-content-image fade-in-up"
+          />
+
+          <h3 class="fade-in-up">Step 4: Receive Your Statement Instantly</h3>
+          <p class="fade-in-up">
+            Because my qualification was recognized automatically, I received my
+            official statement via email in about <strong>10 minutes</strong>.
+            It was a PDF document, ready for the next stage.
+          </p>
+
+          <h2 class="fade-in-up">What Your MQRIC Statement Looks Like</h2>
+          <p class="fade-in-up">
+            The final document is a formal statement of comparability, which
+            should show your qualification is comparable to at least
+            <strong>MQF Level 6</strong> for a bachelor's degree.
+          </p>
+          <img
+            src="./blog-img/mquiric-img/mquiric.jpg"
+            alt="Example of an official MQRIC statement document"
+            class="in-content-image fade-in-up"
+          />
+
+          <div class="callout callout-promo fade-in-up">
+            <h3>Let Us Help You Take the Next Step</h3>
+            <p>
+              This guide gives you the tools, but the journey can still be
+              overwhelming. At <strong>Global Nursing Assist PL</strong>, we
+              support international nurses in Malta & UK Interview Coaching,
+              Registration Help (MQRIC, NMC, etc.), and IELTS Prep.
+            </p>
+            <a href="#contact" class="promo-button"
+              >Book a Free Session</a
+            >
+          </div>
+        </div>
+
+        <footer class="footer">
+          <div class="footer-content">
+            <div class="footer-section">
+              <h3>Global Nursing Assist PL</h3>
+              <p>
+                Empowering nursing students and professionals across Poland, UK,
+                and Malta with expert guidance.
+              </p>
+            </div>
+            <div class="footer-section">
+              <h4>Services</h4>
+              <ul class="footer-links">
+                <li><a href="#">IELTS Coaching</a></li>
+                <li><a href="#">Thesis Help</a></li>
+                <li><a href="#">Clinical Coaching</a></li>
+              </ul>
+            </div>
+            <div class="footer-section">
+              <h4>Resources</h4>
+              <ul class="footer-links">
+                <li><a href="#">Free Downloads</a></li>
+                <li><a href="#">Contact Us</a></li>
+                <li><a href="#">Blog</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="footer-bottom">
+            <p>
+              &copy; <span id="current-year"></span> Global Global Nursing
+              Assist PL. All rights reserved.
+            </p>
+          </div>
+        </footer>
+      </div>
+    </main>
+
+    <script>
+      // Navbar scroll effect
+      const navbar = document.getElementById("navbar");
+      window.onscroll = function () {
+        if (window.scrollY > 50) {
+          navbar.classList.add("scrolled");
+        } else {
+          navbar.classList.remove("scrolled");
+        }
+      };
+
+      // Fade-in on scroll animation
+      const faders = document.querySelectorAll(".fade-in-up");
+      const appearOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px",
+      };
+      const appearOnScroll = new IntersectionObserver(function (
+        entries,
+        appearOnScroll
+      ) {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) {
+            return;
+          } else {
+            entry.target.classList.add("visible");
+            appearOnScroll.unobserve(entry.target);
+          }
+        });
+      },
+      appearOptions);
+
+      faders.forEach((fader) => {
+        appearOnScroll.observe(fader);
+      });
+
+      // Mobile Nav Toggle
+      const navToggle = document.getElementById("nav-toggle");
+      const navLinks = document.getElementById("nav-links");
+      navToggle.addEventListener("click", () => {
+        navLinks.classList.toggle("active");
+        navToggle.classList.toggle("active");
+      });
+
+      feather.replace();
+
+      // Set Current Year in Footer
+      const yearEl = document.getElementById("current-year");
+      if (yearEl) yearEl.textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>

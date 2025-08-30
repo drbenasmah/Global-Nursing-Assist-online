@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      How to Ace Your Nursing Interview in Malta | Global Global Nursing Assist
+      PL
+    </title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Montserrat:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* CSS Reset and Basic Styles */
+      :root {
+        --primary-color: #005a9e; /* Professional Blue */
+        --secondary-color: #00a99d; /* Teal */
+        --accent-color: #fdb813; /* Yellow */
+        --dark-grey: #333333;
+        --light-grey: #f8f9fa;
+        --white: #ffffff;
+        --border-radius: 12px;
+        --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.05);
+        --shadow-md: 0 10px 20px rgba(0, 0, 0, 0.1),
+          0 3px 6px rgba(0, 0, 0, 0.08);
+      }
+      body {
+        font-family: "Lato", sans-serif;
+        line-height: 1.7;
+        color: var(--dark-grey);
+        background-color: var(--white);
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+      }
+
+      /* Navigation Bar */
+      .navbar {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
+        height: 70px;
+        display: flex;
+        align-items: center;
+        transition: all 0.3s ease-in-out;
+        background: transparent;
+      }
+      .navbar.scrolled {
+        background: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        box-shadow: var(--shadow-sm);
+      }
+      .nav-container {
+        width: 100%;
+        max-width: 1440px;
+        margin: 0 auto;
+        padding: 0 25px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .navbar-brand {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 700;
+        font-size: 1.5rem;
+        color: var(--primary-color);
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+      }
+      .logo-img {
+        height: 40px;
+        margin-right: 10px;
+      }
+      .nav-links {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        gap: 25px;
+      }
+      .nav-links a {
+        color: var(--primary-color);
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 1rem;
+        position: relative;
+        padding: 5px 0;
+      }
+      .nav-links a::after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: 0;
+        left: 0;
+        background-color: var(--accent-color);
+        transition: width 0.3s ease;
+      }
+      .nav-links a:hover::after {
+        width: 100%;
+      }
+      .nav-toggle {
+        display: none;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 5px;
+        z-index: 1001;
+      }
+      .nav-toggle .bar {
+        display: block;
+        width: 25px;
+        height: 3px;
+        margin: 5px auto;
+        background-color: var(--primary-color);
+        transition: all 0.3s ease-in-out;
+      }
+      .nav-toggle.active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+      }
+      .nav-toggle.active .bar:nth-child(2) {
+        opacity: 0;
+      }
+      .nav-toggle.active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+      }
+
+      /* Header */
+      .post-full-header {
+        position: relative;
+        background-color: #0a111e;
+        color: var(--white);
+        text-align: center;
+        padding: 150px 20px 180px 20px;
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+      }
+      .post-full-header::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(10, 17, 30, 0.7);
+      }
+      .post-card-category {
+        display: inline-block;
+        background-color: var(--accent-color);
+        color: var(--dark-grey);
+        padding: 5px 15px;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        font-weight: 700;
+        margin-bottom: 20px;
+        text-transform: uppercase;
+        position: relative;
+        z-index: 1;
+      }
+      .post-full-title {
+        font-family: "Montserrat", sans-serif;
+        font-size: 3.5rem;
+        font-weight: 900;
+        margin: 0 auto;
+        max-width: 800px;
+        line-height: 1.2;
+        position: relative;
+        z-index: 1;
+      }
+      .post-full-meta {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 30px;
+        gap: 15px;
+        position: relative;
+        z-index: 1;
+      }
+      .author-avatar img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        border: 2px solid var(--white);
+      }
+      .author-name-and-date {
+        text-align: left;
+        font-size: 0.9rem;
+      }
+      .author-name {
+        font-weight: 700;
+        margin: 0;
+      }
+      .post-full-date {
+        opacity: 0.8;
+        margin: 0;
+      }
+
+      /* Hero Image */
+      .floating-hero-image {
+        display: block;
+        margin: -120px auto 60px auto;
+        max-width: 1280px;
+        width: 90%;
+        height: 450px;
+        object-fit: cover;
+        border-radius: var(--border-radius);
+        box-shadow: var(--shadow-md);
+        position: relative;
+        z-index: 10;
+      }
+
+      /* Main Content */
+      .post-full-content {
+        padding: 0 20px;
+        max-width: 800px;
+        margin: 0 auto 60px auto;
+      }
+      .post-full-content p,
+      .post-full-content ul,
+      .post-full-content h2,
+      .post-full-content h3 {
+        text-align: left;
+        margin-bottom: 1.5rem;
+      }
+      .post-full-content h2 {
+        font-family: "Montserrat", sans-serif;
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-top: 3rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 3px solid var(--primary-color);
+      }
+      .post-full-content h3 {
+        font-family: "Montserrat", sans-serif;
+        font-size: 1.8rem;
+        font-weight: 600;
+        margin-top: 2.5rem;
+        color: var(--secondary-color);
+      }
+      .post-full-content ul {
+        padding-left: 25px;
+        list-style-type: "✓ ";
+      }
+      .post-full-content li {
+        padding-left: 10px;
+        margin-bottom: 10px;
+      }
+      .post-full-content blockquote {
+        border-left: 4px solid var(--secondary-color);
+        padding-left: 20px;
+        margin: 2rem 0;
+        font-style: italic;
+        color: #555;
+      }
+      .post-full-content strong {
+        color: var(--primary-color);
+        font-weight: 700;
+      }
+      .in-content-image {
+        width: 100%;
+        height: auto;
+        border-radius: var(--border-radius);
+        box-shadow: var(--shadow-sm);
+        margin: 40px 0;
+      }
+
+      /* Callout Boxes */
+      .callout {
+        padding: 25px;
+        margin: 30px 0;
+        border-radius: var(--border-radius);
+        display: flex;
+        align-items: flex-start;
+        gap: 20px;
+      }
+      .callout-icon {
+        font-size: 1.8rem;
+      }
+      .callout-content {
+        flex: 1;
+      }
+      .callout-content p {
+        margin: 0;
+      }
+      .callout-warning {
+        background-color: #fffbeb;
+        border-left: 5px solid #fbbf24;
+        color: #92400e;
+      }
+      .callout-warning .callout-icon {
+        color: #fbbf24;
+      }
+      .callout-promo {
+        background-color: #f0fdf4;
+        border-left: 5px solid #22c55e;
+        color: #14532d;
+        text-align: center;
+        display: block;
+      }
+      .callout-promo .callout-icon {
+        color: #22c55e;
+        font-size: 2.5rem;
+        margin-bottom: 15px;
+      }
+      .promo-button {
+        display: inline-block;
+        background-color: var(--secondary-color);
+        color: var(--white);
+        padding: 12px 30px;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 700;
+        margin-top: 20px;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+      .promo-button:hover {
+        transform: translateY(-3px);
+        box-shadow: var(--shadow-md);
+      }
+
+      /* Fade-in Animation */
+      .fade-in-up {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+      }
+      .fade-in-up.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .post-full-title {
+          font-size: 2.5rem;
+        }
+        .floating-hero-image {
+          height: 300px;
+        }
+        .post-full-content h2 {
+          font-size: 2rem;
+        }
+        .post-full-content h3 {
+          font-size: 1.5rem;
+        }
+        .nav-links {
+          display: none;
+          position: absolute;
+          top: 70px;
+          left: 0;
+          width: 100%;
+          background-color: white;
+          flex-direction: column;
+          align-items: center;
+          padding: 1rem 0;
+          box-shadow: var(--shadow-sm);
+          gap: 1rem;
+        }
+        .nav-links.active {
+          display: flex;
+        }
+        .nav-toggle {
+          display: block;
+        }
+        .navbar-brand {
+          font-size: 1.2rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation Bar -->
+    <nav class="navbar" id="navbar">
+      <div class="nav-container">
+        <a href="index" class="navbar-brand">
+          <img
+            src="../src/assets/img/logo1.png"
+            alt="Global Nursing Assist PL Logo"
+            class="logo-img"
+          />
+          Global Nursing Assist PL
+        </a>
+        <ul class="nav-links" id="nav-links">
+          <li><a href="../inde">Home</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="bloghtml">Blog</a></li>
+        </ul>
+        <button class="nav-toggle" id="nav-toggle">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+      </div>
+    </nav>
+
+    <main>
+      <!-- Header Section -->
+      <header
+        class="post-full-header"
+        style="
+          background-image: url('/blog-pages/blog-img/malta_img/n_blog_mt.png');
+        "
+      >
+        <div class="post-card-category fade-in-up">Malta Interview Guide</div>
+        <h1 class="post-full-title fade-in-up">
+          How to Ace Your Nursing Interview in Malta
+        </h1>
+        <div class="post-full-meta fade-in-up">
+          <div class="author-avatar">
+            <img src="../src/assets/img/author1.jpg" alt="Dr. Ben Asmah" />
+          </div>
+          <div class="author-name-and-date">
+            <strong class="author-name">Dr. Ben Asmah</strong>
+            <time class="post-full-date" datetime="2025-08-26"
+              >August 26, 2025 &middot; 5 min read</time
+            >
+          </div>
+        </div>
+      </header>
+
+      <!-- Floating Hero Image -->
+      <img
+        class="floating-hero-image fade-in-up"
+        src="./blog-img/n_blog3.png"
+        alt="A confident nurse prepared for a nursing interview in Malta"
+      />
+
+      <!-- Main Content -->
+      <div class="post-full-content container">
+        <p class="fade-in-up">
+          Landing a nursing job in Malta is exciting—but the interview can be
+          intimidating. What separates successful candidates from those who
+          struggle often comes down to preparation, strategy, and confidence.
+          Maltese healthcare employers are looking for nurses who demonstrate
+          not only strong clinical knowledge but also professionalism, patient
+          safety awareness, and ethical judgment.
+        </p>
+        <p class="fade-in-up">
+          This guide walks you through the essential areas to focus on so you
+          can make a confident impression and secure your dream role.
+        </p>
+
+        <h2 class="fade-in-up">
+          Step 1: Build Your Bedrock of Clinical Knowledge 🩺
+        </h2>
+        <p class="fade-in-up">
+          Before anything else, your clinical knowledge forms the backbone of
+          your interview performance. Maltese interviewers often present
+          clinical scenarios to test whether you can apply safe and effective
+          nursing practice. Be prepared to discuss:
+        </p>
+        <ul class="fade-in-up">
+          <li>
+            <strong>Patient Assessment</strong> – Core procedures like
+            monitoring vital signs, conducting head-to-toe assessments, and
+            performing neurological checks using the Glasgow Coma Scale (GCS).
+          </li>
+          <li>
+            <strong>Medication Safety</strong> – The “Five Rights” of medication
+            administration are essential. Be ready to explain how you administer
+            safely, handle errors, and educate patients.
+          </li>
+          <li>
+            <strong>Procedural Skills</strong> – Common tasks such as IV line
+            insertion, urinary catheterisation, and central line care. Always
+            emphasise aseptic technique.
+          </li>
+          <li>
+            <strong>Emergency Response</strong> – How you would manage a patient
+            in respiratory distress, respond to a cardiac arrest, or recognise
+            early signs of sepsis.
+          </li>
+        </ul>
+
+        <div class="callout callout-warning fade-in-up">
+          <div class="callout-icon">💡</div>
+          <div class="callout-content">
+            <p>
+              <strong>Top Tip:</strong> Don’t just list steps. Explain the
+              <em>why</em> behind each action. For example, when describing IV
+              insertion, note that you release the tourniquet after flashback to
+              prevent vein damage. This demonstrates deeper understanding, not
+              just rote memorisation.
+            </p>
+          </div>
+        </div>
+
+        <h2 class="fade-in-up">
+          Step 2: Demonstrate Your Professional Character and Ethics 🤝
+        </h2>
+        <p class="fade-in-up">
+          Technical skill is only part of the picture. Maltese employers also
+          assess whether you can act as a safe, ethical professional. Be ready
+          to discuss:
+        </p>
+        <ul class="fade-in-up">
+          <li>
+            <strong>Teamwork and Communication</strong> – Show clear and safe
+            handovers using structured tools like SBAR (Situation, Background,
+            Assessment, Recommendation).
+          </li>
+          <li>
+            <strong>Ethical Principles</strong> – Apply autonomy, beneficence,
+            and non-maleficence to real clinical scenarios.
+          </li>
+          <li>
+            <strong>Professional Development</strong> – Highlight your
+            commitment to lifelong learning through nursing journals, workshops,
+            or quality improvement projects.
+          </li>
+        </ul>
+
+        <img
+          src="./blog-img/n_blog2.png"
+          alt="A diverse team of healthcare professionals in a meeting"
+          class="in-content-image fade-in-up"
+        />
+
+        <h2 class="fade-in-up">
+          Step 3: Master Behavioral Questions with the STAR Method ⭐
+        </h2>
+        <p class="fade-in-up">
+          Behavioral questions test how you’ve acted in past situations. Using
+          the STAR Method keeps your answers structured and impactful:
+        </p>
+        <ul class="fade-in-up">
+          <li><strong>Situation:</strong> Describe the context.</li>
+          <li><strong>Task:</strong> What was your responsibility?</li>
+          <li><strong>Action:</strong> What steps did you take?</li>
+          <li><strong>Result:</strong> What was the outcome?</li>
+        </ul>
+        <p class="fade-in-up">
+          <strong>Example Question:</strong> “Describe a time you had to deal
+          with a difficult patient or family member.”
+        </p>
+        <blockquote class="fade-in-up">
+          “I was caring for an elderly patient whose family felt anxious and
+          uninformed about the care plan. My goal was to de-escalate the
+          situation and build trust. I scheduled a brief meeting, listened
+          actively, explained the care plan in simple terms, and provided
+          regular updates. As a result, the family became reassured and
+          collaborative, which improved the patient’s care experience.”
+        </blockquote>
+
+        <div class="callout callout-warning fade-in-up">
+          <div class="callout-icon">💡</div>
+          <div class="callout-content">
+            <p>
+              <strong>Pro Tip:</strong> Practicing STAR answers in advance
+              ensures you sound confident, not rehearsed.
+            </p>
+          </div>
+        </div>
+
+        <h2 class="fade-in-up">
+          Step 4: Sample Malta Interview Questions with Model Answers
+        </h2>
+
+        <h3 class="fade-in-up">
+          Question 1 – How would you handle a medication error?
+        </h3>
+        <blockquote class="fade-in-up">
+          “During a busy shift, I noticed a colleague about to administer the
+          wrong dosage. My responsibility was to ensure patient safety and
+          follow hospital protocol. I politely stopped the process, we
+          double-checked the patient chart and prescription together, and I
+          ensured the error was reported according to policy. The patient
+          received the correct medication safely, and the incident contributed
+          to team learning on preventing future errors.”
+        </blockquote>
+        <div class="callout callout-warning fade-in-up">
+          <div class="callout-icon">💡</div>
+          <div class="callout-content">
+            <p>
+              <strong>Key Point:</strong> Always highlight patient safety first
+              and adherence to hospital protocol.
+            </p>
+          </div>
+        </div>
+
+        <h3 class="fade-in-up">
+          Question 2 – Why is infection control important in a hospital
+          environment?
+        </h3>
+        <blockquote class="fade-in-up">
+          "Infection control is essential to protect patients, colleagues, and
+          the wider community. Many hospitalized patients are vulnerable, so
+          even a small lapse can cause serious infections. By rigorously
+          following protocols—hand hygiene, PPE use, and isolation
+          measures—nurses prevent harm, improve outcomes, and uphold our
+          professional responsibility to do no harm."
+        </blockquote>
+        <div class="callout callout-warning fade-in-up">
+          <div class="callout-icon">💡</div>
+          <div class="callout-content">
+            <p>
+              <strong>Key Point:</strong> Keep answers patient-centered and
+              safety-focused.
+            </p>
+          </div>
+        </div>
+
+        <img
+          src="./blog-img/steth.png"
+          alt="Close-up of a stethoscope resting on a medical chart"
+          class="in-content-image fade-in-up"
+        />
+
+        <h2 class="fade-in-up">Step 5: Don’t Leave Your Dream Job to Chance</h2>
+        <p class="fade-in-up">
+          Preparation builds confidence—and confidence is what sets you apart.
+          At Global Nursing Assist PL, we understand the challenges
+          international nurses face. We give you the tools and confidence to
+          succeed with:
+        </p>
+        <ul class="fade-in-up">
+          <li>One-to-one coaching</li>
+          <li>Structured study guides</li>
+          <li>Practice Qbanks and flashcards</li>
+          <li>Real-world practice scenarios</li>
+        </ul>
+        <p class="fade-in-up">
+          All resources are tailored to the exact standards Maltese interviewers
+          expect, helping you succeed on your first attempt.
+        </p>
+
+        <div class="callout callout-promo fade-in-up">
+          <div class="callout-icon">📌</div>
+          <div class="callout-content">
+            <h3>Ready to walk into your interview prepared and confident?</h3>
+            <p>
+              Don’t risk a 6-month career delay. Get expert coaching, practice
+              materials, and personalized guidance today.
+            </p>
+            <a href="#" class="promo-button">Book Your Free Consultation Now</a>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      // Navbar scroll effect
+      const navbar = document.getElementById("navbar");
+      window.onscroll = function () {
+        if (window.scrollY > 50) {
+          navbar.classList.add("scrolled");
+        } else {
+          navbar.classList.remove("scrolled");
+        }
+      };
+
+      // Fade-in on scroll animation
+      const faders = document.querySelectorAll(".fade-in-up");
+      const appearOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px",
+      };
+      const appearOnScroll = new IntersectionObserver(function (
+        entries,
+        appearOnScroll
+      ) {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) {
+            return;
+          } else {
+            entry.target.classList.add("visible");
+            appearOnScroll.unobserve(entry.target);
+          }
+        });
+      },
+      appearOptions);
+
+      faders.forEach((fader) => {
+        appearOnScroll.observe(fader);
+      });
+
+      // Mobile Nav Toggle
+      const navToggle = document.getElementById("nav-toggle");
+      const navLinks = document.getElementById("nav-links");
+      navToggle.addEventListener("click", () => {
+        navLinks.classList.toggle("active");
+        navToggle.classList.toggle("active");
+      });
+    </script>
+  </body>
+</html>
