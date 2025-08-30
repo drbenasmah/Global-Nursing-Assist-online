@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>How to Create a Europass CV | Global Nursing Assist PL</title>
+    <link rel="stylesheet" href="../styles.css" />
+    <link rel="stylesheet" href="malta-mqric-guide.css" />
+    <script src="https://unpkg.com/feather-icons"></script>
+    <style>
+      /* Modern Blog Post Styles - Europass Guide */
+
+      /* Typography Enhancements */
+      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@400;700&display=swap");
+
+      body {
+        padding-top: 80px; /* Account for fixed navbar */
+      }
+
+      .post-full {
+        background: #9aaadf;
+      }
+
+      /* Modern Blog Header */
+      .post-full-header {
+        background: linear-gradient(135deg, #031643 0%, #0e50cd 100%);
+        color: white;
+        padding: 4rem 0 2rem;
+        position: relative;
+        overflow: hidden;
+        text-align: center;
+      }
+
+      .post-full-header .container {
+        position: relative;
+        z-index: 2;
+      }
+
+      .post-card-category {
+        display: inline-block;
+        background: linear-gradient(135deg, #3b82f6, #1e40af);
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        font-size: 0.875rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-bottom: 1.5rem;
+        box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+      }
+
+      .post-full-title {
+        font-family: "Merriweather", serif;
+        font-size: clamp(2rem, 5vw, 3.5rem);
+        font-weight: 700;
+        line-height: 1.2;
+        margin-bottom: 2rem;
+        background: linear-gradient(135deg, #ffffff, #e2e8f0);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .post-full-meta {
+        margin-top: 2rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .author-avatar {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        border: 3px solid rgba(255, 255, 255, 0.2);
+        object-fit: cover;
+      }
+
+      .author-name {
+        font-weight: 600;
+        font-size: 1.1rem;
+        display: block;
+        margin-bottom: 0.25rem;
+      }
+
+      .post-date {
+        font-size: 0.9rem;
+        opacity: 0.8;
+        color: #cbd5e1;
+      }
+
+      /* Hero Image */
+      .post-full-image {
+        position: relative;
+        margin: 0;
+        height: 400px;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, #f9f1f3, #e2e8f0);
+      }
+
+      .post-full-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+      }
+
+      .post-full-image:hover img {
+        transform: scale(1.02);
+      }
+
+      /* Modern Content Styling */
+      .post-full-content {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 4rem 1rem;
+        font-family: "Inter", sans-serif;
+        line-height: 1.8;
+        color: #334155;
+      }
+
+      .post-full-content p {
+        font-size: 1.125rem;
+        margin-bottom: 1.5rem;
+        color: #475569;
+      }
+
+      .post-full-content h2 {
+        font-family: "Merriweather", serif;
+        font-size: 2rem;
+        font-weight: 700;
+        color: #0f172a;
+        margin: 3rem 0 1.5rem;
+        position: relative;
+        padding-bottom: 0.5rem;
+      }
+
+      .post-full-content h2::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 60px;
+        height: 3px;
+        background: linear-gradient(135deg, #3b82f6, #1e40af);
+        border-radius: 2px;
+      }
+
+      .post-full-content h3 {
+        font-family: "Inter", sans-serif;
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: #1e293b;
+        margin: 2.5rem 0 1rem;
+      }
+
+      .post-full-content ol {
+        list-style: none;
+        counter-reset: step-counter;
+        padding-left: 0;
+      }
+
+      .post-full-content ol li {
+        counter-increment: step-counter;
+        margin-bottom: 3rem;
+        position: relative;
+        padding-left: 3.5rem;
+      }
+
+      .post-full-content ol li::before {
+        content: counter(step-counter);
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 2.5rem;
+        height: 2.5rem;
+        background-color: #d6efff;
+        color: #1e40af;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-size: 1.25rem;
+      }
+
+      .post-full-content ul {
+        margin: 1.5rem 0;
+        padding-left: 1.5rem;
+      }
+
+      .post-full-content ul li {
+        margin-bottom: 0.75rem;
+      }
+
+      /* Strong text styling */
+      .post-full-content strong {
+        color: #1e293b;
+        font-weight: 600;
+      }
+
+      /* Modern Link Styling */
+      .post-full-content a {
+        color: #3b82f6;
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.3s ease;
+      }
+
+      .post-full-content a:hover {
+        text-decoration: underline;
+      }
+
+      /* HR Styling */
+      .post-full-content hr {
+        border: none;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, #e1cbcb, transparent);
+        margin: 3rem 0;
+      }
+
+      /* Image Styling */
+      .post-content-image {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        border-radius: 12px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        margin: 2rem 0;
+      }
+
+      /* Call to Action Section */
+      .cta-section {
+        padding: 4rem 1rem;
+        background-color: #f8fafc;
+        text-align: center;
+      }
+      .cta-section h2 {
+        font-family: "Merriweather", serif;
+        font-size: 2.5rem;
+        color: #1e40af;
+        margin-bottom: 1rem;
+      }
+      .cta-section p {
+        font-size: 1.125rem;
+        color: #475569;
+        max-width: 600px;
+        margin: 0 auto 2rem;
+      }
+      .cta-button {
+        display: inline-block;
+        font-weight: 600;
+        color: #fff;
+        background: linear-gradient(135deg, #3b82f6, #1e40af);
+        padding: 0.75rem 1.5rem;
+        border-radius: 8px;
+        text-decoration: none;
+        transition: transform 0.3s ease;
+      }
+      .cta-button:hover {
+        transform: translateY(-2px);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- === NAVIGATION BAR === -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="nav-logo">
+          <a href="#">
+            <img
+              src="../src/assets/img/logo1.png"
+              alt="Global Nursing Assist PL Logo"
+              class="logo-img"
+              onerror="this.onerror=null;this.src='https://placehold.co/200x50/1e40af/ffffff?text=Logo';"
+            />
+            <span class="logo-text">Global Nursing Assist PL</span>
+          </a>
+        </div>
+        <div class="nav-menu" id="nav-menu">
+          <a href="#home" class="nav-link">Home</a>
+          <a href="#about" class="nav-link">About</a>
+          <a href="#services" class="nav-link">Services</a>
+          <a href="#blog" class="nav-link active">Blog</a>
+          <a href="#contact" class="nav-link">Contact</a>
+        </div>
+        <button
+          class="nav-toggle"
+          id="nav-toggle"
+          aria-label="Toggle navigation menu"
+        >
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+      </div>
+    </nav>
+
+    <main>
+      <article class="post-full">
+        <header class="post-full-header">
+          <div class="container">
+            <span class="post-card-category">Career Guidance</span>
+            <h1 class="post-full-title">
+              How to Create a Europass CV for New Graduate Nurses
+            </h1>
+            <div class="post-full-meta">
+              <div class="post-card-author">
+                <img
+                  src="../src/assets/img/author1.jpg"
+                  alt="Author avatar"
+                  class="author-avatar"
+                  onerror="this.onerror=null;this.src='https://placehold.co/50x50/ffffff/1e293b?text=A';"
+                />
+                <div>
+                  <span class="author-name">Dr. Ben Asmah</span>
+                  <span class="post-date"
+                    >August 10, 2025 &middot; 4 min read</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </header>
+
+        <figure class="post-full-image">
+          <img
+            src="./blog-img/europass img/europ_head.png"
+            alt="A graphic representing a professional Europass CV for nurses."
+          />
+        </figure>
+
+        <div class="post-full-content container">
+          <p>
+            Are you a new graduate nurse planning to work in Europe? One of the
+            easiest ways to present your qualifications in a professional,
+            internationally recognized format is by creating a Europass CV.
+          </p>
+          <p>
+            The Europass CV is accepted in all EU and EEA countries, making it
+            perfect for nurses applying to hospitals, clinics, and care
+            facilities abroad. Even if you’re fresh out of nursing school,
+            Europass helps you showcase your skills, clinical training, and
+            potential in a clear, structured way.
+          </p>
+          <p>
+            This guide will walk you through the process step-by-step so you can
+            create your CV directly on the official Europass website —
+            completely free.
+          </p>
+
+          <hr />
+
+          <h2>Step-by-Step Guide</h2>
+
+          <ol>
+            <li>
+              <h3>Go to the Official Europass Website</h3>
+              <p>
+                Visit:
+                <a href="https://europa.eu/europass" target="_blank"
+                  >europa.eu/europass</a
+                >
+                and click "Create your Europass CV" at the top of the page.
+              </p>
+              <img
+                src="./blog-img/europass img/homepep.png"
+                alt="Screenshot of the Europass homepage"
+                class="post-content-image"
+              />
+              <p>
+                <strong>💡 Tip:</strong> Make sure you’re on the official EU
+                site — avoid any third-party websites that might charge you for
+                the same service.
+              </p>
+            </li>
+            <li>
+              <h3>Create or Log Into Your Account</h3>
+              <p>
+                You can start without an account, but registering offers big
+                benefits like saving your profile for easy updates, storing
+                multiple CV versions, and keeping all your documents in one
+                secure place.
+              </p>
+            </li>
+            <li>
+              <h3>Start the CV Builder</h3>
+              <p>
+                Click "Create CV" and choose whether to fill in the form from
+                scratch, import from your profile, or upload a previous version.
+              </p>
+              <img
+                src="./blog-img/europass img/cv builder.png"
+                alt="Screenshot of the CV builder options"
+                class="post-content-image"
+              />
+            </li>
+            <li>
+              <h3>Fill in Your Personal Information</h3>
+              <p>
+                Include your full name, professional title (Registered Nurse or
+                EEA-trained Nurse), contact details, nationality, and language
+                skills.
+              </p>
+              <p>
+                <strong>📌 Avoid including your full street address</strong>
+                unless specifically required — city and country are usually
+                enough.
+              </p>
+            </li>
+            <li>
+              <h3>Add Your Work Experience (Even Without a Job History)</h3>
+              <p>
+                If you don’t have formal nursing employment yet, list your
+                clinical placements, internships, volunteer work, or any
+                healthcare assistant roles.
+              </p>
+              <p>
+                <strong>Example:</strong><br /><em
+                  >Nursing Intern – University Hospital Lublin (April–July
+                  2025)</em
+                ><br />Assisted in patient care, vital signs monitoring, and
+                wound dressing in the surgical ward.
+              </p>
+            </li>
+            <li>
+              <h3>Add Your Education and Training</h3>
+              <p>
+                Include your nursing degree, special courses (e.g., Basic Life
+                Support, Infection Control), and any other healthcare
+                certifications.
+              </p>
+              <p>
+                <strong>💡 If trained in an EEA country,</strong> mention
+                “EEA-compliant nursing qualification” to help employers know
+                your degree meets EU standards.
+              </p>
+            </li>
+            <li>
+              <h3>Highlight Your Skills</h3>
+              <p>
+                Divide into clinical skills (medication administration, wound
+                care), soft skills (empathy, communication, teamwork), and
+                languages.
+              </p>
+            </li>
+            <li>
+              <h3>Select Your CV Template</h3>
+              <p>
+                It’s advised that you choose one with the Europass logo — this
+                ensures employers immediately recognize it as the official
+                format. You can still adjust sections and colors to match your
+                preferences.
+              </p>
+              <img
+                src="./blog-img/europass img/templaate.png"
+                alt="Screenshot of the template selection page"
+                class="post-content-image"
+              />
+            </li>
+            <li>
+              <h3>Preview and Download Your CV</h3>
+              <p>
+                When you’re done, click "Preview" to check formatting and
+                layout, then select "Download as PDF." Save it with a
+                professional name: <strong>Firstname_Lastname_CV.pdf</strong>.
+              </p>
+            </li>
+          </ol>
+
+          <hr />
+
+          <h2>Final Tips for Nursing Graduates</h2>
+          <ul>
+            <li>Keep it 1–2 pages for clarity.</li>
+            <li>Use action verbs like assisted, coordinated, administered.</li>
+            <li>Proofread — spelling errors look unprofessional.</li>
+            <li>Pair it with a strong cover letter.</li>
+          </ul>
+
+          <p>
+            ✅ You’re ready! Head to
+            <a href="https://europa.eu/europass" target="_blank"
+              >europa.eu/europass</a
+            >
+            and start building your CV. For new nurses seeking work abroad, the
+            Europass CV is your professional passport into the European
+            healthcare system.
+          </p>
+        </div>
+      </article>
+    </main>
+
+    <section class="cta-section">
+      <div class="container">
+        <h2>Need a Job-Ready CV?</h2>
+        <p>
+          A great CV is more than just a template. We can help you craft a
+          professional, job-ready Europass CV that highlights your unique skills
+          and gets you noticed by employers in Malta and the UK.
+        </p>
+        <a href="#contact" class="cta-button"
+          >Contact Us for a Professional CV Review</a
+        >
+      </div>
+    </section>
+
+    <!-- === FOOTER === -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3>Global Nursing Assist PL</h3>
+            <p>
+              Empowering nursing students and professionals across Poland, UK,
+              and Malta with expert guidance and proven strategies.
+            </p>
+          </div>
+          <div class="footer-section">
+            <h4>Resources</h4>
+            <ul class="footer-links">
+              <li><a href="#resources">Free Downloads</a></li>
+              <li><a href="#testimonials">Success Stories</a></li>
+              <li><a href="#contact">Contact Us</a></li>
+              <li><a href="#blog">Blog</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>
+            &copy; <span id="current-year">2025</span> Global Nursing Assist PL.
+            All rights reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="../script.js"></script>
+    <script>
+      feather.replace();
+    </script>
+  </body>
+</html>
