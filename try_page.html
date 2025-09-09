@@ -181,19 +181,67 @@
 
       /* --- Navbar --- */
       #navbar {
-        position: sticky;
+        position: fixed; /* Changed to fixed for overlay effect */
         top: 0;
         width: 100%;
         z-index: 100;
-        background-color: rgba(255, 255, 255, 0.8);
-        backdrop-filter: blur(10px);
+        background-color: transparent;
         transition: var(--transition);
-        border-bottom: 1px solid transparent;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      #navbar .logo-text,
+      #navbar .nav-links a,
+      #navbar .dropdown-toggle,
+      #navbar #mobile-menu-button i {
+        color: white;
+      }
+
+      #navbar .nav-cta {
+        background: transparent;
+        border: 1px solid white;
+      }
+      #navbar .nav-cta:hover {
+        background-color: white;
+        color: var(--primary-blue);
       }
 
       #navbar.navbar-scrolled {
+        background-color: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(10px);
         box-shadow: var(--shadow-md);
         border-bottom-color: var(--border-color);
+      }
+
+      #navbar.navbar-scrolled .logo-text {
+        color: var(--primary-blue);
+      }
+      #navbar.navbar-scrolled .nav-links a {
+        color: var(--text-dark);
+      }
+      #navbar.navbar-scrolled .dropdown-toggle {
+        color: var(--text-dark);
+      }
+      #navbar.navbar-scrolled #mobile-menu-button i {
+        color: var(--text-dark);
+      }
+      #navbar.navbar-scrolled .nav-links a:hover {
+        background-color: var(--secondary-blue);
+        color: var(--primary-blue);
+      }
+      #navbar.navbar-scrolled .nav-cta {
+        background: linear-gradient(
+          to right,
+          var(--primary-blue),
+          var(--primary-blue-light)
+        );
+        color: white;
+        border-color: transparent;
+      }
+      #navbar.navbar-scrolled .nav-cta:hover {
+        background-position: right center;
+        background-color: var(--accent-green);
+        color: var(--text-dark);
       }
 
       .nav-container {
@@ -215,7 +263,6 @@
       .logo-text {
         font-size: 1.25rem;
         font-weight: 700;
-        color: var(--primary-blue);
       }
 
       .nav-links {
@@ -234,26 +281,6 @@
         font-weight: 500;
         font-size: 0.9rem;
         border-radius: var(--border-radius-full);
-        color: var(--text-dark);
-      }
-      .nav-links a:hover {
-        background-color: var(--secondary-blue);
-        color: var(--primary-blue);
-      }
-      .nav-links .nav-cta {
-        background: linear-gradient(
-          to right,
-          var(--primary-blue),
-          var(--primary-blue-light)
-        );
-        color: white;
-        transition: var(--transition);
-        background-size: 200% auto;
-      }
-      .nav-links .nav-cta:hover {
-        background-position: right center;
-        background-color: var(--accent-green);
-        color: var(--text-dark);
       }
 
       /* Dropdown */
@@ -317,6 +344,7 @@
         padding: 0.75rem;
         font-weight: 500;
         border-radius: var(--border-radius-md);
+        color: var(--text-dark);
       }
       #mobile-menu a:hover {
         background-color: var(--secondary-blue);
@@ -813,10 +841,12 @@
       }
 
       /* Responsive Adjustments */
-      @media (max-width: 767px) {
+      @media (max-width: 1023px) {
         .container {
           padding: 0 1rem;
         }
+      }
+      @media (max-width: 767px) {
         .logo-text {
           font-size: 1rem;
         }
@@ -832,15 +862,9 @@
         .hero-content h1 {
           font-size: 2.25rem;
         }
-        .testimonial-content {
-          grid-template-columns: 1fr;
-        }
-        .card-grid {
-          grid-template-columns: 1fr;
-        }
-        .contact-grid {
-          grid-template-columns: 1fr;
-        }
+        .testimonial-content,
+        .card-grid,
+        .contact-grid,
         .footer-grid {
           grid-template-columns: 1fr;
         }
@@ -980,15 +1004,15 @@
           </div>
           <div class="hero-stats reveal" style="transition-delay: 600ms">
             <div class="stat">
-              <div class="stat-number">50+</div>
+              <div class="stat-number" data-target="50">0+</div>
               <div class="stat-label">Students Helped</div>
             </div>
             <div class="stat">
-              <div class="stat-number">97%</div>
+              <div class="stat-number" data-target="97">0%</div>
               <div class="stat-label">Success Rate</div>
             </div>
             <div class="stat">
-              <div class="stat-number">5</div>
+              <div class="stat-number" data-target="5">0</div>
               <div class="stat-label">Countries</div>
             </div>
           </div>
@@ -1565,7 +1589,7 @@
         }
       });
 
-      // Staggered Scroll Animations
+      // Staggered Scroll Animations & Counter
       const observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
@@ -1582,6 +1606,34 @@
                 // For other elements, just reveal them
                 entry.target.classList.add("visible");
               }
+
+              // If it's the stats section, trigger the counter
+              if (entry.target.classList.contains("hero-stats")) {
+                const counters = entry.target.querySelectorAll(".stat-number");
+                counters.forEach((counter) => {
+                  const animate = () => {
+                    const target = +counter.getAttribute("data-target");
+                    const suffix = counter.innerText.replace(/[0-9]/g, "");
+                    const duration = 2000;
+                    const stepTime = 20;
+                    const totalSteps = duration / stepTime;
+                    const increment = target / totalSteps;
+                    let current = 0;
+
+                    const timer = setInterval(() => {
+                      current += increment;
+                      if (current >= target) {
+                        clearInterval(timer);
+                        counter.innerText = target + suffix;
+                      } else {
+                        counter.innerText = Math.ceil(current) + suffix;
+                      }
+                    }, stepTime);
+                  };
+                  animate();
+                });
+              }
+
               observer.unobserve(entry.target); // Optional: stop observing once it's visible
             }
           });
