@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,6 +8,7 @@
       name="description"
       content="Interactive study tools, expert coaching, and essential resources for nurses targeting careers in Malta, the UK, and beyond. Flashcards, QBank, AI interview practice, and more."
     />
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -16,322 +17,24 @@
     />
     <script src="https://unpkg.com/feather-icons"></script>
     <style>
-      /* ---
-      * Pro UI Redesigner - Modern Design System v2.1
-      * Aesthetic: Clean, modern, professional, user-friendly, impressive
-      * --- */
-
-      /* 1. Variables and Root Styles */
-      :root {
-        --primary-blue: #1e40af;
-        --primary-blue-light: #3b82f6;
-        --secondary-blue: #dbeafe;
-        --accent-green: #a3e635;
-        --accent-green-dark: #84cc16;
-        --text-dark: #1f2937;
-        --text-light: #4b5563;
-        --border-color: #e2e8f0;
-        --background-light: #f8fafc;
-        --background-white: #ffffff;
-
-        --font-family: "Poppins", sans-serif;
-        --border-radius-md: 0.5rem;
-        --border-radius-lg: 0.75rem;
-        --border-radius-full: 9999px;
-
-        --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-        --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1),
-          0 2px 4px -2px rgb(0 0 0 / 0.1);
-        --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1),
-          0 4px 6px -4px rgb(0 0 0 / 0.1);
-        --shadow-glow: 0 0 25px -5px rgba(163, 230, 53, 0.5);
-
-        --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      }
-
-      /* 2. Base & Typography */
-      *,
-      *::before,
-      *::after {
-        box-sizing: border-box;
-      }
-
-      html {
-        scroll-behavior: smooth;
-        scroll-padding-top: 80px; /* Offset for sticky nav */
-      }
-
       body {
-        margin: 0;
-        font-family: var(--font-family);
-        background-color: var(--background-white);
-        color: var(--text-dark);
-        line-height: 1.6;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
+        font-family: "Poppins", sans-serif;
       }
-
       h1,
       h2,
       h3,
-      h4,
-      h5,
-      h6 {
-        margin: 0;
+      h4 {
+        font-family: "Poppins", sans-serif;
         font-weight: 700;
-        line-height: 1.2;
-        color: var(--primary-blue);
       }
 
-      h1,
-      h2 {
-        background: linear-gradient(
-          to right,
-          var(--primary-blue),
-          var(--primary-blue-light)
-        );
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        text-fill-color: transparent;
-      }
+      /* --- Premium Design Styles --- */
 
-      h1 {
-        font-size: 2.5rem;
-      }
-      h2 {
-        font-size: 2rem;
-      }
-      h3 {
-        font-size: 1.25rem;
-      }
-
-      p {
-        margin: 0;
-        color: var(--text-light);
-      }
-
-      a {
-        text-decoration: none;
-        color: inherit;
-        transition: var(--transition);
-      }
-
-      img {
-        max-width: 100%;
-        height: auto;
-        display: block;
-      }
-
-      /* 3. Layout */
-      .container {
-        max-width: 1100px;
-        margin: 0 auto;
-        padding: 0 1.5rem;
-      }
-
-      section {
-        padding: 5rem 0;
-      }
-
-      .section-header {
-        text-align: center;
-        margin-bottom: 4rem;
-        max-width: 650px;
-        margin-left: auto;
-        margin-right: auto;
-      }
-
-      .section-header h2 {
-        margin-bottom: 1rem;
-      }
-
-      .grid {
-        display: grid;
-        gap: 2rem;
-      }
-
-      @media (min-width: 768px) {
-        .grid-cols-2 {
-          grid-template-columns: repeat(2, 1fr);
-        }
-        .grid-cols-3 {
-          grid-template-columns: repeat(3, 1fr);
-        }
-        .grid-cols-4 {
-          grid-template-columns: repeat(4, 1fr);
-        }
-        .grid-cols-12 {
-          grid-template-columns: repeat(12, 1fr);
-        }
-        .col-span-7 {
-          grid-column: span 7 / span 7;
-        }
-        .col-span-5 {
-          grid-column: span 5 / span 5;
-        }
-      }
-
-      /* 4. Components */
-
-      /* --- Navbar --- */
-      #navbar {
-        position: sticky;
-        top: 0;
-        width: 100%;
-        z-index: 100;
-        background-color: rgba(255, 255, 255, 0.8);
-        backdrop-filter: blur(10px);
-        transition: var(--transition);
-        border-bottom: 1px solid transparent;
-      }
-
-      #navbar.navbar-scrolled {
-        box-shadow: var(--shadow-md);
-        border-bottom-color: var(--border-color);
-      }
-
-      .nav-container {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        height: 80px;
-      }
-
-      .logo-link {
-        display: flex;
-        align-items: center;
-        gap: 0.75rem;
-      }
-      .logo-img {
-        height: 40px;
-        width: auto;
-      }
-      .logo-text {
-        font-size: 1.25rem;
-        font-weight: 700;
-        color: var(--primary-blue);
-      }
-
-      .nav-links {
-        display: none;
-        align-items: center;
-        gap: 0.5rem;
-      }
-      @media (min-width: 768px) {
-        .nav-links {
-          display: flex;
-        }
-      }
-
-      .nav-links a {
-        padding: 0.5rem 1rem;
-        font-weight: 500;
-        font-size: 0.9rem;
-        border-radius: var(--border-radius-full);
-        color: var(--text-dark);
-      }
-      .nav-links a:hover {
-        background-color: var(--secondary-blue);
-        color: var(--primary-blue);
-      }
-      .nav-links .nav-cta {
-        background: linear-gradient(
-          to right,
-          var(--primary-blue),
-          var(--primary-blue-light)
-        );
-        color: white;
-        transition: var(--transition);
-        background-size: 200% auto;
-      }
-      .nav-links .nav-cta:hover {
-        background-position: right center;
-        background-color: var(--accent-green);
-        color: var(--text-dark);
-      }
-
-      /* Dropdown */
-      .dropdown {
-        position: relative;
-      }
-      .dropdown-toggle {
-        display: flex;
-        align-items: center;
-        cursor: pointer;
-      }
-      .dropdown-menu {
-        display: none;
-        position: absolute;
-        top: 120%;
-        right: 0;
-        background-color: var(--background-white);
-        min-width: 220px;
-        box-shadow: var(--shadow-lg);
-        border-radius: var(--border-radius-md);
-        padding: 0.5rem 0;
-        border: 1px solid var(--border-color);
-        opacity: 0;
-        transform: translateY(10px);
-        animation: fadeIn 0.2s ease forwards;
-      }
-      .dropdown:hover .dropdown-menu {
-        display: block;
-      }
-      .dropdown-link {
-        display: block;
-        padding: 0.75rem 1.25rem;
-        font-size: 0.9rem;
-        color: var(--text-light);
-      }
-      .dropdown-link:hover {
-        background-color: var(--secondary-blue);
-        color: var(--primary-blue);
-      }
-
-      /* Mobile Menu */
-      #mobile-menu-button {
-        display: block;
-        background: none;
-        border: none;
-        padding: 0.5rem;
-        cursor: pointer;
-      }
-      @media (min-width: 768px) {
-        #mobile-menu-button {
-          display: none;
-        }
-      }
-      #mobile-menu {
-        background-color: white;
-        padding: 1rem;
-        border-top: 1px solid var(--border-color);
-      }
-      #mobile-menu a {
-        display: block;
-        padding: 0.75rem;
-        font-weight: 500;
-        border-radius: var(--border-radius-md);
-      }
-      #mobile-menu a:hover {
-        background-color: var(--secondary-blue);
-      }
-      #mobile-menu a.nav-cta {
-        background-color: var(--primary-blue);
-        color: white;
-        text-align: center;
-        margin-top: 0.5rem;
-      }
-
-      /* --- Hero Section --- */
+      /* Video Hero Section */
       .hero-video-container {
         position: relative;
-        height: 90vh;
+        height: 80vh;
         overflow: hidden;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
       }
       #hero-video {
         position: absolute;
@@ -341,7 +44,7 @@
         min-height: 100%;
         width: auto;
         height: auto;
-        transform: translate(-50%, -50%);
+        transform: translateX(-50%) translateY(-50%);
         z-index: 0;
       }
       .hero-overlay {
@@ -350,419 +53,25 @@
         left: 0;
         right: 0;
         bottom: 0;
-        background-color: rgba(
-          30,
-          64,
-          175,
-          0.7
-        ); /* Primary Blue with opacity */
+        background-color: rgba(30, 64, 175, 0.7); /* Blue-800 with opacity */
         z-index: 1;
       }
       .hero-content {
         position: relative;
         z-index: 2;
-        color: white;
-        padding: 1.5rem;
-        max-width: 800px;
-      }
-      .hero-content h1 {
-        color: white;
-        font-size: 3rem;
-        font-weight: 700;
-        margin-bottom: 1rem;
-        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-        background: none;
-        -webkit-text-fill-color: initial;
-        text-fill-color: initial;
-      }
-      .hero-content p {
-        color: var(--secondary-blue);
-        font-size: 1.125rem;
-        margin-bottom: 2rem;
-      }
-      .hero-buttons {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 1rem;
       }
 
-      /* --- Buttons --- */
-      .btn {
-        display: inline-block;
-        padding: 0.75rem 2rem;
-        font-size: 1rem;
-        font-weight: 600;
-        border-radius: var(--border-radius-full);
-        transition: var(--transition);
-        cursor: pointer;
-        border: 2px solid transparent;
+      /* Tool Card Hover Effect */
+      .tool-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border: 1px solid #e5e7eb;
       }
-      .btn-primary {
-        background: linear-gradient(
-          to right,
-          var(--accent-green),
-          var(--accent-green-dark),
-          var(--accent-green)
-        );
-        color: var(--text-dark);
-        background-size: 250% auto;
-      }
-      .btn-primary:hover {
-        background-position: right center;
-        transform: translateY(-2px);
-        box-shadow: var(--shadow-md);
-      }
-      .btn-secondary {
-        background-color: transparent;
-        color: white;
-        border-color: white;
-      }
-      .btn-secondary:hover {
-        background-color: white;
-        color: var(--primary-blue);
-        transform: translateY(-2px);
+      .tool-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.15);
       }
 
-      /* --- Alternating Background Sections --- */
-      .bg-light {
-        background-color: var(--background-light);
-      }
-
-      /* --- Cards --- */
-      .card {
-        background-color: var(--background-white);
-        border-radius: var(--border-radius-lg);
-        box-shadow: var(--shadow-md);
-        padding: 2rem;
-        text-align: center;
-        border: 1px solid var(--border-color);
-        transition: var(--transition);
-      }
-      .card:hover {
-        transform: translateY(-8px);
-        box-shadow: var(--shadow-lg), var(--shadow-glow);
-        border-color: var(--accent-green);
-      }
-      .card-icon-wrapper {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        width: 64px;
-        height: 64px;
-        border-radius: var(--border-radius-lg);
-        background-color: var(--secondary-blue);
-        color: var(--primary-blue);
-        margin-bottom: 1.5rem;
-      }
-      .card-icon-wrapper .feather {
-        width: 32px;
-        height: 32px;
-      }
-      .card h3 {
-        margin-bottom: 0.5rem;
-      }
-
-      /* --- Testimonial Section --- */
-      .testimonial-section {
-        background-color: var(--primary-blue);
-        color: white;
-      }
-      .testimonial-section h2 {
-        color: white;
-        background: none;
-        -webkit-text-fill-color: initial;
-        text-fill-color: initial;
-      }
-      .testimonial-section p {
-        color: var(--secondary-blue);
-      }
-      .testimonial-content {
-        align-items: center;
-      }
-
-      .testimonial-card {
-        background-color: rgba(255, 255, 255, 0.1);
-        padding: 2rem;
-        border-radius: var(--border-radius-lg);
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-      }
-
-      .testimonial-body blockquote {
-        font-size: 1.1rem;
-        font-style: italic;
-        position: relative;
-        padding-left: 2.5rem;
-      }
-
-      .testimonial-body .feather {
-        position: absolute;
-        left: 0;
-        top: 0;
-        color: var(--accent-green);
-        opacity: 0.7;
-      }
-
-      .testimonial-author {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-        margin-top: 2rem;
-      }
-
-      .testimonial-avatar {
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        background-color: var(--accent-green);
-        color: var(--text-dark);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-weight: 700;
-        font-size: 1.2rem;
-        flex-shrink: 0;
-      }
-
-      .testimonial-author-info .author-name {
-        font-weight: 700;
-        color: white;
-      }
-      .testimonial-author-info .author-title {
-        font-weight: 400;
-        color: var(--secondary-blue);
-        opacity: 0.9;
-        font-size: 0.9rem;
-      }
-
-      .testimonial-section .btn {
-        margin-top: 2rem;
-      }
-
-      /* --- Testimonial Carousel --- */
-      .carousel-container {
-        position: relative;
-        overflow: hidden;
-        border-radius: var(--border-radius-lg);
-      }
-      .carousel-track {
-        display: flex;
-        transition: transform 0.5s ease-in-out;
-        height: 100%;
-      }
-      .carousel-track .testimonial-card {
-        width: 100%;
-        flex-shrink: 0;
-        box-sizing: border-box;
-      }
-      .carousel-nav {
-        position: absolute;
-        bottom: 1.5rem;
-        left: 50%;
-        transform: translateX(-50%);
-        display: flex;
-        gap: 0.75rem;
-      }
-      .carousel-dot {
-        width: 12px;
-        height: 12px;
-        border-radius: 50%;
-        background-color: rgba(255, 255, 255, 0.4);
-        border: none;
-        cursor: pointer;
-        transition: var(--transition);
-      }
-      .carousel-dot.current-slide {
-        background-color: white;
-        transform: scale(1.2);
-      }
-
-      /* --- Blog Cards --- */
-      .blog-card {
-        background-color: white;
-        border-radius: var(--border-radius-lg);
-        box-shadow: var(--shadow-md);
-        overflow: hidden;
-        transition: var(--transition);
-        display: flex;
-        flex-direction: column;
-      }
-      .blog-card:hover {
-        transform: translateY(-8px);
-        box-shadow: var(--shadow-lg), var(--shadow-glow);
-      }
-      .blog-card img {
-        width: 100%;
-        height: 200px;
-        object-fit: cover;
-      }
-      .blog-card-content {
-        padding: 1.5rem;
-        flex-grow: 1;
-        display: flex;
-        flex-direction: column;
-      }
-      .blog-card-category {
-        color: var(--primary-blue);
-        font-weight: 600;
-        font-size: 0.875rem;
-        margin-bottom: 0.5rem;
-      }
-      .blog-card-content h3 {
-        margin-bottom: 0.5rem;
-      }
-      .blog-card-readmore {
-        margin-top: auto;
-        padding-top: 1rem;
-        font-weight: 600;
-        color: var(--primary-blue);
-        display: inline-flex;
-        align-items: center;
-        gap: 0.25rem;
-      }
-      .blog-card-readmore:hover {
-        color: var(--accent-green);
-      }
-
-      /* --- Contact Section --- */
-      .contact-form-wrapper {
-        background-color: var(--background-white);
-        padding: 2.5rem;
-        border-radius: var(--border-radius-lg);
-        box-shadow: var(--shadow-lg);
-        border: 1px solid var(--border-color);
-      }
-      .form-group {
-        position: relative;
-      }
-      .form-input,
-      .form-select,
-      .form-textarea {
-        width: 100%;
-        padding: 1.25rem 1rem 0.5rem 1rem;
-        border-radius: var(--border-radius-md);
-        border: 1px solid var(--border-color);
-        background-color: var(--background-light);
-        transition: var(--transition);
-        font-size: 1rem;
-      }
-      .form-label {
-        position: absolute;
-        left: 1rem;
-        top: 0.9rem;
-        color: var(--text-light);
-        pointer-events: none;
-        transition: var(--transition);
-      }
-      .form-input:focus ~ .form-label,
-      .form-input:not(:placeholder-shown) ~ .form-label,
-      .form-textarea:focus ~ .form-label,
-      .form-textarea:not(:placeholder-shown) ~ .form-label,
-      .form-select:not(:placeholder-shown) ~ .form-label {
-        top: 0.25rem;
-        font-size: 0.75rem;
-        color: var(--primary-blue);
-      }
-      .form-input:focus,
-      .form-select:focus,
-      .form-textarea:focus {
-        outline: none;
-        border-color: var(--primary-blue);
-        box-shadow: 0 0 0 3px var(--secondary-blue);
-      }
-      .form-select {
-        color: var(--text-dark);
-        padding-top: 1.25rem;
-        padding-bottom: 0.5rem;
-      }
-      .contact-info-wrapper {
-        display: flex;
-        flex-direction: column;
-        gap: 1.5rem;
-        margin-top: 2rem;
-      }
-      @media (min-width: 1024px) {
-        .contact-info-wrapper {
-          margin-top: 0;
-        }
-      }
-      .contact-info-item {
-        background-color: var(--secondary-blue);
-        padding: 1.5rem;
-        border-radius: var(--border-radius-lg);
-        display: flex;
-        align-items: flex-start;
-        gap: 1rem;
-      }
-      .contact-info-icon {
-        flex-shrink: 0;
-        background-color: white;
-        color: var(--primary-blue);
-        width: 48px;
-        height: 48px;
-        border-radius: var(--border-radius-md);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-      .contact-info-item h4 {
-        margin-bottom: 0.25rem;
-      }
-
-      /* --- Footer --- */
-      footer {
-        background-color: var(--background-light);
-        padding: 4rem 0 2rem 0;
-        border-top: 1px solid var(--border-color);
-      }
-      .footer-grid {
-        gap: 2rem;
-      }
-      .footer-about p {
-        margin-top: 1rem;
-        font-size: 0.9rem;
-      }
-      .footer-links h3 {
-        color: var(--text-dark);
-        font-size: 0.9rem;
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-        margin-bottom: 1rem;
-      }
-      .footer-links ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-        display: flex;
-        flex-direction: column;
-        gap: 0.75rem;
-      }
-      .footer-links a:hover {
-        color: var(--primary-blue);
-      }
-      .footer-bottom {
-        margin-top: 4rem;
-        padding-top: 2rem;
-        border-top: 1px solid var(--border-color);
-        text-align: center;
-        color: var(--text-light);
-        font-size: 0.9rem;
-      }
-
-      /* --- Animations --- */
-      @keyframes fadeIn {
-        from {
-          opacity: 0;
-          transform: translateY(10px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
+      /* Scroll Animations */
       .reveal {
         opacity: 0;
         transform: translateY(30px);
@@ -773,122 +82,188 @@
         transform: translateY(0);
       }
 
-      /* --- Utility Classes --- */
-      .hidden {
-        display: none;
-      }
-      .sr-only {
-        position: absolute;
-        width: 1px;
-        height: 1px;
-        padding: 0;
-        margin: -1px;
-        overflow: hidden;
-        clip: rect(0, 0, 0, 0);
-        white-space: nowrap;
-        border-width: 0;
+      /* Navbar on Scroll */
+      .navbar-scrolled {
+        background-color: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(8px);
       }
 
-      /* Responsive Adjustments */
-      @media (max-width: 767px) {
-        h1 {
-          font-size: 2rem;
-        }
-        h2 {
-          font-size: 1.75rem;
-        }
-        section {
-          padding: 3.5rem 0;
-        }
-        .hero-content h1 {
-          font-size: 2.25rem;
-        }
-        .testimonial-content,
-        .grid-cols-4,
-        .grid-cols-3,
-        .grid-cols-12 {
-          grid-template-columns: 1fr;
-        }
+      /* Dropdown styles */
+      .dropdown {
+        position: relative;
+        display: inline-block;
+      }
+      .dropdown-menu {
+        display: none;
+        position: absolute;
+        right: 0;
+        background-color: white;
+        min-width: 200px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.1);
+        z-index: 50;
+        border-radius: 0.5rem;
+        margin-top: 0.5rem;
+      }
+      .dropdown:hover .dropdown-menu {
+        display: block;
+      }
+      .dropdown-link {
+        display: block;
+        padding: 0.75rem 1.25rem;
+        font-size: 0.875rem;
+        color: #374151;
+      }
+      .dropdown-link:hover {
+        background-color: #f9fafb;
       }
     </style>
   </head>
-  <body>
-    <nav id="navbar">
-      <div class="container nav-container">
-        <a href="#" class="logo-link">
-          <img
-            class="logo-img"
-            src="src/assets/img/logo1.png"
-            alt="Global Nursing Assist PL Logo"
-            onerror="this.onerror=null;this.src='https://placehold.co/200x50/1e40af/ffffff?text=Logo';"
-          />
-          <span class="logo-text">Global Nursing Assist PL</span>
-        </a>
-        <div class="nav-links">
-          <div class="dropdown">
-            <a href="#tools" class="dropdown-toggle">
-              <span>Study Tools</span>
-              <i
-                data-feather="chevron-down"
-                style="width: 16px; height: 16px; margin-left: 4px"
-              ></i>
+  <body class="bg-gray-100 text-gray-800">
+    <nav
+      id="navbar"
+      class="bg-white/80 backdrop-blur-sm shadow-sm sticky top-0 z-50 transition-all duration-300"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+          <div class="flex-shrink-0">
+            <a href="#" class="flex items-center">
+              <img
+                class="h-10 w-auto"
+                src="src/assets/img/logo1.png"
+                alt="Global Nursing Assist PL Logo"
+                onerror="this.onerror=null;this.src='https://placehold.co/200x50/1e40af/ffffff?text=Logo';"
+              />
+              <span class="ml-3 text-xl font-bold text-blue-800"
+                >Global Nursing Assist PL</span
+              >
             </a>
-            <div class="dropdown-menu">
+          </div>
+          <div class="hidden md:block">
+            <div class="ml-10 flex items-center space-x-2">
+              <div class="dropdown">
+                <a
+                  href="#tools"
+                  class="text-gray-700 hover:bg-gray-100 hover:text-blue-700 px-4 py-2 rounded-md text-sm font-medium inline-flex items-center"
+                >
+                  <span>Study Tools</span>
+                  <i data-feather="chevron-down" class="ml-1 h-4 w-4"></i>
+                </a>
+                <div class="dropdown-menu">
+                  <a
+                    href="./Malta-study-plan/Qbank_Malta.html"
+                    class="dropdown-link"
+                    >Malta QBank</a
+                  >
+                  <a
+                    href="./Malta-study-plan/flashcard-m.html"
+                    class="dropdown-link"
+                    >Flashcards</a
+                  >
+                  <a
+                    href="./Malta-study-plan/study-guide1.html"
+                    class="dropdown-link"
+                    >Study Guide</a
+                  >
+                  <a href="./ai-page/ai-assistant.html" class="dropdown-link"
+                    >AI Interview Assistant</a
+                  >
+                </div>
+              </div>
               <a
-                href="./Malta-study-plan/Qbank_Malta.html"
-                class="dropdown-link"
-                >Malta QBank</a
+                href="#services"
+                class="text-gray-700 hover:bg-gray-100 hover:text-blue-700 px-4 py-2 rounded-md text-sm font-medium"
+                >Coaching</a
               >
               <a
-                href="./Malta-study-plan/flashcard-m.html"
-                class="dropdown-link"
-                >Flashcards</a
+                href="#blog"
+                class="text-gray-700 hover:bg-gray-100 hover:text-blue-700 px-4 py-2 rounded-md text-sm font-medium"
+                >Blog</a
               >
               <a
-                href="./Malta-study-plan/study-guide1.html"
-                class="dropdown-link"
-                >Study Guide</a
-              >
-              <a href="./ai-page/ai-assistant.html" class="dropdown-link"
-                >AI Interview Assistant</a
+                href="#contact"
+                class="bg-blue-600 text-white px-5 py-2 rounded-full text-sm font-medium hover:bg-blue-700 transition shadow-sm hover:shadow-lg"
+                >Book a Free Call</a
               >
             </div>
           </div>
-          <a href="#services">Coaching</a>
-          <a href="#blog">Blog</a>
-          <a href="#contact" class="nav-cta">Book a Free Call</a>
+          <div class="-mr-2 flex md:hidden">
+            <button
+              type="button"
+              id="mobile-menu-button"
+              class="bg-white inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+              aria-controls="mobile-menu"
+              aria-expanded="false"
+            >
+              <span class="sr-only">Open main menu</span>
+              <i data-feather="menu" class="h-6 w-6 block"></i>
+              <i data-feather="x" class="h-6 w-6 hidden"></i>
+            </button>
+          </div>
         </div>
-        <button type="button" id="mobile-menu-button">
-          <span class="sr-only">Open main menu</span>
-          <i data-feather="menu" class="h-6 w-6 block"></i>
-          <i data-feather="x" class="h-6 w-6 hidden"></i>
-        </button>
       </div>
-      <div class="hidden" id="mobile-menu">
-        <a href="#tools">Study Tools</a>
-        <a href="#services">Coaching</a>
-        <a href="#blog">Blog</a>
-        <a href="#contact" class="nav-cta">Book a Free Call</a>
+      <div class="md:hidden hidden" id="mobile-menu">
+        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+          <a
+            href="#tools"
+            class="text-gray-700 hover:bg-gray-100 block px-3 py-2 rounded-md text-base font-medium"
+            >Study Tools</a
+          >
+          <a
+            href="#services"
+            class="text-gray-700 hover:bg-gray-100 block px-3 py-2 rounded-md text-base font-medium"
+            >Coaching</a
+          >
+          <a
+            href="#blog"
+            class="text-gray-700 hover:bg-gray-100 block px-3 py-2 rounded-md text-base font-medium"
+            >Blog</a
+          >
+          <a
+            href="#contact"
+            class="bg-blue-600 text-white block px-3 py-2 rounded-md text-base font-medium hover:bg-blue-700 transition"
+            >Book a Free Call</a
+          >
+        </div>
       </div>
     </nav>
 
     <main>
       <!-- Hero Section -->
       <section class="hero-video-container">
+        <!-- Replace this with a link to your self-hosted or cloud-hosted video -->
         <video autoplay loop muted playsinline id="hero-video">
-          <source src="./src/assets/img/Hero_Video.mp4" type="video/mp4" />
+          <source
+            src="https://assets.mixkit.co/videos/preview/mixkit-medical-students-in-a-anatomy-class-4477-large.mp4"
+            type="video/mp4"
+          />
           Your browser does not support the video tag.
         </video>
         <div class="hero-overlay"></div>
-        <div class="hero-content">
-          <h1 class="reveal">Your Complete Nursing Career Hub</h1>
-          <p class="reveal" style="transition-delay: 200ms">
+        <div
+          class="hero-content h-full flex flex-col justify-center items-center text-center text-white px-4"
+        >
+          <h1 class="text-4xl md:text-6xl font-bold reveal">
+            Your Complete Nursing Career Hub
+          </h1>
+          <p
+            class="mt-4 text-lg md:text-xl max-w-3xl mx-auto text-blue-100 reveal"
+            style="transition-delay: 200ms"
+          >
             From interactive study tools to expert one-on-one coaching, we
             provide everything you need to succeed in Malta, the UK, and beyond.
           </p>
-          <div class="hero-buttons reveal" style="transition-delay: 400ms">
-            <a href="#tools" class="btn btn-primary">Explore Study Tools</a>
-            <a href="#services" class="btn btn-secondary"
+          <div
+            class="mt-8 flex justify-center gap-4 flex-wrap reveal"
+            style="transition-delay: 400ms"
+          >
+            <a
+              href="#tools"
+              class="bg-white text-blue-700 font-semibold px-8 py-3 rounded-full hover:bg-blue-50 transition transform hover:scale-105 shadow-lg"
+              >Explore Study Tools</a
+            >
+            <a
+              href="#services"
+              class="border-2 border-white text-white font-semibold px-8 py-3 rounded-full hover:bg-white hover:text-blue-700 transition transform hover:scale-105"
               >View Coaching Services</a
             >
           </div>
@@ -896,97 +271,150 @@
       </section>
 
       <!-- Interactive Learning Hub Section -->
-      <section id="tools" class="bg-light">
-        <div class="container">
-          <div class="section-header reveal">
-            <h2>Interactive Learning Hub</h2>
-            <p>
+      <section id="tools" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center reveal">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900">
+              Interactive Learning Hub
+            </h2>
+            <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
               Go beyond theory with hands-on tools designed for active learning
               and retention.
             </p>
           </div>
-          <div class="grid grid-cols-4 card-grid">
-            <a href="./Malta-study-plan/Qbank_Malta.html" class="card reveal">
-              <div class="card-icon-wrapper">
-                <i data-feather="help-circle"></i>
+          <div class="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+            <a
+              href="./Malta-study-plan/Qbank_Malta.html"
+              class="tool-card block bg-white rounded-xl overflow-hidden reveal"
+            >
+              <div class="p-8">
+                <div
+                  class="flex items-center justify-center h-16 w-16 rounded-2xl bg-blue-100 text-blue-700 mx-auto"
+                >
+                  <i data-feather="help-circle" class="w-8 h-8"></i>
+                </div>
+                <h3 class="mt-6 text-xl font-bold text-center">Malta QBank</h3>
+                <p class="mt-2 text-center text-gray-600">
+                  Tackle real interview questions with our comprehensive,
+                  categorized question bank.
+                </p>
               </div>
-              <h3>Malta QBank</h3>
-              <p>
-                Tackle real interview questions with our comprehensive,
-                categorized question bank.
-              </p>
             </a>
-            <a href="./Malta-study-plan/flashcard-m.html" class="card reveal">
-              <div class="card-icon-wrapper">
-                <i data-feather="copy"></i>
+            <a
+              href="./Malta-study-plan/flashcard-m.html"
+              class="tool-card block bg-white rounded-xl overflow-hidden reveal"
+              style="transition-delay: 100ms"
+            >
+              <div class="p-8">
+                <div
+                  class="flex items-center justify-center h-16 w-16 rounded-2xl bg-blue-100 text-blue-700 mx-auto"
+                >
+                  <i data-feather="copy" class="w-8 h-8"></i>
+                </div>
+                <h3 class="mt-6 text-xl font-bold text-center">Flashcards</h3>
+                <p class="mt-2 text-center text-gray-600">
+                  Master key concepts quickly with our interactive and
+                  customizable flashcard decks.
+                </p>
               </div>
-              <h3>Flashcards</h3>
-              <p>
-                Master key concepts quickly with our interactive and
-                customizable flashcard decks.
-              </p>
             </a>
-            <a href="./Malta-study-plan/study-guide1.html" class="card reveal">
-              <div class="card-icon-wrapper">
-                <i data-feather="book-open"></i>
+            <a
+              href="./Malta-study-plan/study-guide1.html"
+              class="tool-card block bg-white rounded-xl overflow-hidden reveal"
+              style="transition-delay: 200ms"
+            >
+              <div class="p-8">
+                <div
+                  class="flex items-center justify-center h-16 w-16 rounded-2xl bg-blue-100 text-blue-700 mx-auto"
+                >
+                  <i data-feather="book-open" class="w-8 h-8"></i>
+                </div>
+                <h3 class="mt-6 text-xl font-bold text-center">Study Guide</h3>
+                <p class="mt-2 text-center text-gray-600">
+                  Follow a structured, day-by-day plan to cover all essential
+                  topics for your exams.
+                </p>
               </div>
-              <h3>Study Guide</h3>
-              <p>
-                Follow a structured, day-by-day plan to cover all essential
-                topics for your exams.
-              </p>
             </a>
-            <a href="./ai-page/ai-assistant.html" class="card reveal">
-              <div class="card-icon-wrapper">
-                <i data-feather="message-circle"></i>
+            <a
+              href="./ai-page/ai-assistant.html"
+              class="tool-card block bg-white rounded-xl overflow-hidden reveal"
+              style="transition-delay: 300ms"
+            >
+              <div class="p-8">
+                <div
+                  class="flex items-center justify-center h-16 w-16 rounded-2xl bg-blue-100 text-blue-700 mx-auto"
+                >
+                  <i data-feather="message-circle" class="w-8 h-8"></i>
+                </div>
+                <h3 class="mt-6 text-xl font-bold text-center">
+                  AI Interview Assistant
+                </h3>
+                <p class="mt-2 text-center text-gray-600">
+                  Practice your interview skills with an AI-powered coach that
+                  gives instant feedback.
+                </p>
               </div>
-              <h3>AI Interview Assistant</h3>
-              <p>
-                Practice your interview skills with an AI-powered coach that
-                gives instant feedback.
-              </p>
             </a>
           </div>
         </div>
       </section>
 
       <!-- Personalized Coaching Services Section -->
-      <section id="services">
-        <div class="container">
-          <div class="section-header reveal">
-            <h2>Personalized Coaching Services</h2>
-            <p>
+      <section id="services" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center reveal">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900">
+              Personalized Coaching Services
+            </h2>
+            <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
               Get one-on-one expert guidance from a nurse who has been in your
               shoes.
             </p>
           </div>
-          <div class="grid grid-cols-3 card-grid">
-            <div class="card reveal">
-              <div class="card-icon-wrapper">
-                <span style="font-size: 2rem">🇲🇹</span>
+          <div class="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            <div
+              class="bg-gray-50 p-8 rounded-xl border border-gray-200 reveal"
+            >
+              <div
+                class="flex items-center justify-center h-12 w-12 rounded-full bg-blue-100 text-blue-700"
+              >
+                <span class="text-2xl">🇲🇹</span>
               </div>
-              <h3>Malta & UK Interview Coaching</h3>
-              <p>
+              <h3 class="mt-6 text-xl font-bold">
+                Malta & UK Interview Coaching
+              </h3>
+              <p class="mt-2 text-gray-600">
                 Focused preparation, role-playing, and strategy sessions to help
                 you ace your nursing interviews.
               </p>
             </div>
-            <div class="card reveal">
-              <div class="card-icon-wrapper">
-                <span style="font-size: 2rem">🗣️</span>
+            <div
+              class="bg-gray-50 p-8 rounded-xl border border-gray-200 reveal"
+              style="transition-delay: 100ms"
+            >
+              <div
+                class="flex items-center justify-center h-12 w-12 rounded-full bg-blue-100 text-blue-700"
+              >
+                <span class="text-2xl">🗣️</span>
               </div>
-              <h3>IELTS Coaching</h3>
-              <p>
+              <h3 class="mt-6 text-xl font-bold">IELTS Coaching</h3>
+              <p class="mt-2 text-gray-600">
                 Tailored IELTS Academic prep for nurses, focusing on the
                 language you need for success.
               </p>
             </div>
-            <div class="card reveal">
-              <div class="card-icon-wrapper">
-                <span style="font-size: 2rem">📖</span>
+            <div
+              class="bg-gray-50 p-8 rounded-xl border border-gray-200 reveal"
+              style="transition-delay: 200ms"
+            >
+              <div
+                class="flex items-center justify-center h-12 w-12 rounded-full bg-blue-100 text-blue-700"
+              >
+                <span class="text-2xl">📖</span>
               </div>
-              <h3>Thesis & Assignment Help</h3>
-              <p>
+              <h3 class="mt-6 text-xl font-bold">Thesis & Assignment Help</h3>
+              <p class="mt-2 text-gray-600">
                 Expert support for nursing research, case studies, formatting,
                 and university standards.
               </p>
@@ -996,137 +424,126 @@
       </section>
 
       <!-- Why Choose Us / Testimonials -->
-      <section class="testimonial-section">
-        <div class="container reveal">
-          <div class="grid grid-cols-2 testimonial-content">
+      <section class="py-20 bg-blue-800 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 reveal">
+          <div class="lg:grid lg:grid-cols-2 lg:gap-16 lg:items-center">
             <div>
-              <h2>Why Nurses Trust Us</h2>
-              <p>
+              <h2 class="text-3xl font-bold">Why Nurses Trust Us</h2>
+              <p class="mt-4 text-lg text-blue-200">
                 Founded by a medical graduate who became a nurse, we understand
                 your journey because we've lived it. Our approach combines
                 academic rigor with real-world clinical experience.
               </p>
-              <a href="#contact" class="btn btn-primary"
-                >Book a free discovery call</a
-              >
-            </div>
-            <div class="carousel-container">
-              <div class="carousel-track">
-                <div class="testimonial-card">
-                  <div class="testimonial-body">
-                    <i data-feather="message-square"></i>
-                    <blockquote>
-                      "The Malta interview coaching was spot on. I felt
-                      confident and prepared, and I got the job! The recall
-                      documents were invaluable."
-                    </blockquote>
-                  </div>
-                  <div class="testimonial-author">
-                    <div class="testimonial-avatar">TS</div>
-                    <div class="testimonial-author-info">
-                      <p class="author-name">Tinashe S.</p>
-                      <p class="author-title">Registered Nurse, Malta</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="testimonial-card">
-                  <div class="testimonial-body">
-                    <i data-feather="message-square"></i>
-                    <blockquote>
-                      "The IELTS coaching was a game-changer. The focused
-                      approach on medical vocabulary helped me score an 8.0
-                      overall. Highly recommended!"
-                    </blockquote>
-                  </div>
-                  <div class="testimonial-author">
-                    <div class="testimonial-avatar">PK</div>
-                    <div class="testimonial-author-info">
-                      <p class="author-name">Priya K.</p>
-                      <p class="author-title">Nurse, UK Bound</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="testimonial-card">
-                  <div class="testimonial-body">
-                    <i data-feather="message-square"></i>
-                    <blockquote>
-                      "I was completely lost with my thesis. The guidance I
-                      received was clear, professional, and helped me structure
-                      my research perfectly. I passed with distinction."
-                    </blockquote>
-                  </div>
-                  <div class="testimonial-author">
-                    <div class="testimonial-avatar">DO</div>
-                    <div class="testimonial-author-info">
-                      <p class="author-name">David O.</p>
-                      <p class="author-title">Nursing Student, Poland</p>
-                    </div>
-                  </div>
-                </div>
+              <div class="mt-8">
+                <a
+                  href="#contact"
+                  class="text-base font-semibold bg-white text-blue-700 px-6 py-3 rounded-full hover:bg-blue-100 transition"
+                  >Book a free discovery call</a
+                >
               </div>
-              <div class="carousel-nav"></div>
+            </div>
+            <div class="mt-10 lg:mt-0">
+              <div class="bg-white/10 p-8 rounded-2xl">
+                <i data-feather="message-square" class="w-8 h-8 text-white"></i>
+                <blockquote class="mt-4 text-xl font-medium text-white">
+                  "The Malta interview coaching was spot on. I felt confident
+                  and prepared, and I got the job! The recall documents were
+                  invaluable."
+                </blockquote>
+                <footer class="mt-4">
+                  <p class="text-base font-semibold">Tinashe S.</p>
+                  <p class="text-blue-200">Registered Nurse, Malta</p>
+                </footer>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       <!-- From the Blog Section -->
-      <section id="blog" class="bg-light">
-        <div class="container">
-          <div class="section-header reveal">
-            <h2>Latest from the Blog</h2>
-            <p>Insights and advice to help you on your nursing journey.</p>
+      <section id="blog" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center reveal">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900">
+              Latest from the Blog
+            </h2>
+            <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
+              Insights and advice to help you on your nursing journey.
+            </p>
           </div>
-          <div class="grid grid-cols-3 card-grid">
-            <a href="./blog.html" class="blog-card reveal">
-              <img src="./blog-pages/blog-img/n_blog.png" alt="MQRIC guide" />
-              <div class="blog-card-content">
-                <p class="blog-card-category">Guides</p>
-                <h3>A Nurse's Guide to Malta: MQRIC Recognition</h3>
-                <p>
+          <div class="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            <a
+              href="./blog.html"
+              class="tool-card block bg-white rounded-xl overflow-hidden reveal"
+            >
+              <img
+                class="h-56 w-full object-cover"
+                src="https://placehold.co/600x400/3b82f6/ffffff?text=Blog+Image"
+                alt="MQRIC guide"
+              />
+              <div class="p-6">
+                <p class="text-sm text-blue-600 font-semibold">Guides</p>
+                <h3 class="mt-2 text-xl font-bold">
+                  A Nurse's Guide to Malta: MQRIC Recognition
+                </h3>
+                <p class="mt-2 text-gray-600">
                   A step-by-step guide to getting your foreign nursing
                   qualifications recognized in Malta.
                 </p>
-                <span class="blog-card-readmore"
-                  >Read More
-                  <i data-feather="arrow-right" style="width: 16px"></i
-                ></span>
+                <span
+                  class="mt-4 inline-block text-blue-600 font-semibold hover:underline"
+                  >Read More &rarr;</span
+                >
               </div>
             </a>
-            <a href="./blog.html" class="blog-card reveal">
+            <a
+              href="./blog.html"
+              class="tool-card block bg-white rounded-xl overflow-hidden reveal"
+              style="transition-delay: 100ms"
+            >
               <img
-                src="./blog-pages/blog-img/n_blog2.png"
+                class="h-56 w-full object-cover"
+                src="https://placehold.co/600x400/1e40af/ffffff?text=Blog+Image"
                 alt="IELTS speaking"
               />
-              <div class="blog-card-content">
-                <p class="blog-card-category">IELTS</p>
-                <h3>IELTS Speaking for Nurses: Common Questions</h3>
-                <p>
+              <div class="p-6">
+                <p class="text-sm text-blue-600 font-semibold">IELTS</p>
+                <h3 class="mt-2 text-xl font-bold">
+                  IELTS Speaking for Nurses: Common Questions
+                </h3>
+                <p class="mt-2 text-gray-600">
                   Breaking down common topics and providing high-scoring answers
                   for nursing scenarios.
                 </p>
-                <span class="blog-card-readmore"
-                  >Read More
-                  <i data-feather="arrow-right" style="width: 16px"></i
-                ></span>
+                <span
+                  class="mt-4 inline-block text-blue-600 font-semibold hover:underline"
+                  >Read More &rarr;</span
+                >
               </div>
             </a>
-            <a href="./blog.html" class="blog-card reveal">
+            <a
+              href="./blog.html"
+              class="tool-card block bg-white rounded-xl overflow-hidden reveal"
+              style="transition-delay: 200ms"
+            >
               <img
-                src="./blog-pages/blog-img/n_blog3.png"
+                class="h-56 w-full object-cover"
+                src="https://placehold.co/600x400/374151/ffffff?text=Blog+Image"
                 alt="First year as a nurse"
               />
-              <div class="blog-card-content">
-                <p class="blog-card-category">Career Advice</p>
-                <h3>Navigating Your First Year as a Nurse in the UK</h3>
-                <p>
+              <div class="p-6">
+                <p class="text-sm text-blue-600 font-semibold">Career Advice</p>
+                <h3 class="mt-2 text-xl font-bold">
+                  Navigating Your First Year as a Nurse in the UK
+                </h3>
+                <p class="mt-2 text-gray-600">
                   A practical guide to what you can expect, from clinical duties
                   to workplace culture in the NHS.
                 </p>
-                <span class="blog-card-readmore"
-                  >Read More
-                  <i data-feather="arrow-right" style="width: 16px"></i
-                ></span>
+                <span
+                  class="mt-4 inline-block text-blue-600 font-semibold hover:underline"
+                  >Read More &rarr;</span
+                >
               </div>
             </a>
           </div>
@@ -1134,135 +551,152 @@
       </section>
 
       <!-- Contact Section -->
-      <section id="contact">
-        <div class="container">
-          <div class="section-header reveal">
-            <h2>Ready to Advance Your Nursing Career?</h2>
-            <p>
+      <section id="contact" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center reveal">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900">
+              Ready to Advance Your Nursing Career?
+            </h2>
+            <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
               Book a free, no-obligation call to discuss your goals and find out
               how we can help you succeed.
             </p>
           </div>
-          <div class="grid grid-cols-12">
-            <div class="col-span-7 reveal">
-              <div class="contact-form-wrapper">
-                <form
-                  action="https://formsubmit.co/benascogroup@gmail.com"
-                  method="POST"
-                >
-                  <input
-                    type="hidden"
-                    name="_next"
-                    value="https://drbenasmah.github.io/Nursing-Assist-PL/thank-you.html"
-                  />
-                  <input type="hidden" name="_captcha" value="false" />
-                  <div class="form-group" style="margin-bottom: 1.5rem">
+          <div
+            class="mt-16 max-w-5xl mx-auto lg:grid lg:grid-cols-12 lg:gap-8 items-start"
+          >
+            <div
+              class="lg:col-span-7 bg-gray-50 p-8 rounded-2xl shadow-lg reveal"
+            >
+              <form
+                action="https://formsubmit.co/benascogroup@gmail.com"
+                method="POST"
+                class="grid grid-cols-1 gap-y-6"
+              >
+                <input
+                  type="hidden"
+                  name="_next"
+                  value="https://drbenasmah.github.io/Nursing-Assist-PL/thank-you.html"
+                />
+                <input type="hidden" name="_captcha" value="false" />
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  <div>
+                    <label for="name" class="sr-only">Full Name</label>
                     <input
                       type="text"
                       name="name"
                       id="name"
                       autocomplete="name"
-                      class="form-input"
-                      placeholder=" "
+                      class="block w-full shadow-sm py-3 px-4 placeholder-gray-500 focus:ring-blue-500 focus:border-blue-500 border-gray-300 rounded-md"
+                      placeholder="Full Name"
                       required
                     />
-                    <label for="name" class="form-label">Full Name</label>
                   </div>
-                  <div class="form-group" style="margin-bottom: 1.5rem">
+                  <div>
+                    <label for="email" class="sr-only">Email</label>
                     <input
                       id="email"
                       name="email"
                       type="email"
                       autocomplete="email"
-                      class="form-input"
-                      placeholder=" "
+                      class="block w-full shadow-sm py-3 px-4 placeholder-gray-500 focus:ring-blue-500 focus:border-blue-500 border-gray-300 rounded-md"
+                      placeholder="Email"
                       required
                     />
-                    <label for="email" class="form-label">Email</label>
                   </div>
-                  <div class="form-group" style="margin-bottom: 1.5rem">
-                    <select
-                      id="service"
-                      name="service"
-                      required
-                      class="form-select"
-                      onchange="this.setAttribute('data-selected', this.value !== '' ? 'true' : 'false')"
-                    >
-                      <option value="" disabled selected></option>
-                      <option value="interview">
-                        Malta / UK Interview Coaching
-                      </option>
-                      <option value="thesis">Thesis Help</option>
-                      <option value="ielts">IELTS Coaching</option>
-                      <option value="job-prep">Professional CV Writing</option>
-                      <option value="mentorship">1-on-1 Mentorship</option>
-                      <option value="writing">Assignments Help</option>
-                      <option value="registration">
-                        Malta/UK NMC Registration
-                      </option>
-                    </select>
-                    <label for="service" class="form-label"
-                      >Select a Service...</label
-                    >
-                  </div>
-                  <div class="form-group" style="margin-bottom: 1.5rem">
-                    <textarea
-                      id="message"
-                      name="message"
-                      rows="4"
-                      class="form-textarea"
-                      placeholder=" "
-                    ></textarea>
-                    <label for="message" class="form-label"
-                      >Tell us about your goals...</label
-                    >
-                  </div>
-                  <div>
-                    <button
-                      type="submit"
-                      class="btn btn-primary"
-                      style="width: 100%; background: var(--primary-blue)"
-                    >
-                      Send Message
-                    </button>
-                  </div>
-                </form>
-              </div>
+                </div>
+                <div>
+                  <label for="service" class="sr-only">Select a Service</label>
+                  <select
+                    id="service"
+                    name="service"
+                    required
+                    class="block w-full shadow-sm py-3 px-4 text-gray-500 focus:ring-blue-500 focus:border-blue-500 border-gray-300 rounded-md"
+                  >
+                    <option value="" disabled selected>
+                      Select a Service...
+                    </option>
+                    <option value="interview">
+                      Malta / UK Interview Coaching
+                    </option>
+                    <option value="thesis">Thesis Help</option>
+                    <option value="ielts">IELTS Coaching</option>
+                    <option value="job-prep">Professional CV Writing</option>
+                    <option value="mentorship">1-on-1 Mentorship</option>
+                    <option value="writing">Assignments Help</option>
+                    <option value="registration">
+                      Malta/UK NMC Registration
+                    </option>
+                  </select>
+                </div>
+                <div>
+                  <label for="message" class="sr-only">Message</label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows="4"
+                    class="block w-full shadow-sm py-3 px-4 placeholder-gray-500 focus:ring-blue-500 focus:border-blue-500 border border-gray-300 rounded-md"
+                    placeholder="Tell us about your goals..."
+                  ></textarea>
+                </div>
+                <div>
+                  <button
+                    type="submit"
+                    class="w-full inline-flex items-center justify-center px-6 py-3 border border-transparent rounded-full shadow-sm text-base font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                  >
+                    Send Message
+                  </button>
+                </div>
+              </form>
             </div>
-            <div class="col-span-5 reveal" style="transition-delay: 200ms">
-              <div class="contact-info-wrapper">
-                <div class="contact-info-item">
-                  <div class="contact-info-icon">
-                    <i data-feather="mail"></i>
-                  </div>
-                  <div>
-                    <h4>Email</h4>
-                    <a href="mailto:benascogroup@gmail.com"
-                      >benascogroup@gmail.com</a
-                    >
-                  </div>
+            <div
+              class="lg:col-span-5 mt-10 lg:mt-0 space-y-6 reveal"
+              style="transition-delay: 200ms"
+            >
+              <div class="bg-blue-50 p-6 rounded-xl flex items-start space-x-4">
+                <div
+                  class="flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-lg bg-blue-100 text-blue-700"
+                >
+                  <i data-feather="mail" class="w-6 h-6"></i>
                 </div>
-                <div class="contact-info-item">
-                  <div class="contact-info-icon">
-                    <i data-feather="message-square"></i>
-                  </div>
-                  <div>
-                    <h4>WhatsApp</h4>
-                    <a href="https://wa.me/481516224011" target="_blank"
-                      >+48 516 224 011</a
-                    >
-                  </div>
+                <div>
+                  <h4 class="text-lg font-bold">Email</h4>
+                  <a
+                    href="mailto:benascogroup@gmail.com"
+                    class="text-gray-600 hover:text-blue-700"
+                    >benascogroup@gmail.com</a
+                  >
                 </div>
-                <div class="contact-info-item">
-                  <div class="contact-info-icon">
-                    <i data-feather="calendar"></i>
-                  </div>
-                  <div>
-                    <h4>Book a Call</h4>
-                    <a href="#" style="font-weight: 600"
-                      >Schedule Free Discovery Call</a
-                    >
-                  </div>
+              </div>
+              <div class="bg-blue-50 p-6 rounded-xl flex items-start space-x-4">
+                <div
+                  class="flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-lg bg-blue-100 text-blue-700"
+                >
+                  <i data-feather="message-square" class="w-6 h-6"></i>
+                </div>
+                <div>
+                  <h4 class="text-lg font-bold">WhatsApp</h4>
+                  <a
+                    href="https://wa.me/481516224011"
+                    target="_blank"
+                    class="text-gray-600 hover:text-blue-700"
+                    >+48 516 224 011</a
+                  >
+                </div>
+              </div>
+              <div class="bg-blue-50 p-6 rounded-xl flex items-start space-x-4">
+                <div
+                  class="flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-lg bg-blue-100 text-blue-700"
+                >
+                  <i data-feather="calendar" class="w-6 h-6"></i>
+                </div>
+                <div>
+                  <h4 class="text-lg font-bold">Book a Call</h4>
+                  <a
+                    href="#"
+                    class="inline-block mt-1 bg-blue-200 text-blue-800 font-semibold px-4 py-2 rounded-lg hover:bg-blue-300 transition"
+                    >Schedule Free Discovery Call</a
+                  >
                 </div>
               </div>
             </div>
@@ -1271,51 +705,95 @@
       </section>
     </main>
 
-    <footer>
-      <div class="container">
-        <div class="grid grid-cols-4 footer-grid">
-          <div class="footer-about" style="grid-column: span 2 / span 2">
-            <a href="#" class="logo-link">
+    <footer class="bg-white border-t">
+      <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div class="col-span-2 md:col-span-1">
+            <a href="#" class="flex items-center">
               <img
-                class="logo-img"
+                class="h-10 w-auto"
                 src="src/assets/img/logo1.png"
                 alt="Global Nursing Assist PL Logo"
               />
-              <span class="logo-text">Global Nursing Assist PL</span>
+              <span class="ml-3 text-xl font-bold font-lora text-blue-800"
+                >Global Nursing Assist PL</span
+              >
             </a>
-            <p>
+            <p class="mt-4 text-gray-500 text-base">
               Empowering nurses with the tools and confidence to build
               successful international careers.
             </p>
           </div>
-          <div class="footer-links">
-            <h3>Study Tools</h3>
-            <ul>
+          <div>
+            <h3
+              class="text-sm font-semibold text-gray-500 tracking-wider uppercase"
+            >
+              Study Tools
+            </h3>
+            <ul class="mt-4 space-y-4">
               <li>
-                <a href="./Malta-study-plan/Qbank_Malta.html">Malta QBank</a>
+                <a
+                  href="./Malta-study-plan/Qbank_Malta.html"
+                  class="text-base text-gray-600 hover:text-gray-900"
+                  >Malta QBank</a
+                >
               </li>
               <li>
-                <a href="./Malta-study-plan/flashcard-m.html">Flashcards</a>
+                <a
+                  href="./Malta-study-plan/flashcard-m.html"
+                  class="text-base text-gray-600 hover:text-gray-900"
+                  >Flashcards</a
+                >
               </li>
               <li>
-                <a href="./Malta-study-plan/study-guide1.html">Study Guide</a>
+                <a
+                  href="./Malta-study-plan/study-guide1.html"
+                  class="text-base text-gray-600 hover:text-gray-900"
+                  >Study Guide</a
+                >
               </li>
               <li>
-                <a href="./ai-page/ai-assistant.html">AI Interview Assistant</a>
+                <a
+                  href="./ai-page/ai-assistant.html"
+                  class="text-base text-gray-600 hover:text-gray-900"
+                  >AI Interview Assistant</a
+                >
               </li>
             </ul>
           </div>
-          <div class="footer-links">
-            <h3>Company</h3>
-            <ul>
-              <li><a href="#services">Coaching Services</a></li>
-              <li><a href="#blog">Blog</a></li>
-              <li><a href="#contact">Contact Us</a></li>
+          <div>
+            <h3
+              class="text-sm font-semibold text-gray-500 tracking-wider uppercase"
+            >
+              Company
+            </h3>
+            <ul class="mt-4 space-y-4">
+              <li>
+                <a
+                  href="#services"
+                  class="text-base text-gray-600 hover:text-gray-900"
+                  >Coaching Services</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#blog"
+                  class="text-base text-gray-600 hover:text-gray-900"
+                  >Blog</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#contact"
+                  class="text-base text-gray-600 hover:text-gray-900"
+                  >Contact Us</a
+                >
+              </li>
             </ul>
           </div>
         </div>
-        <div class="footer-bottom">
-          <p>
+        <div class="mt-12 border-t border-gray-200 pt-8">
+          <p class="text-base text-gray-500 text-center">
             &copy; <span id="current-year"></span> Global Nursing Assist PL. All
             rights reserved.
           </p>
@@ -1324,7 +802,6 @@
     </footer>
 
     <script>
-      // Feather Icons
       feather.replace();
 
       // Mobile menu toggle
@@ -1349,32 +826,19 @@
         }
       });
 
-      // Staggered Scroll Animations
+      // Scroll animations
       const observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
-              // If it's a grid of cards, handle staggering
-              if (entry.target.classList.contains("card-grid")) {
-                const cards = entry.target.querySelectorAll(".reveal");
-                cards.forEach((card, index) => {
-                  setTimeout(() => {
-                    card.classList.add("visible");
-                  }, index * 100); // 100ms delay between each card
-                });
-              } else {
-                // For other elements, just reveal them
-                entry.target.classList.add("visible");
-              }
-              observer.unobserve(entry.target); // Optional: stop observing once it's visible
+              entry.target.classList.add("visible");
             }
           });
         },
         { threshold: 0.1 }
       );
 
-      // Observe all elements with .reveal, but also the card-grid containers
-      document.querySelectorAll(".reveal, .card-grid").forEach((el) => {
+      document.querySelectorAll(".reveal").forEach((el) => {
         observer.observe(el);
       });
 
@@ -1382,77 +846,21 @@
       document.getElementById("current-year").textContent =
         new Date().getFullYear();
 
-      // Close mobile menu on link click
-      document.querySelectorAll("#mobile-menu a").forEach((link) => {
-        link.addEventListener("click", () => {
-          mobileMenu.classList.add("hidden");
-          openIcon.classList.remove("hidden");
-          closeIcon.classList.add("hidden");
+      // Smooth scroll for internal links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          document.querySelector(this.getAttribute("href")).scrollIntoView({
+            behavior: "smooth",
+          });
+          // Close mobile menu on link click
+          if (!mobileMenu.classList.contains("hidden")) {
+            mobileMenu.classList.add("hidden");
+            openIcon.classList.remove("hidden");
+            closeIcon.classList.add("hidden");
+          }
         });
       });
-
-      // Logic for select floating label
-      const formSelect = document.getElementById("service");
-      formSelect.addEventListener("change", function () {
-        const label = document.querySelector('label[for="service"]');
-        if (this.value) {
-          label.style.top = "0.25rem";
-          label.style.fontSize = "0.75rem";
-          label.style.color = "var(--primary-blue)";
-        }
-      });
-
-      // Testimonial Carousel
-      const track = document.querySelector(".carousel-track");
-      if (track) {
-        const slides = Array.from(track.children);
-        const dotsNav = document.querySelector(".carousel-nav");
-
-        // Create dots
-        slides.forEach((slide, index) => {
-          const dot = document.createElement("button");
-          dot.classList.add("carousel-dot");
-          if (index === 0) dot.classList.add("current-slide");
-          dotsNav.appendChild(dot);
-        });
-
-        const dots = Array.from(dotsNav.children);
-
-        const updateDots = (currentDot, targetDot) => {
-          currentDot.classList.remove("current-slide");
-          targetDot.classList.add("current-slide");
-        };
-
-        dotsNav.addEventListener("click", (e) => {
-          const targetDot = e.target.closest("button");
-          if (!targetDot) return;
-
-          const currentDot = dotsNav.querySelector(".current-slide");
-          const targetIndex = dots.findIndex((dot) => dot === targetDot);
-
-          track.style.transform = `translateX(-${100 * targetIndex}%)`;
-          updateDots(currentDot, targetDot);
-          slideIndex = targetIndex; // Reset autoplay index
-        });
-
-        let slideIndex = 0;
-        const autoPlay = () => {
-          slideIndex++;
-          if (slideIndex >= slides.length) {
-            slideIndex = 0;
-          }
-
-          const currentDot = dotsNav.querySelector(".current-slide");
-          const targetDot = dots[slideIndex];
-
-          track.style.transform = `translateX(-${100 * slideIndex}%)`;
-          if (currentDot && targetDot) {
-            updateDots(currentDot, targetDot);
-          }
-        };
-
-        setInterval(autoPlay, 5000); // Change slide every 5 seconds
-      }
     </script>
   </body>
 </html>
