@@ -46,6 +46,7 @@
         max-width: 1440px;
         margin: 0 auto;
         padding: 0 2.5rem; /* Adjust padding for edge alignment */
+        max-width: none !important; /* This makes the navbar full-width */
       }
 
       /* FIX: Explicitly set nav link colors */
@@ -425,7 +426,7 @@
       </div>
     </nav>
     <!-- === MAIN GUIDE CONTENT === -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div class="px-4 sm:px-6 lg:px-8 py-8">
       <!-- Guide Header -->
       <header class="bg-white p-6 rounded-lg shadow-sm mb-8">
         <h1 class="font-heading text-2xl font-bold text-gray-900">
@@ -473,7 +474,7 @@
 
       <div class="lg:grid lg:grid-cols-12 lg:gap-8">
         <!-- Sidebar -->
-        <aside class="lg:col-span-3 xl:col-span-2">
+        <aside class="lg:col-span-4 xl:col-span-3">
           <div class="sticky top-24">
             <nav
               id="guide-navigation"
@@ -486,7 +487,7 @@
         </aside>
 
         <!-- Main Content Area -->
-        <main class="lg:col-span-9 xl:col-span-10 mt-8 lg:mt-0">
+        <main class="lg:col-span-8 xl:col-span-9 mt-8 lg:mt-0">
           <div
             id="guide-content"
             class="bg-white p-6 sm:p-8 rounded-lg shadow-sm min-h-[60vh]"
@@ -1707,6 +1708,18 @@
                     a: "If a patient expressed that they didn't understand a procedure they had consented to, my immediate action would be to pause and not proceed. I would tell the patient that it's very important they feel comfortable and informed. I would sit with them and ask what parts are unclear, and I would explain the nursing aspects of the care. However, I would not re-explain the medical procedure itself, as that is the doctor's responsibility. I would immediately contact the doctor and inform them that the patient requires further explanation before we can proceed, as we do not have valid informed consent. This ensures I am acting as the patient's advocate and upholding their right to autonomy.",
                   },
                   {
+                    q: "You are caring for a 60-year-old patient who is fully alert and mentally competent. The doctor has explained that they need an urgent blood transfusion to survive, but the patient is refusing it for personal reasons. What is your role in this situation?",
+                    a: "My primary role is to act as a patient advocate while respecting their autonomy. First, I would ensure their decision is an informed refusal by speaking with them to confirm they understand the consequences. I would then inform the senior medical team of the patient's decision, document the conversation thoroughly, and reassure the patient that we will continue to provide all other supportive and comfort care. The core ethical principle here is that a competent patient has the right to refuse treatment.",
+                  },
+                  {
+                    q: "A patient is terminally ill, and the medical team has determined that further aggressive treatment would be futile and only prolong suffering. The family, however, is demanding that you 'do everything' to keep the patient alive. How would you handle this situation?",
+                    a: "My first step is to approach the family with empathy and listen to their concerns. My key role is to facilitate better communication, so I would arrange a formal meeting with the family and the senior medical team. In that meeting, I would help guide the conversation towards the goals of care, focusing on comfort and dignity rather than futile treatments that could increase suffering. The guiding principle is non-maleficence, or 'do no harm'. I would also suggest involving support services like the palliative care team to help the family.",
+                  },
+                  {
+                    q: "Your patient has just received a serious diagnosis. They ask you, 'Please don't tell my wife and son when they visit.' A few minutes later, the wife asks you directly, 'Is everything okay?' What do you do?",
+                    a: "My primary ethical duty of confidentiality is to my patient. I would first reassure the patient that I respect their wishes. When the wife asks me, I must be honest without breaching confidentiality. I would respond professionally by saying, 'The doctor has spoken with your husband about the results, and it's best that he shares that information with you directly.' This response respects the patient's autonomy and redirects the family back to the correct source of information.",
+                  },
+                  {
                     q: "How do you ensure patient autonomy during your nursing practice?",
                     a: null,
                   },
@@ -2336,15 +2349,15 @@
             if (isCompleted) link.classList.add("completed");
             link.dataset.day = day.day;
             link.innerHTML = `
-                              <div class="day-status">${
-                                isCompleted
-                                  ? '<i data-feather="check" class="w-4 h-4"></i>'
-                                  : ""
-                              }</div>
-                              <span class="truncate">Day ${day.day}: ${
+                                  <div class="day-status">${
+                                    isCompleted
+                                      ? '<i data-feather="check" class="w-4 h-4"></i>'
+                                      : ""
+                                  }</div>
+                                  <span class="truncate">Day ${day.day}: ${
               day.title
             }</span>
-                          `;
+                              `;
             navigationContainer.appendChild(link);
           });
           feather.replace();
@@ -2372,17 +2385,17 @@
               const questionsHtml = (topic.questions || [])
                 .map(
                   (q) => `
-                              <div class="mt-4">
-                                  <p class="font-semibold text-gray-800">${
-                                    q.q
-                                  }</p>
-                                  ${
-                                    q.a
-                                      ? `<div class="sample-answer mt-2 text-gray-700 whitespace-pre-line">${q.a}</div>`
-                                      : ""
-                                  }
-                              </div>
-                          `
+                                  <div class="mt-4">
+                                      <p class="font-semibold text-gray-800">${
+                                        q.q
+                                      }</p>
+                                      ${
+                                        q.a
+                                          ? `<div class="sample-answer mt-2 text-gray-700 whitespace-pre-line">${q.a}</div>`
+                                          : ""
+                                      }
+                                  </div>
+                              `
                 )
                 .join("");
 
@@ -2391,32 +2404,32 @@
                 : "";
 
               return `
-                              <div class="topic-card">
-                                  <h3 class="font-heading text-xl font-semibold text-gray-900">${
-                                    topic.title
-                                  }</h3>
-                                  ${
-                                    topic.source
-                                      ? `<p class="text-sm text-gray-500 mb-4"><em>Source: ${topic.source}</em></p>`
-                                      : ""
-                                  }
-                                  <p class="text-gray-700 mb-4">${
-                                    topic.coreConcept
-                                  }</p>
-                                  ${
-                                    keyAreasHtml
-                                      ? `<h4 class="font-semibold text-gray-800 mb-2">Key Areas to Master</h4><ul class="space-y-2 text-gray-700 mb-4">${keyAreasHtml}</ul>`
-                                      : ""
-                                  }
-                                  ${imageHtml}
-                                  ${
-                                    topic.takeaway
-                                      ? `<div class="bg-blue-50 border-l-4 border-blue-500 p-4 rounded"><p class="font-semibold text-blue-800">Key Takeaway</p><p class="text-blue-700">${topic.takeaway}</p></div>`
-                                      : ""
-                                  }
-                                  ${questionsHtml}
-                              </div>
-                          `;
+                                  <div class="topic-card">
+                                      <h3 class="font-heading text-xl font-semibold text-gray-900">${
+                                        topic.title
+                                      }</h3>
+                                      ${
+                                        topic.source
+                                          ? `<p class="text-sm text-gray-500 mb-4"><em>Source: ${topic.source}</em></p>`
+                                          : ""
+                                      }
+                                      <p class="text-gray-700 mb-4">${
+                                        topic.coreConcept
+                                      }</p>
+                                      ${
+                                        keyAreasHtml
+                                          ? `<h4 class="font-semibold text-gray-800 mb-2">Key Areas to Master</h4><ul class="space-y-2 text-gray-700 mb-4">${keyAreasHtml}</ul>`
+                                          : ""
+                                      }
+                                      ${imageHtml}
+                                      ${
+                                        topic.takeaway
+                                          ? `<div class="bg-blue-50 border-l-4 border-blue-500 p-4 rounded"><p class="font-semibold text-blue-800">Key Takeaway</p><p class="text-blue-700">${topic.takeaway}</p></div>`
+                                          : ""
+                                      }
+                                      ${questionsHtml}
+                                  </div>
+                              `;
             })
             .join("");
 
@@ -2426,84 +2439,86 @@
           const checklistHtml = (dayData.checklist || [])
             .map(
               (task) => `
-                          <div class="checklist-item ${
-                            progress[task.id] ? "completed" : ""
-                          }" data-task-id="${task.id}">
-                              <input type="checkbox" id="${task.id}" ${
+                              <div class="checklist-item ${
+                                progress[task.id] ? "completed" : ""
+                              }" data-task-id="${task.id}">
+                                  <input type="checkbox" id="${task.id}" ${
                 progress[task.id] ? "checked" : ""
               }>
-                              <label for="${task.id}" class="flex-grow">${
+                                  <label for="${task.id}" class="flex-grow">${
                 task.text
               }</label>
-                          </div>
-                      `
+                              </div>
+                          `
             )
             .join("");
 
           const isBookmarked = bookmarks.includes(dayData.day);
 
           contentContainer.innerHTML = `
-                          <div class="flex justify-between items-start">
-                              <div>
-                                  <p class="text-sm font-semibold text-blue-600">Day ${
-                                    dayData.day
-                                  } Study Guide</p>
-                                  <h1 class="font-heading mt-2 text-3xl font-bold tracking-tight text-gray-900">${
-                                    dayData.title
-                                  }</h1>
-                              </div>
-                              <button id="bookmark-btn" class="p-2 rounded-full hover:bg-gray-100 transition-colors" title="${
-                                isBookmarked
-                                  ? "Remove bookmark"
-                                  : "Add bookmark"
-                              }">
-                                  <i data-feather="bookmark" class="w-6 h-6 ${
-                                    isBookmarked
-                                      ? "text-yellow-500 fill-current"
-                                      : "text-gray-500"
-                                  }"></i>
-                              </button>
-                          </div>
-                          <div class="mt-6 border-t border-gray-200 pt-6">
-                              <div class="bg-amber-50 border-l-4 border-amber-400 p-4 rounded-md mb-8">
-                                  <h2 class="font-semibold text-amber-800">Today's Objective</h2>
-                                  <p class="text-amber-700">${
-                                    dayData.objective
-                                  }</p>
-                              </div>
-
-                              ${detailedContentHtml}
-
-                              ${
-                                (dayData.checklist || []).length > 0
-                                  ? `
-                              <div>
-                                  <h2 class="font-heading text-xl font-semibold text-gray-900 mb-4">Action Items</h2>
-                                  <div class="space-y-3">${checklistHtml}</div>
-                              </div>`
-                                  : `
-                              <div>
-                                   <div class="checklist-item ${
-                                     isDayWithNoTasksCompleted
-                                       ? "completed"
-                                       : ""
-                                   }" data-task-id="day${
-                                      dayData.day
-                                    }-completed">
-                                      <input type="checkbox" id="day${
+                              <div class="flex justify-between items-start">
+                                  <div>
+                                      <p class="text-sm font-semibold text-blue-600">Day ${
                                         dayData.day
-                                      }-completed" ${
-                                      isDayWithNoTasksCompleted ? "checked" : ""
-                                    }>
-                                      <label for="day${
-                                        dayData.day
-                                      }-completed" class="flex-grow">Mark day as completed</label>
+                                      } Study Guide</p>
+                                      <h1 class="font-heading mt-2 text-3xl font-bold tracking-tight text-gray-900">${
+                                        dayData.title
+                                      }</h1>
                                   </div>
+                                  <button id="bookmark-btn" class="p-2 rounded-full hover:bg-gray-100 transition-colors" title="${
+                                    isBookmarked
+                                      ? "Remove bookmark"
+                                      : "Add bookmark"
+                                  }">
+                                      <i data-feather="bookmark" class="w-6 h-6 ${
+                                        isBookmarked
+                                          ? "text-yellow-500 fill-current"
+                                          : "text-gray-500"
+                                      }"></i>
+                                  </button>
                               </div>
-                              `
-                              }
-                          </div>
-                      `;
+                              <div class="mt-6 border-t border-gray-200 pt-6">
+                                  <div class="bg-amber-50 border-l-4 border-amber-400 p-4 rounded-md mb-8">
+                                      <h2 class="font-semibold text-amber-800">Today's Objective</h2>
+                                      <p class="text-amber-700">${
+                                        dayData.objective
+                                      }</p>
+                                  </div>
+
+                                  ${detailedContentHtml}
+
+                                  ${
+                                    (dayData.checklist || []).length > 0
+                                      ? `
+                                  <div>
+                                      <h2 class="font-heading text-xl font-semibold text-gray-900 mb-4">Action Items</h2>
+                                      <div class="space-y-3">${checklistHtml}</div>
+                                  </div>`
+                                      : `
+                                  <div>
+                                       <div class="checklist-item ${
+                                         isDayWithNoTasksCompleted
+                                           ? "completed"
+                                           : ""
+                                       }" data-task-id="day${
+                                          dayData.day
+                                        }-completed">
+                                          <input type="checkbox" id="day${
+                                            dayData.day
+                                          }-completed" ${
+                                          isDayWithNoTasksCompleted
+                                            ? "checked"
+                                            : ""
+                                        }>
+                                          <label for="day${
+                                            dayData.day
+                                          }-completed" class="flex-grow">Mark day as completed</label>
+                                      </div>
+                                  </div>
+                                  `
+                                  }
+                              </div>
+                          `;
           feather.replace();
         };
 
