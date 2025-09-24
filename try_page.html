@@ -17,11 +17,6 @@
     />
     <script src="https://unpkg.com/feather-icons"></script>
     <style>
-      /* ---
-      * Pro UI Redesigner - Modern Design System v2.1
-      * Aesthetic: Clean, modern, professional, user-friendly, impressive
-      * --- */
-
       /* 1. Variables and Root Styles */
       :root {
         --primary-blue: #1e40af;
@@ -295,7 +290,7 @@
       .dropdown-menu {
         display: none;
         position: absolute;
-        top: 120%;
+        top: 100%;
         right: 0;
         background-color: var(--background-white);
         min-width: 220px;
@@ -306,6 +301,18 @@
         opacity: 0;
         transform: translateY(10px);
         animation: fadeIn 0.2s ease forwards;
+      }
+      /* Add a new rule to fix the gap */
+      .dropdown:hover .dropdown-menu {
+        display: block;
+        /*padding-top: 1rem;  Add generous top padding to bridge the gap */
+        margin-top: -0.5rem; /* Use a negative margin to pull the menu up and overlap the toggle */
+      }
+      /* FIX: This rule ensures the dropdown links are always legible */
+      #navbar .nav-links .dropdown-menu a {
+        color: var(
+          --text-dark
+        ); /* Force the text to be a dark color for legibility */
       }
       .dropdown:hover .dropdown-menu {
         display: block;
@@ -1088,6 +1095,59 @@
                   </div>
                 </li>
               </ul>
+              <!-- Social Media Links -->
+              <div class="mt-8 flex space-x-4">
+                <a
+                  href="https://www.facebook.com/ben.asmah.5"
+                  target="_blank"
+                  aria-label="Facebook"
+                >
+                  <i
+                    data-feather="facebook"
+                    class="w-6 h-6 text-blue-600 hover:text-blue-800"
+                  ></i>
+                </a>
+                <a
+                  href="https://www.instagram.com/benasmah_md/"
+                  target="_blank"
+                  aria-label="Instagram"
+                >
+                  <i
+                    data-feather="instagram"
+                    class="w-6 h-6 text-pink-500 hover:text-pink-700"
+                  ></i>
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/ben-asmah-7a703a121/"
+                  target="_blank"
+                  aria-label="LinkedIn"
+                >
+                  <i
+                    data-feather="linkedin"
+                    class="w-6 h-6 text-blue-700 hover:text-blue-900"
+                  ></i>
+                </a>
+                <a
+                  href="https://x.com/AsmahPapa"
+                  target="_blank"
+                  aria-label="Twitter"
+                >
+                  <i
+                    data-feather="twitter"
+                    class="w-6 h-6 text-sky-500 hover:text-sky-700"
+                  ></i>
+                </a>
+                <a
+                  href="https://www.youtube.com/@Dr.BenAsmah"
+                  target="_blank"
+                  aria-label="YouTube"
+                >
+                  <i
+                    data-feather="youtube"
+                    class="w-6 h-6 text-red-600 hover:text-red-800"
+                  ></i>
+                </a>
+              </div>
             </div>
           </div>
         </div>
