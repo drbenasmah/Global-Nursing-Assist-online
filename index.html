@@ -444,6 +444,21 @@
         font-size: 0.9rem;
         color: var(--secondary-blue);
       }
+      @media (max-width: 1023px) {
+        /* Fixes the overlap on small screens by pushing the content down */
+        .hero-content {
+          padding-top: 4rem;
+        }
+        .hero-video-container {
+          position: relative;
+          height: 110vh;
+          overflow: hidden;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+        }
+      }
 
       /* --- Buttons --- */
       .btn {
