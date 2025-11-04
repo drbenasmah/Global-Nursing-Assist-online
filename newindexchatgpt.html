@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Global Nursing Assist PL | Your Complete Nursing Career Hub</title>
+    <style>
+      :root {
+        --primary: #008080;
+        --secondary: #003366;
+        --light: #f7f9fc;
+        --text: #333;
+        --white: #fff;
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-family: "Poppins", sans-serif;
+        color: var(--text);
+        background: var(--light);
+        scroll-behavior: smooth;
+      }
+      header {
+        position: fixed;
+        width: 100%;
+        top: 0;
+        background: var(--white);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+      }
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 2rem;
+      }
+      nav a {
+        color: var(--secondary);
+        text-decoration: none;
+        margin: 0 1rem;
+        font-weight: 600;
+      }
+      nav a:hover {
+        color: var(--primary);
+      }
+      .hero {
+        background: linear-gradient(
+            rgba(0, 51, 102, 0.6),
+            rgba(0, 128, 128, 0.6)
+          ),
+          url("https://globalnursingassist.online/benas_lecture.png")
+            center/cover no-repeat;
+        color: var(--white);
+        text-align: center;
+        padding: 8rem 2rem 6rem;
+      }
+      .hero h1 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+      }
+      .hero p {
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+      }
+      .hero button {
+        background: var(--primary);
+        color: var(--white);
+        border: none;
+        padding: 0.8rem 1.5rem;
+        border-radius: 2rem;
+        font-size: 1rem;
+        cursor: pointer;
+      }
+      .hero button:hover {
+        background: var(--secondary);
+      }
+      section {
+        padding: 5rem 2rem;
+        max-width: 1200px;
+        margin: auto;
+      }
+      .section-title {
+        text-align: center;
+        margin-bottom: 3rem;
+      }
+      .cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+      }
+      .card {
+        background: var(--white);
+        border-radius: 1rem;
+        padding: 2rem;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s;
+      }
+      .card:hover {
+        transform: translateY(-5px);
+      }
+      .card h3 {
+        color: var(--secondary);
+        margin-bottom: 0.5rem;
+      }
+      .card p {
+        font-size: 0.95rem;
+      }
+      .about {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 2rem;
+      }
+      .about img {
+        flex: 1 1 300px;
+        border-radius: 1rem;
+        width: 100%;
+      }
+      .about-text {
+        flex: 1 1 400px;
+      }
+      footer {
+        background: var(--secondary);
+        color: var(--white);
+        text-align: center;
+        padding: 2rem 1rem;
+      }
+      footer a {
+        color: var(--primary);
+        text-decoration: none;
+      }
+      .floating-buttons {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+      .floating-buttons a {
+        background: var(--primary);
+        color: var(--white);
+        padding: 0.8rem 1rem;
+        border-radius: 50%;
+        font-size: 1.4rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div class="logo">
+          <img
+            src="https://globalnursingassist.online/logo1.png"
+            alt="Logo"
+            width="160"
+          />
+        </div>
+        <div>
+          <a href="#study">Study Tools</a>
+          <a href="#coaching">Coaching</a>
+          <a href="#about">About</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <h1>Empowering Nurses to Succeed Internationally</h1>
+      <p>
+        From exam prep to job interviews, we give you the tools, coaching, and
+        confidence to build your nursing career in Malta, the UK, and beyond.
+      </p>
+      <em>“Can’t Stop, Won’t Stop.”</em><br /><br />
+      <button
+        onclick="document.querySelector('#contact').scrollIntoView({behavior:'smooth'})"
+      >
+        Book Free Call
+      </button>
+    </section>
+
+    <section id="study">
+      <h2 class="section-title">Interactive Study Tools</h2>
+      <div class="cards">
+        <div class="card">
+          <h3>Malta QBank</h3>
+          <p>
+            Practice real interview questions with our categorized nursing
+            QBank.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Flashcards</h3>
+          <p>Master key nursing topics quickly with interactive flashcards.</p>
+        </div>
+        <div class="card">
+          <h3>Study Guide</h3>
+          <p>
+            Follow a structured daily plan covering all essential nursing
+            topics.
+          </p>
+        </div>
+        <div class="card">
+          <h3>AI Interview Assistant 🤖</h3>
+          <p>
+            Practice with AI-powered mock interviews and get instant feedback.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="coaching">
+      <h2 class="section-title">Coaching Services</h2>
+      <div class="cards">
+        <div class="card">
+          <h3>🇲🇹 Malta & UK Interview Coaching</h3>
+          <p>
+            Focused prep and role-play sessions to ace your nursing interviews.
+          </p>
+        </div>
+        <div class="card">
+          <h3>🗣️ IELTS Coaching</h3>
+          <p>Tailored IELTS Academic prep focusing on medical vocabulary.</p>
+        </div>
+        <div class="card">
+          <h3>📖 Thesis & Assignment Help</h3>
+          <p>Expert guidance for research, case studies, and formatting.</p>
+        </div>
+        <div class="card">
+          <h3>🧭 Mentorship</h3>
+          <p>One-on-one mentorship for your entire nursing journey.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="about">
+      <img
+        src="https://globalnursingassist.online/benas_lecture.png"
+        alt="Founder Dr. Ben Asmah"
+      />
+      <div class="about-text">
+        <h2>Meet Dr. Ben Asmah</h2>
+        <p>
+          Founder of Global Nursing Assist PL — a medical graduate (MBBS, China)
+          and Polish-trained nurse (BSc, WSG, Bydgoszcz). With experience across
+          Asia, Africa, Australia, and Europe, he guides aspiring nurses through
+          education, licensing, and career development.
+        </p>
+        <p>
+          <strong>Follow:</strong>
+          <a href="https://www.instagram.com/benasmah_md/">Instagram</a> |
+          <a href="https://www.linkedin.com/in/ben-asmah-7a703a121/"
+            >LinkedIn</a
+          >
+          |
+          <a href="https://www.youtube.com/@Dr.BenAsmah">YouTube</a>
+        </p>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2 class="section-title">Book a Free Discovery Call</h2>
+      <p style="text-align: center; margin-bottom: 1.5rem">
+        Let's discuss your nursing goals and how we can help you succeed.
+      </p>
+      <div style="text-align: center">
+        <a
+          href="https://wa.me/481516224011"
+          style="
+            background: var(--primary);
+            color: var(--white);
+            padding: 1rem 2rem;
+            border-radius: 2rem;
+            text-decoration: none;
+          "
+          >Chat on WhatsApp</a
+        >
+      </div>
+    </section>
+
+    <footer>
+      <img
+        src="https://globalnursingassist.online/logo1.png"
+        alt="Logo"
+        width="120"
+      /><br />
+      <p>© 2025 Global Nursing Assist PL | Empowering Nurses Globally</p>
+      <p>
+        📧 <a href="mailto:benascogroup@gmail.com">benascogroup@gmail.com</a> |
+        📱 +48 516 224 011
+      </p>
+      <p><em>“Can’t Stop, Won’t Stop.”</em></p>
+    </footer>
+
+    <div class="floating-buttons">
+      <a href="https://wa.me/481516224011">💬</a>
+      <a href="#contact">📅</a>
+    </div>
+  </body>
+</html>
