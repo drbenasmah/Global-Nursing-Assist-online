@@ -1,0 +1,364 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>
+      IELTS Academic for Nurses | International Nursing Registration Guide
+    </title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+        margin: 0;
+        background: #f4f7fb;
+        color: #1c1c1c;
+      }
+
+      /* NAV */
+
+      nav {
+        background: white;
+        padding: 18px 8%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+        position: sticky;
+        top: 0;
+      }
+
+      nav .logo {
+        font-weight: 700;
+        color: #0e2a47;
+        font-size: 20px;
+      }
+
+      nav a {
+        margin-left: 25px;
+        text-decoration: none;
+        color: #0e2a47;
+        font-weight: 600;
+      }
+
+      /* HERO */
+
+      .hero {
+        height: 550px;
+        background:
+          linear-gradient(rgba(14, 42, 71, 0.75), rgba(14, 42, 71, 0.75)),
+          url("assets/images/hero-nurse.jpg");
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: white;
+        padding: 20px;
+      }
+
+      .hero-content {
+        max-width: 800px;
+      }
+
+      .hero h1 {
+        font-size: 48px;
+        margin-bottom: 20px;
+      }
+
+      .hero p {
+        font-size: 18px;
+        opacity: 0.95;
+      }
+
+      .btn {
+        display: inline-block;
+        margin-top: 30px;
+        padding: 14px 28px;
+        background: #ff6b00;
+        color: white;
+        text-decoration: none;
+        border-radius: 6px;
+        font-weight: 600;
+      }
+
+      /* SECTIONS */
+
+      section {
+        padding: 80px 8%;
+        max-width: 1200px;
+        margin: auto;
+      }
+
+      .section-title {
+        text-align: center;
+        font-size: 32px;
+        margin-bottom: 50px;
+        color: #0e2a47;
+      }
+
+      /* GRID */
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 30px;
+      }
+
+      .card {
+        background: white;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        transition: 0.3s;
+      }
+
+      .card:hover {
+        transform: translateY(-5px);
+      }
+
+      .card img {
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+      }
+
+      .card-content {
+        padding: 25px;
+      }
+
+      .card-content h3 {
+        margin-bottom: 10px;
+        color: #0e2a47;
+      }
+
+      /* SPLIT SECTION */
+
+      .split {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 50px;
+        align-items: center;
+      }
+
+      .split img {
+        width: 100%;
+        border-radius: 10px;
+      }
+
+      /* COUNTRY */
+
+      .country {
+        background: white;
+        padding: 25px;
+        border-radius: 8px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+      }
+
+      /* CTA */
+
+      .cta {
+        background: #0e2a47;
+        color: white;
+        text-align: center;
+        padding: 80px 20px;
+      }
+
+      .cta h2 {
+        font-size: 32px;
+      }
+
+      /* FOOTER */
+
+      footer {
+        background: #081b2e;
+        color: white;
+        text-align: center;
+        padding: 40px;
+      }
+
+      /* MOBILE */
+
+      @media (max-width: 900px) {
+        .hero h1 {
+          font-size: 32px;
+        }
+
+        .split {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <div class="logo">IELTS for Nurses</div>
+
+      <div>
+        <a href="about.html">About</a>
+        <a href="countries.html">Countries</a>
+        <a href="reading.html">Reading</a>
+        <a href="writing.html">Writing</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </nav>
+
+    <!-- HERO -->
+
+    <div class="hero">
+      <div class="hero-content">
+        <h1>IELTS Academic Preparation for International Nurses</h1>
+
+        <p>
+          Prepare for nursing registration in the UK, Australia, Malta, and the
+          USA with structured, professional IELTS Academic preparation designed
+          specifically for nurses.
+        </p>
+
+        <a href="study-plan.html" class="btn"> Start Study Plan </a>
+      </div>
+    </div>
+
+    <!-- WHY IELTS -->
+
+    <section>
+      <h2 class="section-title">Why Nurses Must Pass IELTS</h2>
+
+      <div class="split">
+        <img src="assets/images/nurse-study.jpg" />
+
+        <div>
+          <p>
+            International nursing regulators require proof of English
+            proficiency to ensure safe communication, accurate documentation,
+            and professional practice.
+          </p>
+
+          <p>
+            IELTS Academic is the most widely accepted English exam for
+            internationally educated nurses.
+          </p>
+
+          <p>
+            Achieving Band 7 or higher is essential for registration in many
+            countries.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- MODULES -->
+
+    <section>
+      <h2 class="section-title">IELTS Preparation Modules</h2>
+
+      <div class="grid">
+        <div class="card">
+          <img src="assets/images/reading.jpg" />
+
+          <div class="card-content">
+            <h3>Reading</h3>
+
+            <p>Learn skimming, scanning, and time management strategies.</p>
+
+            <a href="reading.html" class="btn"> Learn More </a>
+          </div>
+        </div>
+
+        <div class="card">
+          <img src="assets/images/listening.jpg" />
+
+          <div class="card-content">
+            <h3>Listening</h3>
+
+            <p>Improve listening accuracy and avoid common mistakes.</p>
+
+            <a href="listening.html" class="btn"> Learn More </a>
+          </div>
+        </div>
+
+        <div class="card">
+          <img src="assets/images/writing.jpg" />
+
+          <div class="card-content">
+            <h3>Writing</h3>
+
+            <p>Master Task 1 reports and Task 2 essays.</p>
+
+            <a href="writing.html" class="btn"> Learn More </a>
+          </div>
+        </div>
+
+        <div class="card">
+          <img src="assets/images/speaking.jpg" />
+
+          <div class="card-content">
+            <h3>Speaking</h3>
+
+            <p>Build confidence and fluency for the speaking test.</p>
+
+            <a href="speaking.html" class="btn"> Learn More </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COUNTRY -->
+
+    <section>
+      <h2 class="section-title">IELTS Requirements by Country</h2>
+
+      <div class="grid">
+        <div class="country">
+          <h3>United Kingdom</h3>
+
+          <p>Overall Band 7.0</p>
+
+          <p>Writing minimum 6.5</p>
+        </div>
+
+        <div class="country">
+          <h3>Australia</h3>
+
+          <p>Overall Band 7.0</p>
+
+          <p>Minimum 7.0 each section</p>
+        </div>
+
+        <div class="country">
+          <h3>Malta</h3>
+
+          <p>Typically Band 7.0</p>
+        </div>
+
+        <div class="country">
+          <h3>United States</h3>
+
+          <p>6.5–7.0 depending on state</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+
+    <div class="cta">
+      <h2>Start Your IELTS Preparation Today</h2>
+
+      <p>
+        Structured preparation improves your chances of achieving Band 7 or
+        higher.
+      </p>
+
+      <a href="study-plan.html" class="btn"> View Study Plan </a>
+    </div>
+
+    <footer>© 2026 IELTS Academic for Nurses</footer>
+  </body>
+</html>
