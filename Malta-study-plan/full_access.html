@@ -1,0 +1,995 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Unlock verified Malta Nursing Interview model answers, scoring protocols, and examiner recalls."
+    />
+    <title>Get Full Access | Professional Nursing Interview QBank</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = { darkMode: "class" };
+    </script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lora:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Feather Icons -->
+    <script src="https://unpkg.com/feather-icons"></script>
+
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+      }
+      h1,
+      h2,
+      h3,
+      .font-serif {
+        font-family: "Lora", serif;
+      }
+      .gradient-brand {
+        background: linear-gradient(
+          135deg,
+          #1e3a8a 0%,
+          #1e40af 50%,
+          #2563eb 100%
+        );
+      }
+      .pro-glow {
+        box-shadow: 0 12px 35px -5px rgba(37, 99, 235, 0.28);
+      }
+      .faq-answer {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.35s ease-out;
+      }
+      .faq-answer.open {
+        max-height: 400px;
+        transition: max-height 0.45s ease-in;
+      }
+
+      /* Navbar & Global Header styles */
+      .navbar {
+        background-color: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid #e2e8f0;
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        transition: all 0.3s ease;
+      }
+      html.dark .navbar {
+        background-color: rgba(30, 41, 59, 0.92);
+        border-bottom-color: #334155;
+      }
+      .nav-container {
+        max-width: 1440px;
+        margin: 0 auto;
+        padding: 0 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 4.5rem;
+        position: relative;
+      }
+      .nav-logo a {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        text-decoration: none;
+      }
+      .logo-img {
+        height: 2.75rem;
+        width: auto;
+        object-fit: contain;
+      }
+      .logo-text {
+        font-family: "Lora", serif;
+        font-weight: 700;
+        font-size: 1.15rem;
+        color: #1e40af;
+      }
+      html.dark .logo-text {
+        color: #93c5fd;
+      }
+      .nav-menu {
+        display: flex;
+        align-items: center;
+        gap: 1.25rem;
+      }
+      .nav-link {
+        font-size: 0.875rem;
+        font-weight: 500;
+        color: #4b5563;
+        transition: color 0.2s ease;
+        text-decoration: none;
+        padding: 0.35rem 0.25rem;
+      }
+      .nav-link:hover {
+        color: #1e40af;
+      }
+      html.dark .nav-link {
+        color: #cbd5e1;
+      }
+      html.dark .nav-link:hover {
+        color: #ffffff;
+      }
+      .dropdown {
+        position: relative;
+      }
+      .dropdown-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        margin-top: 0.5rem;
+        width: 14rem;
+        background-color: #ffffff;
+        border: 1px solid #e2e8f0;
+        border-radius: 0.75rem;
+        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        padding: 0.5rem;
+        z-index: 60;
+      }
+      html.dark .dropdown-menu {
+        background-color: #1e293b;
+        border-color: #334155;
+      }
+      .dropdown:hover .dropdown-menu,
+      .dropdown:focus-within .dropdown-menu,
+      .dropdown.open .dropdown-menu {
+        display: block;
+      }
+      .dropdown-link {
+        display: block;
+        padding: 0.5rem 0.75rem;
+        font-size: 0.8125rem;
+        color: #4b5563;
+        border-radius: 0.5rem;
+        text-decoration: none;
+        transition: all 0.15s ease;
+      }
+      .dropdown-link:hover {
+        background-color: #eff6ff;
+        color: #1e40af;
+      }
+      html.dark .dropdown-link {
+        color: #cbd5e1;
+      }
+      html.dark .dropdown-link:hover {
+        background-color: #334155;
+        color: #93c5fd;
+      }
+      .nav-toggle {
+        display: none;
+        flex-direction: column;
+        justify-content: space-around;
+        width: 2rem;
+        height: 2rem;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        padding: 0.25rem;
+      }
+      .bar {
+        width: 100%;
+        height: 2px;
+        background-color: #4b5563;
+        border-radius: 9999px;
+        transition: all 0.3s ease;
+      }
+      html.dark .bar {
+        background-color: #cbd5e1;
+      }
+      @media (max-width: 1024px) {
+        .nav-toggle {
+          display: flex;
+        }
+        .nav-menu {
+          display: none;
+          position: absolute;
+          top: 100%;
+          left: 0;
+          right: 0;
+          background-color: #ffffff;
+          border-bottom: 1px solid #e2e8f0;
+          flex-direction: column;
+          align-items: stretch;
+          padding: 1.25rem 1.5rem;
+          gap: 0.5rem;
+          box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+        }
+        html.dark .nav-menu {
+          background-color: #1e293b;
+          border-bottom-color: #334155;
+        }
+        .nav-menu.active {
+          display: flex;
+        }
+        .dropdown-menu {
+          position: static;
+          transform: none;
+          width: 100%;
+          box-shadow: none;
+          border: none;
+          background-color: #f8fafc;
+          margin-top: 0.25rem;
+          padding-left: 0.5rem;
+        }
+        html.dark .dropdown-menu {
+          background-color: #0f172a;
+        }
+      }
+    </style>
+  </head>
+  <body
+    class="bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-200 transition-colors duration-300 min-h-screen flex flex-col"
+  >
+    <!-- Header / Navbar -->
+    <header>
+      <nav class="navbar">
+        <div class="nav-container">
+          <div class="nav-logo">
+            <a href="../index.html">
+              <img
+                src="../src/assets/img/logo1.png"
+                alt="Nurse Assist PL Logo"
+                class="logo-img"
+                onerror="
+                  this.onerror = null;
+                  this.src =
+                    'https://placehold.co/200x50/1e40af/ffffff?text=Logo';
+                "
+              />
+              <span class="logo-text">Global Nursing Assist PL</span>
+            </a>
+          </div>
+          <div class="nav-menu" id="nav-menu">
+            <a href="../index.html" class="nav-link">Home</a>
+            <a href="../index.html#about" class="nav-link">About</a>
+            <a href="../index.html#services" class="nav-link">Services</a>
+            <a href="../index.html#testimonials" class="nav-link"
+              >Testimonials</a
+            >
+            <a href="../index.html#articles" class="nav-link">Articles</a>
+            <div class="dropdown">
+              <a
+                href="#"
+                class="nav-link flex items-center"
+                id="resources-link"
+              >
+                Resources
+                <i data-feather="chevron-down" class="w-4 h-4 ml-1"></i>
+              </a>
+              <div class="dropdown-menu">
+                <a
+                  href="../index.html#ai-interview-assistant"
+                  class="dropdown-link"
+                  >AI Interview Assistant</a
+                >
+                <a href="../index.html#study-plan" class="dropdown-link"
+                  >Study Plan</a
+                >
+                <a href="../index.html#study-guide" class="dropdown-link"
+                  >Study Guide</a
+                >
+                <a href="../index.html#flashcards" class="dropdown-link"
+                  >Flashcards</a
+                >
+                <a href="../index.html#free-downloads" class="dropdown-link"
+                  >Free Downloads</a
+                >
+              </div>
+            </div>
+            <a href="../index.html#contact" class="nav-link">Contact</a>
+            <a href="../index.html#blog" class="nav-link">Blog</a>
+            <button
+              id="theme-toggle"
+              aria-label="Toggle theme"
+              class="p-2 rounded-full text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+            >
+              <svg
+                id="theme-icon-light"
+                class="h-6 w-6 hidden"
+                aria-hidden="true"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
+                />
+              </svg>
+              <svg
+                id="theme-icon-dark"
+                class="h-6 w-6 hidden"
+                aria-hidden="true"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+                />
+              </svg>
+            </button>
+          </div>
+          <button
+            class="nav-toggle"
+            id="nav-toggle"
+            aria-label="Toggle navigation menu"
+          >
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Hero Banner with Statistical Proof -->
+    <section
+      class="gradient-brand text-white py-14 lg:py-16 relative overflow-hidden"
+    >
+      <div
+        class="absolute inset-0 opacity-10 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px]"
+      ></div>
+      <div
+        class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center max-w-3xl"
+      >
+        <span
+          class="inline-flex items-center gap-1.5 bg-blue-900/60 border border-blue-400/30 text-blue-200 font-semibold text-xs px-3.5 py-1 rounded-full uppercase tracking-wider mb-4 shadow-sm"
+        >
+          Verified Candidate Recalls
+        </span>
+        <h1
+          class="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white mb-4"
+        >
+          Unlock Verified Examiner Answers & Scoring Protocols
+        </h1>
+        <p
+          class="text-base sm:text-lg text-blue-100 leading-relaxed max-w-2xl mx-auto"
+        >
+          Real interview recall questions collected directly from candidates who
+          passed their oral board examination for Malta Health, Mater Dei
+          Hospital & NHS.
+        </p>
+
+        <!-- Statistics Banner -->
+        <div
+          class="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-xl mx-auto text-left"
+        >
+          <div
+            class="bg-white/10 backdrop-blur border border-white/15 p-3.5 rounded-xl flex items-center gap-3"
+          >
+            <span class="text-2xl font-black text-amber-300">99%</span>
+            <span class="text-xs text-blue-50 leading-snug"
+              >Pass rate among candidates who prepared with our verified answer
+              bank.</span
+            >
+          </div>
+          <div
+            class="bg-white/10 backdrop-blur border border-white/15 p-3.5 rounded-xl flex items-center gap-3"
+          >
+            <span class="text-2xl font-black text-emerald-300">90%</span>
+            <span class="text-xs text-blue-50 leading-snug"
+              >Of candidates faced the exact same questions asked word-for-word
+              in their interview.</span
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Content Container -->
+    <main
+      class="container mx-auto px-4 sm:px-6 lg:px-8 py-12 flex-grow max-w-5xl"
+    >
+      <!-- Crucial Insight: Why Candidates Fail -->
+      <div
+        class="bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-900/50 rounded-2xl p-5 sm:p-6 mb-12 shadow-sm"
+      >
+        <div class="flex items-start gap-3.5">
+          <span class="text-2xl">💡</span>
+          <div>
+            <h3
+              class="text-sm sm:text-base font-bold text-amber-900 dark:text-amber-300"
+            >
+              Why do qualified nurses fail the clinical interview?
+            </h3>
+            <p
+              class="text-xs sm:text-sm text-amber-800 dark:text-amber-200/90 mt-1 leading-relaxed"
+            >
+              Those who failed didn't lack nursing knowledge —
+              <strong
+                >they simply didn't know what specific questions to expect or
+                how examiners grade clinical sequences</strong
+              >
+              (such as ABCDE trauma precautions, SBAR handovers, exact IV
+              glucose concentrations, and hospital sepsis pathways). Knowing the
+              exact model answers turns interview anxiety into effortless
+              confidence.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pricing & Activation Dual Section -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mb-16">
+        <!-- Left: Pricing Card with WhatsApp CTA -->
+        <div
+          class="lg:col-span-7 bg-white dark:bg-slate-800 rounded-2xl border-2 border-emerald-500 shadow-lg p-6 sm:p-8 pro-glow relative overflow-hidden"
+        >
+          <div class="absolute top-4 right-4">
+            <span
+              class="bg-emerald-600 text-white font-extrabold text-[10px] tracking-wider uppercase px-2.5 py-1 rounded-full shadow-sm"
+            >
+              2 Months Access
+            </span>
+          </div>
+
+          <h3
+            class="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white"
+          >
+            Full Access Preparation Pass
+          </h3>
+          <p class="text-xs text-gray-500 dark:text-slate-400 mt-1">
+            Unlimited 2-month access to all verified recall questions, model
+            answers, and study guides.
+          </p>
+
+          <!-- Price tag with EUR / GBP reference -->
+          <div class="mt-6 flex flex-wrap items-baseline gap-2">
+            <span
+              class="text-4xl sm:text-5xl font-extrabold text-gray-900 dark:text-white"
+              >200 PLN</span
+            >
+            <span
+              class="text-xs font-semibold text-gray-500 dark:text-slate-400"
+              >(approx. ~€47 / £40)</span
+            >
+            <span
+              class="text-xs font-semibold text-emerald-600 dark:text-emerald-400 block w-full mt-1"
+              >✓ One-time payment for 2 Months Full Access</span
+            >
+          </div>
+
+          <!-- Feature Checklist -->
+          <div
+            class="mt-6 border-t border-gray-100 dark:border-slate-700 pt-6 space-y-3"
+          >
+            <div
+              class="flex items-start gap-2.5 text-xs sm:text-sm text-gray-700 dark:text-slate-300"
+            >
+              <svg
+                class="h-4 w-4 text-emerald-500 flex-shrink-0 mt-0.5"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+              <span
+                ><strong
+                  >Real Recalls directly from candidates who passed</strong
+                >
+                their recent interview batches.</span
+              >
+            </div>
+            <div
+              class="flex items-start gap-2.5 text-xs sm:text-sm text-gray-700 dark:text-slate-300"
+            >
+              <svg
+                class="h-4 w-4 text-emerald-500 flex-shrink-0 mt-0.5"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+              <span
+                ><strong>Step-by-step Clinical Sequences</strong> (Unconscious
+                diabetic, falls, chest pain, IV push, blood transfusion,
+                SBAR).</span
+              >
+            </div>
+            <div
+              class="flex items-start gap-2.5 text-xs sm:text-sm text-gray-700 dark:text-slate-300"
+            >
+              <svg
+                class="h-4 w-4 text-emerald-500 flex-shrink-0 mt-0.5"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+              <span
+                ><strong>Interactive Study Guides & Flashcard Drills</strong>
+                with spaced repetition.</span
+              >
+            </div>
+            <div
+              class="flex items-start gap-2.5 text-xs sm:text-sm text-gray-700 dark:text-slate-300"
+            >
+              <svg
+                class="h-4 w-4 text-emerald-500 flex-shrink-0 mt-0.5"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+              <span
+                ><strong>Instant Passcode Activation</strong> delivered directly
+                to your WhatsApp.</span
+              >
+            </div>
+          </div>
+
+          <!-- WhatsApp Direct Contact Button -->
+          <div class="mt-8">
+            <!-- Set your actual phone number in the script or directly in href (e.g., https://wa.me/48123456789) -->
+            <a
+              id="whatsapp-link"
+              href="https://wa.me/48123456789?text=Hello!%20I%20would%20like%20to%20get%202%20months%20full%20access%20to%20the%20Nursing%20Interview%20QBank%20(200%20PLN)."
+              target="_blank"
+              rel="noopener noreferrer"
+              class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3.5 px-6 rounded-xl shadow-md text-sm text-center flex items-center justify-center gap-2.5 transition hover:shadow-lg"
+            >
+              <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                <path
+                  d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"
+                />
+              </svg>
+              <span>Message on WhatsApp to Get Access</span>
+            </a>
+            <div
+              class="mt-3 flex items-center justify-center gap-3 text-[11px] text-gray-500 dark:text-slate-400"
+            >
+              <span>⚡ Instant Reply & Code</span>
+              <span>•</span>
+              <span>BLIK / Revolut / Card</span>
+              <span>•</span>
+              <span>Valid 2 Months</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Instant Passcode Activation Box -->
+        <div
+          class="lg:col-span-5 bg-white dark:bg-slate-800 rounded-2xl border border-gray-200 dark:border-slate-700 shadow-sm p-6 sm:p-7"
+        >
+          <div
+            class="w-12 h-12 bg-blue-50 dark:bg-blue-950/60 rounded-xl flex items-center justify-center mb-4 text-blue-600 dark:text-blue-400"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"
+              />
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold text-gray-900 dark:text-white">
+            Already Have Your Passcode?
+          </h3>
+          <p
+            class="text-xs text-gray-600 dark:text-slate-400 mt-1 leading-relaxed"
+          >
+            Once you message us on WhatsApp and receive your passcode, enter it
+            below to instantly unlock the full QBank and study guides:
+          </p>
+
+          <!-- Passcode Input Form -->
+          <form id="activate-form" class="mt-5 space-y-3">
+            <div>
+              <label
+                for="passcode-input"
+                class="block text-xs font-semibold text-gray-700 dark:text-slate-300 mb-1"
+              >
+                Access Passcode:
+              </label>
+              <input
+                type="text"
+                id="passcode-input"
+                placeholder="Enter code (e.g. MALTA-RN-2025)"
+                class="w-full uppercase px-3.5 py-2.5 text-xs border border-gray-300 dark:border-slate-600 rounded-xl bg-white dark:bg-slate-700 font-mono tracking-wider focus:ring-2 focus:ring-blue-500 focus:outline-none"
+              />
+            </div>
+
+            <button
+              type="submit"
+              class="w-full bg-blue-800 hover:bg-blue-700 text-white font-semibold py-2.5 px-4 rounded-xl text-xs transition flex items-center justify-center gap-1.5 shadow-sm"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-3.5 w-3.5"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+              <span>Activate & Open Study Material</span>
+            </button>
+          </form>
+
+          <!-- Status Feedback Banner -->
+          <div
+            id="activation-feedback"
+            class="mt-4 p-3 rounded-xl text-xs hidden leading-relaxed"
+          ></div>
+        </div>
+      </div>
+
+      <!-- 3-Step Simple Access Process -->
+      <div class="mb-16">
+        <div class="text-center mb-8">
+          <span
+            class="text-xs font-bold text-blue-600 dark:text-blue-400 uppercase tracking-wider"
+            >Fast & Simple</span
+          >
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mt-1">
+            How It Works
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div
+            class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-gray-200 dark:border-slate-700 shadow-sm"
+          >
+            <div
+              class="w-9 h-9 rounded-xl bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 font-extrabold flex items-center justify-center text-sm mb-3"
+            >
+              1
+            </div>
+            <h4 class="text-sm font-bold text-gray-900 dark:text-white mb-1">
+              Message on WhatsApp
+            </h4>
+            <p class="text-xs text-gray-600 dark:text-slate-400">
+              Click the WhatsApp button to contact our coordinator. We will
+              confirm your 2-month access pass immediately.
+            </p>
+          </div>
+          <div
+            class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-gray-200 dark:border-slate-700 shadow-sm"
+          >
+            <div
+              class="w-9 h-9 rounded-xl bg-blue-100 dark:bg-blue-950 text-blue-700 dark:text-blue-300 font-extrabold flex items-center justify-center text-sm mb-3"
+            >
+              2
+            </div>
+            <h4 class="text-sm font-bold text-gray-900 dark:text-white mb-1">
+              Send 200 PLN (~€47)
+            </h4>
+            <p class="text-xs text-gray-600 dark:text-slate-400">
+              Fast and secure payment via BLIK, Revolut, Card, or direct
+              European bank transfer.
+            </p>
+          </div>
+          <div
+            class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-gray-200 dark:border-slate-700 shadow-sm"
+          >
+            <div
+              class="w-9 h-9 rounded-xl bg-amber-100 dark:bg-amber-950 text-amber-700 dark:text-amber-300 font-extrabold flex items-center justify-center text-sm mb-3"
+            >
+              3
+            </div>
+            <h4 class="text-sm font-bold text-gray-900 dark:text-white mb-1">
+              Unlock & Study
+            </h4>
+            <p class="text-xs text-gray-600 dark:text-slate-400">
+              Receive your access key, enter it above, and immediately study all
+              verified examiner answers and clinical guides.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Frequently Asked Questions -->
+      <div class="mb-14">
+        <h3
+          class="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white text-center mb-6"
+        >
+          Frequently Asked Questions
+        </h3>
+
+        <div class="space-y-3 max-w-3xl mx-auto" id="faq-container">
+          <div
+            class="bg-white dark:bg-slate-800 rounded-xl border border-gray-200 dark:border-slate-700 overflow-hidden shadow-sm"
+          >
+            <button
+              class="faq-toggle w-full text-left p-4 text-xs sm:text-sm font-semibold text-gray-900 dark:text-white flex justify-between items-center focus:outline-none"
+            >
+              <span>Where do these recall questions come from?</span>
+              <svg
+                class="h-4 w-4 text-blue-600 transition-transform"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 9l-7 7-7-7"
+                />
+              </svg>
+            </button>
+            <div
+              class="faq-answer px-4 pb-4 text-xs text-gray-600 dark:text-slate-300 leading-relaxed border-t border-gray-100 dark:border-slate-700/60 pt-2"
+            >
+              They are collected directly from candidates who attended and
+              passed their recent nursing oral interviews in Malta (Mater Dei
+              Hospital / Health Directorate) and NHS Trusts. Over 90% of
+              candidates encounter the exact questions from our QBank during
+              their real exam.
+            </div>
+          </div>
+
+          <div
+            class="bg-white dark:bg-slate-800 rounded-xl border border-gray-200 dark:border-slate-700 overflow-hidden shadow-sm"
+          >
+            <button
+              class="faq-toggle w-full text-left p-4 text-xs sm:text-sm font-semibold text-gray-900 dark:text-white flex justify-between items-center focus:outline-none"
+            >
+              <span>How long is my access valid?</span>
+              <svg
+                class="h-4 w-4 text-blue-600 transition-transform"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 9l-7 7-7-7"
+                />
+              </svg>
+            </button>
+            <div
+              class="faq-answer px-4 pb-4 text-xs text-gray-600 dark:text-slate-300 leading-relaxed border-t border-gray-100 dark:border-slate-700/60 pt-2"
+            >
+              Your pass provides a full
+              <strong>2 months of unlimited access</strong> (200 PLN / ~€47),
+              giving you ample time to revise every clinical scenario, practice
+              oral delivery, and master every emergency sequence.
+            </div>
+          </div>
+
+          <div
+            class="bg-white dark:bg-slate-800 rounded-xl border border-gray-200 dark:border-slate-700 overflow-hidden shadow-sm"
+          >
+            <button
+              class="faq-toggle w-full text-left p-4 text-xs sm:text-sm font-semibold text-gray-900 dark:text-white flex justify-between items-center focus:outline-none"
+            >
+              <span>Can I open it on both my phone and my laptop?</span>
+              <svg
+                class="h-4 w-4 text-blue-600 transition-transform"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 9l-7 7-7-7"
+                />
+              </svg>
+            </button>
+            <div
+              class="faq-answer px-4 pb-4 text-xs text-gray-600 dark:text-slate-300 leading-relaxed border-t border-gray-100 dark:border-slate-700/60 pt-2"
+            >
+              Yes! Just enter your passcode on any device browser to unlock and
+              study wherever you are.
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer
+      class="border-t border-gray-200 dark:border-slate-800 bg-white dark:bg-slate-900 py-6 mt-12 text-center text-xs text-gray-500 dark:text-slate-400"
+    >
+      <div class="container mx-auto px-4">
+        <p>© 2025 Nursing Interview QBank. All rights reserved.</p>
+        <p class="mt-1 text-[11px] text-gray-400">
+          Directly collected from successful candidates for Malta Health
+          Directorate & NHS Nursing Interviews.
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        // === CONFIGURATION ===
+        // Replace this with your actual international WhatsApp number (Country code + number, NO plus sign)
+        // Example for Poland: "48123456789", for Malta: "35679123456"
+        const WHATSAPP_PHONE_NUMBER = "48516224011";
+
+        // Update the WhatsApp link with the actual phone number
+        const whatsappLink = document.getElementById("whatsapp-link");
+        if (whatsappLink) {
+          whatsappLink.href = `https://wa.me/${WHATSAPP_PHONE_NUMBER}?text=${encodeURIComponent("Hello! I would like to get 2 months full access to the Nursing Interview QBank (200 PLN).")}`;
+        }
+
+        // Keep this list synchronized with the codes in your study guide!
+        const VALID_PASSCODES = [
+          "MALTA-RN-2025",
+          "NURSE-BEN-01",
+          "MALTA-PASS-77",
+          "PASS200",
+        ];
+
+        const activateForm = document.getElementById("activate-form");
+        const passcodeField = document.getElementById("passcode-input");
+        const feedbackBox = document.getElementById("activation-feedback");
+
+        const themeToggle = document.getElementById("theme-toggle");
+        const themeIconLight = document.getElementById("theme-icon-light");
+        const themeIconDark = document.getElementById("theme-icon-dark");
+
+        // Theme management
+        const applyTheme = (theme) => {
+          if (theme === "dark") {
+            document.documentElement.classList.add("dark");
+            themeIconLight.classList.remove("hidden");
+            themeIconDark.classList.add("hidden");
+          } else {
+            document.documentElement.classList.remove("dark");
+            themeIconLight.classList.add("hidden");
+            themeIconDark.classList.remove("hidden");
+          }
+        };
+
+        const currentTheme = localStorage.getItem("theme") || "light";
+        applyTheme(currentTheme);
+
+        themeToggle.addEventListener("click", () => {
+          const isDark = document.documentElement.classList.contains("dark");
+          const nextTheme = isDark ? "light" : "dark";
+          localStorage.setItem("theme", nextTheme);
+          applyTheme(nextTheme);
+        });
+
+        // Check both storage keys to ensure full ecosystem compatibility
+        const isUnlocked =
+          localStorage.getItem("maltaGuideUnlocked") === "true" ||
+          localStorage.getItem("nursing_qbank_answers_unlocked") === "true";
+
+        if (isUnlocked) {
+          feedbackBox.className =
+            "mt-4 p-3 rounded-xl text-xs leading-relaxed bg-green-100 text-green-800 dark:bg-green-950/70 dark:text-green-300 border border-green-200 dark:border-green-800";
+          feedbackBox.innerHTML = `
+                <strong>✓ Your device is already activated!</strong><br>
+                Full model answers are unlocked. 
+                <a href="index.html" class="underline font-bold text-green-900 dark:text-green-200 ml-1">Go to Question Bank →</a>
+            `;
+          feedbackBox.classList.remove("hidden");
+        }
+
+        // Initialize Feather icons
+        if (window.feather) {
+          feather.replace();
+        }
+
+        // Mobile Navigation Toggle
+        const navToggleBtn = document.getElementById("nav-toggle");
+        const navMenu = document.getElementById("nav-menu");
+        const resourcesLink = document.getElementById("resources-link");
+
+        if (navToggleBtn && navMenu) {
+          navToggleBtn.addEventListener("click", () => {
+            navMenu.classList.toggle("active");
+          });
+        }
+
+        if (resourcesLink) {
+          resourcesLink.addEventListener("click", (e) => {
+            if (window.innerWidth <= 1024) {
+              e.preventDefault();
+              resourcesLink.closest(".dropdown").classList.toggle("open");
+            }
+          });
+        }
+
+        // Passcode activation submission
+        activateForm.addEventListener("submit", (e) => {
+          e.preventDefault();
+          const inputVal = (passcodeField.value || "").trim().toUpperCase();
+
+          if (VALID_PASSCODES.includes(inputVal)) {
+            // Set both flags so both the QBank and Study Guide recognize the student
+            localStorage.setItem("nursing_qbank_answers_unlocked", "true");
+            localStorage.setItem("maltaGuideUnlocked", "true");
+
+            feedbackBox.className =
+              "mt-4 p-3 rounded-xl text-xs leading-relaxed bg-green-100 text-green-800 dark:bg-green-950/70 dark:text-green-300 border border-green-200 dark:border-green-800";
+            feedbackBox.innerHTML = `
+                    <strong>🎉 Access Granted!</strong> Your passcode has been verified.<br>
+                    Redirecting you to the unlocked Question Bank in 2 seconds... 
+                    <a href="index.html" class="font-bold underline ml-1">Click here to go now →</a>
+                `;
+            feedbackBox.classList.remove("hidden");
+
+            setTimeout(() => {
+              window.location.href = "index.html";
+            }, 1800);
+          } else {
+            feedbackBox.className =
+              "mt-4 p-3 rounded-xl text-xs leading-relaxed bg-red-100 text-red-800 dark:bg-red-950/70 dark:text-red-300 border border-red-200 dark:border-red-800";
+            feedbackBox.innerHTML = `
+                    <strong>✕ Invalid Passcode.</strong> Please ensure you entered the exact key sent on WhatsApp.
+                `;
+            feedbackBox.classList.remove("hidden");
+            passcodeField.value = "";
+            passcodeField.focus();
+          }
+        });
+
+        // FAQ accordion
+        document.querySelectorAll(".faq-toggle").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            const answer = btn.nextElementSibling;
+            const chevron = btn.querySelector("svg");
+            const isOpen = answer.classList.contains("open");
+
+            document.querySelectorAll(".faq-answer.open").forEach((a) => {
+              a.classList.remove("open");
+              const parentBtn = a.previousElementSibling;
+              if (parentBtn)
+                parentBtn.querySelector("svg").classList.remove("rotate-180");
+            });
+
+            if (!isOpen) {
+              answer.classList.add("open");
+              chevron.classList.add("rotate-180");
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

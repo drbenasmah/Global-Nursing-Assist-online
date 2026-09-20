@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Payment Successful – QBank Access</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background: #f3f4f6;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+      }
+
+      .container {
+        background: #ffffff;
+        padding: 40px 30px;
+        border-radius: 12px;
+        max-width: 420px;
+        width: 90%;
+        text-align: center;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      h1 {
+        color: #16a34a;
+        margin-bottom: 10px;
+      }
+
+      p {
+        color: #444;
+        margin: 10px 0;
+        line-height: 1.5;
+      }
+
+      .small {
+        font-size: 14px;
+        color: #666;
+        margin-top: 20px;
+      }
+
+      .spinner {
+        margin: 25px auto 0;
+        width: 40px;
+        height: 40px;
+        border: 4px solid #e5e7eb;
+        border-top: 4px solid #2563eb;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
+
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>✅ Payment Successful</h1>
+      <p>
+        Thank you for subscribing to the
+        <strong>Malta Nursing Interview QBank</strong>.
+      </p>
+      <p>Your access has been activated.</p>
+
+      <div class="spinner"></div>
+
+      <p class="small">
+        Redirecting you to the QBank…<br />
+        Please stay on this page.
+      </p>
+    </div>
+
+    <script>
+      // Grant QBank access (30-day subscription)
+      localStorage.setItem("qbankAccess", "true");
+      localStorage.setItem("qbankStart", Date.now());
+
+      // Redirect to QBank
+      setTimeout(() => {
+        window.location.href = "/Malta-study-plan/Qbank_Malta.html";
+      }, 2000);
+    </script>
+  </body>
+</html>

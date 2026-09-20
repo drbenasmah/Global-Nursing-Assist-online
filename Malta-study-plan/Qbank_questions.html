@@ -883,443 +883,427 @@
     <script>
       document.addEventListener("DOMContentLoaded", () => {
         // --- DATA ---
-        // Template displayed inside the answer accordion when locked
-        const LOCKED_ANSWER_HTML = `
-  <div class="p-4 bg-amber-50 dark:bg-slate-800 rounded-xl border border-amber-200 dark:border-amber-900/40 text-center">
-    <span class="inline-block p-2 rounded-full bg-amber-100 dark:bg-amber-900/60 text-amber-600 dark:text-amber-400 mb-2">🔒</span>
-    <h4 class="text-sm font-bold text-gray-900 dark:text-white">Examiner Model Answer & Clinical Protocol Locked</h4>
-    <p class="text-xs text-gray-600 dark:text-slate-300 mt-1 mb-3 max-w-md mx-auto">
-      The complete step-by-step clinical sequence, dosages, and scoring rationale are reserved for full access members.
-    </p>
-    <a href="full_access.html" class="inline-flex items-center gap-1.5 bg-blue-800 hover:bg-blue-700 text-white font-bold text-xs px-4 py-2 rounded-lg transition shadow-sm">
-      <span>Get Full Access @ full_access.html →</span>
-    </a>
-  </div>
-`;
-
         const qbankData = [
           // Section 1: Patient Assessment & Vital Signs
           {
             category: "Patient Assessment & Vital Signs",
             q: "How do you assess a patient's respiratory rate?",
-            isSample: true, // Free Sample 1
             a: "I ensure the patient is at rest and not aware I am counting, because awareness can alter breathing. I observe chest movements or feel abdominal rise for one full minute, noting the rate, rhythm, and depth. I also check for abnormal sounds, use of accessory muscles, or signs of distress. I document findings immediately.",
           },
           {
             category: "Patient Assessment & Vital Signs",
             q: "What factors do you consider when assessing a patient's blood pressure?",
-            a: LOCKED_ANSWER_HTML,
+            a: "I choose the correct cuff size, ensure the patient is seated or lying with the arm at heart level, and allow 5 minutes of rest before measurement. I consider recent activity, stress, caffeine, or medications that may affect the reading. I repeat if necessary for accuracy and compare to the patient's baseline.",
           },
           {
             category: "Patient Assessment & Vital Signs",
             q: "Describe the steps in measuring a patient's temperature accurately.",
-            a: LOCKED_ANSWER_HTML,
+            a: "I select the appropriate method (oral, tympanic, axillary, rectal) based on the patient's condition and contraindications. I ensure the thermometer is clean and calibrated, place it correctly (e.g., under tongue for oral), wait the recommended time, then record the value. I also interpret the result in context of baseline and symptoms.",
           },
           {
             category: "Patient Assessment & Vital Signs",
             q: "How often do you perform a complete head-to-toe physical assessment?",
-            a: LOCKED_ANSWER_HTML,
+            a: "A full assessment is performed on admission, at the start of each shift, and whenever there is a change in the patient's condition. Focused assessments are done more frequently as the situation requires, such as hourly neuro checks after head injury.",
           },
           {
             category: "Patient Assessment & Vital Signs",
             q: "Explain the importance of monitoring oxygen saturation in patients.",
-            a: LOCKED_ANSWER_HTML,
+            a: "Oxygen saturation gives an early indication of hypoxemia before clinical signs appear. Monitoring helps guide oxygen therapy, assess treatment effectiveness, and detect deterioration quickly. However, I also consider clinical signs like cyanosis or respiratory distress, since pulse oximetry has limitations.",
           },
           {
             category: "Patient Assessment & Vital Signs",
             q: "How do you assess a patient's respiratory status?",
-            a: LOCKED_ANSWER_HTML,
+            a: "I begin with inspection-respiratory rate, rhythm, depth, chest symmetry, and use of accessory muscles. I auscultate for breath sounds, palpate for chest expansion, and percuss if needed. I also assess oxygen saturation and note signs of distress such as cyanosis or restlessness.",
           },
           {
             category: "Patient Assessment & Vital Signs",
             q: "How do you conduct a neurological assessment on a patient?",
-            a: LOCKED_ANSWER_HTML,
+            a: "I assess the level of consciousness using AVPU or the Glasgow Coma Scale (GCS). I check pupil size and reactivity, motor function, limb strength, and sensation. I also assess speech, orientation to person, place, and time, and monitor for changes that may indicate deterioration.",
           },
           {
             category: "Patient Assessment & Vital Signs",
             q: "How do you assess a head injury?",
-            a: LOCKED_ANSWER_HTML,
+            a: "I check airway, breathing, and circulation first (ABC). I then assess the level of consciousness using the Glasgow Coma Scale and observe for bleeding, swelling, or a CSF leak from the nose or ears. I check pupil size and reactivity and monitor vital signs and neurological status regularly to detect any changes.",
           },
           {
             category: "Patient Assessment & Vital Signs",
             q: "What is the classification of head injury?",
-            a: LOCKED_ANSWER_HTML,
+            a: "Head injuries are classified by severity using the Glasgow Coma Scale (GCS): Mild: GCS 14-15; Moderate: GCS 9-13; Severe: GCS 3-8. They can also be classified as open (skull fracture/penetrating) or closed (blunt trauma).",
           },
           {
             category: "Patient Assessment & Vital Signs",
             q: "Walk us through the steps of obtaining a comprehensive patient history.",
-            a: LOCKED_ANSWER_HTML,
+            a: "I use a structured approach: Chief complaint and history of present illness; Past medical, surgical, and medication history; Family history and genetic risks; Social history (smoking, alcohol, occupation); Review of systems (head-to-toe); and Allergies. This provides a complete clinical picture to guide care.",
           },
 
           // Section 2: Medication Safety & Administration
           {
             category: "Medication Safety & Administration",
             q: "What are the 5 rights of medication administration?",
-            a: LOCKED_ANSWER_HTML,
+            a: "The five core rights are Right Patient, Right Drug, Right Dose, Right Route, and Right Time. Modern practice often includes additional rights like Right Documentation and Right Reason to enhance safety.",
           },
           {
             category: "Medication Safety & Administration",
             q: "Walk us through the process of administering oral medications.",
-            a: LOCKED_ANSWER_HTML,
+            a: "I verify the prescription, check the 5 Rights, and perform allergy checks. I explain the medication to the patient, ensure they can swallow safely, and provide water unless contraindicated. I stay with the patient until ingestion is complete and then document the administration.",
           },
           {
             category: "Medication Safety & Administration",
             q: "How do you handle medication reconciliation for a new patient?",
-            a: LOCKED_ANSWER_HTML,
+            a: "I collect a complete list of all medications the patient is taking, including prescription, over-the-counter, and herbal products. I compare it with the current hospital prescriptions, identify discrepancies, and clarify them with the physician or pharmacist. Accurate reconciliation prevents omissions, duplications, or interactions.",
           },
           {
             category: "Medication Safety & Administration",
             q: "What steps do you take to prevent medication errors?",
-            a: LOCKED_ANSWER_HTML,
+            a: 'I strictly follow the "five rights" of medication administration, double-check high-alert drugs with another nurse, clarify unclear orders, and use barcode scanning if available. I never rush, I minimize distractions during preparation, and I always document immediately after administration.',
           },
           {
             category: "Medication Safety & Administration",
             q: "Describe your approach to educating patients about their medications.",
-            a: LOCKED_ANSWER_HTML,
+            a: "I explain the purpose, dosage, timing, and potential side effects in simple language the patient understands. I encourage questions, verify understanding with the teach-back method, and provide written instructions if needed. I also stress adherence and safety precautions.",
           },
           {
             category: "Medication Safety & Administration",
             q: "How do you prioritize medication administration in a busy environment?",
-            a: LOCKED_ANSWER_HTML,
+            a: "I first give time-critical medications such as antibiotics, insulin, or analgesics for acute pain. I then proceed with scheduled medications, grouping them by patient when safe. I continually reassess priorities based on changes in patient conditions to ensure no dose is missed.",
           },
 
           // Section 3: Procedural Care (IV, GI, and GU)
           {
             category: "Procedural Care (IV, GI, and GU)",
             q: "Explain the steps involved in starting an IV line.",
-            a: LOCKED_ANSWER_HTML,
+            a: "I verify the order, explain the procedure, and gather sterile equipment. After hand hygiene, I select an appropriate vein, apply a tourniquet, clean the site with antiseptic, and insert the cannula using aseptic technique. Once flashback is seen, I advance the catheter, release the tourniquet, secure the site, and flush with saline to confirm patency.",
           },
           {
             category: "Procedural Care (IV, GI, and GU)",
             q: "How do you ensure proper hydration when administering IV fluids?",
-            a: LOCKED_ANSWER_HTML,
+            a: "I verify the correct fluid and infusion rate, monitor the IV site, and assess the patient's fluid balance by tracking intake, output, daily weight, and skin turgor. I also watch for signs of fluid overload (e.g., edema, crackles) or dehydration.",
           },
           {
             category: "Procedural Care (IV, GI, and GU)",
             q: "Discuss your approach to managing complications with IV therapy.",
-            a: LOCKED_ANSWER_HTML,
+            a: "For infiltration, I stop the infusion, remove the cannula, elevate the limb, and apply a compress. For phlebitis, I stop the infusion, remove the cannula, assess using the phlebitis scale, and document. For infection, I notify the physician, take a swab if required, and follow infection control protocols.",
           },
           {
             category: "Procedural Care (IV, GI, and GU)",
             q: "Can you describe the process of administering a blood transfusion?",
-            isSample: true, // Free Sample 2
             a: "I verify the order and obtain consent. I check the patient's identity and blood compatibility with another nurse and inspect the blood product. I use a dedicated IV line with a filter, start the transfusion slowly, and monitor vital signs closely for the first 15 minutes for any reaction. I continue regular observations until completion and document throughout.",
           },
           {
             category: "Procedural Care (IV, GI, and GU)",
             q: "What precautions do you take when caring for a patient with a central line?",
-            a: LOCKED_ANSWER_HTML,
+            a: "I use strict aseptic technique for all handling, scrub the hub before access, and change dressings according to protocol. I assess the insertion site for signs of infection (redness, swelling), monitor catheter patency, and prevent air embolism by clamping the line when not in use.",
           },
           {
             category: "Procedural Care (IV, GI, and GU)",
             q: "How is a Ryles tube (NG Tube) inserted?",
-            a: LOCKED_ANSWER_HTML,
+            a: "First, I explain the procedure and obtain consent, then position the patient upright (semi-Fowler's). I measure the tube length from the nose to the earlobe, then to the xiphoid process. I lubricate the tip and insert it via a nostril while asking the patient to swallow. Finally, I confirm placement by aspirating gastric contents (pH should be <4) or with a chest X-ray if required, then secure the tube and document.",
           },
           {
             category: "Procedural Care (IV, GI, and GU)",
             q: "Can you explain the process of inserting a urinary catheter?",
-            a: LOCKED_ANSWER_HTML,
+            a: "I perform hand hygiene, explain the procedure, and maintain privacy. Using an aseptic technique, I clean the urethral meatus, lubricate the catheter, and gently insert it until urine flows. I advance slightly further before inflating the balloon with sterile water, secure the catheter, and connect it to a drainage bag placed below the bladder level.",
           },
           {
             category: "Procedural Care (IV, GI, and GU)",
             q: "How do you assess and manage urinary retention in patients?",
-            a: LOCKED_ANSWER_HTML,
+            a: "I assess for bladder fullness with palpation or a bladder scan and note the patient's urinary frequency and discomfort. Management may include encouraging natural voiding techniques, catheterization if necessary, monitoring fluid balance, and investigating underlying causes.",
           },
           {
             category: "Procedural Care (IV, GI, and GU)",
             q: "Walk us through the steps of obtaining a urine specimen for analysis.",
-            a: LOCKED_ANSWER_HTML,
+            a: "I explain the procedure, ensure hand hygiene, and provide a sterile container. For a midstream specimen, I instruct the patient on how to clean the perineal area, void the first part of the urine, then collect the middle portion without touching the inside of the container. From a catheter, I clamp the tubing, disinfect the port, and aspirate urine with a sterile syringe. I then label the sample and send it to the lab promptly.",
           },
 
           // Section 4: Wound Care, Infection Control & Prevention
           {
             category: "Wound Care, Infection Control & Prevention",
             q: "Why is infection control important?",
-            a: LOCKED_ANSWER_HTML,
+            a: "It is critical for preventing healthcare-associated infections (HAIs), which protects both patients and healthcare staff. Effective infection control reduces the length of hospital stays, lowers healthcare costs, and helps combat the spread of antibiotic resistance.",
           },
           {
             category: "Wound Care, Infection Control & Prevention",
             q: "What is the most effective way of preventing cross-infection?",
-            a: LOCKED_ANSWER_HTML,
+            a: "The single most effective method is hand hygiene. This should be combined with standard precautions like using appropriate Personal Protective Equipment (PPE), maintaining aseptic technique during procedures, and following environmental cleaning protocols.",
           },
           {
             category: "Wound Care, Infection Control & Prevention",
             q: "Walk us through the steps of a sterile dressing change.",
-            a: LOCKED_ANSWER_HTML,
+            a: "I prepare all sterile supplies, perform hand hygiene, and explain the procedure. Using an aseptic technique, I remove the old dressing, assess the wound for drainage, color, and odor, and safely dispose of the soiled material. I clean the wound as prescribed, usually from the cleanest area outward, then apply a new sterile dressing and document the procedure.",
           },
           {
             category: "Wound Care, Infection Control & Prevention",
             q: "How do you assess and manage wound infections?",
-            a: LOCKED_ANSWER_HTML,
+            a: "I look for signs of infection such as redness, swelling, warmth, pain, and purulent or foul-smelling discharge. I also check the patient's vital signs for fever. Management includes aseptic wound care, swabbing for culture if ordered, administering prescribed antibiotics, and escalating concerns to the physician.",
           },
           {
             category: "Wound Care, Infection Control & Prevention",
             q: "Discuss your approach to preventing pressure ulcers in bedridden patients.",
-            a: LOCKED_ANSWER_HTML,
+            a: "I use risk assessment tools like the Braden Scale, reposition the patient at least every two hours, and keep their skin clean and dry. I use pressure-relieving devices, ensure adequate nutrition and hydration, and educate the patient and family on prevention strategies.",
           },
           {
             category: "Wound Care, Infection Control & Prevention",
             q: "Explain the procedure for caring for a patient with a surgical drain.",
-            a: LOCKED_ANSWER_HTML,
+            a: "I ensure the drain is secured below the level of the wound, check and measure the drainage regularly, and use an aseptic technique when emptying it. I monitor for blockages, leakage, or signs of infection at the insertion site. I document the amount, color, and consistency of the drainage.",
           },
           {
             category: "Wound Care, Infection Control & Prevention",
             q: "How is MRSA managed?",
-            a: LOCKED_ANSWER_HTML,
+            a: "Management requires strict contact precautions, including using gloves and a gown in a single room. Key interventions include rigorous hand hygiene, decolonization with mupirocin nasal ointment and antiseptic body washes, administering appropriate antibiotics like vancomycin, and thorough environmental cleaning.",
           },
           {
             category: "Wound Care, Infection Control & Prevention",
             q: "What is a CRE?",
-            a: LOCKED_ANSWER_HTML,
+            a: "CRE stands for Carbapenem-resistant Enterobacteriaceae. These are highly drug-resistant bacteria that cause infections that are very difficult to treat, often seen in ICU settings. Management involves strict isolation, contact precautions, and the use of limited, last-resort antibiotic options like colistin or tigecycline.",
           },
 
           // Section 5: Pain Management & Emergencies
           {
             category: "Pain Management & Emergencies",
             q: "How do you assess and manage pain in patients?",
-            a: LOCKED_ANSWER_HTML,
+            a: "I use validated pain scales (e.g., 0-10 numeric scale, Wong-Baker Faces, or FLACC for children). I assess the location, intensity, duration, and character of the pain. Management includes administering prescribed analgesics, using non-pharmacological methods (e.g., positioning, relaxation), and reassessing the patient's response after interventions.",
           },
           {
             category: "Pain Management & Emergencies",
             q: "What interventions do you take for a patient experiencing acute pain?",
-            a: LOCKED_ANSWER_HTML,
+            a: "I assess the pain intensity and cause, provide prescribed analgesics promptly, and use comfort measures like positioning and ice/heat as appropriate. I monitor the patient's response and vital signs and escalate to the physician if the pain persists or worsens.",
           },
           {
             category: "Pain Management & Emergencies",
             q: "Discuss your familiarity with non-pharmacological pain management techniques.",
-            a: LOCKED_ANSWER_HTML,
+            a: "I have used methods such as relaxation, guided imagery, massage, positioning, distraction, music therapy, and heat/cold applications. These are especially useful alongside medications to reduce the overall pain burden and anxiety.",
           },
           {
             category: "Pain Management & Emergencies",
             q: "Can you explain the process of assessing and managing chronic pain?",
-            a: LOCKED_ANSWER_HTML,
+            a: "I assess using a holistic approach, considering the physical, psychological, and social aspects of the pain. Management often involves long-term medications, lifestyle changes, physiotherapy, and counseling. I monitor for opioid side effects and encourage coping strategies to improve quality of life.",
           },
           {
             category: "Pain Management & Emergencies",
             q: "How do you respond to a patient experiencing a medical emergency?",
-            a: LOCKED_ANSWER_HTML,
+            a: "I stay calm, assess Airway, Breathing, and Circulation (ABCs), call for help, and initiate emergency protocols such as Code Blue. I provide immediate interventions within my scope, such as applying oxygen, positioning, or starting chest compressions, until advanced help arrives.",
           },
           {
             category: "Pain Management & Emergencies",
             q: "Walk us through the steps of initiating a Code Blue response.",
-            a: LOCKED_ANSWER_HTML,
+            a: "I immediately check for responsiveness and breathing, call for help, and activate the emergency response system. I begin high-quality CPR with chest compressions if no pulse is detected, use an AED/defibrillator as soon as it's available, and continue basic life support until the code team arrives.",
           },
           {
             category: "Pain Management & Emergencies",
             q: "What interventions do you take for a patient experiencing respiratory distress?",
-            a: LOCKED_ANSWER_HTML,
+            a: "I immediately assess the patient's airway, breathing, and circulation. I sit the patient upright to maximize lung expansion, administer oxygen as prescribed, and monitor their vital signs continuously. I call for medical assistance, prepare emergency equipment, and stay with the patient to provide reassurance.",
           },
           {
             category: "Pain Management & Emergencies",
             q: "Explain your approach to caring for a patient in shock.",
-            a: LOCKED_ANSWER_HTML,
+            a: "I recognize the signs, such as hypotension, tachycardia, clammy skin, and altered mental status. I call for help, lay the patient flat with their legs elevated (if appropriate), administer oxygen, ensure IV access is patent, and prepare for fluid resuscitation or medications as ordered.",
           },
 
           // Section 6: Specialized Care: Cardiovascular & Neurological
           {
             category: "Specialized Care: Cardiovascular & Neurological",
             q: "How do you monitor and manage patients with cardiac arrhythmias?",
-            a: LOCKED_ANSWER_HTML,
+            a: "I monitor the patient's ECG rhythm continuously, assess for symptoms like palpitations, chest pain, or dizziness, and check vital signs frequently. If the patient is unstable, I call for immediate medical intervention. If stable, I ensure oxygen delivery, IV access, and administer medication as ordered.",
           },
           {
             category: "Specialized Care: Cardiovascular & Neurological",
             q: "Describe the steps in providing care for a patient with chest pain.",
-            a: LOCKED_ANSWER_HTML,
+            a: "I have the patient stop any activity, assess their vital signs, and provide oxygen if saturation is low. I place the patient in a comfortable position, usually semi-Fowler's. I obtain a 12-lead ECG, ensure IV access is available, and administer prescribed medications such as nitrates or aspirin. I continuously monitor the patient and prepare for emergency escalation if the pain persists.",
           },
           {
             category: "Specialized Care: Cardiovascular & Neurological",
             q: "What interventions do you take for a patient with heart failure?",
-            a: LOCKED_ANSWER_HTML,
+            a: "I monitor for fluid overload by checking for edema, listening to lung sounds, and tracking daily weights. I restrict fluids and sodium as prescribed, administer diuretics and cardiac medications, and provide oxygen if needed. I also educate the patient on lifestyle changes, such as daily weight monitoring and medication adherence.",
           },
           {
             category: "Specialized Care: Cardiovascular & Neurological",
             q: "How do you treat a DVT in the leg?",
-            a: LOCKED_ANSWER_HTML,
+            a: "The main treatments include administering anticoagulants (like heparin, warfarin, or DOACs), applying compression stockings, and elevating the affected leg. Patient education on mobility and recognizing complications is also crucial. In severe cases, thrombolysis or surgery may be required.",
           },
           {
             category: "Specialized Care: Cardiovascular & Neurological",
             q: "What is the best treatment for DVT?",
-            a: LOCKED_ANSWER_HTML,
+            a: "Anticoagulant therapy is the first-line and most common treatment. This is usually started with a low molecular weight heparin and then transitioned to an oral anticoagulant to prevent the clot from growing and to prevent an embolism.",
           },
           {
             category: "Specialized Care: Cardiovascular & Neurological",
             q: "Walk us through the process of obtaining an ECG.",
-            a: LOCKED_ANSWER_HTML,
+            a: "I explain the procedure, ensure patient privacy, and position the patient supine. I clean the electrode sites, attach the 10 leads in their correct anatomical positions, and check for any artifact on the screen. Once the recording is complete, I label and submit the ECG and immediately report any critical changes, such as ST-segment elevation.",
           },
           {
             category: "Specialized Care: Cardiovascular & Neurological",
             q: "Explain the steps involved in lumbar puncture preparation and assistance.",
-            a: LOCKED_ANSWER_HTML,
+            a: "I confirm consent, check the patient's coagulation profile if available, and explain the procedure. I position the patient in a lateral decubitus position with their knees to their chest. During the procedure, I assist with maintaining a sterile technique, hand over equipment, and reassure the patient. Afterward, I monitor for headache or CSF leakage and advise the patient to lie flat to reduce complications.",
           },
 
           // Section 7: Specialized Care: Musculoskeletal & Orthopedic
           {
             category: "Specialized Care: Musculoskeletal & Orthopedic",
             q: "How do you assess and manage musculoskeletal pain in patients?",
-            a: LOCKED_ANSWER_HTML,
+            a: "I assess pain using a validated scale (e.g., 0-10), observing the patient's mobility and muscle strength, and identifying aggravating or relieving factors. Management includes administering analgesics, collaborating with physiotherapy, applying heat/cold therapy, and supporting safe mobility.",
           },
           {
             category: "Specialized Care: Musculoskeletal & Orthopedic",
             q: "Describe your approach to caring for a patient with a fractured limb.",
-            a: LOCKED_ANSWER_HTML,
+            a: "I immobilize the limb using splints or casts, regularly monitor circulation, sensation, and movement (neurovascular checks), manage pain, and elevate the limb to reduce swelling. I also watch for serious complications such as compartment syndrome and educate the patient on cast care.",
           },
           {
             category: "Specialized Care: Musculoskeletal & Orthopedic",
             q: "What interventions do you take for a patient with joint replacement surgery?",
-            a: LOCKED_ANSWER_HTML,
+            a: "I monitor for signs of infection or DVT, prevent dislocation with proper positioning (e.g., using an abduction pillow for a hip replacement), manage pain, and support early mobilization with physiotherapy. I also educate patients on any post-operative precautions (e.g., not crossing legs).",
           },
           {
             category: "Specialized Care: Musculoskeletal & Orthopedic",
             q: "Explain the process of conducting a mobility assessment.",
-            a: LOCKED_ANSWER_HTML,
+            a: "I evaluate the patient's range of motion, muscle strength, balance, and gait. I assess their ability to perform daily activities, transfer, and ambulate, and I identify any risks for falls. I document their baseline status and collaborate with physiotherapy as needed.",
           },
 
           // Section 8: Specialized Care: Endocrine & Diabetes
           {
             category: "Specialized Care: Endocrine & Diabetes",
             q: "How do you monitor and manage patients with diabetes?",
-            a: LOCKED_ANSWER_HTML,
+            a: "I monitor blood glucose levels regularly, assess for signs of hypo-and hyperglycemia, and observe for long-term complications such as neuropathy or poor wound healing. Management includes administering insulin or oral hypoglycemics, encouraging diet and exercise adherence, and educating patients on self-monitoring and proper foot care.",
           },
           {
             category: "Specialized Care: Endocrine & Diabetes",
             q: "Describe the steps involved in administering insulin.",
-            a: LOCKED_ANSWER_HTML,
+            a: "I check the prescription and blood glucose level carefully, confirming the type of insulin (e.g., rapid, short, long-acting) and using the correct syringe or pen. I rotate injection sites, clean the area, pinch the skin, inject at a 90° angle (or 45° in thin patients), withdraw the needle, and safely dispose of the sharps.",
           },
           {
             category: "Specialized Care: Endocrine & Diabetes",
             q: "What considerations do you have when caring for a patient with thyroid disorders?",
-            a: LOCKED_ANSWER_HTML,
+            a: "I monitor for symptoms of hypothyroidism (fatigue, cold intolerance) or hyperthyroidism (tachycardia, heat intolerance), ensure medication adherence, and watch for complications like myxedema coma or thyroid storm. Education includes taking medications at the same time daily and recognizing warning signs.",
           },
           {
             category: "Specialized Care: Endocrine & Diabetes",
             q: "Can you explain the process of assessing and caring for a patient with adrenal insufficiency?",
-            a: LOCKED_ANSWER_HTML,
+            a: "I monitor for fatigue, hypotension, hyponatremia, and hyperkalemia. Management includes administering corticosteroid replacement therapy, monitoring vital signs and electrolytes, and educating the patient about never abruptly stopping steroids and the need for stress-dose adjustments.",
           },
 
           // Section 9: Special Populations: Pediatrics & Geriatrics
           {
             category: "Special Populations: Pediatrics & Geriatrics",
             q: "How do you adapt nursing procedures for pediatric patients?",
-            a: LOCKED_ANSWER_HTML,
+            a: "I use age-appropriate communication, involve parents in care for comfort and cooperation, and use smaller, correctly-sized equipment. Medication doses must be carefully calculated based on weight. I also provide reassurance and use distraction techniques to reduce anxiety.",
           },
           {
             category: "Special Populations: Pediatrics & Geriatrics",
             q: "Discuss your experience in providing care for geriatric patients.",
-            a: LOCKED_ANSWER_HTML,
+            a: "Geriatric care requires attention to polypharmacy, fall prevention, nutrition, mobility, and cognitive changes. I focus on maintaining the patient's independence, preventing pressure injuries, and providing emotional support. Family involvement and advance care planning are also very important.",
           },
           {
             category: "Special Populations: Pediatrics & Geriatrics",
             q: "What considerations do you have when caring for pediatric patients undergoing surgery?",
-            a: LOCKED_ANSWER_HTML,
+            a: "I ensure preoperative preparation is explained in simple, child-friendly terms, provide emotional support to both the child and their family, and strictly follow pediatric anesthesia safety protocols. Postoperatively, I monitor vital signs, pain, hydration, and comfort, and involve parents in recovery care.",
           },
           {
             category: "Special Populations: Pediatrics & Geriatrics",
             q: "Walk us through the steps of conducting a comprehensive geriatric assessment.",
-            a: LOCKED_ANSWER_HTML,
+            a: "I assess physical health (chronic diseases, mobility, nutrition), mental health (cognition, mood), functional ability (ADLs/IADLs), social support systems, and environmental safety. I also evaluate medication use (polypharmacy) and specific risks such as falls or neglect.",
           },
           {
             category: "Special Populations: Pediatrics & Geriatrics",
             q: "How do you ensure patient safety during nursing procedures in pediatric settings?",
-            a: LOCKED_ANSWER_HTML,
+            a: "I double-check weight-based medication dosages, use pediatric-specific equipment, maintain strict infection control, and never leave children unattended. Consent from parents or legal guardians is always obtained, and comfort measures (e.g., distraction, play) are used to minimize trauma.",
           },
 
           // Section 10: Mental Health Nursing
           {
             category: "Mental Health Nursing",
             q: "Why is psychiatric nursing important?",
-            a: LOCKED_ANSWER_HTML,
+            a: "Psychiatric nursing is vital because it addresses the mental, emotional, and behavioral health needs of patients. It helps reduce stigma, provides therapeutic support, ensures medication adherence, and improves the overall quality of life for patients with mental health disorders.",
           },
           {
             category: "Mental Health Nursing",
             q: "What are key psychiatric nursing skills?",
-            a: LOCKED_ANSWER_HTML,
+            a: "Key skills include therapeutic communication (active listening, empathy), crisis intervention, de-escalation techniques, and thorough assessment of mood, behavior, and thought processes. It also involves administering and monitoring psychiatric medications, and building trust while maintaining professional boundaries.",
           },
           {
             category: "Mental Health Nursing",
             q: "What are the major psychiatric disorders?",
-            a: LOCKED_ANSWER_HTML,
+            a: "The five major categories of mental illness include schizophrenia, bipolar disorder, major depressive disorder, anxiety disorders, and substance use disorders.",
           },
           {
             category: "Mental Health Nursing",
             q: "What are the most common types of anxiety disorders?",
-            a: LOCKED_ANSWER_HTML,
+            a: "The six main types are Generalized Anxiety Disorder (GAD), Panic Disorder, Social Anxiety Disorder, Specific Phobias, Obsessive-Compulsive Disorder (OCD), and Post-Traumatic Stress Disorder (PTSD).",
           },
           {
             category: "Mental Health Nursing",
             q: "What is the number one cause of depression?",
-            a: LOCKED_ANSWER_HTML,
+            a: "Depression is multifactorial and typically has no single cause. The most common cause is a combination of a chemical imbalance in the brain (involving serotonin and dopamine), stressful life events, genetic predisposition, and other medical conditions.",
           },
           {
             category: "Mental Health Nursing",
             q: "What are the signs of mania?",
-            a: LOCKED_ANSWER_HTML,
+            a: "Signs of a manic episode include an elevated or irritable mood, increased energy and hyperactivity, a decreased need for sleep, grandiose beliefs, rapid or pressured speech, and impulsive, risk-taking behavior.",
           },
           {
             category: "Mental Health Nursing",
             q: "What is the difference between substance abuse and substance use disorder?",
-            a: LOCKED_ANSWER_HTML,
+            a: "Substance abuse refers to the misuse of drugs or alcohol that leads to harmful effects but may be occasional. Substance Use Disorder (SUD) is a formal medical diagnosis that involves a pattern of chronic, compulsive drug use, tolerance, withdrawal symptoms, and impaired control over the substance use.",
           },
           {
             category: "Mental Health Nursing",
             q: "How can abuse be treated?",
-            a: LOCKED_ANSWER_HTML,
+            a: "The first priority is ensuring the immediate safety of the victim. This is followed by mandatory reporting to authorities (safeguarding), providing medical care for injuries, and arranging psychological support or counseling. Nurses must follow local safeguarding protocols.",
           },
 
           // Section 11: Professionalism, Ethics & Communication
           {
             category: "Professionalism, Ethics & Communication",
             q: "Why is teamwork important in healthcare?",
-            a: LOCKED_ANSWER_HTML,
+            a: "Effective communication is critical for three main reasons: Patient Safety: Clear communication, like using the SBAR tool during handovers, prevents errors and ensures continuity of care. Team Collaboration: It allows nurses to work effectively with doctors and other professionals to provide coordinated patient care. Patient Trust: Communicating with empathy and clarity builds trust, which helps in educating patients and improving their health outcomes.",
           },
           {
             category: "Professionalism, Ethics & Communication",
             q: "Why is nursing a profession?",
-            a: LOCKED_ANSWER_HTML,
+            a: "Nursing is a profession because it requires specialized education and training, adherence to a strict code of ethics, a commitment to continuous professional development, and the responsibility to serve the public with accountability and clinical autonomy.",
           },
           {
             category: "Professionalism, Ethics & Communication",
             q: "What are the 9 core principles of the nursing code of ethics?",
-            a: LOCKED_ANSWER_HTML,
+            a: "According to professional nursing codes, the main responsibilities are: Respect for human dignity and the individual patient. Commitment to the patient as the primary concern. Advocacy to protect the patient's health and rights. Accountability and responsibility for one's own nursing practice. The duty to maintain personal competence and professional growth. The responsibility to maintain a safe and high-quality care environment. Professional collaboration with colleagues to meet patient needs. Advancing the nursing profession through practice, education, and research. Upholding the values of the profession and social justice.",
           },
           {
             category: "Professionalism, Ethics & Communication",
             q: "What are the 7 main ethical principles in healthcare?",
-            a: LOCKED_ANSWER_HTML,
+            a: "The seven core principles are: Autonomy: Respecting a patient's right to make their own decisions. Beneficence: Acting in the patient's best interest. Non-maleficence: The duty to do no harm. Justice: Ensuring fairness in the delivery of care. Confidentiality/Veracity: Respecting privacy and being truthful. Fidelity/Accountability: Being loyal and responsible for one's actions. Proportionality: Balancing the benefits of treatment against the risks and costs.",
           },
           {
             category: "Professionalism, Ethics & Communication",
             q: "What is the importance of documentation in nursing?",
-            a: LOCKED_ANSWER_HTML,
+            a: "Documentation is essential for patient safety, continuity of care, and legal protection. It communicates vital information between healthcare providers, provides a legal record of the care that was delivered, and helps prevent errors. As the saying goes, \"If it wasn't documented, it wasn't done.\"",
           },
           {
             category: "Professionalism, Ethics & Communication",
             q: "How can a nurse contribute to the nursing profession?",
-            a: LOCKED_ANSWER_HTML,
+            a: "A nurse can contribute by delivering safe and evidence-based care, mentoring junior colleagues and students, engaging in lifelong learning and continuous professional development, participating in research or quality improvement audits, and consistently upholding the highest ethical and professional standards.",
           },
           {
             category: "Professionalism, Ethics & Communication",
             q: "What is the difference between a vocational and a professional course?",
-            a: LOCKED_ANSWER_HTML,
+            a: "A vocational course focuses on teaching practical skills for a specific job or trade, like a healthcare assistant or electrician. A professional course provides specialized, degree-level training for a recognized profession that is often regulated, such as nursing, medicine, or law, and typically leads to licensure.",
           },
           {
             category: "Professionalism, Ethics & Communication",
             q: "How do you ensure effective communication during shift handovers?",
-            a: LOCKED_ANSWER_HTML,
+            a: "I use a structured tool like SBAR (Situation, Background, Assessment, Recommendation). I provide concise, factual, and up-to-date information about each patient, highlighting current concerns, pending investigations, and priority tasks. I also allow the incoming nurse to ask questions to ensure clarity and a safe transfer of care.",
           },
           {
             category: "Professionalism, Ethics & Communication",
             q: "How do you stay updated on new nursing procedures and guidelines?",
-            a: LOCKED_ANSWER_HTML,
+            a: "I regularly review evidence-based practices through nursing journals, professional development workshops, and online courses. I also participate in conferences, attend hospital meetings, and collaborate with colleagues to share best practices.",
           },
           {
             category: "Professionalism, Ethics & Communication",
             q: "How do you ensure patient autonomy and informed consent during procedures?",
-            a: LOCKED_ANSWER_HTML,
+            a: "I ensure patients understand their diagnosis, the proposed procedure, its potential risks, and any alternatives by explaining them clearly in simple terms. I provide written information, allow time for questions, and confirm their understanding with the teach-back method before obtaining their voluntary consent.",
           },
           {
             category: "Professionalism, Ethics & Communication",
             q: "Walk us through the process of reporting and documenting adverse events.",
-            a: LOCKED_ANSWER_HTML,
+            a: "When an adverse event occurs, my first priority is to assess and stabilize the patient. I then complete the required incident report, documenting the objective facts without personal opinions or blame. I ensure the event is reported through the proper channels and that follow-up actions are taken to prevent it from happening again.",
           },
         ];
 
@@ -1327,154 +1311,153 @@
           {
             category: "Recall Questions",
             q: "What do you check on a post-op patient?",
-            a: LOCKED_ANSWER_HTML,
+            a: "The immediate assessment follows the ABCDE approach: Airway, Breathing, Circulation, Disability (consciousness), and Exposure (checking the wound, drains, and for bleeding). I would also check vital signs frequently, assess pain levels, check for nausea/vomiting, and monitor urine output.",
           },
           {
             category: "Recall Questions",
             q: "How do you confirm an NG tube is in the stomach?",
-            a: LOCKED_ANSWER_HTML,
+            a: "I would aspirate gastric contents and check the pH — stomach aspirate is typically ≤ 5.5. If aspirate is not obtained, I would reposition the patient and retry. The gold standard for new insertions is confirmation by chest X-ray before feeding. Correct placement is vital to avoid aspiration.",
           },
           {
             category: "Recall Questions",
             q: "What would you do for an unconscious diabetic?",
-            isSample: true, // Free Sample 3
-            a: "I would immediately press the emergency buzzer for help and initiate an ABCDE assessment. Because they were found on the floor, I would protect the cervical spine, maintain airway patency, check breathing, and immediately obtain a capillary blood glucose. If hypoglycemic (<4.0 mmol/L), I keep them strictly NPO, administer 100–200 mL of 10% IV glucose (or 1 mg glucagon IM/SC if no IV access), recheck glucose every 10–15 minutes, and escalate to the medical team.",
+            a: "I would first check the patient's responsiveness and airway, breathing, and circulation (ABC). I would check their blood glucose level. If hypoglycemia is suspected and IV access is available, I would prepare to assist with administration of IV dextrose as per hospital protocol. If IV access is unavailable, I would be ready to assist with IM glucagon. I would call for senior help immediately and monitor the patient closely.",
           },
           {
             category: "Recall Questions",
             q: "What are the 4 types of injections?",
-            a: LOCKED_ANSWER_HTML,
+            a: "The four types are Intradermal (ID), Subcutaneous (SC), Intramuscular (IM), and Intravenous (IV). Each has specific indications, angles, and needle sizes — correct technique ensures safety and effectiveness.",
           },
           {
             category: "Recall Questions",
             q: "How do you administer medication through a central line?",
-            a: LOCKED_ANSWER_HTML,
+            a: "Using strict aseptic technique, I would scrub the hub, check the line’s patency, flush with saline, administer the drug at the prescribed rate, and flush again. I would monitor closely for complications such as infection, air embolism, or extravasation.",
           },
           {
             category: "Recall Questions",
             q: "How would you respond to a fall in the ward?",
-            a: LOCKED_ANSWER_HTML,
+            a: "I would first ensure the patient’s safety by not moving them immediately. Then assess responsiveness, ABCs, and visible injuries. I would call for medical help if needed, document the incident, complete an incident form, and inform the senior nurse. Preventive measures must follow to reduce recurrence.",
           },
           {
             category: "Recall Questions",
             q: "How do you manage an aggressive or confused patient?",
-            a: LOCKED_ANSWER_HTML,
+            a: "I would maintain safety of the patient, staff, and others. I would use calm, non-threatening communication and de-escalation techniques. If confusion is due to medical causes (e.g., hypoxia, infection), I would assess and escalate care. If needed, involve the team and follow hospital protocols while maintaining dignity.",
           },
           {
             category: "Recall Questions",
             q: "How do you administer IV meds bolus to a patient on normal saline?",
-            a: LOCKED_ANSWER_HTML,
+            a: "I would verify the prescription, apply the rights of medication, and use aseptic technique. I would check the IV site, pause the saline if needed, scrub the port, flush with saline, administer the medication slowly, flush again, and restart the infusion. Monitor the patient throughout for adverse reactions.",
           },
           {
             category: "Recall Questions",
             q: "How do you administer antibiotics safely?",
-            a: LOCKED_ANSWER_HTML,
+            a: "First, I confirm the patient's allergy status. Then, I perform my three checks against the 5 Rights of Medication. At the bedside, I verify the patient's identity, administer the drug, and monitor for any immediate reactions. Finally, I document the administration immediately.",
           },
           {
             category: "Recall Questions",
             q: "What are the signs of catheter site inflammation?",
-            a: LOCKED_ANSWER_HTML,
+            a: "Redness, swelling, warmth, tenderness, pain, or purulent discharge at the site. These signs may indicate phlebitis or infection and require prompt action.",
           },
           {
             category: "Recall Questions",
             q: "What would you do if there is catheter site inflammation?",
-            a: LOCKED_ANSWER_HTML,
+            a: "I would stop using the line, remove the cannula aseptically, apply a sterile dressing, and re-site the cannula if IV therapy is needed. I would document the findings, inform the physician, and monitor for systemic infection to prevent progression to sepsis.",
           },
           {
             category: "Recall Questions",
             q: "What is the correct procedure for handling and administering controlled drugs?",
-            a: LOCKED_ANSWER_HTML,
+            a: "The procedure is governed by strict safety and accountability protocols. For administration, two registered nurses must be present. We check the prescription, retrieve the drug from the locked cupboard, and together we check the 5 Rights. We then sign and document the withdrawal in the CD register. At the bedside, we re-confirm the patient's identity before administering. Any discarded portion is also witnessed and documented. This two-person process ensures accountability and prevents errors at every step.",
           },
           {
             category: "Recall Questions",
             q: "What steps can you take to avoid medication errors?",
-            a: LOCKED_ANSWER_HTML,
+            a: "My main approach is to be systematic and focused. I strictly follow the 5 Rights of Medication and perform the three checks during preparation. I ensure I'm working in a distraction-free environment. Critically, I involve the patient by confirming their allergies and educating them about the medication. Finally, I document immediately after administration to ensure the record is always accurate.",
           },
           {
             category: "Recall Questions",
             q: "Walk us through the steps you would take before, during, and after administering medications.",
-            a: LOCKED_ANSWER_HTML,
+            a: "I begin by reviewing the prescription, checking for allergies, and completing my first two safety checks during preparation. At the bedside, I perform my final check, positively identify the patient using two identifiers, and explain the medication before administering. I then immediately document the administration and monitor the patient for the intended therapeutic effects and any adverse reactions, ensuring a complete and safe process.",
           },
           {
             category: "Recall Questions",
             q: "Walk us through the entire process of administering a blood transfusion, including checks before and after.",
-            a: LOCKED_ANSWER_HTML,
+            a: "Before, I confirm there is valid consent and a patent IV line. The most critical step is the bedside check with another registered nurse, where we verify the patient's name and date of birth against their wristband and the details on the blood bag. We then take a baseline set of vital signs. During, I start the transfusion slowly for the first 15 minutes and stay with the patient, monitoring for any signs of a reaction like fever, chills, or back pain. I check vitals again after 15 minutes. After, once the transfusion is complete (within 4 hours), I take a final set of vital signs and document the entire procedure.",
           },
           {
             category: "Recall Questions",
             q: "If a colleague gives you already prepared medication to administer, what would you do?",
-            a: LOCKED_ANSWER_HTML,
+            a: "I would politely decline. My primary responsibility is patient safety, and the nurse who prepares a medication is accountable for administering it. I cannot personally verify the 5 Rights of the preparation. I would offer to help my colleague with their other tasks so they can find the time to administer the medication themselves, which keeps the chain of accountability intact.",
           },
           {
             category: "Recall Questions",
             q: "If a new patient is admitted to your ward, what are your immediate nursing actions?",
-            a: LOCKED_ANSWER_HTML,
+            a: "My immediate actions are to ensure the patient is safe and comfortable. I would begin by welcoming them, then perform initial safety checks like confirming their identity and asking about any allergies. I would then take a baseline set of vital signs and perform a rapid initial assessment. Finally, I would review their admission paperwork and any immediate doctor's orders, and orient them to their room and the call bell.",
           },
           {
             category: "Recall Questions",
             q: "How do you assess and manage a patient with a head injury?",
-            a: LOCKED_ANSWER_HTML,
+            a: "My first priority is always an ABCDE assessment to rule out any immediate life threats. I would then assess their level of consciousness using the Glasgow Coma Scale (GCS). Management involves performing regular neurological observations, including GCS, pupil response, and limb strength, as well as monitoring their vital signs. The goal is to detect any signs of deterioration, like a drop in GCS, and report it immediately.",
           },
           {
             category: "Recall Questions",
             q: "Why is effective communication important in nursing practice?",
-            a: LOCKED_ANSWER_HTML,
+            a: "Effective communication is critical for three main reasons: Patient Safety: Clear communication, like using the SBAR tool during handovers, prevents errors and ensures continuity of care. Team Collaboration: It allows nurses to work effectively with doctors and other professionals to provide coordinated patient care. Patient Trust: Communicating with empathy and clarity builds trust, which helps in educating patients and improving their health outcomes.",
           },
           {
             category: "Recall Questions",
             q: "What are the key qualities of a good nurse?",
-            a: LOCKED_ANSWER_HTML,
+            a: "I believe the key qualities are competence, compassion, and strong communication. A nurse must be clinically competent to provide safe and effective care. They need compassion to connect with patients and treat them with dignity during vulnerable times. And they must be a clear communicator to advocate for their patients and work effectively within the healthcare team.",
           },
           {
             category: "Recall Questions",
             q: "What is your five-year career plan as a nurse?",
-            a: LOCKED_ANSWER_HTML,
+            a: "My immediate goal for the first one to two years is to build a strong foundation of clinical skills and become a competent, reliable member of the team on a medical or surgical ward. In the following years, I hope to identify a specialty I am passionate about, such as critical care or emergency nursing, and pursue further training in that area. Ultimately, within five years, I aim to be a skilled specialist nurse who can also help mentor new graduates.",
           },
           {
             category: "Recall Questions",
             q: "What would you do to make your work as a nurse enjoyable and sustainable?",
-            a: LOCKED_ANSWER_HTML,
+            a: "For me, sustainability comes from three areas: maintaining a healthy work-life balance to prevent burnout, being part of a supportive team where we can debrief and learn from each other, and embracing continuous learning. Staying engaged by learning new skills keeps the work challenging and rewarding, which I believe is key to a long and enjoyable career.",
           },
           {
             category: "Recall Questions",
             q: "What are the normal hemoglobin levels for men and for women?",
-            a: LOCKED_ANSWER_HTML,
+            a: "The normal ranges can vary slightly, but generally for men, it is approximately 13.5 to 17.5 grams per deciliter, and for women, it is approximately 12.0 to 15.5 grams per deciliter.",
           },
           {
-            category: "Recall Questions",
-            q: "Looking at your CV, you’ve spent time in various settings. Did you find yourself more drawn to the general ward or the specialized units?",
-            a: LOCKED_ANSWER_HTML,
-          },
-          {
-            category: "Recall Questions",
-            q: "In a general medical ward, what specific diseases or conditions were you caring for?",
-            a: LOCKED_ANSWER_HTML,
-          },
-          {
-            category: "Recall Questions",
-            q: "What are the primary causes and common symptoms of diabetes?",
-            a: LOCKED_ANSWER_HTML,
-          },
-          {
-            category: "Recall Questions",
-            q: "What causes diabetic retinopathy and diabetic foot complications?",
-            a: LOCKED_ANSWER_HTML,
-          },
-          {
-            category: "Recall Questions",
-            q: "What advice would you give a patient with diabetes about maintaining healthy skin and foot care?",
-            a: LOCKED_ANSWER_HTML,
-          },
-          {
-            category: "Recall Questions",
-            q: "If you found an unconscious diabetic patient on the floor, what would you do?",
-            a: LOCKED_ANSWER_HTML,
-          },
-          {
-            category: "Recall Questions",
-            q: "What are the three primary organs commonly affected by chronic diabetes?",
-            a: LOCKED_ANSWER_HTML,
-          },
+    category: "Recall Questions",
+    q: "Looking at your CV, you’ve spent time in various settings. Did you find yourself more drawn to the general ward or the specialized units?",
+    a: "While specialized units offer deep focus, I value the general ward because it sharpens clinical prioritization, multimorbidity management, and MDT coordination. It provides a versatile foundation in holistic nursing, complex discharge planning, and managing rapidly changing patient conditions.",
+  },
+  {
+    category: "Recall Questions",
+    q: "In a general medical ward, what specific diseases or conditions were you caring for?",
+    a: "I routinely managed acute respiratory conditions like COPD exacerbations and pneumonia, cardiovascular diseases such as decompensated heart failure, renal impairment including AKI and CKD, severe sepsis from chest or urinary sources, and acute metabolic issues like decompensated diabetes.",
+  },
+  {
+    category: "Recall Questions",
+    q: "What are the primary causes and common symptoms of diabetes?",
+    a: "Type 1 diabetes is caused by autoimmune destruction of pancreatic beta cells causing absolute insulin deficiency, whereas Type 2 stems from progressive insulin resistance and relative insulin deficiency linked to genetics and lifestyle. Key symptoms include the classic triad of polyuria, polydipsia, and polyphagia, alongside chronic fatigue, blurred vision, and unexplained weight loss.",
+  },
+  {
+    category: "Recall Questions",
+    q: "What causes diabetic retinopathy and diabetic foot complications?",
+    a: "Both stem from prolonged hyperglycemia causing micro- and macro-vascular damage. Retinopathy occurs when damaged retinal capillaries cause leakage, macular edema, and neovascularization. Diabetic foot complications result from a triad of peripheral sensory neuropathy, peripheral arterial disease with poor perfusion, and impaired immunity, predisposing patients to painless pressure sores and serious infections.",
+  },
+  {
+    category: "Recall Questions",
+    q: "What advice would you give a patient with diabetes about maintaining healthy skin and foot care?",
+    a: "I advise daily inspection of the soles and heels using a mirror, washing daily in lukewarm water, and drying thoroughly between the toes. Moisturizing cream should be applied to dry heels but never between the toes to prevent fungal maceration. Patients must wear seamless socks and proper footwear, avoid walking barefoot, and have toenails cut straight across by a podiatrist.",
+  },
+  {
+    category: "Recall Questions",
+    q: "If you found an unconscious diabetic patient on the floor, what would you do?",
+    a: "I would immediately press the emergency buzzer for help and initiate an ABCDE assessment. Because they were found on the floor, I would protect the cervical spine, maintain airway patency, check breathing, and immediately obtain a capillary blood glucose. If hypoglycemic (<4.0 mmol/L), I keep them strictly NPO, administer 100–200 mL of 10% IV glucose (or 1 mg glucagon IM/SC if no IV access), recheck glucose every 10–15 minutes, and escalate to the medical team.",
+  },
+  {
+    category: "Recall Questions",
+    q: "What are the three primary organs commonly affected by chronic diabetes?",
+    a: "The three primary organs are the kidneys (diabetic nephropathy leading to chronic renal failure), the eyes (diabetic retinopathy and maculopathy leading to vision loss), and the heart and brain vascular network (accelerated atherosclerosis causing myocardial infarction and stroke). The peripheral nervous system is also universally affected via diabetic neuropathy.",
+  },
         ];
         // --- DOM ELEMENTS ---
         const qbankContainer = document.getElementById("qbank-container");
