@@ -222,6 +222,107 @@
   <body
     class="bg-slate-100 dark:bg-slate-900 text-slate-800 dark:text-slate-300 transition-colors duration-300"
   >
+    <!-- ========================================== -->
+    <!-- PART 1: LOCK SCREEN OVERLAY                -->
+    <!-- Paste this directly below <body>           -->
+    <!-- ========================================== -->
+    <div
+      id="auth-lock-overlay"
+      class="fixed inset-0 bg-slate-950/90 backdrop-blur-md z-50 flex items-center justify-center p-4 transition-opacity duration-300"
+    >
+      <div
+        class="bg-white dark:bg-slate-800 rounded-2xl shadow-2xl max-w-md w-full p-6 sm:p-8 text-center border border-slate-200 dark:border-slate-700"
+      >
+        <div
+          class="mx-auto w-14 h-14 bg-emerald-100 dark:bg-emerald-950/70 rounded-2xl flex items-center justify-center mb-4 text-emerald-600 dark:text-emerald-400 shadow-inner"
+        >
+          <i data-feather="lock" class="w-7 h-7"></i>
+        </div>
+
+        <span
+          class="inline-block px-3 py-0.5 rounded-full text-[11px] font-bold uppercase tracking-wider bg-blue-100 dark:bg-blue-950 text-blue-800 dark:text-blue-300 mb-2"
+        >
+          Enrolled Candidates Only
+        </span>
+
+        <h2
+          class="font-heading text-2xl font-bold text-gray-900 dark:text-white"
+        >
+          Full QBank Access
+        </h2>
+        <p
+          class="text-xs text-gray-600 dark:text-slate-400 mt-2 leading-relaxed"
+        >
+          Please enter your registered email address and access PIN to unlock
+          all model answers, recall scenarios, and flashcard tools.
+        </p>
+
+        <form id="auth-form" class="mt-6 space-y-3.5 text-left">
+          <div>
+            <label
+              for="gate-email-input"
+              class="block text-xs font-semibold text-gray-700 dark:text-slate-300 mb-1"
+            >
+              Registered Email Address:
+            </label>
+            <input
+              type="email"
+              id="gate-email-input"
+              placeholder="e.g. nurse.sarah@gmail.com"
+              required
+              class="w-full px-3.5 py-2.5 text-xs rounded-xl border border-gray-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-emerald-500 focus:outline-none"
+            />
+          </div>
+
+          <div>
+            <label
+              for="gate-pin-input"
+              class="block text-xs font-semibold text-gray-700 dark:text-slate-300 mb-1"
+            >
+              Personal Access PIN:
+            </label>
+            <input
+              type="password"
+              id="gate-pin-input"
+              placeholder="e.g. 4821"
+              required
+              class="w-full px-3.5 py-2.5 text-xs rounded-xl border border-gray-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-700 text-gray-900 dark:text-white font-mono tracking-widest text-center focus:ring-2 focus:ring-emerald-500 focus:outline-none"
+            />
+          </div>
+
+          <div
+            id="gate-error"
+            class="hidden p-2.5 bg-red-100 dark:bg-red-950/70 border border-red-200 dark:border-red-900 rounded-xl text-red-800 dark:text-red-300 text-xs leading-snug text-center"
+          >
+            ✕ Invalid credentials. Please check the email and PIN sent to you on
+            WhatsApp.
+          </div>
+
+          <button
+            type="submit"
+            class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2.5 px-4 rounded-xl text-xs transition shadow-md flex items-center justify-center gap-1.5"
+          >
+            <i data-feather="key" class="w-3.5 h-3.5"></i>
+            <span>Verify & Unlock Question Bank</span>
+          </button>
+        </form>
+
+        <div
+          class="mt-5 pt-4 border-t border-gray-100 dark:border-slate-700 text-[11px] text-gray-500 dark:text-slate-400"
+        >
+          Don't have an access pass yet?
+          <a
+            href="get_access.html"
+            class="text-emerald-600 dark:text-emerald-400 font-bold hover:underline ml-1 block mt-1 sm:inline"
+          >
+            Get 2-Month Access for 100 PLN (~€23) →
+          </a>
+        </div>
+      </div>
+    </div>
+    <!-- ========================================== -->
+    <!-- END OF PART 1                              -->
+    <!-- ========================================== -->
     <!-- Header -->
     <header>
       <nav class="navbar">
@@ -882,6 +983,67 @@
 
     <script>
       document.addEventListener("DOMContentLoaded", () => {
+        // ==========================================
+        // PART 2: ACCESS & PIN VERIFICATION CODE
+        // Paste right here at the top of DOMContentLoaded
+        // ==========================================
+
+        // You decide the 4-digit PIN for each student's email here:
+        const VALID_STUDENTS = {
+          "demo@nursing.com": "1234",
+          "drbenasmah@gmail.com": "2004",
+          "nurse.sarah@yahoo.com": "7720",
+        };
+
+        const authLockOverlay = document.getElementById("auth-lock-overlay");
+        const authForm = document.getElementById("auth-form");
+        const gateEmailInput = document.getElementById("gate-email-input");
+        const gatePinInput = document.getElementById("gate-pin-input");
+        const gateError = document.getElementById("gate-error");
+
+        // 1. Check if browser was already unlocked previously
+        // NEW CODE (Instant Revocation Check):
+        const savedEmail = (
+          localStorage.getItem("unlocked_student_email") || ""
+        ).toLowerCase();
+        const isUnlocked =
+          localStorage.getItem("nursing_qbank_answers_unlocked") === "true";
+
+        // If their email is still in your list, keep them in. If deleted, lock them out!
+        if (isUnlocked && savedEmail && VALID_STUDENTS[savedEmail]) {
+          authLockOverlay.classList.add("hidden");
+        } else {
+          localStorage.removeItem("nursing_qbank_answers_unlocked");
+          localStorage.removeItem("unlocked_student_email");
+          authLockOverlay.classList.remove("hidden");
+        }
+
+        // 2. Validate email and PIN on submission
+        if (authForm) {
+          authForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+            const email = (gateEmailInput.value || "").trim().toLowerCase();
+            const pin = (gatePinInput.value || "").trim();
+
+            if (VALID_STUDENTS[email] && VALID_STUDENTS[email] === pin) {
+              // Valid: store unlock in browser so they don't have to re-enter it
+              localStorage.setItem("nursing_qbank_answers_unlocked", "true");
+              localStorage.setItem("maltaGuideUnlocked", "true");
+              localStorage.setItem("unlocked_student_email", email);
+
+              gateError.classList.add("hidden");
+              authLockOverlay.classList.add("hidden");
+            } else {
+              // Invalid credentials
+              gateError.classList.remove("hidden");
+              gatePinInput.value = "";
+              gatePinInput.focus();
+            }
+          });
+        }
+        // ==========================================
+        // END OF PART 2
+        // ==========================================
         // --- DATA ---
         const qbankData = [
           // Section 1: Patient Assessment & Vital Signs

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
@@ -36,10 +36,10 @@
         --border-radius-full: 9999px;
 
         --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-        --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1),
-          0 2px 4px -2px rgb(0 0 0 / 0.1);
-        --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1),
-          0 4px 6px -4px rgb(0 0 0 / 0.1);
+        --shadow-md:
+          0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        --shadow-lg:
+          0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
         --shadow-glow: 0 0 25px -5px rgba(163, 230, 53, 0.5);
 
         --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -824,7 +824,9 @@
       .reveal {
         opacity: 0;
         transform: translateY(30px);
-        transition: opacity 0.8s ease, transform 0.8s ease;
+        transition:
+          opacity 0.8s ease,
+          transform 0.8s ease;
       }
       .reveal.visible {
         opacity: 1;
@@ -886,7 +888,10 @@
             class="logo-img"
             src="src/assets/img/logo1.png"
             alt="Global Nursing Assist PL Logo"
-            onerror="this.onerror=null;this.src='https://placehold.co/200x50/1e40af/ffffff?text=Logo';"
+            onerror="
+              this.onerror = null;
+              this.src = 'https://placehold.co/200x50/1e40af/ffffff?text=Logo';
+            "
           />
           <span class="logo-text">Global Nursing Assist PL</span>
         </a>
@@ -909,6 +914,11 @@
                 href="./Malta-study-plan/flashcard-m.html"
                 class="dropdown-link"
                 >Flashcards</a
+              >
+              <a
+                href="./Malta-study-plan/paid_qbank_malta.html"
+                class="dropdown-link"
+                >Full access Malta QBank</a
               >
               <a
                 href="./Malta-study-plan/study-guide1.html"
@@ -953,6 +963,11 @@
               href="./Malta-study-plan/flashcard-m.html"
               class="block text-gray-600 hover:bg-gray-50 px-3 py-2 rounded-md text-sm font-medium"
               >Flashcards</a
+            >
+            <a
+              href="./Malta-study-plan/paid_qbank_malta.html"
+              class="dropdown-link"
+              >Full access Malta QBank</a
             >
             <a
               href="./Malta-study-plan/study-guide1.html"
@@ -1492,7 +1507,12 @@
                       name="service"
                       required
                       class="form-select"
-                      onchange="this.setAttribute('data-selected', this.value !== '' ? 'true' : 'false')"
+                      onchange="
+                        this.setAttribute(
+                          'data-selected',
+                          this.value !== '' ? 'true' : 'false',
+                        )
+                      "
                     >
                       <option value="" disabled selected></option>
                       <option value="interview">
@@ -1704,7 +1724,7 @@
             }
           });
         },
-        { threshold: 0.1 }
+        { threshold: 0.1 },
       );
 
       // Observe all elements with .reveal, but also the card-grid containers
@@ -1730,7 +1750,7 @@
 
       // Mobile dropdown toggle
       const mobileDropdownToggle = document.getElementById(
-        "mobile-dropdown-toggle"
+        "mobile-dropdown-toggle",
       );
       if (mobileDropdownToggle) {
         const mobileDropdown = document.getElementById("mobile-dropdown");
